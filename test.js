@@ -7,4 +7,4 @@ store =
     reviewOfDrinks: { singleDrinkReviews: {}, allReviews: [...list of review for drinks] },
     brewery: { byId: {} },
     badges: { byId: {}, allBadges: [...list of all badges] },
-}
+}kjnsfkjnsdfn,an,amksam
