@@ -1,4 +1,4 @@
-from app.models import db, Brewery, User
+from app.models import db, Brewery, User, environment, SCHEMA
 from random import randint
 
 
@@ -128,6 +128,9 @@ def undo_breweries():
     #         f"TRUNCATE table {SCHEMA}.brewerys RESTART IDENTITY CASCADE;")
     # else:
         # db.session.execute('TRUNCATE breweries RESTART IDENTITY CASCADE;')
-        db.session.execute('DELETE FROM breweries')
-
+        # db.session.execute('DELETE FROM breweries')
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.breweries RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM breweries")
         db.session.commit()
