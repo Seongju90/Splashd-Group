@@ -1,11 +1,11 @@
-from app.models import userbadge, db, environment, SCHEMA
+from app.models import userbadges, db, environment, SCHEMA
 
 def seed_userbadges():
-    ub1= userbadge(
+    ub1= userbadges(
         users=1,
         badges=1
     )
-    ub2= userbadge(
+    ub2= userbadges(
         users=1,
         badges=2
     )

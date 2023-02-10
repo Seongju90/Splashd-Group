@@ -1,13 +1,15 @@
 """empty message
 
 Revision ID: 5a96b20439bc
-Revises: 
+Revises:
 Create Date: 2023-02-10 16:19:09.259062
 
 """
 from alembic import op
 import sqlalchemy as sa
-
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
 revision = '5a96b20439bc'
@@ -30,6 +32,9 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
     op.create_table('breweries',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
@@ -41,6 +46,9 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('brewery_logo')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE breweries SET SCHEMA {SCHEMA};")
+
     op.create_table('beers',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
@@ -52,6 +60,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['brewery_id'], ['breweries.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE beers SET SCHEMA {SCHEMA};")
+
     op.create_table('badges',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('beer_id', sa.Integer(), nullable=True),
@@ -62,6 +73,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['brewery_id'], ['breweries.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE badges SET SCHEMA {SCHEMA};")
+
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('beer_id', sa.Integer(), nullable=False),
@@ -73,6 +87,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
+
     op.create_table('userbadges',
     sa.Column('users', sa.Integer(), nullable=False),
     sa.Column('badges', sa.Integer(), nullable=False),
@@ -80,6 +97,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['users'], ['users.id'], ),
     sa.PrimaryKeyConstraint('users', 'badges')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE userbadges SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
