@@ -15,6 +15,7 @@ class Badge(db.Model):
     badge_beer = db.relationship("Beer", back_populates="beer_badge")
     badge_brewery = db.relationship("Brewery", back_populates="brewery_badge")
     badge_user = db.relationship("User", secondary=userbadges, back_populates="user_badge")
+    
 
 
     def to_dict(self):

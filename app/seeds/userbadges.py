@@ -1,17 +1,10 @@
-from app.models import userbadge, db, environment, SCHEMA
+from app.models import userbadges, db, environment, SCHEMA, User, Badge
 
 def seed_userbadges():
-    ub1= userbadge(
-        users=1,
-        badges=1
-    )
-    ub2= userbadge(
-        users=1,
-        badges=2
-    )
+    user1= User.query.get(1)
+    badge1 = Badge.query.get(1)
+    user1.user_badge.append(badge1)
 
-    db.session.add(ub1)
-    db.session.add(ub2)
     db.session.commit()
 
 def undo_userbadges():
