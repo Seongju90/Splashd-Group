@@ -57,6 +57,7 @@ def upgrade():
     sa.Column('brewery_id', sa.Integer(), nullable=False),
     sa.Column('type', sa.String(length=50), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
+    sa.Column('beer_logo', sa.String(length=255), nullable=False),
     sa.ForeignKeyConstraint(['brewery_id'], ['breweries.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
