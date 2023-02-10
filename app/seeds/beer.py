@@ -10,7 +10,7 @@ def seed_beers():
         brewery_id=1,
         type='Wheat',
         description='This was great!',
-        beer_logo= "dddddasassas"
+        beer_logo="dddddasassas1"
     )
     beer2 = Beer(
         name='World',
@@ -19,7 +19,7 @@ def seed_beers():
         brewery_id=2,
         type='Milk',
         description='This was bad!',
-        beer_logo= "dddddasassas"
+        beer_logo="dddddasassas2"
     )
 
     beer3 = Beer(
@@ -29,7 +29,7 @@ def seed_beers():
         brewery_id=1,
         type='Rice',
         description='This was mysterious!',
-        beer_logo= "dddddasassas"
+        beer_logo="dddddasassas3"
     )
     db.session.add(beer1)
     db.session.add(beer2)
