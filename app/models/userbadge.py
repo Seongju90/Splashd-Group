@@ -10,4 +10,4 @@ userbadges = db.Table(
 
 
 if environment == "production":
-    user_badges.schema = SCHEMA
+    userbadges.schema = SCHEMA
