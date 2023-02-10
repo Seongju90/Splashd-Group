@@ -13,6 +13,14 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    first_name = db.Column(db.String(100), nullable=False)
+    last_name = db.Column(db.String(100), nullable=False)
+    age = db.Column(db.Integer, nullable=False)
+
+
+    user_brewery = db.relationship("Brewery", back_populates="brewery_user")
+    user_badge = db.relationship("Badge", back_populates="badge_user")
+    user_review = db.relationship("Review", back_populates="review_user")
 
     @property
     def password(self):
