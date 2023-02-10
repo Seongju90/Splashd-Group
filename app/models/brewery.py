@@ -1,12 +1,13 @@
-from .db import db
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Brewery(db.Model):
     __tablename__ = "breweries"
-
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
-    owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     city_state = db.Column(db.String(255), nullable=False)
     brewery_type = db.Column(db.String(255), nullable=False)
     brewery_logo = db.Column(db.String(255), nullable=False, unique=True)

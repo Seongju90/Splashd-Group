@@ -1,13 +1,14 @@
-from .db import db
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Badge(db.Model):
     __tablename__ = 'badges'
-
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    beer_id = db.Column(db.Integer, db.ForeignKey("beers.id"))
-    brewery_id = db.Column(db.Integer, db.ForeignKey("breweries.id"))
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    beer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("beers.id")))
+    brewery_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("breweries.id")))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     icon = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
 
