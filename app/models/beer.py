@@ -1,16 +1,18 @@
-from .db import db
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
 
 class Beer(db.Model):
     __tablename__ = 'beers'
 
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     abv = db.Column(db.Float, nullable=False)
     ibu = db.Column(db.Integer, nullable=False)
-    brewery_id = db.Column(db.Integer, db.ForeignKey("breweries.id"), nullable=False)
+    brewery_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("breweries.id")), nullable=False)
     type = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text, nullable=False)
 

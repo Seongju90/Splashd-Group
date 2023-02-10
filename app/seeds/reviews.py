@@ -1,5 +1,5 @@
 
-from app.models import db, User, Review, Beer
+from app.models import db, User, Review, Beer,environment, SCHEMA
 from random import randint
 
 
@@ -118,6 +118,11 @@ def seed_reviews():
 
 
 def undo_reviews():
-    db.session.execute('DELETE FROM reviews')
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM reviews")
+
+    # db.session.execute('DELETE FROM reviews')
     # db.session.execute('TRUNCATE reviews RESTART IDENTITY CASCADE;')
     db.session.commit()
