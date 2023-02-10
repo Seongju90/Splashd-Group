@@ -1,5 +1,5 @@
 from app.models import db, User, environment, SCHEMA
-
+from random import randint
 def seed_users():
 
     names = ['Karen','Phil','Diego','Elon','Rupert','Clifford','Jenna','Rebacca','Justine','Lily','Fiona','Alan','Charlie','Alex','Steve','Hilda','Xena','Jerry','Beth']
