@@ -87,7 +87,7 @@ def seed_breweries():
     ]
 
     brewery_city_state = [
-        "Escondido, CA", "Grand Rapids, MI", "Chicago, IL", "Milton, GA", "Comstock, MI", "Bend, OR", "San Diego, CA", "Brooklyn", "Charlton, MA", "Kansas City, KS", "Downingtown, PA", "Canton, OH", "Longmont, CO",
+        "Escondido, CA", "Grand Rapids, MI", "Chicago, IL", "Milton, GA", "Comstock, MI", "Bend, OR", "San Diego, CA", "Brooklyn, NY", "Charlton, MA", "Kansas City, KS", "Downingtown, PA", "Canton, OH", "Longmont, CO",
         "Newport, RI", "Krebs, OK", "Hershey, PA", "Boulder, NV", "Los Angeles, CA", "Houston, TX", "Phoenix, AZ", "Philadelphia, PA", "San Antonio, TX", "Dallas, TX", "San Jose, CA", "Austin, TX", "Jacksonville, FL",
         "Fort Worth, TX", "Columbus, OH", "Indianapolis, IN", "San Francisco, CA", "Seattle, WA", "Denver, CO", "Nashville, TN", "Washington, DC", "Boston", "El Paso, TX", "Portland, OR", "Las Vegas, CA", "Memphis, TN",
         "Detroit, MI", "Baltimore, MD", "Milwaukee, WI", "Albuquerque, NM", "Fresno, CA", "Tucson, AZ", "Sacramento, CA", "Long Beach, CA", "Raleigh, NC", "Omaha, NB", "Cleveland, OH", "New Orleans, NO", "Irvine, CA",
