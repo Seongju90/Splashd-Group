@@ -12,10 +12,11 @@ class Badge(db.Model):
     icon = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
 
+    # todo:add cascade delete
     badge_beer = db.relationship("Beer", back_populates="beer_badge")
     badge_brewery = db.relationship("Brewery", back_populates="brewery_badge")
     badge_user = db.relationship("User", secondary=userbadges, back_populates="user_badge")
-    
+
 
 
     def to_dict(self):
