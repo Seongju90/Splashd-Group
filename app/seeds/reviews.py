@@ -123,6 +123,4 @@ def undo_reviews():
     else:
         db.session.execute("DELETE FROM reviews")
 
-    # db.session.execute('DELETE FROM reviews')
-    # db.session.execute('TRUNCATE reviews RESTART IDENTITY CASCADE;')
     db.session.commit()
