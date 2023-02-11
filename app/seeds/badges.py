@@ -4,21 +4,19 @@ def seed_badges():
     badge1=Badge(
         beer_id=1,
         brewery_id=None,
-        user_id=1,
         icon='randomstring',
         description='randomstring'
     )
     badge2=Badge(
         beer_id=None,
         brewery_id=1,
-        user_id=1,
+
         icon='randomstring',
         description='randomstring'
     )
-    badge3=Badge(   
+    badge3=Badge(
         beer_id=2,
         brewery_id=None,
-        user_id=1,
         icon='randomstring',
         description='randomstring'
 

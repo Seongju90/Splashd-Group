@@ -5,3 +5,4 @@ from .brewery import Brewery
 from .beer import Beer
 from .review import Review
 from .badge import Badge
+from .userbadge import userbadges

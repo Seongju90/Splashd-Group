@@ -14,7 +14,9 @@ class Beer(db.Model):
     brewery_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("breweries.id")), nullable=False)
     type = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text, nullable=False)
+    beer_logo = db.Column(db.String(255), nullable=False)
 
+    # todo:add cascade delete
     beer_brewery = db.relationship("Brewery", back_populates="brewery_beer")
     beer_review = db.relationship("Review", back_populates="review_beer")
     beer_badge = db.relationship("Badge", back_populates="badge_beer")
