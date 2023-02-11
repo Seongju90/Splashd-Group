@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(100), nullable=False)
     age = db.Column(db.Integer, nullable=False)
 
-
+    # todo:add cascade delete
     user_brewery = db.relationship("Brewery", back_populates="brewery_user")
     user_badge = db.relationship("Badge", secondary=userbadges, back_populates="badge_user")
     user_review = db.relationship("Review", back_populates="review_user")

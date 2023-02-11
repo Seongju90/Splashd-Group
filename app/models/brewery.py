@@ -12,6 +12,7 @@ class Brewery(db.Model):
     brewery_type = db.Column(db.String(255), nullable=False)
     brewery_logo = db.Column(db.String(255), nullable=False, unique=True)
 
+    # todo:add cascade delete
     brewery_beer = db.relationship("Beer", back_populates="beer_brewery")
     brewery_user = db.relationship("User", back_populates="user_brewery")
     brewery_badge = db.relationship("Badge", back_populates="badge_brewery")

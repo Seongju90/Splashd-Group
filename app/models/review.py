@@ -15,6 +15,7 @@ class Review(db.Model):
     review_text = db.Column(db.Text, nullable=False)
     rating = db.Column(db.Integer, nullable=False)
 
+    # todo:add cascade delete
     review_beer = db.relationship("Beer", back_populates="beer_review")
     review_user = db.relationship("User", back_populates="user_review")
 
