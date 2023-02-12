@@ -24,7 +24,7 @@ class BeerForm (FlaskForm):
         "Type",
         validators=[
             DataRequired(message='Type of Beer is Required'),
-            Length(min= 2, max= 50, message= 'Beer Type Cannot Exceed 50 Characters')
+            Length(min= 0, max= 50, message= 'Beer Type Cannot Exceed 50 Characters')
             ])
     description = TextAreaField(
         "Description",
