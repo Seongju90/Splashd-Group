@@ -1,11 +1,16 @@
-const ALL_BREWERIES = "session/ALL_BREWERIES";
-const REMOVE_BREWERY = "session/REMOVE_BREWERY";
+const ALL_BREWERIES = "brewery/ALL_BREWERIES";
+const REMOVE_BREWERY = "brewery/REMOVE_BREWERY";
+const ONE_BREWERY = "brewery/ONE_BREWERY"
 
-const oneBrewery = (breweries) => ({
+
+const allBrewery = (breweries) => ({
 	type: ALL_BREWERIES,
 	breweries,
 });
-
+const oneBrewery = (brewery) => ({
+	type: ONE_BREWERY,
+	brewery,
+});
 const removeBrewery = (id) => ({
 	type: REMOVE_BREWERY,
 	id
@@ -15,7 +20,6 @@ const removeBrewery = (id) => ({
 export const thunkOneBrewery = (id) => async (dispatch) => {
 	const response = await fetch(`/api/brewery/${id}`, {
 		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({ id })
 	})
 	console.log(response)
 	if (response.ok) {
@@ -38,7 +42,7 @@ export const thunkAllBrewery = () => async (dispatch) => {
 	})
 	if (response.ok) {
 		const data = await response.json();
-		dispatch(oneBrewery(data));
+		dispatch(allBrewery(data));
 		return response
 	}
 	else if (response.status < 500) {
@@ -56,9 +60,14 @@ export default function reducer(state = initialState, action) {
 	let newState = { ...state }
 	switch (action.type) {
 		case ALL_BREWERIES:
-			let one = action.breweries
-			for (let b of one.breweries) newState[b.id]= b
+			let all = action.breweries
+			for (let b of all.breweries) newState[b.id]= b
 			return newState;
+		case ONE_BREWERY:
+			let one = action.brewery.brewery
+			// console.log(one)
+			newState.onebrewery = one
+			return newState
 		case REMOVE_BREWERY:
 			delete newState[action.id]
 			return newState

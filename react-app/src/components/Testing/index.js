@@ -8,7 +8,7 @@ function Tester() {
     const dispatch = useDispatch()
 
     const tester = async () => {
-        let sight = await dispatch(thunkAllBrewery()).catch((e)=>console.log(e, 'was caught'))
+        let sight = await dispatch(thunkOneBrewery(1)).catch((e)=>console.log(e, 'was caught'))
         console.log(sight, 'was returned')
         // console.log('Hey')
         return sight
