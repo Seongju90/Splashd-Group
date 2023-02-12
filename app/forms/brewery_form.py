@@ -24,7 +24,7 @@ class BreweryForm(FlaskForm):
         validators=[
             DataRequired(message='City and/or State required'), 
             Length(min=2, max=255, message='City and State information must be between 255 characters'),
-            validate_city_state
+            # validate_city_state
         ])
     brewery_type = SelectField(
         "Brewery", 

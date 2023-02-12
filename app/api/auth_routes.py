@@ -17,7 +17,7 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-
+#api/auth/
 @auth_routes.route('/')
 def authenticate():
     """
@@ -27,7 +27,7 @@ def authenticate():
         return current_user.to_dict()
     return {'errors': ['Unauthorized']}
 
-
+#api/auth/login
 @auth_routes.route('/login', methods=['POST'])
 def login():
     """
