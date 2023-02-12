@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import OpenModalButton from "../OpenModalButton";
-
+import BeerFormModal from '../BeerFormModal';
 // TESTING IMPORTS
 import { thunkOneBrewery, thunkAllBrewery } from '../../store/brewery';
 import BreweryFormModal from '../BreweryFormModal';
-import { thunkOneBeer } from '../../store/beer';
+import { thunkOneBeer, thunkCreateBeer } from '../../store/beer';
 
 function Tester() {
     const dispatch = useDispatch()
@@ -35,7 +35,7 @@ function Tester() {
             <OpenModalButton
               buttonText="Post Test"
               onItemClick={closeMenu}
-              modalComponent={<BreweryFormModal />}
+              modalComponent={<BeerFormModal id='3'/>}
             />
         </>
     );
