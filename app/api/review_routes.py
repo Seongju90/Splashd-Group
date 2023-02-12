@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Review, Beer, db, User
+from app.models import Review, Beer, db, User, Brewery
 from app.forms import ReviewForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
@@ -20,16 +20,18 @@ def all_reviews(id):
     review = Review.query.get(id)
     review_dict = review.to_dict()
 
-    print("----------------------", review.beer_id)
-    # print("@@@@@@@@@@@@@@@@@@@@@@@@@@", beer_name)
-    # beer = Beer.query.get(review_dict['beer_id'])
+    # beer = Beer.query.get(review_dict['beer_id']), both ways work to extract data from beer
     beer = Beer.query.get(review.beer_id)
     beer_name = beer.name
+
+    brewery = Brewery.query.get(beer.brewery_id)
+    brewery_name = brewery.name
 
     user = User.query.get(review.user_id)
     user_dict = user.to_dict()
 
     review_dict['beer_name'] = beer_name
     review_dict['user_name'] = user_dict
-    print('*&^*(&^%*&^*&^*(&^(*&^(*&^(&^(*&^*(&^*&', review_dict)
+    review_dict['brewery_name'] = brewery_name
+
     return review_dict
