@@ -31,7 +31,7 @@ def get_beers():
             rating += review.rating
         beer["avg"] = rating/beer["num_reviews"]
         all.append(beer)
-    print(all, "&&&&&&&&&&&&&&&&&&&&&&&&&")
+    # print(all, "&&&&&&&&&&&&&&&&&&&&&&&&&")
     return {"beers": all}
 
 @beer_routes.route('/<int:id>')
@@ -55,25 +55,3 @@ def get_one_beer(id):
     # print(beer, "&&&&&&&&&&&&&&&&&&&&&&&&&")
     return beer
 
-@beer_routes.route('', methods=['POST'])
-@login_required
-def addBeer():
-    form = BeerForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data, '!^!^!^!^!^!^^!^!^!^^!^!^!^!^^!^!^!^!^!^')
-    print(current_user, current_user.id, '@^@^@^@^@^^@^@^@^@^@^^@^@^^@^@^@^^@@')
-    if form.validate_on_submit():
-
-        newBeer = Beer(
-            name=form.data['name'],
-            owner_id=current_user.id,
-            abv=form.data['abv'],
-            brewery_type=form.data['brewery_type'],
-            brewery_logo=form.data['brewery_logo']
-        )
-        print(newBeer, '*^*^*^*^*^*^*^*^*^*^**^*^*^*^*^*')
-        db.session.add(newBeer)
-        db.session.commit()
-        return  newBeer.to_dict()
-    print(form.errors, '&#&#&#&#&#&#&#&#&#&#&&#&#&#&#&#&#&&#')
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

@@ -31,4 +31,10 @@ class BeerForm (FlaskForm):
         validators=[
             DataRequired(message = 'Please add a Description'),
             Length(min= 5, max= 2000, message= 'Description must be between 5 to 2000 characters')])
-    submit = SubmitField("Bottoms Up!")
+    beer_logo =  StringField(
+        "Beer Logo", 
+        validators = [
+            DataRequired(message='Beer Logo is required'), 
+            Length(min=5, max=255, message='Address must be between 5 and 255 characters')
+            ])
+    submit = SubmitField()
