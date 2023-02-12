@@ -14,7 +14,7 @@ function Tester() {
     const closeMenu = () => setShowMenu(false);
 
     const tester = async () => {
-        let sight = await dispatch(thunkOneBeer(1)).catch((e)=>console.log(e, 'was caught'))
+        let sight = await dispatch(thunkOneBeer(2)).catch((e)=>console.log(e, 'was caught'))
         console.log(sight, 'was returned')
         // console.log('Hey')
         return sight

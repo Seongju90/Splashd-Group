@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import  db, Beer, Review, User, Brewery
-from flask_login import current_user
+from flask_login import current_user, login_required
 from app.forms import BeerForm
 
 
@@ -39,7 +39,7 @@ def get_one_beer(id):
     beer = Beer.query.get(id).to_dict()
     reviews = Review.query.filter(Review.beer_id == beer["id"]).from_self().all()
     brewery = Brewery.query.get(beer["brewery_id"]).to_dict()
-    print(reviews, "11111111111111")
+    # print(reviews, "11111111111111")
     beer["num_reviews"] = len(reviews)
     all = []
     rating = 0
@@ -52,5 +52,28 @@ def get_one_beer(id):
     beer["reviews"] = all
     beer["avg"] = rating/beer["num_reviews"]
     beer["brewery"] = brewery
-    print(beer, "&&&&&&&&&&&&&&&&&&&&&&&&&")
+    # print(beer, "&&&&&&&&&&&&&&&&&&&&&&&&&")
     return beer
+
+@beer_routes.route('', methods=['POST'])
+@login_required
+def addBeer():
+    form = BeerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data, '!^!^!^!^!^!^^!^!^!^^!^!^!^!^^!^!^!^!^!^')
+    print(current_user, current_user.id, '@^@^@^@^@^^@^@^@^@^@^^@^@^^@^@^@^^@@')
+    if form.validate_on_submit():
+
+        newBeer = Beer(
+            name=form.data['name'],
+            owner_id=current_user.id,
+            abv=form.data['abv'],
+            brewery_type=form.data['brewery_type'],
+            brewery_logo=form.data['brewery_logo']
+        )
+        print(newBeer, '*^*^*^*^*^*^*^*^*^*^**^*^*^*^*^*')
+        db.session.add(newBeer)
+        db.session.commit()
+        return  newBeer.to_dict()
+    print(form.errors, '&#&#&#&#&#&#&#&#&#&#&&#&#&#&#&#&#&&#')
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
