@@ -1,0 +1,13 @@
+from flask import Blueprint, jsonify
+from flask_login import login_required
+from app.models import Brewery
+
+brewery_routes = Blueprint('brewery', __name__)
+
+@brewery_routes.route('')
+def brewerys():
+    """
+    Query for all brewerys and returns them in a list of brewery dictionaries
+    """
+    breweries = Brewery.query.all()
+    return {'breweries': [brewery.to_dict() for brewery in breweries]}
