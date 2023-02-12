@@ -7,10 +7,11 @@ const allBrewery = (breweries) => ({
 	type: ALL_BREWERIES,
 	breweries,
 });
-const oneBrewery = (brewery) => ({
-	type: ONE_BREWERY,
-	brewery,
-});
+const oneBrewery = (brewery) => {
+	console.log(brewery, 'tthis is the action')
+	return {type: ONE_BREWERY,
+	brewery,}
+};
 const removeBrewery = (id) => ({
 	type: REMOVE_BREWERY,
 	id
@@ -21,10 +22,10 @@ export const thunkOneBrewery = (id) => async (dispatch) => {
 	const response = await fetch(`/api/brewery/${id}`, {
 		headers: { "Content-Type": "application/json" },
 	})
-	console.log(response)
+	console.log(response, 'this is respond from backend')
 	if (response.ok) {
 		const data = await response.json();
-		console.log(data)
+		console.log(data, '!!just came from backend')
 		dispatch(oneBrewery(data));
 		return response
 	}
@@ -65,7 +66,7 @@ export default function reducer(state = initialState, action) {
 			return newState;
 		case ONE_BREWERY:
 			let one = action.brewery.brewery
-			// console.log(one)
+			console.log(one, 'this is the reducer')
 			newState.onebrewery = one
 			return newState
 		case REMOVE_BREWERY:
