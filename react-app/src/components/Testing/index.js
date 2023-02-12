@@ -1,16 +1,17 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+// TESTING IMPORTS
+import { thunkOneBrewery, thunkAllBrewery } from '../../store/brewery';
 
 function Tester() {
     const dispatch = useDispatch()
 
     const tester = async () => {
-        // let sight = await dispatch().catch((e)=>console.log(e, 'was caught'))
-        // console.log(sight, 'was returned')
-        console.log('Hey')
-        // return sight
+        let sight = await dispatch(thunkOneBrewery(3)).catch((e)=>console.log(e, 'was caught'))
+        console.log(sight, 'was returned')
+        // console.log('Hey')
+        return sight
     }
     const posttester = async () => {
         // let sight = await dispatch().catch((e)=>console.log(e, 'was caught'))
