@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Tester from "./components/Testing";
+import ReviewDetails from "./components/GetOneReviewPage";
 
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path='/test'>
             <Tester />
+          </Route>
+          <Route exact path="/api/reviews/:reviewId">
+            <ReviewDetails/>
           </Route>
         </Switch>
       )}
