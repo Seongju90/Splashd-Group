@@ -11,7 +11,7 @@ const allBrewery = (breweries) => {
 	}
 }
 const oneBrewery = (brewery) => {
-	console.log(brewery, 'tthis is the action')
+	// console.log(brewery, 'tthis is the action')
 	return {
 		type: ONE_BREWERY,
 		brewery,
@@ -22,7 +22,7 @@ const removeBrewery = (id) => ({
 	id
 });
 const addBrewery = (brewery) => {
-	console.log(brewery, 'tthis is the action')
+	// console.log(brewery, 'tthis is the action')
 	return {
 		type: ADD_BREWERY,
 		brewery,
@@ -34,16 +34,16 @@ export const thunkOneBrewery = (id) => async (dispatch) => {
 	const response = await fetch(`/api/brewery/${id}`, {
 		headers: { "Content-Type": "application/json" },
 	})
-	console.log(response, 'this is respond from backend')
+	// console.log(response, 'this is respond from backend')
 	if (response.ok) {
 		const data = await response.json();
-		console.log(data, '!!just came from backend')
+		// console.log(data, '!!just came from backend')
 		dispatch(oneBrewery(data));
 		return response
 	}
 	else if (response.status < 500) {
 		const data = await response.json();
-		console.log(data)
+		// console.log(data)
 		if (data.errors) return data;
 	}
 	else return { errors: "An error occurred. Please try again." }
@@ -53,7 +53,7 @@ export const thunkAllBrewery = () => async (dispatch) => {
 	const response = await fetch('/api/brewery/all', {
 		headers: { "Content-Type": "application/json" },
 	})
-	console.log(response)
+	// console.log(response)
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(allBrewery(data));
@@ -67,22 +67,22 @@ export const thunkAllBrewery = () => async (dispatch) => {
 }
 
 export const thunkCreateBrewery = (form) => async (dispatch) => {
-	console.log(form)
+	// console.log(form)
 	const response = await fetch('/api/brewery', {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(form)
 	})
-	console.log(response, 'this is respond from backend')
+	// console.log(response, 'this is respond from backend')
 	if (response.ok) {
 		const data = await response.json();
-		console.log(data, '!!just came from backend')
+		// console.log(data, '!!just came from backend')
 		dispatch(addBrewery(data));
 		return null
 	}
 	else if (response.status < 500) {
 		const data = await response.json();
-		console.log(data, 'ERROR STUFF')
+		// console.log(data, 'ERROR STUFF')
 		if (data.errors) return data;
 	}
 	else return { errors: "An error occurred. Please try again." }

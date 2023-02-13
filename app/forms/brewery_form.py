@@ -44,6 +44,6 @@ class BreweryForm(FlaskForm):
         "Brewery Logo", 
         validators = [
             DataRequired(message='Brewery Logo is required'), 
-            Length(min=5, max=255, message='Address must be between 5 and 255 characters')
+            Length(min=5, max=255, message='URL must be between 5 and 255 characters')
             ])
     submit = SubmitField("Add a Brewery!")
