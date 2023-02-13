@@ -1,23 +1,32 @@
 import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import OpenModalButton from "../OpenModalButton";
-
+import BeerFormModal from '../BeerFormModal';
+import EditBeerModal from '../EditBeerModal';
 // TESTING IMPORTS
 import { thunkOneBrewery, thunkAllBrewery } from '../../store/brewery';
 import BreweryFormModal from '../BreweryFormModal';
-import { thunkOneBeer } from '../../store/beer';
+import { thunkOneBeer, thunkCreateBeer, thunkAllBeer, thunkRemoveBeer } from '../../store/beer';
 
 function Tester() {
     const dispatch = useDispatch()
     const [showMenu, setShowMenu] = useState(false);
+    const [beer, setBeer] = useState(useSelector((state) => state.beer.onebeer))
     const closeMenu = () => setShowMenu(false);
 
     const tester = async () => {
-        let sight = await dispatch(thunkOneBeer(2)).catch((e)=>console.log(e, 'was caught'))
+        let sight = await dispatch(thunkAllBeer()).catch((e)=>console.log(e, 'was caught'))
         console.log(sight, 'was returned')
         // console.log('Hey')
         return sight
+    }
+
+    const remove = () => {
+        const goodbye = dispatch(thunkRemoveBeer(3)).catch((e)=>console.log(e, 'was caught'))
+        console.log("goodbye")
+        // console.log('Hey')
+        return goodbye
     }
 
     return (
@@ -32,10 +41,20 @@ function Tester() {
             >
             Test Get
             </div>
+            <div onClick={()=>remove()}
+            style={{
+                border: '2px solid black',
+                margin: '10px',
+                width: 'fit-content',
+                padding: '5px'
+            }}
+            >
+            remove
+            </div>
             <OpenModalButton
               buttonText="Post Test"
               onItemClick={closeMenu}
-              modalComponent={<BreweryFormModal />}
+              modalComponent={<EditBeerModal />}
             />
         </>
     );
