@@ -91,14 +91,14 @@ def edit_review(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@review_routes.route('<int:review_id>', methods=['DELETE'])
+@review_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
-def delete_review(review_id):
+def delete_review(id):
     """
     Delete a review for a beer
     """
     userId = current_user.id
-    review = Review.query.get(review_id)
+    review = Review.query.get(id)
 
     # if review is not found, throw an error
     if not review:
@@ -107,17 +107,18 @@ def delete_review(review_id):
             "status_code": 404
         }), 404
 
+
     # if the current_userid is user of the review allow delete
     if (userId == review.user_id):
         db.session.delete(review)
         db.session.commit()
 
         return jsonify({
-            "Message": "Successfully deleted the review"
+            "message": "Successfully deleted the review"
         })
     else:
         return jsonify({
-            "Message": "Forbidden, you are not the owner of the review",
+            "message": "Forbidden, you are not the owner of the review",
             "status_code": 403
         }), 403
 

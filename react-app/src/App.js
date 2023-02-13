@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 // import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-// import Tester from "./components/Testing";
+import Tester from "./components/garbageMaybe/Testing"
 import ReviewDetails from "./components/GetOneReviewPage";
 import OneBeer from "./components/BeerOneIndex";
 import ManyBeers from "./components/BeerManyIndex";
@@ -29,9 +29,9 @@ function App() {
         <Route exact path="/reviews/:reviewId">
           <ReviewDetails />
         </Route>
-        {/* <Route path='/test'>
+        <Route path='/test'>
             <Tester />
-          </Route> */}
+          </Route>
         <Route path='/beer/:id'>
           <OneBeer />
         </Route>
