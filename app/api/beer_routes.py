@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import  db, Beer, Review, User, Brewery, Badge
 from flask_login import current_user, login_required
-from app.forms import BeerForm
+from app.forms import BeerForm, ReviewForm
 
 
 beer_routes = Blueprint('beer', __name__)
@@ -69,3 +69,53 @@ def delete_beer(id):
     db.session.delete(beer)
     db.session.commit()
     return {"message": f'beer with id {beer.id} successfully deleted'}
+    
+@beer_routes.route('', methods = ['POST'])
+@login_required
+def addBeer():
+    form = BeerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data, '!^!^!^!^!^!^^!^!^!^^!^!^!^!^^!^!^!^!^!^')
+    print(current_user, current_user.id, '@^@^@^@^@^^@^@^@^@^@^^@^@^^@^@^@^^@@')
+    if form.validate_on_submit():
+
+        newBeer = Beer(
+            name=form.data['name'],
+            owner_id=current_user.id,
+            abv=form.data['abv'],
+            brewery_type=form.data['brewery_type'],
+            brewery_logo=form.data['brewery_logo']
+        )
+        print(newBeer, '*^*^*^*^*^*^*^*^*^*^**^*^*^*^*^*')
+        db.session.add(newBeer)
+        db.session.commit()
+        return  newBeer.to_dict()
+    print(form.errors, '&#&#&#&#&#&#&#&#&#&#&&#&#&#&#&#&#&&#')
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# Create a review based on Beer id, need to change API/route
+@beer_routes.route('/create/<int:beers_id>', methods=['POST'])
+@login_required
+def create_review(beers_id):
+    """
+        Create a review for a beer
+    """
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+
+        newReview = Review(
+            beer_id=beers_id,
+            user_id=current_user.id,
+            image=form.data['image'],
+            review_text=form.data['review_text'],
+            rating=form.data['rating']
+        )
+
+        db.session.add(newReview)
+        db.session.commit()
+        return newReview.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+

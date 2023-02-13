@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Tester from "./components/Testing";
+import ReviewDetails from "./components/GetOneReviewPage";
 
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/reviews/:reviewId">
+            <ReviewDetails/>
           </Route>
           <Route path='/test'>
             <Tester />
