@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { thunkCreateReview } from "../../store/review";
+import { thunkEditReview } from "../../store/review";
 
 // later when things are set up, pass beerId as a prop to this modl
-function ReviewFormModal() {
+export default function EditReviewModal() {
     const dispatch = useDispatch()
 
     const [imageUrl, setImageUrl] = useState("");
@@ -13,18 +13,18 @@ function ReviewFormModal() {
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
 
-    // console.log('review', review)
-
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         const error = [];
 
-        const data = await dispatch(thunkCreateReview(
+        const data = await dispatch(thunkEditReview(
             {
                 "image": imageUrl,
                 "review_text": review,
                 "rating": rating
-            },
+            },260
+            //hardcoded beerId=1, reviewId=3
             // we will add the beerId here to send to our thunk
         ))
 
@@ -47,16 +47,16 @@ function ReviewFormModal() {
         setErrors(error)
         if (error.length) return;
 
-        if (data) {
-            setErrors(data.errors);
-        } else {
-            closeModal();
-        }
+        // if (data) {
+        //     setErrors(data.errors);
+        // } else {
+        closeModal();
     }
+        // }
 
     return (
         <>
-            <h1>Create</h1>
+            <h1>Edit</h1>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
@@ -94,4 +94,4 @@ function ReviewFormModal() {
 }
 
 
-export default ReviewFormModal
+// export default EditFormModal

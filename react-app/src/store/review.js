@@ -56,12 +56,14 @@ export const thunkOneReview = (id) => async(dispatch) => {
 	else return { errors: "An error occurred. Please try again." }
 }
 
-export const thunkCreateReview = (form) => async(dispatch) => {
-    const response = await fetch(`/api/reviews`, {
+export const thunkCreateReview = (form, id) => async(dispatch) => {
+    const response = await fetch(`/api/beer/${id}/review`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(form)
 	})
+
+    // console.log('in my thunk!!!!!', response)
 
     if(response.ok) {
         const data = await response.json()
@@ -75,6 +77,26 @@ export const thunkCreateReview = (form) => async(dispatch) => {
 	else return { errors: "An error occurred. Please try again." }
 }
 
+export const thunkEditReview = (form, reviewId) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${reviewId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form)
+    })
+
+    
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(actionEditReview(data))
+        console.log('in my thunk!!!!!', response)
+        return null
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) return data;
+    }
+    else return { errors: "An error occurred. Please try again." }
+}
 /* ---------- REVIEWS REDUCER ---------- */
 
 const initialState = {}
@@ -88,8 +110,13 @@ const reviewsReducer = (state = initialState, action) => {
             return newState
         case CREATE_REVIEW:
             let add = action.review
-            console.log('reducer for create review', add)
+            // console.log('reducer for create review', add)
             newState[add.id] = add
+            return newState
+        case EDIT_REVIEW:
+            let edit = action.review
+            console.log("@@@@@@@@@@!!!!!@@@@@!", action)
+            newState[edit.id] = edit
             return newState
         default:
             return state;

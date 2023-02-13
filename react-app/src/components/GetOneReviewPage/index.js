@@ -2,6 +2,8 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { thunkOneReview } from "../../store/review"
 import { useParams, useHistory } from "react-router-dom"
+import ReviewFormModal from "../ReviewFormModal"
+import OpenModalButton from "../OpenModalButton";
 
 const ReviewDetails = () => {
     const history = useHistory()
@@ -17,7 +19,10 @@ const ReviewDetails = () => {
     }, [dispatch, reviewId])
 
     return(
-        <div>hi</div>
+        <OpenModalButton
+            buttonText="Create a Review"
+            modalComponent={<ReviewFormModal/>}
+        />
     )
 }
 

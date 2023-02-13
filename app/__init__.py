@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.beer_routes import beer_routes
 from .api.brewery_routes import brewery_routes
 from .api.review_routes import review_routes
+
 from .seeds import seed_commands
 from .config import Config
 
