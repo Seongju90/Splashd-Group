@@ -27,11 +27,11 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route exact path="/reviews/:reviewId">
+            <ReviewDetails/>
+          </Route>
           <Route path='/test'>
             <Tester />
-          </Route>
-          <Route exact path="/api/reviews/:reviewId">
-            <ReviewDetails/>
           </Route>
         </Switch>
       )}
