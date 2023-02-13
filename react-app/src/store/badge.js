@@ -22,15 +22,16 @@ const actionCreateBadge = (badge) => {
 /* ---------- THUNK ACTION CREATORS ---------- */
 
 export const thunkAllBadge = (id) => async(dispatch) => {
-    const response = await fetch(`/api/reviews/${id}`, {
+    const response = await fetch(`/api/users/${id}/badges`, {
 		headers: {
 			"Content-Type": "application/json",
 		},
 	});
 
     if (response.ok) {
-        const review = await response.json()
-        dispatch(actionAllBadge(review))
+        const badge = await response.json()
+        // to unnest badge in reducer
+        dispatch(actionAllBadge(badge.badges))
         return response
     }
     else if (response.status < 500) {
@@ -40,15 +41,16 @@ export const thunkAllBadge = (id) => async(dispatch) => {
 	else return { errors: "An error occurred. Please try again." }
 }
 
-/* ---------- REVIEWS REDUCER ---------- */
+/* ---------- BADGE REDUCER ---------- */
 
 const initialState = {}
-const badgeReducer = (state = intialState, action) => {
+const badgeReducer = (state = initialState, action) => {
     let newState = {...state}
     switch (action.type) {
         case ALL_BADGE:
+            console.log('hi reducer', action)
+            newState['user_badges'] = action.badge
             return newState
-
         case CREATE_BADGE:
             return newState
         default:

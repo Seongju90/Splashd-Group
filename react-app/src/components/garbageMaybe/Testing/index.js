@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { thunkAllBadge } from '../../../store/badge';
 // import OpenModalButton from "../OpenModalButton";
 // import BeerFormModal from '../BeerFormModal';
 // import EditBeerModal from '../EditBeerModal';
@@ -18,6 +19,15 @@ function Tester() {
     // const [showMenu, setShowMenu] = useState(false);
     // const [beer, setBeer] = useState(useSelector((state) => state.beer.onebeer))
     // const closeMenu = () => setShowMenu(false);
+
+    useEffect(
+        async () => {
+            await dispatch(thunkAllBadge(1))
+        }, []
+    )
+    const badges = useSelector((state) => state.badges)
+    console.log(badges)
+
 
     // const tester = async () => {
     //     let sight = await dispatch(thunkAllBeer()).catch((e)=>console.log(e, 'was caught'))
