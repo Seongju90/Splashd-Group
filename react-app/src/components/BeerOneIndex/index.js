@@ -7,57 +7,33 @@ import ReviewFormModal from '../ReviewFormModal';
 import OpenModalButton from '../OpenModalButton';
 
 
-export default function OneBeer() {
+export default function OneBeer(props) {
     const dispatch = useDispatch()
     const { id } = useParams()
-    const user = useSelector(state => state.session?.user)
-    const beer = useSelector(state => state?.beer.onebeer)
+    const user = useSelector(state => state.session.user)
+    const beer = useSelector(state => state.beer.onebeer)
 
-    console.log(beer)
+    console.log(beer, props.beer)
     useEffect(() => {
         dispatch(thunkOneBeer(id))
     }, [id]);
     // console.log(myimgs)
 
-    return beer && (
+    return (
         <div>
             <h1>
-                beer name is {beer?.onebeer.name}
+            beer name is {beer?.name}
             </h1>
             <h2>
-
                 Current user is   {user?.name}
             </h2>
             <h4>
-                --abv:{beer?.onebeer.abv}--
-                --num revs:{beer?.onebeer.reviews.length}--
-                -- brewery id : {beer?.onebeer.brewery_id}
-                --desc: {beer?.onebeer.description}--
+                --abv:{beer?.abv}--
+                --num revs:{beer?.num_reviews}--
+                -- brewery id : {beer?.brewery_id}
+                --desc: {beer?.description}--
             </h4>
-
-            <>
-                {Object.values(beer?.onebeer?.reviews).length ? Object.values(beer?.onebeer?.reviews).map(review =>
-                    // <ReviewCard beer={beer} user={user}/> will need to come soon, for now this:
-                    <>
-                        --{review?.rating}--
-                        -- <>{review?.beer_id}</>--
-                        --<>{review?.user?.name}</>--
-                    </>
-                ) :
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', alignSelf: 'center', width: '100vw' }}>
-                        <h1 style={{ paddingTop: '5vw', fontFamily: 'Bold' }}>Sorry! Out Of Luck!</h1>
-                        <h3 style={{ paddingTop: '8vw' }}>Try searching for something less specific!</h3>
-                    </div>
-
-                }
-            </>
-            <>
-                <OpenModalButton
-                    buttonText="Create Review"
-                    // onItemClick={closeMenu}
-                    modalComponent={<ReviewFormModal />}
-                />
-            </>
         </div>
+
     )
 }
