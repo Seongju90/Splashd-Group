@@ -58,7 +58,7 @@ export const thunkOneBeer = (id) => async (dispatch) => {
 		const data = await response.json();
 		// console.log(data, '!!just came from backend')
 		dispatch(oneBeer(data));
-		return response
+		// return response
 	}
 	else if (response.status < 500) {
 		const data = await response.json();

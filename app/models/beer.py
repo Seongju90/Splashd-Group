@@ -29,7 +29,8 @@ class Beer(db.Model):
             'ibu': self.ibu,
             'brewery_id': self.brewery_id,
             'type': self.type,
-            'description': self.description
+            'description': self.description,
+            'beer_logo': self.beer_logo
         }
 
 # One to Many Relationship

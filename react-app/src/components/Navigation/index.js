@@ -11,6 +11,7 @@ function Navigation({ isLoaded }) {
 
 	return (
 		<div>
+			{/* hey */}
 			<ul>
 				<li>
 					<NavLink exact to="/">Home</NavLink>
@@ -21,10 +22,7 @@ function Navigation({ isLoaded }) {
 					</li>
 				)}
 			</ul>
-			<div 
-			onClick={()=>history.push('/test')}
-			style={{marginTop: '70vw', cursor: 'pointer', border: '1px solid black'}}
-			>Testing Page</div>
+			
 		</div>
 	);
 }

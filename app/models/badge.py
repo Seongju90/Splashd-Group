@@ -24,7 +24,6 @@ class Badge(db.Model):
             'id': self.id,
             'beer_id': self.beer_id,
             'brewery_id': self.brewery_id,
-            'user_id': self.user_id,
             'icon': self.icon,
             'description': self.description
         }
