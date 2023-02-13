@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, userbadges, Badge, db
+
 
 user_routes = Blueprint('users', __name__)
 
@@ -23,3 +24,15 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/<int:id>/badges')
+# @login_required
+def user_badges(id):
+    """
+        Query for a user's badges
+    """
+    user = User.query.get(id)
+
+    badges = db.session.query(Badge).join(User).filter(Badge.id == id)
+
+    print('asndfasidlnfasldfkjansdflkajsdfklas', badges)

@@ -6,7 +6,7 @@ import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Tester from "./components/garbageMaybe/Testing"
-import ReviewDetails from "./components/GetOneReviewPage";
+import ReviewOneIndex from "./components/ReviewOneIndex"
 import OneBeer from "./components/BeerOneIndex";
 import ManyBeers from "./components/BeerManyIndex";
 
@@ -27,7 +27,7 @@ function App() {
       (
       <Switch>
         <Route exact path="/reviews/:reviewId">
-          <ReviewDetails />
+          <ReviewOneIndex />
         </Route>
         <Route path='/test'>
             <Tester />
