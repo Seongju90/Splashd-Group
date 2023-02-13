@@ -1,5 +1,3 @@
-import  { csrfFetch } from "./csrf";
-
 /* ---------- TYPE VARIABLES ---------- */
 
 const ONE_REVIEW = "review/ONE_REVIEW"
@@ -40,7 +38,11 @@ const actionDeleteReview = (id) => {
 /* ---------- THUNK ACTION CREATORS ---------- */
 
 export const thunkOneReview = (id) => async(dispatch) => {
-    const response = await csrfFetch(`/api/reviews/${id}`)
+    const response = await fetch(`/api/reviews/${id}`, {
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
 
     if (response.ok) {
         const review = await response.json()
