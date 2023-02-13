@@ -53,9 +53,9 @@ def one_review(review_id):
     return review_dict
 
 
-@review_routes.route('/<int:review_id>', methods=['PUT'])
+@review_routes.route('/<int:id>', methods=['PUT'])
 @login_required
-def edit_review(review_id):
+def edit_review(id):
     """
         Edit a review for a beer
     """
@@ -64,7 +64,7 @@ def edit_review(review_id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     userId = current_user.id
-    review = Review.query.get(review_id)
+    review = Review.query.get(id)
 
     # if review is not found, throw an error
     if not review:

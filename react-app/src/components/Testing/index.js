@@ -5,6 +5,7 @@ import OpenModalButton from "../OpenModalButton";
 import BeerFormModal from '../BeerFormModal';
 import EditBeerModal from '../EditBeerModal';
 import ReviewFormModal from '../ReviewFormModal';
+import EditReviewModal from '../EditReviewModal';
 
 // TESTING IMPORTS
 import { thunkOneBrewery, thunkAllBrewery } from '../../store/brewery';
@@ -61,6 +62,10 @@ function Tester() {
             <OpenModalButton
             buttonText="Create a Review"
             modalComponent={<ReviewFormModal/>}
+            />
+            <OpenModalButton
+            buttonText="Edit a Review"
+            modalComponent={<EditReviewModal />}
             />
         </>
     );
