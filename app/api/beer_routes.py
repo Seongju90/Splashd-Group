@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import  db, Beer, Review, User, Brewery
+from app.models import  db, Beer, Review, User, Brewery, Badge
 from flask_login import current_user, login_required
 from app.forms import BeerForm
 
@@ -55,3 +55,17 @@ def get_one_beer(id):
     # print(beer, "&&&&&&&&&&&&&&&&&&&&&&&&&")
     return beer
 
+@beer_routes.route('/<int:id>/', methods = ['DELETE'])
+@login_required
+def delete_beer(id):
+    beer = Beer.query.get(id)
+    reviews = Review.query.filter(Review.beer_id == beer.id).all()
+    badges = Badge.query.filter(Badge.beer_id == beer.id).all()
+    for review in reviews:
+        db.session.delete(review)
+    for badge in badges:
+        db.session.delete(badge)
+    db.session.commit()
+    db.session.delete(beer)
+    db.session.commit()
+    return {"message": f'beer with id {beer.id} successfully deleted'}

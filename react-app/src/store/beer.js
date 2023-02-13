@@ -92,6 +92,44 @@ export const thunkCreateBeer = (form, id) => async (dispatch) => {
 	else return { errors: "An error occurred. Please try again." }
 }
 
+export const thunkEditBeer = ( form , breweryId, beerId) => async (dispatch) => {
+	console.log(form)
+	const response = await fetch(`/api/brewery/${breweryId}/beers/${beerId}/`, {
+		method: "PUT",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(form)
+	})
+	// console.log(response, 'this is respond from backend')
+	if (response.ok) {
+		const data = await response.json();
+		// console.log(data, '!!just came from backend')
+		dispatch(addBeer(data));
+		return null
+	}
+	else if (response.status < 500) {
+		const data = await response.json();
+		// console.log(data, 'ERROR STUFF')
+		if (data.errors) return data;
+	}
+	else return { errors: "An error occurred. Please try again." }
+}
+
+export const thunkRemoveBeer = (id) => async (dispatch) => {
+	const response = await fetch(`/api/beer/${id}/`, {
+		method: 'DELETE'
+	})
+    if (response.ok) {
+		dispatch(removeBeer(id));
+		return null
+	}
+	else if (response.status < 500) {
+		const data = await response.json();
+		// console.log(data, 'ERROR STUFF')
+		if (data.errors) return data;
+	}
+	else return { errors: "An error occurred. Please try again." }
+}
+
 ///// ///// ////////// ///// ////////// ///// ////////// ///// ////////// ///// ////////// ///// /////
 
 const initialState = {}
@@ -112,10 +150,12 @@ export default function reducer(state = initialState, action) {
 			let add = action.beer
 			// console.log(add, 'this is the reducer')
 			newState[add.id]=add
+            newState[add.id] ?  newState[add.id] = add : newState[add.id] = add
+            // newState.onespot ? newState.onespot[spot.id] = spot : newState.onespot = { [spot.id]: spot }
 			return newState
-		// case REMOVE_BEER:
-		// 	delete newState[action.id]
-		// 	return newState
+		case REMOVE_BEER:
+			delete newState[action.id]
+			return newState
 		default:
 			return state;
 	}

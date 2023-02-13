@@ -23,6 +23,33 @@ def brewery(id):
     brewery = Brewery.query.get(id)
     return  brewery.to_dict()
 
+# update beer route
+@brewery_routes.route('/<int:id>/beers/<int:beerId>/', methods=['PUT'])
+@login_required
+def editBeer(id, beerId):
+    # print('asdkjasdjkasda')
+    form = BeerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    # print(form.data, 'bbb!^!^!^!^!^!^^!^!^!^^!^!^!^!^^!^!^!^!^!^')
+    # print(current_user, current_user.id, '@^@^@^@^@^^@^@^@^@^@^^@^@^^@^@^@^^@@')
+    if form.validate_on_submit():
+        beer = Beer.query.get(beerId)
+
+        print(beer, 'bbb*^*^*^*^*^*^*^*^*^*^**^*^*^*^*^*')
+
+        beer.name=form.data['name']
+        beer.abv=form.data['abv']
+        beer.ibu=form.data['ibu']
+        beer.type=form.data['type']
+        beer.description=form.data['description']
+        beer.beer_logo=form.data['beer_logo']
+
+        print(beer, 'bbb*^*^*^*^*^*^*^*^*^*^**^*^*^*^*^*')
+
+        db.session.commit()
+        return  beer.to_dict()
+    # print(form.errors, 'bbb&#&#&#&#&#&#&#&#&#&#&&#&#&#&#&#&#&&#')
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @brewery_routes.route('/<int:id>/beers', methods=['POST'])
 @login_required
