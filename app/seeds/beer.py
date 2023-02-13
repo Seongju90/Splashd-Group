@@ -4,39 +4,39 @@ from app.models import db, Beer, Brewery, environment, SCHEMA
 import random
 
 # if we have time later we will make more seeds
-# all_beers = [
-#     "Fonteinen Hommage", "Degrees Brewing", "Est Lager", "Paddles Brewing Home Sweet Home", "Abbot Ale", "Ace Hill", "Admnams Ghost", "Alexander Keiths",
-#     "Extreme", "Abandoned At The Altar", "Aecht Schlenkeria", "All Or Nothing", "All Out Effort", "Tropical Double", "Allsopps", "Amber of the North",
-#     "Amsterdam Speed", "Amsterdam Boneshaker", "Amsterdam Fracture Juicy", "Amsterdam Natural", "Amsterdam Space Invader", "Anderson Craft", "Anderson Gold",
-#     "Angry Orchard", "Ardiel Cider House", "Aria Lager", "Arizona Hard", "Another", "Aria", "Asahi", "Averbode Abby", "Ashton Brewing", "Avling Brewing",
-#     "Bancroft Brewing", "Bangarang", "Bavaria", "Bayside", "Beach Chair", "Beach Day Every Day", "Beaches Brewing", "Bear Runner", "Bearded Prospetor", "Beaus Full Time",
-#     "Beaus Lug", "Nordic", "Becks", "Beer Nerds", "Beer Squad Holiday", "Bellhaven", "Bell City", "Eureka", "Too Wound Down", "Bellwoods", "Bench Brewing",
-#     "Benediktiner Hell", "Beyond The Pale", "Bicycle Craft", "Big Drop Paradiso", "Big Rig", "Bighead", "Bilboquet Series", "Blonde", "Birra Castello", "Birra Moretti",
-#     "Bitburger", "Black Bellows White", "Black Ice", "Black Label", "Black Oak", "Black Rapids", "Blacklist", "Blackburn Brewhouse", "Blanche De Chambly", "Block Three Brewing",
-#     "Blood Brothers", "Blue Moon", "Blyth", "Bobcaygeon", "Bombardier", "Bombshell", "Boris", "Boshkung", "Boxer", "Brasserie Tuque", "Brava", "Bourgogne", "Brauwerk North",
-#     "Brewlime", "Brewaid", "Brickworks", "Bring Your Own", "Broadhead", "Bud Light", "Budweiser", "Burdock", "Busl", "Busch", "Buzz", "Calobogie", "Caledon Hills", "Camerons Jurassic",
-#     "Canuck", "Capt", "Carling", "Carlsberg", "Cassel", "Cascade", "Cerveza Revolucion", "Carib", "Caribbean", "Chill Street", "Chimay", "Chronicle", "Church Key", "Class V", "Clear Lake",
-#     "Cigar", "Clausthaler", "Clavie Smoked", "Cliff Top", "Clifford", "Coffin", "Cold Break", "Collective Arts", "Collingwood", "Colt", "Coors", "Corona", "Coronita", "Cottage Springs",
-#     "County Pear", "Covered Bridge", "Cowbell", "Crank", "Creemore", "Crest", "Crystal", "Czechvar", "Cup and Saucer", "Donte Poke The Bear", "Dab", "Daft", "Dark Streets of London",
-#     "Daura", "Deadline", "Decouverte", "Deadline", "Divercity Helles", "Devils", "Dominion City", "Dos Equis", "Double Trouble", "Dragon", "Driftwood", "Duchesse", "Duntroon", "Eagle Banana",
-#     "Eden Grove", "Elora", "El Gringo", "Ebb and Flow", "English", "Equals", "Erdinger", "Ernest", "Estrella", "Exchange", "Expedition", "Farm League", "Farmers Daughter", "Faxe", "Fenelon",
-#     "Feels Like Friday", "Fat Tire", "Fix Hellas", "Fixed Gear", "Flying Monkeys", "Follow Your Nose", "Forbidden", "Forked River", "Four Fathers", "Frank", "Full Beard", "Fresh Ideas",
-#     "Furnace", "Fullers", "Gaffel Kolsch", "Gateway City", "Gahan", "Georgian Bay Dipper", "Get the Puck Out", "Glutenberg", "Goodlot", "Goose Island", "Grand River", "Granville",
-#     "Great Lakes", "Grenadier", "Griffon", "Growers", "Guiness", "Hacker Pschorr", "Haliburton", "Harushika" "Harp", "Havens", "Heineken", "Henderson", "Hollandia", "Holsten", "Hometown",
-#     "Imperial City", "Iron Pig", "Jackass", "James Ready", "Johnny Bootlegger", "Kensington", "Kichesippi", "Kilkenny", "Kingsville", "Kirin Ichiban", "Kona", "La Trappe", "Lake of Bays",
-#     "Left Field", "Les Trois", "Libra", "Lock Street", "Lomza", "London", "Longslice", "Louis Cifer", "Lowenbrau", "Mackinnon", "Mackeson", "MacLean", "Manitoulin", "Market Brewing",
-#     "Manitoulin", "Manzairaku", "Martens", "Matron", "Mickeys", "Michelob Ultra", "Mill Street", "Miller", "Modelo", "Molson", "Mongozo", "Moosehead", "Muskoka", "Naughty Otter", "Neustadt",
-#     "Newark", "New Belgium", "New Belgium Voodoo Ranger", "Niagara Oast", "Nickel Brook", "No Boats On Sunday", "Okanagan", "Old Comrade", "Pabst Blue Ribbon", "Palm Bay Rainbow",
-#     "Paniza", "Paulaner", "Passion Project", "PC", "Peroni", "Perth", "Phillips", "Pommies", "Poppers", "Powerhouse", "Prince Eddys", "Redline", "Rainhard", "Reinhart", "Riverhead", "Rorschach",
-#     "Tangerine", "Sapporo", "Sawdust", "Samuel Adams", "Seventh Heaven", "Shiny Apple Cider"
-# ]
-
 all_beers = [
     "Fonteinen Hommage", "Degrees Brewing", "Est Lager", "Paddles Brewing Home Sweet Home", "Abbot Ale", "Ace Hill", "Admnams Ghost", "Alexander Keiths",
     "Extreme", "Abandoned At The Altar", "Aecht Schlenkeria", "All Or Nothing", "All Out Effort", "Tropical Double", "Allsopps", "Amber of the North",
     "Amsterdam Speed", "Amsterdam Boneshaker", "Amsterdam Fracture Juicy", "Amsterdam Natural", "Amsterdam Space Invader", "Anderson Craft", "Anderson Gold",
     "Angry Orchard", "Ardiel Cider House", "Aria Lager", "Arizona Hard", "Another", "Aria", "Asahi", "Averbode Abby", "Ashton Brewing", "Avling Brewing",
+    "Bancroft Brewing", "Bangarang", "Bavaria", "Bayside", "Beach Chair", "Beach Day Every Day", "Beaches Brewing", "Bear Runner", "Bearded Prospetor", "Beaus Full Time",
+    "Beaus Lug", "Nordic", "Becks", "Beer Nerds", "Beer Squad Holiday", "Bellhaven", "Bell City", "Eureka", "Too Wound Down", "Bellwoods", "Bench Brewing",
+    "Benediktiner Hell", "Beyond The Pale", "Bicycle Craft", "Big Drop Paradiso", "Big Rig", "Bighead", "Bilboquet Series", "Blonde", "Birra Castello", "Birra Moretti",
+    "Bitburger", "Black Bellows White", "Black Ice", "Black Label", "Black Oak", "Black Rapids", "Blacklist", "Blackburn Brewhouse", "Blanche De Chambly", "Block Three Brewing",
+    "Blood Brothers", "Blue Moon", "Blyth", "Bobcaygeon", "Bombardier", "Bombshell", "Boris", "Boshkung", "Boxer", "Brasserie Tuque", "Brava", "Bourgogne", "Brauwerk North",
+    "Brewlime", "Brewaid", "Brickworks", "Bring Your Own", "Broadhead", "Bud Light", "Budweiser", "Burdock", "Busl", "Busch", "Buzz", "Calobogie", "Caledon Hills", "Camerons Jurassic",
+    "Canuck", "Capt", "Carling", "Carlsberg", "Cassel", "Cascade", "Cerveza Revolucion", "Carib", "Caribbean", "Chill Street", "Chimay", "Chronicle", "Church Key", "Class V", "Clear Lake",
+    "Cigar", "Clausthaler", "Clavie Smoked", "Cliff Top", "Clifford", "Coffin", "Cold Break", "Collective Arts", "Collingwood", "Colt", "Coors", "Corona", "Coronita", "Cottage Springs",
+    "County Pear", "Covered Bridge", "Cowbell", "Crank", "Creemore", "Crest", "Crystal", "Czechvar", "Cup and Saucer", "Donte Poke The Bear", "Dab", "Daft", "Dark Streets of London",
+    "Daura", "Deadline", "Decouverte", "Deadline", "Divercity Helles", "Devils", "Dominion City", "Dos Equis", "Double Trouble", "Dragon", "Driftwood", "Duchesse", "Duntroon", "Eagle Banana",
+    "Eden Grove", "Elora", "El Gringo", "Ebb and Flow", "English", "Equals", "Erdinger", "Ernest", "Estrella", "Exchange", "Expedition", "Farm League", "Farmers Daughter", "Faxe", "Fenelon",
+    "Feels Like Friday", "Fat Tire", "Fix Hellas", "Fixed Gear", "Flying Monkeys", "Follow Your Nose", "Forbidden", "Forked River", "Four Fathers", "Frank", "Full Beard", "Fresh Ideas",
+    "Furnace", "Fullers", "Gaffel Kolsch", "Gateway City", "Gahan", "Georgian Bay Dipper", "Get the Puck Out", "Glutenberg", "Goodlot", "Goose Island", "Grand River", "Granville",
+    "Great Lakes", "Grenadier", "Griffon", "Growers", "Guiness", "Hacker Pschorr", "Haliburton", "Harushika" "Harp", "Havens", "Heineken", "Henderson", "Hollandia", "Holsten", "Hometown",
+    "Imperial City", "Iron Pig", "Jackass", "James Ready", "Johnny Bootlegger", "Kensington", "Kichesippi", "Kilkenny", "Kingsville", "Kirin Ichiban", "Kona", "La Trappe", "Lake of Bays",
+    "Left Field", "Les Trois", "Libra", "Lock Street", "Lomza", "London", "Longslice", "Louis Cifer", "Lowenbrau", "Mackinnon", "Mackeson", "MacLean", "Manitoulin", "Market Brewing",
+    "Manitoulin", "Manzairaku", "Martens", "Matron", "Mickeys", "Michelob Ultra", "Mill Street", "Miller", "Modelo", "Molson", "Mongozo", "Moosehead", "Muskoka", "Naughty Otter", "Neustadt",
+    "Newark", "New Belgium", "New Belgium Voodoo Ranger", "Niagara Oast", "Nickel Brook", "No Boats On Sunday", "Okanagan", "Old Comrade", "Pabst Blue Ribbon", "Palm Bay Rainbow",
+    "Paniza", "Paulaner", "Passion Project", "PC", "Peroni", "Perth", "Phillips", "Pommies", "Poppers", "Powerhouse", "Prince Eddys", "Redline", "Rainhard", "Reinhart", "Riverhead", "Rorschach",
+    "Tangerine", "Sapporo", "Sawdust", "Samuel Adams", "Seventh Heaven", "Shiny Apple Cider"
 ]
+
+# all_beers = [
+#     "Fonteinen Hommage", "Degrees Brewing", "Est Lager", "Paddles Brewing Home Sweet Home", "Abbot Ale", "Ace Hill", "Admnams Ghost", "Alexander Keiths",
+#     "Extreme", "Abandoned At The Altar", "Aecht Schlenkeria", "All Or Nothing", "All Out Effort", "Tropical Double", "Allsopps", "Amber of the North",
+#     "Amsterdam Speed", "Amsterdam Boneshaker", "Amsterdam Fracture Juicy", "Amsterdam Natural", "Amsterdam Space Invader", "Anderson Craft", "Anderson Gold",
+#     "Angry Orchard", "Ardiel Cider House", "Aria Lager", "Arizona Hard", "Another", "Aria", "Asahi", "Averbode Abby", "Ashton Brewing", "Avling Brewing",
+# ]
 
 beers_type = [
     "American Amber Ale", "American Amber Lager", "American Barley Wine", "American Black Ale", "American Brett", "American Brown Ale", "American Cream Ale", "American Imperial Porter", "American Imperial Red Ale",
@@ -113,40 +113,45 @@ beers_logo = [
 
 # test = ['hello', 'world', 'bye', 'planet']
 def seed_beers():
-    for beer in all_beers:
+    #DEXTERS CHANGES START HERE
+    all_brew = Brewery.query.all()
+
+    for brew in all_brew:
+        # beer_num = random.randint(6,len(all_beers)-1)/3
+        beer_num = 3
+
         #finding the number of logos to add to each beer, set a range so that
         #the random integer won't go past the number of logos that we have
-        random_logo = beers_logo[random.randint(0, len(beers_logo)-1)]
+        while beer_num>0:
+            random_logo = beers_logo[random.randint(0, len(beers_logo)-1)]
+            # query for all the breweries
+            # all_brewery = Brewery.query.all()
+            #find a random brewery to attach to the beer, chain .name just to get the id
+            # random_brewery = all_brewery[random.randint(0, len(all_brewery)-1)].id
+            beer = all_beers[random.randint(0, len(all_beers)-1)]
+            #find a random beer type to attach to the beer
+            random_type = beers_type[random.randint(0, len(beers_type)-1)]
+            #find a random description type to attach to the beer
+            random_description = beers_description[random.randint(0, len(beers_description)-1)]
+            #find random ABV and IBU
+            random_abv = round(random.uniform(0.3, 13.3), 2)
+            random_ibu = random.randint(5,100)
 
-        # query for all the breweries
-        all_brewery = Brewery.query.all()
-         #find a random brewery to attach to the beer, chain .name just to get the id
-        random_brewery = all_brewery[random.randint(0, len(all_brewery)-1)].id
-
-        #find a random beer type to attach to the beer
-        random_type = beers_type[random.randint(0, len(beers_type)-1)]
-
-        #find a random description type to attach to the beer
-        random_description = beers_description[random.randint(0, len(beers_description)-1)]
-
-        #find random ABV and IBU
-        random_abv = round(random.uniform(0.3, 13.3), 2)
-
-        random_ibu = random.randint(5,100)
-
-        new_beer = Beer(
-            name = beer,
-            abv = random_abv,
-            ibu = random_ibu,
-            brewery_id = random_brewery,
-            type = random_type,
-            description = random_description,
-            beer_logo = random_logo
-        )
+            new_beer = Beer(
+                name = beer,
+                abv = random_abv,
+                ibu = random_ibu,
+                brewery_id = brew.id,
+                type = random_type,
+                description = random_description,
+                beer_logo = random_logo
+            )
 
 
-        db.session.add(new_beer)
-        db.session.commit()
+            db.session.add(new_beer)
+            db.session.commit()
+            beer_num -= 1
+
 
 
 def undo_beers():
