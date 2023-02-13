@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 // import SignupFormPage from "./components/SignupFormPage";
 // import LoginFormPage from "./components/LoginFormPage";
@@ -18,7 +18,8 @@ function App() {
     // .then(() => setIsLoaded(true));
   }, []);
   // [dispatch]);
-
+  const beer = useSelector((state) => state.onebeer)
+  console.log(beer)
   return (
     <>
       <Navigation isLoaded={isLoaded} />
@@ -33,7 +34,7 @@ function App() {
             <Tester />
           </Route>
         <Route path='/beer/:id'>
-          <OneBeer />
+          <OneBeer beer={beer}/>
         </Route>
         <Route path="/">
           <ManyBeers />

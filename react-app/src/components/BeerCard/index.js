@@ -8,16 +8,16 @@ export default function BeerCard({ beer, user }) {
     const { beer_logo, id, description,
         type, abv, ibu, num_reviews, avg, name } = beer
 
+    const handleClick =()=> {
+        dispatch(thunkOneBeer(id))
+        history.push(`/beer/${id}`)
+    }
         // console.log(beer)
     return beer && (
 
         <div>
-            <div 
-            onClick={ () =>  dispatch(thunkOneBeer(id))
-                // .then(()=> history.push(`/beer/${id}`)) 
-            // &&  
-                // history.push(`/beer/${id}`)
-                }
+            <div
+            onClick={handleClick }
                 >
                 <img key={`beerlogo${id}`}
                     src={`${beer_logo}`}
