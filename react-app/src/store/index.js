@@ -4,12 +4,14 @@ import session from './session'
 import brewery from './brewery'
 import beer from './beer'
 import reviewsReducer from "./review"
+import badgeReducer from './badge';
 
 const rootReducer = combineReducers({
   session,
   brewery,
   beer,
-  reviews: reviewsReducer
+  reviews: reviewsReducer,
+  badges: badgeReducer
 });
 
 
