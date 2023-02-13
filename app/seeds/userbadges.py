@@ -8,7 +8,7 @@ def seed_userbadges():
         badge1 = Badge.query.get(random.randint(1,25))
         badge2 = Badge.query.get(random.randint(26,50))
         badge3 = Badge.query.get(random.randint(50,100))
-        
+
         # user1.user_badge.append(badge1)
         user.user_badge.append(badge1)
         user.user_badge.append(badge2)
