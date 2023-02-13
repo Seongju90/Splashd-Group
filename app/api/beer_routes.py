@@ -29,7 +29,11 @@ def get_beers():
         rating = 0
         for review in reviews:
             rating += review.rating
-        beer["avg"] = rating/beer["num_reviews"]
+        if len(reviews):
+            beer["avg"] = rating/beer["num_reviews"]
+        else:
+            beer["avg"] = 0
+
         all.append(beer)
     # print(all, "&&&&&&&&&&&&&&&&&&&&&&&&&")
     return {"beers": all}
