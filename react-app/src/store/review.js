@@ -56,12 +56,14 @@ export const thunkOneReview = (id) => async(dispatch) => {
 	else return { errors: "An error occurred. Please try again." }
 }
 
-export const thunkCreateReview = (form) => async(dispatch) => {
-    const response = await fetch(`/api/reviews`, {
+export const thunkCreateReview = (form, id) => async(dispatch) => {
+    const response = await fetch(`/api/beer/${id}/review`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(form)
 	})
+
+    // console.log('in my thunk!!!!!', response)
 
     if(response.ok) {
         const data = await response.json()
@@ -88,7 +90,7 @@ const reviewsReducer = (state = initialState, action) => {
             return newState
         case CREATE_REVIEW:
             let add = action.review
-            console.log('reducer for create review', add)
+            // console.log('reducer for create review', add)
             newState[add.id] = add
             return newState
         default:

@@ -69,7 +69,7 @@ def delete_beer(id):
     db.session.delete(beer)
     db.session.commit()
     return {"message": f'beer with id {beer.id} successfully deleted'}
-    
+
 @beer_routes.route('', methods = ['POST'])
 @login_required
 def addBeer():
@@ -95,9 +95,9 @@ def addBeer():
 
 
 # Create a review based on Beer id, need to change API/route
-@beer_routes.route('/create/<int:beers_id>', methods=['POST'])
+@beer_routes.route('/<int:id>/review', methods=['POST'])
 @login_required
-def create_review(beers_id):
+def create_review(id):
     """
         Create a review for a beer
     """
@@ -107,7 +107,7 @@ def create_review(beers_id):
     if form.validate_on_submit():
 
         newReview = Review(
-            beer_id=beers_id,
+            beer_id=id,
             user_id=current_user.id,
             image=form.data['image'],
             review_text=form.data['review_text'],
@@ -118,4 +118,3 @@ def create_review(beers_id):
         db.session.commit()
         return newReview.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-

@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import OpenModalButton from "../OpenModalButton";
 import BeerFormModal from '../BeerFormModal';
 import EditBeerModal from '../EditBeerModal';
+import ReviewFormModal from '../ReviewFormModal';
+
 // TESTING IMPORTS
 import { thunkOneBrewery, thunkAllBrewery } from '../../store/brewery';
 import BreweryFormModal from '../BreweryFormModal';
@@ -55,6 +57,10 @@ function Tester() {
               buttonText="Post Test"
               onItemClick={closeMenu}
               modalComponent={<EditBeerModal />}
+            />
+            <OpenModalButton
+            buttonText="Create a Review"
+            modalComponent={<ReviewFormModal/>}
             />
         </>
     );
