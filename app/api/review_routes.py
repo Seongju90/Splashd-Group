@@ -9,26 +9,36 @@ review_routes = Blueprint('reviews', __name__)
 
 # Get all reviews by beer id (should be on beer route)
 # /<int:id>/reviews later this is the route
-@review_routes.route('/<int:beers_id>')
-def one_review(beers_id):
+@review_routes.route('/<int:review_id>')
+def one_review(review_id):
     """
     Query for single review of a beer
     """
-    # user name
-    # review info
+    review = Review.query.get(review_id)
 
-    review = Review.query.get(beers_id)
-    review_dict = review.to_dict()
-
-    # beer = Beer.query.get(review_dict['beer_id']), both ways work to extract data from beer
-    beer = Beer.query.get(review.beer_id)
-    beer_name = beer.name
-
-    if not beer():
+    if not review:
         return jsonify({
-            "message": "Beer not found",
+            "message": "Review not found",
             "status_code": 404
         }), 404
+
+    review_dict = review.to_dict()
+
+    # To test if beer is not found comment in beer = None
+    # beer = None
+    beer = Beer.query.get(review.beer_id)
+
+    if not beer:
+        return jsonify({
+        "message": "Beer not found",
+        "status_code": 404
+        }), 404
+
+
+    # if beer exists get the name
+    beer_name = beer.name
+
+    # beer = Beer.query.get(review_dict['beer_id']), both ways work to extract data from beer
 
     brewery = Brewery.query.get(beer.brewery_id)
     brewery_name = brewery.name
@@ -41,33 +51,6 @@ def one_review(beers_id):
     review_dict['brewery_name'] = brewery_name
 
     return review_dict
-
-
-## Copy and send over to the beer routes folder,
-## we will be making a post through the beers page
-@review_routes.route('/create/<int:beers_id>', methods=['POST'])
-@login_required
-def create_review(beers_id):
-    """
-        Create a review for a beer
-    """
-    form = ReviewForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-
-    if form.validate_on_submit():
-
-        newReview = Review(
-            beer_id=beers_id,
-            user_id=current_user.id,
-            image=form.data['image'],
-            review_text=form.data['review_text'],
-            rating=form.data['rating']
-        )
-        # print(newReview)
-        db.session.add(newReview)
-        db.session.commit()
-        return newReview.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @review_routes.route('/<int:review_id>', methods=['PUT'])
@@ -91,16 +74,21 @@ def edit_review(review_id):
         }), 404
 
     # check to see if the reviewId.user_id is == to the current_userId
-    if (userId == review.user_id):
-        if form.validate_on_submit():
+    if not (userId == review.user_id):
+        return jsonify({
+            "message": "You are not the owner of the review",
+            "status_code": 401
+        }), 401
 
-            review.image = form.data['image']
-            review.review_text = form.data['review_text']
-            review.rating = form.data['rating']
+    if form.validate_on_submit():
 
-            db.session.commit()
-            return review.to_dict()
-        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        review.image = form.data['image']
+        review.review_text = form.data['review_text']
+        review.rating = form.data['rating']
+
+        db.session.commit()
+        return review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @review_routes.route('<int:review_id>', methods=['DELETE'])
@@ -132,3 +120,29 @@ def delete_review(review_id):
             "Message": "Forbidden, you are not the owner of the review",
             "status_code": 403
         }), 403
+
+
+# Create a review based on Beer id, need to change API/route
+# @beer_routes.route('/create/<int:beers_id>', methods=['POST'])
+# @login_required
+# def create_review(beers_id):
+#     """
+#         Create a review for a beer
+#     """
+#     form = ReviewForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+
+#     if form.validate_on_submit():
+
+#         newReview = Review(
+#             beer_id=beers_id,
+#             user_id=current_user.id,
+#             image=form.data['image'],
+#             review_text=form.data['review_text'],
+#             rating=form.data['rating']
+#         )
+
+#         db.session.add(newReview)
+#         db.session.commit()
+#         return newReview.to_dict()
+#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
