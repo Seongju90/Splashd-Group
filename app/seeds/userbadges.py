@@ -10,9 +10,9 @@ def seed_userbadges():
         badge3 = Badge.query.get(random.randint(50,100))
 
         # user1.user_badge.append(badge1)
-        user.user_badge.append(badge1)
-        user.user_badge.append(badge2)
-        user.user_badge.append(badge3)
+        user.user_badges.append(badge1)
+        user.user_badges.append(badge2)
+        user.user_badges.append(badge3)
 
 
         # new1 = userbadges(
