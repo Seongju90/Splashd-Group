@@ -5,8 +5,8 @@ import { Route, Switch } from "react-router-dom";
 // import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-// import Tester from "./components/Testing";
-import ReviewDetails from "./components/GetOneReviewPage";
+import Tester from "./components/garbageMaybe/Testing"
+import ReviewOneIndex from "./components/ReviewOneIndex"
 import OneBeer from "./components/BeerOneIndex";
 import ManyBeers from "./components/BeerManyIndex";
 import OneBrewery from "./components/BreweryOneIndex";
@@ -29,11 +29,11 @@ function App() {
       (
       <Switch>
         <Route exact path="/reviews/:reviewId">
-          <ReviewDetails />
+          <ReviewOneIndex />
         </Route>
-        {/* <Route path='/test'>
+        <Route path='/test'>
             <Tester />
-          </Route> */}
+          </Route>
         <Route path='/beer/:id'>
           <OneBeer beer={beer}/>
         </Route>

@@ -20,7 +20,8 @@ class User(db.Model, UserMixin):
 
     # todo:add cascade delete
     user_brewery = db.relationship("Brewery", back_populates="brewery_user")
-    user_badge = db.relationship("Badge", secondary=userbadges, back_populates="badge_user")
+    # user_badge = db.relationship("Badge", secondary=userbadges, back_populates="badge_user")
+    user_badges = db.relationship("Badge", secondary=userbadges, back_populates="badge_users")
     user_review = db.relationship("Review", back_populates="review_user")
 
     @property
@@ -39,5 +40,8 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'name': f'{self.first_name} {self.last_name}',
-            'age': self.age
+            'age': self.age,
+            # addition of the user_badge relationship column, will give us access to many to many table
+            # can use to_dict() from badges onto here
+            'user_badges': [badges.to_dict() for badges in self.user_badges]
         }

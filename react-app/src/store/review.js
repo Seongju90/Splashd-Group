@@ -84,7 +84,7 @@ export const thunkEditReview = (form, reviewId) => async (dispatch) => {
         body: JSON.stringify(form)
     })
 
-    
+
     if (response.ok) {
         const data = await response.json()
         dispatch(actionEditReview(data))
@@ -96,6 +96,22 @@ export const thunkEditReview = (form, reviewId) => async (dispatch) => {
         if (data.errors) return data;
     }
     else return { errors: "An error occurred. Please try again." }
+}
+
+export const thunkDeleteReview = (id) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${id}`, {
+        method: "DELETE"
+    })
+    console.log("in my thunk checking")
+    if (response.ok) {
+		dispatch(actionDeleteReview(id));
+		return null
+	}
+	else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) return data;
+	}
+	else return { errors: "An error occurred. Please try again." }
 }
 /* ---------- REVIEWS REDUCER ---------- */
 
@@ -115,8 +131,11 @@ const reviewsReducer = (state = initialState, action) => {
             return newState
         case EDIT_REVIEW:
             let edit = action.review
-            console.log("@@@@@@@@@@!!!!!@@@@@!", action)
             newState[edit.id] = edit
+            return newState
+        case DELETE_REVIEW:
+            console.log("reducer", action)
+            delete newState[action.id]
             return newState
         default:
             return state;
