@@ -8,7 +8,10 @@ import SignupFormModal from "../SignupFormModal";
 import BreweryFormModal from "../BreweryFormModal";
 import { thunkMyBadges, thunkAllBadges } from "../../store/badge";
 import { thunkMyBrewery } from "../../store/brewery";
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 
 function ProfileButton({ user }) {
   const history = useHistory()
