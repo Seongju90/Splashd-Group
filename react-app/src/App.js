@@ -10,6 +10,7 @@ import ReviewOneIndex from "./components/ReviewOneIndex"
 import OneBeer from "./components/BeerOneIndex";
 import ManyBeers from "./components/BeerManyIndex";
 import OneBrewery from "./components/BreweryOneIndex";
+import MyBadges from "./components/BadgeMyIndex";
 import MyBreweries from "./components/BreweryMyIndex";
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
-      
+
       <Switch>
         <Route exact path="/reviews/:reviewId">
           <ReviewOneIndex />
@@ -39,9 +40,8 @@ function App() {
         </Route>
         <Route path='/brewery/:id'>
           <OneBrewery></OneBrewery>
-        </Route>
-        <Route path='/users/:id'>
-          <MyBreweries></MyBreweries>
+
+
         </Route>
         <Route path="/">
           <ManyBeers />
