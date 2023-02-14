@@ -40,8 +40,12 @@ function App() {
         </Route>
         <Route path='/brewery/:id'>
           <OneBrewery></OneBrewery>
-
-
+        </Route>
+        <Route path='/user/badges'>
+          <MyBadges/>
+        </Route>
+        <Route path='/users/:id/brewery'>
+          <MyBreweries/>
         </Route>
         <Route path="/">
           <ManyBeers />
