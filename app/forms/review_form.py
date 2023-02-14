@@ -6,9 +6,10 @@ from wtforms.validators import DataRequired, Length, NumberRange
 class ReviewForm(FlaskForm):
     image = StringField(
         "Image Link",
-        validators=[
-            Length(min=10, max=255, message='Length of image url must be between 10 and 255 characters')
-        ])
+        # validators=[
+        #     Length(min=10, max=255, message='Length of image url must be between 10 and 255 characters')
+        # ]
+        )   
     review_text = TextAreaField(
         "Review",
         validators=[

@@ -6,7 +6,8 @@ import { thunkOneBeer } from '../../store/beer';
 import ReviewFormModal from '../ReviewFormModal';
 import OpenModalButton from '../OpenModalButton';
 import { thunkOneBrewery } from '../../store/brewery';
-
+import BadgeFormModal from '../BadgeFormModal';
+import ReviewEditModal from '../ReviewEditModal'
 
 export default function OneBeer(props) {
     const dispatch = useDispatch()
@@ -42,10 +43,37 @@ export default function OneBeer(props) {
                 --desc: {beer?.description}--
             </h4>
             <div>
+                {beer?.reviews.map((x) =>
+                    <h1>
+                        Beer {x.id} is {x.rating}
+                        {x?.user_id === user?.id ? (
+                            <OpenModalButton
+                                buttonText="Edit/Delete"
+                                // onItemClick={closeMenu}
+                                modalComponent={<ReviewEditModal
+                                    rev={x} />}
+                            />
+                        ):null}
+                    </h1>
+                )}
+            </div>
+            <div>
             <button
                onClick={handleClick }
                    >Check Out The Brewery</button>
             </div>
+            
+            
+                <OpenModalButton
+                    buttonText="Create a Badge"
+                    // onItemClick={closeMenu}
+                    modalComponent={<BadgeFormModal />}
+                />
+                <OpenModalButton
+                buttonText="Check In This Beer"
+                // onItemClick={closeMenu}
+                modalComponent={<ReviewFormModal id={beer?.id} />}
+            />
         </div>
 
     )
