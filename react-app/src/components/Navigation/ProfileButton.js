@@ -5,11 +5,14 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import BreweryFormModal from "../BreweryFormModal";
+import { thunkMyBrewery } from "../../store/brewery";
+import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+  const history = useHistory();
 
   const openMenu = () => {
     if (showMenu) return;
@@ -42,7 +45,10 @@ function ProfileButton({ user }) {
     //and pushing to the user's badge page
     console.log('%%%%!%!%!%!%!%!%%!%!%!%!!%!%!%!%!%')
   }
-
+  const handleBrew = () => {
+    dispatch(thunkMyBrewery(user?.id))
+    history.push(`/users/${user.id}/brewery`)
+  }
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
@@ -65,6 +71,11 @@ function ProfileButton({ user }) {
             <button 
             type='button'
             onClick={handleClick}>My Badges</button>
+            </div>
+            <div>
+              <button
+                type='button'
+                onClick={handleBrew}>My Breweries</button>
             </div>
             <div>
               <button onClick={handleLogout}>Log Out</button>
