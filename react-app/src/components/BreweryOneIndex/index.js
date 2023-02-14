@@ -19,7 +19,7 @@ export default function OneBrewery() {
     useEffect(() => {
         dispatch(thunkOneBrewery(id))
         //dispatch happens before history.push
-        //so, we may not need this 
+        //so, we may not need this
     }, []);
     // console.log(myimgs)
     // const handleBeerClick = () => {
@@ -58,12 +58,14 @@ export default function OneBrewery() {
                     </h1>
                 )}
             </h4>
-            here is where a owner check goes
+            {brewery?.owner_id === user?.id ? (
             <OpenModalButton
                 buttonText="Make a Beer"
                 //   onItemClick={closeMenu}
                 modalComponent={<BeerFormModal id={brewery?.id} />}
             />
+            ) : null
+                }
         </div>
 
     )

@@ -31,9 +31,9 @@ def user_badges(id):
     """
         Query for a user's badges
     """
-    user = User.query.get(id).to_dict()
+    user = User.query.get(id).all_info()
 
-    return {'badges': user['user_badges']}
+    return {'badges': user['badges']}
 
     # Another way to query many-many table injecting raw sql
 
@@ -45,3 +45,16 @@ def user_badges(id):
     #     if (r[0] == id):
     #         badge = Badge.query.get(r[1])
     #         list.append(badge.to_dict())
+
+
+@user_routes.route('/<int:id>/brewery')
+@login_required
+def user_breweries(id):
+    """
+    Route to query all users' breweries
+    """
+    user = User.query.get(id).all_info()
+    return {"Breweries":user['breweries']}
+
+
+

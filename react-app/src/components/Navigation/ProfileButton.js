@@ -1,15 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import BreweryFormModal from "../BreweryFormModal";
+import { thunkMyBadges, thunkAllBadges } from "../../store/badge";
+import { thunkMyBrewery } from "../../store/brewery";
+import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
+  const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+  
 
   const openMenu = () => {
     if (showMenu) return;
@@ -35,14 +41,16 @@ function ProfileButton({ user }) {
     dispatch(logout());
   };
 
-  const handleClick = () => {
-    // dispatch(thunkOneBeer(id))
-    // history.push(`/beer/${id}`)
-    //we need a dispatch getting the user's badges
-    //and pushing to the user's badge page
+  const handleClick = async () => {
+    dispatch(thunkMyBadges(user?.id))
+    await dispatch(thunkAllBadges())
+    history.push("/user/badges")
     console.log('%%%%!%!%!%!%!%!%%!%!%!%!!%!%!%!%!%')
   }
-
+  const handleBrew = () => {
+    dispatch(thunkMyBrewery(user?.id))
+    history.push(`/users/${user.id}/brewery`)
+  }
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
@@ -62,9 +70,14 @@ function ProfileButton({ user }) {
               modalComponent={<BreweryFormModal />}
             />
             <div>
-            <button 
+            <button
             type='button'
             onClick={handleClick}>My Badges</button>
+            </div>
+            <div>
+              <button
+                type='button'
+                onClick={handleBrew}>My Breweries</button>
             </div>
             <div>
               <button onClick={handleLogout}>Log Out</button>
