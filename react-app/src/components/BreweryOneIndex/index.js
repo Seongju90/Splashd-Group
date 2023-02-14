@@ -4,10 +4,12 @@ import { useParams } from 'react-router-dom';
 // import { useHistory, NavLink, Redirect } from 'react-router-dom';
 // import { thunkOneBeer } from '../../store/beer';
 import { thunkOneBrewery } from '../../store/brewery';
-import ReviewFormModal from '../ReviewFormModal';
 import OpenModalButton from '../OpenModalButton';
+// import BreweryFormModal from '../BreweryFormModal';
+import BeerFormModal from '../BeerFormModal'
 
-export default function OneBrewery(props) {
+
+export default function OneBrewery() {
     const dispatch = useDispatch()
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
@@ -18,8 +20,11 @@ export default function OneBrewery(props) {
         dispatch(thunkOneBrewery(id))
         //dispatch happens before history.push
         //so, we may not need this 
-    }, [id]);
+    }, []);
     // console.log(myimgs)
+    // const handleBeerClick = () => {
+
+    // }
 
     return (
         <div>
@@ -33,15 +38,26 @@ export default function OneBrewery(props) {
                 --brewery_type:{brewery?.brewery_type}--
                 --city_state:{brewery?.city_state}--
                 -- owner_id : {brewery?.owner_id}
-                --brewery_logo: 
+                --brewery_logo:
                 <div>
                     <img key={`brewerylogo${id}`}
-                    src={`${brewery?.brewery_logo}`}
-                    alt='previewimageforcard'
+                        src={`${brewery?.brewery_logo}`}
+                        alt='previewimageforcard'
                     />
                 </div>
-                
+                {console.log(brewery?.beers)}
+                {brewery?.beers.map((x) => 
+                    <h1>
+                       Beer {x.id} is {x.name}
+                    </h1>
+                )}
             </h4>
+            here is where a owner check goes
+            <OpenModalButton
+                buttonText="Make a Beer"
+                //   onItemClick={closeMenu}
+                modalComponent={<BeerFormModal id={brewery?.id}/>}
+            />
         </div>
 
     )
