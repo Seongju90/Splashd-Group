@@ -20,8 +20,8 @@ def brewery(id):
     """
     Query for all brewerys and returns them in a list of brewery dictionaries
     """
-    brewery = Brewery.query.get(id)
-    return  brewery.to_dict()
+    brewery = Brewery.query.get(id).all_info_dict()
+    return  brewery
 
 # update beer route
 @brewery_routes.route('/<int:id>/beers/<int:beerId>/', methods=['PUT'])
