@@ -4,6 +4,7 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import BreweryFormModal from "../BreweryFormModal";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -34,6 +35,14 @@ function ProfileButton({ user }) {
     dispatch(logout());
   };
 
+  const handleClick = () => {
+    // dispatch(thunkOneBeer(id))
+    // history.push(`/beer/${id}`)
+    //we need a dispatch getting the user's badges
+    //and pushing to the user's badge page
+    console.log('%%%%!%!%!%!%!%!%%!%!%!%!!%!%!%!%!%')
+  }
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
@@ -42,14 +51,24 @@ function ProfileButton({ user }) {
       <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
-      <ul className={ulClassName} ref={ulRef}>
+      <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
+            <div>{user.username}</div>
+            <div>{user.email}</div>
+            <OpenModalButton
+              buttonText="Make a Brewery"
+              onItemClick={closeMenu}
+              modalComponent={<BreweryFormModal />}
+            />
+            <div>
+            <button 
+            type='button'
+            onClick={handleClick}>My Badges</button>
+            </div>
+            <div>
               <button onClick={handleLogout}>Log Out</button>
-            </li>
+            </div>
           </>
         ) : (
           <>
@@ -66,7 +85,7 @@ function ProfileButton({ user }) {
             />
           </>
         )}
-      </ul>
+      </div>
     </>
   );
 }

@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import ReviewDetails from "./components/GetOneReviewPage";
 import OneBeer from "./components/BeerOneIndex";
 import ManyBeers from "./components/BeerManyIndex";
+import OneBrewery from "./components/BreweryOneIndex";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,11 @@ function App() {
           </Route> */}
         <Route path='/beer/:id'>
           <OneBeer beer={beer}/>
+        </Route>
+        <Route path='/brewery/:id'>
+          <OneBrewery></OneBrewery>
+
+
         </Route>
         <Route path="/">
           <ManyBeers />
