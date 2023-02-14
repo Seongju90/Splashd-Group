@@ -1,10 +1,14 @@
 import { actionOneReview } from "./review";
 
+
+/* ---------- TYPE VARIABLES ---------- */
 const ALL_BREWERIES = "brewery/ALL_BREWERIES";
-const REMOVE_BREWERY = "brewery/REMOVE_BREWERY";
+// const REMOVE_BREWERY = "brewery/REMOVE_BREWERY";
 const ONE_BREWERY = "brewery/ONE_BREWERY"
 const ADD_BREWERY = "brewery/ADD_BREWERY"
+const MY_BREWERY = "brewery/MY_BREWERY"
 
+/* ---------- ACTION CREATORS ---------- */
 const allBrewery = (breweries) => {
 
 	return {
@@ -19,10 +23,10 @@ const oneBrewery = (brewery) => {
 		brewery,
 	}
 };
-const removeBrewery = (id) => ({
-	type: REMOVE_BREWERY,
-	id
-});
+// const removeBrewery = (id) => ({
+// 	type: REMOVE_BREWERY,
+// 	id
+// });
 const addBrewery = (brewery) => {
 	// console.log(brewery, 'tthis is the action')
 	return {
@@ -30,7 +34,14 @@ const addBrewery = (brewery) => {
 		brewery,
 	}
 };
+const myBrewery = (brewery) => {
+	return {
+		type: MY_BREWERY,
+		brewery,
+	}
+}
 
+/* ---------- THUNK ACTION CREATORS ---------- */
 
 export const thunkOneBrewery = (id) => async (dispatch) => {
 	const response = await fetch(`/api/brewery/${id}`, {
@@ -92,9 +103,28 @@ export const thunkCreateBrewery = (form) => async (dispatch) => {
 	else return { errors: ["An error occurred. Please try again."] }
 }
 
-export async function thunkDeleteBrewery(id) {
-
+export const thunkMyBrewery = (id) => async (dispatch) => {
+	const response = await fetch(`/api/users/${id}/brewery`, {
+		headers: { "Content-Type": "application/json" },
+	})
+	if (response.ok) {
+		console.log("in my THUNKKKKKKKKKK")
+		const data = await response.json();
+		dispatch(myBrewery(data));
+		return null
+	}
+	else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) return data;
+	}
+	else return { errors: ["An error occurred. Please try again."] }
 }
+// export async function thunkDeleteBrewery(id) {
+
+// }
+
+/* ---------- BREWERIES REDUCER ---------- */
+
 const initialState = {}
 export default function reducer(state = initialState, action) {
 	let newState = { ...state }
@@ -113,12 +143,18 @@ export default function reducer(state = initialState, action) {
 			// console.log(add, 'this is the reducer')
 			newState[add.id] = add
 			return newState
-		case REMOVE_BREWERY:
-			delete newState[action.id]
+		// case REMOVE_BREWERY:
+		// 	delete newState[action.id]
+		// 	return newState
+		case MY_BREWERY:
+			let my = action.brewery.Breweries
+			newState['mybreweries'] = my
+			console.log('ajsdbwbfkjbqwkfjw', my)
 			return newState
 		default:
 			return state;
 	}
+	
 }
 
 
