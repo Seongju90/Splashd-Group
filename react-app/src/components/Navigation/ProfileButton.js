@@ -8,14 +8,14 @@ import SignupFormModal from "../SignupFormModal";
 import BreweryFormModal from "../BreweryFormModal";
 import { thunkMyBadges, thunkAllBadges } from "../../store/badge";
 import { thunkMyBrewery } from "../../store/brewery";
-import { useHistory } from "react-router-dom";
+
 
 function ProfileButton({ user }) {
   const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
-  
+
 
   const openMenu = () => {
     if (showMenu) return;
