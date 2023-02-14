@@ -15,7 +15,7 @@ export default function OneBeer(props) {
     const user = useSelector(state => state.session.user)
     const beer = useSelector(state => state.beer.onebeer)
 
-    // console.log(beer, props.beer)
+    console.log(beer, props.beer)
     useEffect(() => {
         dispatch(thunkOneBeer(id))
     }, [id]);
