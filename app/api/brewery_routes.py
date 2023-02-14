@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Brewery, db, Beer
-from app.forms import BreweryForm, BeerForm
+from app.models import Brewery, db, Beer, Badge
+from app.forms import BreweryForm, BeerForm, BadgeForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
 brewery_routes = Blueprint('brewery', __name__)
@@ -99,3 +99,53 @@ def addbrewery():
         return  newbrewery.to_dict()
     # print(form.errors, '&#&#&#&#&#&#&#&#&#&#&&#&#&#&#&#&#&&#')
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# @brewery_routes.route('<int:id>/', method = ["POST"])
+# @login_required
+# def get_brewery_badges(id):
+#     brewery = Brewery.query.get(id)
+#     if(current_user.id == brewery.owner_id):
+#         form = BadgeForm()
+#         form['csrf_token'].data = request.cookies['csrf_token']
+#         if form.validate_on_submit():
+#             beer = Beer.query.filter(Beer.name == form.data["beer"])
+#             new_badge = Badge(
+#                 beer_id = beer.id,
+#                 brewery_id = id,
+#                 icon = form.data["icon"],
+#                 description = form.data["description"]
+#             )
+#             db.session.add(new_badge)
+#             db.session.commit()
+#     return new_badge.to_dict()
+
+@brewery_routes.route('/<int:id>/badge', methods = ["POST"])
+# @login_required
+def get_brewery_badges(id):
+    beer = Beer.query.get(id).all_info()
+
+    # if not beer:
+    #     return jsonify({
+    #     "message": "Beer not found",
+    #     "status_code": 404
+    #     }), 404
+
+
+    # if current_user.id == beer.brewery.owner.id:
+    if True:
+        form = BadgeForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+
+        if form.validate_on_submit():
+
+            new_badge = Badge(
+                beer_id = beer['id'],
+                brewery_id = beer['brewery']['id'],
+                icon = form.data["icon"],
+                description = form.data["description"]
+            )
+            db.session.add(new_badge)
+            db.session.commit()
+            return new_badge.to_dict()
+    return { 'errors': 'Post failed please try again'}
