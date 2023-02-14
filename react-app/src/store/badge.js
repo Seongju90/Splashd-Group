@@ -21,12 +21,12 @@ const actionCreateBadge = (badge) => {
 
 /* ---------- THUNK ACTION CREATORS ---------- */
 
-export const thunkAllBadge = (id) => async(dispatch) => {
+export const thunkAllBadge = (id) => async (dispatch) => {
     const response = await fetch(`/api/users/${id}/badges`, {
-		headers: {
-			"Content-Type": "application/json",
-		},
-	});
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
 
     if (response.ok) {
         const badge = await response.json()
@@ -35,38 +35,38 @@ export const thunkAllBadge = (id) => async(dispatch) => {
         return response
     }
     else if (response.status < 500) {
-		const data = await response.json();
-		if (data.errors) return data;
-	}
-	else return { errors: "An error occurred. Please try again." }
+        const data = await response.json();
+        if (data.errors) return data;
+    }
+    else return { errors: ["An error occurred. Please try again."] }
 }
 
 export const thunkCreateBadge = (form, beerId) => async (dispatch) => {
-	// console.log(form)
-	const response = await fetch(`/api/brewery/${beerId}/badge`, {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify(form)
-	})
-	// console.log(response, 'this is respond from backend')
-	if (response.ok) {
-		const data = await response.json();
-		// console.log(data, '!!just came from backend')
-		dispatch(actionCreateBadge(data));
-		return null
-	}
-	else if (response.status < 500) {
-		const data = await response.json();
-		// console.log(data, 'ERROR STUFF')
-		if (data.errors) return data;
-	}
-	else return { errors: "An error occurred. Please try again." }
+    // console.log(form)
+    const response = await fetch(`/api/brewery/${beerId}/badge`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form)
+    })
+    // console.log(response, 'this is respond from backend')
+    if (response.ok) {
+        const data = await response.json();
+        // console.log(data, '!!just came from backend')
+        dispatch(actionCreateBadge(data));
+        return null
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        // console.log(data, 'ERROR STUFF')
+        if (data.errors) return data;
+    }
+    else return { errors: ["An error occurred. Please try again."] }
 }
 /* ---------- BADGE REDUCER ---------- */
 // todo: badge reducer, create get all badges reducer
 const initialState = {}
 const badgeReducer = (state = initialState, action) => {
-    let newState = {...state}
+    let newState = { ...state }
     switch (action.type) {
         case ALL_BADGE:
             console.log('hi reducer', action)
@@ -76,7 +76,7 @@ const badgeReducer = (state = initialState, action) => {
             newState[action.badge.id] = action.badge
             return newState
         default:
-        return state;
+            return state;
     }
 }
 

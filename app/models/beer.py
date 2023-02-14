@@ -45,7 +45,7 @@ class Beer(db.Model):
             'type': self.type,
             'description': self.description,
             'beer_logo': self.beer_logo,
-            'brewery': self.beer_brewery.badge_post(),
+            'brewery': self.beer_brewery.all_info(),
             'reviews': [rev.to_dict() for rev in self.beer_review],
             'badges': [badge.to_dict() for badge in self.beer_badge]
         }

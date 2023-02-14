@@ -9,7 +9,8 @@ export default function BadgeFormModal() {
 
     const [icon, setIcon] = useState("");
     const [description, setDescription] = useState("");
-
+    const [errors, setErrors] = useState([])
+    const { closeModal } = useModal();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,26 +22,26 @@ export default function BadgeFormModal() {
             }, 1
         ));
 
-        // if (data) {
-        //     setErrors(data.errors);
-        // } else {
-        //     closeModal();
-        // }
+        if (data) {
+            setErrors(data.errors);
+        } else {
+            closeModal();
+        }
     };
 
     return (
         <>
             <h1>Create a Badge</h1>
             <form onSubmit={handleSubmit}>
-                {/* <ul>
+                <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
-                </ul> */}
+                </ul>
                 <label>
                     Icon
                     <input
-                        type="text"
+                        type="url"
                         value={icon}
                         onChange={(e) => setIcon(e.target.value)}
                         required

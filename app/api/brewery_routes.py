@@ -13,14 +13,14 @@ def brewerys():
     """
     breweries = Brewery.query.all()
     # return {'breweries': [brewery.to_dict() for brewery in breweries]}
-    return {'breweries':[brewery.to_dict() for brewery in breweries]}
+    return {'breweries':[brewery.all_info() for brewery in breweries]}
 
 @brewery_routes.route('/<int:id>')
 def brewery(id):
     """
     Query for all brewerys and returns them in a list of brewery dictionaries
     """
-    brewery = Brewery.query.get(id).all_info_dict()
+    brewery = Brewery.query.get(id).all_info()
     return  brewery
 
 # update beer route

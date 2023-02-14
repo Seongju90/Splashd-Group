@@ -47,7 +47,7 @@ export const thunkAllBeer = () => async (dispatch) => {
 		const data = await response.json();
 		if (data.errors) return data;
 	}
-	else return { errors: "An error occurred. Please try again." }
+	else return { errors: ["An error occurred. Please try again."] }
 }
 
 
@@ -73,7 +73,7 @@ export const thunkOneBeer = (id) => async (dispatch) => {
 		// console.log(data)
 		if (data.errors) return data;
 	}
-	else return { errors: "An error occurred. Please try again." }
+	else return { errors: ["An error occurred. Please try again."] }
 }
 
 
@@ -98,7 +98,7 @@ export const thunkCreateBeer = (form, id) => async (dispatch) => {
 		// console.log(data, 'ERROR STUFF')
 		if (data.errors) return data;
 	}
-	else return { errors: "An error occurred. Please try again." }
+	else return { errors: ["An error occurred. Please try again."] }
 }
 
 export const thunkEditBeer = (form, breweryId, beerId) => async (dispatch) => {
@@ -120,7 +120,7 @@ export const thunkEditBeer = (form, breweryId, beerId) => async (dispatch) => {
 		// console.log(data, 'ERROR STUFF')
 		if (data.errors) return data;
 	}
-	else return { errors: "An error occurred. Please try again." }
+	else return { errors: ["An error occurred. Please try again."] }
 }
 
 export const thunkRemoveBeer = (id) => async (dispatch) => {
@@ -136,7 +136,7 @@ export const thunkRemoveBeer = (id) => async (dispatch) => {
 		// console.log(data, 'ERROR STUFF')
 		if (data.errors) return data;
 	}
-	else return { errors: "An error occurred. Please try again." }
+	else return { errors: ["An error occurred. Please try again."] }
 }
 
 ///// ///// ////////// ///// ////////// ///// ////////// ///// ////////// ///// ////////// ///// /////

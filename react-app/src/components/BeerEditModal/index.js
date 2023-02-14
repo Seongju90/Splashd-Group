@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { thunkEditBeer } from "../../store/beer";
+import { thunkEditBeer, thunkRemoveBeer } from "../../store/beer";
 import { useHistory } from "react-router-dom";
 
 
-export default function EditBeerModal(props) {
+export default function EditBeerModal({beer}) {
     const dispatch = useDispatch();
-    const [beer, setBeer] = useState(useSelector((state) => state.beer.onebeer))
+    // const [beer, setBeer] = useState(useSelector((state) => state.beer.onebeer))
     const [name, setName] = useState(beer.name);
     const [abv, setAbv] = useState(beer.abv);
     const [ibu, setIbu] = useState(beer.ibu);
     const [type, setType] = useState(beer.type);
     const [description, setDescription] = useState(beer.description);
-    const [logo, setLogo] = useState(beer.logo);
+    const [logo, setLogo] = useState(beer.beer_logo);
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
     const history = useHistory()
@@ -45,17 +45,30 @@ export default function EditBeerModal(props) {
             beer.brewery_id, beer.id
         ));
         if (data) {
-            setErrors([...data.errors]);
+            setErrors(data.errors);
         } else {
             // history.push('/') comment in when onebeer componant is added
             // get exact url path form app.js
             closeModal();
         }
     };
+    const handleDelete = async (e) => {
+        e.preventDefault();
+
+
+        const data = await dispatch(thunkRemoveBeer(beer.id))
+
+
+        if (data) {
+            setErrors(data.errors);
+        } else {
+            closeModal();
+        }
+    };
 
     return (
         <>
-            <h1>Create</h1>
+            <h1>Edit</h1>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
@@ -165,8 +178,14 @@ export default function EditBeerModal(props) {
                         required
                     />
                 </label>
-                <button type="submit">Edit</button>
-
+                <>
+                <button type="submit">Edit a Beer</button>
+                </>
+                <>
+                <button type="button"
+                onClick={handleDelete}
+                >Delete Beer</button>
+                </>
             </form>
         </>
     )
