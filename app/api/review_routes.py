@@ -17,10 +17,7 @@ def one_review(review_id):
     review = Review.query.get(review_id)
 
     if not review:
-        return jsonify({
-            "message": "Review not found",
-            "status_code": 404
-        }), 404
+        return { "errors": ["Review not found"]}, 404
 
     review_dict = review.to_dict()
 
@@ -29,11 +26,7 @@ def one_review(review_id):
     beer = Beer.query.get(review.beer_id)
 
     if not beer:
-        return jsonify({
-        "message": "Beer not found",
-        "status_code": 404
-        }), 404
-
+        return { "errors": ["Beer not found"]}, 404
 
     # if beer exists get the name
     beer_name = beer.name

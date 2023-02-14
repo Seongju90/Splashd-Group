@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkEditBeer, thunkRemoveBeer } from "../../store/beer";
+import { thunkOneBrewery } from "../../store/brewery";
 import { useHistory } from "react-router-dom";
 
 
@@ -17,6 +18,7 @@ export default function EditBeerModal({beer}) {
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
     const history = useHistory()
+    const brewery = useSelector(state => state.brewery.onebrewery)
     // console.log(id)
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -49,6 +51,7 @@ export default function EditBeerModal({beer}) {
         } else {
             // history.push('/') comment in when onebeer componant is added
             // get exact url path form app.js
+            dispatch(thunkOneBrewery(brewery.id))
             closeModal();
         }
     };
@@ -62,6 +65,7 @@ export default function EditBeerModal({beer}) {
         if (data) {
             setErrors(data.errors);
         } else {
+            dispatch(thunkOneBrewery(brewery.id))
             closeModal();
         }
     };
