@@ -1,4 +1,5 @@
 import { thunkOneBrewery } from "./brewery";
+import { actionOneReview } from "./review";
 
 const ALL_BEERS = "beer/ALL_BEERS";
 const REMOVE_BEER = "beer/REMOVE_BEER";
@@ -60,6 +61,11 @@ export const thunkOneBeer = (id) => async (dispatch) => {
 		const data = await response.json();
 		// console.log(data, '!!just came from backend')
 		dispatch(oneBeer(data));
+		data.reviews.forEach(async (x) => {
+			console.log(x)
+			await dispatch(actionOneReview(x))
+		})
+		return null
 		// return response
 	}
 	else if (response.status < 500) {
