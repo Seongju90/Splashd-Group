@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { thunkAllBadge } from '../../../store/badge';
 import { thunkOneBrewery } from '../../../store/brewery';
+import BadgeFormModal from '../../BadgeFormModal';
 // import OpenModalButton from "../OpenModalButton";
 // import BeerFormModal from '../BeerFormModal';
 // import EditBeerModal from '../EditBeerModal';
@@ -89,9 +90,7 @@ function Tester() {
             buttonText="Edit a Review"
             modalComponent={<EditReviewModal />}
             /> */}
-            {/* <button onClick={deleteReview}>
-                Delete Review
-            </button> */}
+            <BadgeFormModal/>
         </>
     );
 }

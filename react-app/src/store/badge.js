@@ -41,9 +41,9 @@ export const thunkAllBadge = (id) => async(dispatch) => {
 	else return { errors: "An error occurred. Please try again." }
 }
 
-export const thunkCreateBadge = (form, breweryId) => async (dispatch) => {
+export const thunkCreateBadge = (form, beerId) => async (dispatch) => {
 	// console.log(form)
-	const response = await fetch(`/api/brewery/${breweryId}/badges`, {
+	const response = await fetch(`/api/brewery/${beerId}/badge`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(form)
@@ -73,7 +73,8 @@ const badgeReducer = (state = initialState, action) => {
             newState['user_badges'] = action.badge
             return newState
         case CREATE_BADGE:
-
+            newState[action.badge.id] = action.badge
+            return newState
         default:
         return state;
     }

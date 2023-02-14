@@ -1,26 +1,21 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Length, URL
-from app.models import Brewery, db, Beer
-from flask_login import current_user
+
 # if it works use it if not take it out and do validation on front-end
 def validate_image_url(form, field):
     if not (field.data.endswith('.jpeg') or field.data.endswith('.jpg') or
             field.data.endswith('.png') or field.data.endswith('.svg')):
         raise ValidationError('URL must end with .jpeg, .jpg, .png, or .svg')
 
-breweries = Brewery.query.filter(current_user.id == Brewery.owner_id).all()
-beers_list = []
-for brewery in  breweries:
-    beers = Beer.query.filter(Beer.brewery_id == brewery.id)
-    for beer in beers:
-        beers_list.append(beer.name)
+# breweries = Brewery.query.filter(current_user.id == Brewery.owner_id).all()
+# beers_list = []
+# for brewery in  breweries:
+#     beers = Beer.query.filter(Beer.brewery_id == brewery.id)
+#     for beer in beers:
+#         beers_list.append(beer.name)
 
 class BadgeForm(FlaskForm):
-    beer = SelectField(
-        "Beer",
-        choices = beers_list
-    )
     icon = StringField(
         'Badge Icon Url',
         validators=[

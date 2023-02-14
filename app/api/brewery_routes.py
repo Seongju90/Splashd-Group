@@ -110,21 +110,52 @@ def addbrewery():
     # print(form.errors, '&#&#&#&#&#&#&#&#&#&#&&#&#&#&#&#&#&&#')
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@brewery_routes.route('<int:id>/badges', method = ["POST"])
-@login_required
+
+# @brewery_routes.route('<int:id>/', method = ["POST"])
+# @login_required
+# def get_brewery_badges(id):
+#     brewery = Brewery.query.get(id)
+#     if(current_user.id == brewery.owner_id):
+#         form = BadgeForm()
+#         form['csrf_token'].data = request.cookies['csrf_token']
+#         if form.validate_on_submit():
+#             beer = Beer.query.filter(Beer.name == form.data["beer"])
+#             new_badge = Badge(
+#                 beer_id = beer.id,
+#                 brewery_id = id,
+#                 icon = form.data["icon"],
+#                 description = form.data["description"]
+#             )
+#             db.session.add(new_badge)
+#             db.session.commit()
+#     return new_badge.to_dict()
+
+@brewery_routes.route('/<int:id>/badge', methods = ["POST"])
+# @login_required
 def get_brewery_badges(id):
-    brewery = Brewery.query.get(id)
-    if(current_user.id == brewery.owner_id):
+    beer = Beer.query.get(id).all_info()
+
+    # if not beer:
+    #     return jsonify({
+    #     "message": "Beer not found",
+    #     "status_code": 404
+    #     }), 404
+
+
+    # if current_user.id == beer.brewery.owner.id:
+    if True:
         form = BadgeForm()
         form['csrf_token'].data = request.cookies['csrf_token']
+
         if form.validate_on_submit():
-            beer = Beer.query.filter(Beer.name == form.data["beer"])
+
             new_badge = Badge(
-                beer_id = beer.id,
-                brewery_id = id,
+                beer_id = beer['id'],
+                brewery_id = beer['brewery']['id'],
                 icon = form.data["icon"],
                 description = form.data["description"]
             )
             db.session.add(new_badge)
             db.session.commit()
-    return new_badge.to_dict()
+            return new_badge.to_dict()
+    return { 'errors': 'Post failed please try again'}
