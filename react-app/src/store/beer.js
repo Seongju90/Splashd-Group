@@ -1,3 +1,5 @@
+import { thunkOneBrewery } from "./brewery";
+
 const ALL_BEERS = "beer/ALL_BEERS";
 const REMOVE_BEER = "beer/REMOVE_BEER";
 const ONE_BEER = "beer/ONE_BEER"
@@ -81,6 +83,7 @@ export const thunkCreateBeer = (form, id) => async (dispatch) => {
 	if (response.ok) {
 		const data = await response.json();
 		// console.log(data, '!!just came from backend')
+		await dispatch(thunkOneBrewery(data.brewery_id))
 		dispatch(addBeer(data));
 		return null
 	}
@@ -92,7 +95,7 @@ export const thunkCreateBeer = (form, id) => async (dispatch) => {
 	else return { errors: "An error occurred. Please try again." }
 }
 
-export const thunkEditBeer = ( form , breweryId, beerId) => async (dispatch) => {
+export const thunkEditBeer = (form, breweryId, beerId) => async (dispatch) => {
 	console.log(form)
 	const response = await fetch(`/api/brewery/${breweryId}/beers/${beerId}/`, {
 		method: "PUT",
@@ -118,7 +121,7 @@ export const thunkRemoveBeer = (id) => async (dispatch) => {
 	const response = await fetch(`/api/beer/${id}/`, {
 		method: 'DELETE'
 	})
-    if (response.ok) {
+	if (response.ok) {
 		dispatch(removeBeer(id));
 		return null
 	}
@@ -138,7 +141,7 @@ export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case ALL_BEERS:
 			let all = action.beer
-            // console.log(all)
+			// console.log(all)
 			for (let b of all.beers) newState[b.id] = b
 			return newState;
 		case ONE_BEER:
@@ -149,9 +152,9 @@ export default function reducer(state = initialState, action) {
 		case ADD_BEER:
 			let add = action.beer
 			// console.log(add, 'this is the reducer')
-			newState[add.id]=add
-            newState[add.id] ?  newState[add.id] = add : newState[add.id] = add
-            // newState.onespot ? newState.onespot[spot.id] = spot : newState.onespot = { [spot.id]: spot }
+			newState[add.id] = add
+			newState[add.id] ? newState[add.id] = add : newState[add.id] = add
+			// newState.onespot ? newState.onespot[spot.id] = spot : newState.onespot = { [spot.id]: spot }
 			return newState
 		case REMOVE_BEER:
 			delete newState[action.id]
