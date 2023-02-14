@@ -131,9 +131,9 @@ def get_brewery_badges(id):
     #     "status_code": 404
     #     }), 404
 
-
-    # if current_user.id == beer.brewery.owner.id:
-    if True:
+    owner_id = beer["brewery"]["owner_id"]
+    # print("!!!!!!!!!!!!!!!!!", brewery, ">>>>>>>>>>>>>>", beer)
+    if current_user.id == owner_id:
         form = BadgeForm()
         form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -148,4 +148,4 @@ def get_brewery_badges(id):
             db.session.add(new_badge)
             db.session.commit()
             return new_badge.to_dict()
-    return { 'errors': 'Post failed please try again'}
+    return { 'errors': 'Post failed please try again'}, 401

@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import BreweryFormModal from "../BreweryFormModal";
+import { thunkMyBadges, thunkAllBadges } from "../../store/badge";
 
 function ProfileButton({ user }) {
+  const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -35,11 +38,10 @@ function ProfileButton({ user }) {
     dispatch(logout());
   };
 
-  const handleClick = () => {
-    // dispatch(thunkOneBeer(id))
-    // history.push(`/beer/${id}`)
-    //we need a dispatch getting the user's badges
-    //and pushing to the user's badge page
+  const handleClick = async () => {
+    dispatch(thunkMyBadges(user?.id))
+    await dispatch(thunkAllBadges())
+    history.push("/user/badges")
     console.log('%%%%!%!%!%!%!%!%%!%!%!%!!%!%!%!%!%')
   }
 
@@ -62,7 +64,7 @@ function ProfileButton({ user }) {
               modalComponent={<BreweryFormModal />}
             />
             <div>
-            <button 
+            <button
             type='button'
             onClick={handleClick}>My Badges</button>
             </div>

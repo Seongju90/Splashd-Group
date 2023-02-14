@@ -1,13 +1,14 @@
 /* ---------- TYPE VARIABLES ---------- */
 
-const ALL_BADGE = "badge/ALL_BADGE"
+const MY_BADGES = "badge/MY_BADGES"
 const CREATE_BADGE = "badge/CREATE_BADGE"
+const ALL_BADGES = "badge/ALL_BADGES"
 
 /* ---------- ACTION CREATORS ---------- */
 
-const actionAllBadge = (badge) => {
+const actionUserBadges = (badge) => {
     return {
-        type: ALL_BADGE,
+        type: MY_BADGES,
         badge
     }
 }
@@ -19,9 +20,16 @@ const actionCreateBadge = (badge) => {
     }
 }
 
+const actionAllBadges = (badges) => {
+    return {
+        type: ALL_BADGES,
+        badges
+    }
+}
+
 /* ---------- THUNK ACTION CREATORS ---------- */
 
-export const thunkAllBadge = (id) => async (dispatch) => {
+export const thunkMyBadges = (id) => async (dispatch) => {
     const response = await fetch(`/api/users/${id}/badges`, {
         headers: {
             "Content-Type": "application/json",
@@ -31,8 +39,28 @@ export const thunkAllBadge = (id) => async (dispatch) => {
     if (response.ok) {
         const badge = await response.json()
         // to unnest badge in reducer
-        dispatch(actionAllBadge(badge.badges))
-        return response
+        dispatch(actionUserBadges(badge.badges))
+        return null
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) return data;
+    }
+    else return { errors: ["An error occurred. Please try again."] }
+}
+
+export const thunkAllBadges = () => async (dispatch) => {
+    const response = await fetch(`/api/badges/all`, {
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    if (response.ok) {
+        const badges = await response.json()
+        // to unnest badge in reducer
+        dispatch(actionAllBadges(badges.badges))
+        return null
     }
     else if (response.status < 500) {
         const data = await response.json();
@@ -68,13 +96,18 @@ const initialState = {}
 const badgeReducer = (state = initialState, action) => {
     let newState = { ...state }
     switch (action.type) {
-        case ALL_BADGE:
+        case MY_BADGES:
             console.log('hi reducer', action)
-            newState['user_badges'] = action.badge
+            newState.mybadges = action.badge
             return newState
         case CREATE_BADGE:
             newState[action.badge.id] = action.badge
             return newState
+        case ALL_BADGES:
+            let all = action.badges
+			console.log(all)
+			for (let b of all) newState[b.id] = b
+			return newState;
         default:
             return state;
     }

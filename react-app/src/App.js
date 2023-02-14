@@ -10,6 +10,7 @@ import ReviewOneIndex from "./components/ReviewOneIndex"
 import OneBeer from "./components/BeerOneIndex";
 import ManyBeers from "./components/BeerManyIndex";
 import OneBrewery from "./components/BreweryOneIndex";
+import MyBadges from "./components/BadgeMyIndex";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,8 +40,9 @@ function App() {
         </Route>
         <Route path='/brewery/:id'>
           <OneBrewery></OneBrewery>
-
-
+        </Route>
+        <Route path='/user/badges'>
+          <MyBadges/>
         </Route>
         <Route path="/">
           <ManyBeers />

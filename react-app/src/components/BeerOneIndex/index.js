@@ -66,8 +66,9 @@ export default function OneBeer(props) {
                 {beer?.brewery.owner_id === user?.id ? (
                 <OpenModalButton
                     buttonText="Create a Badge"
+
                     // onItemClick={closeMenu}
-                    modalComponent={<BadgeFormModal />}
+                    modalComponent={<BadgeFormModal id={beer?.id} />}
                 />
                 ) : null
                 }
