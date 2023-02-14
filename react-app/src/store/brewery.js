@@ -101,12 +101,12 @@ export default function reducer(state = initialState, action) {
 			return newState;
 		case ONE_BREWERY:
 			let one = action.brewery
-			console.log(one, 'this is the reducer')
+			// console.log(one, 'this is the reducer')
 			newState.onebrewery = one
 			return newState
 		case ADD_BREWERY:
 			let add = action.brewery
-			console.log(add, 'this is the reducer')
+			// console.log(add, 'this is the reducer')
 			newState[add.id]=add
 			return newState
 		case REMOVE_BREWERY:

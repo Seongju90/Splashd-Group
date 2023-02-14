@@ -20,18 +20,8 @@ def brewery(id):
     """
     Query for all brewerys and returns them in a list of brewery dictionaries
     """
-    brewery = Brewery.query.get(id)
-    brewery = brewery.to_dict()
-
-
-    badges = Badge.query.filter(Badge.brewery_id == id).all()
-    # dont try to change, doesn't like one liner
-    bl = []
-    for badge in badges:
-        b = badge.to_dict()
-        bl.append(b)
-    brewery["badges"] = bl
-    return brewery
+    brewery = Brewery.query.get(id).all_info_dict()
+    return  brewery
 
 # update beer route
 @brewery_routes.route('/<int:id>/beers/<int:beerId>/', methods=['PUT'])

@@ -12,16 +12,16 @@ function Navigation({ isLoaded }) {
 	return (
 		<div>
 			{/* hey */}
-			<ul>
-				<li>
+			<div>
+				<div>
 					<NavLink exact to="/">Home</NavLink>
-				</li>
-				{isLoaded && (
-					<li>
+				</div>
+				{/* {isLoaded && ( */}
+					<div>
 						<ProfileButton user={sessionUser} />
-					</li>
-				)}
-			</ul>
+					</div>
+				{/* )} */}
+			</div>
 			
 		</div>
 	);
