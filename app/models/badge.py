@@ -27,3 +27,14 @@ class Badge(db.Model):
             'icon': self.icon,
             'description': self.description
         }
+
+    def create_badge_info(self):
+        return {
+            'id': self.id,
+            'beer_id': self.beer_id,
+            'brewery_id': self.brewery_id,
+            'icon': self.icon,
+            'description': self.description,
+            # 'beer_id': self.badge_beer,
+            # 'brewery_id': self.badge_brewery
+        }
