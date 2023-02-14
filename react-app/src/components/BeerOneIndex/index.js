@@ -31,7 +31,7 @@ export default function OneBeer(props) {
     return (
         <div>
             <h1>
-            beer name is {beer?.name}
+            BEER PAGE FOR ---{beer?.name}
             </h1>
             <h2>
                 Current user is   {user?.name}
@@ -45,7 +45,7 @@ export default function OneBeer(props) {
             <div>
                 {beer?.reviews.map((x) =>
                     <h1>
-                        Beer {x.id} is {x.rating}
+                        REVIEW ID: {x.id} RATING: {x.rating}
                         {x?.user_id === user?.id ? (
                             <OpenModalButton
                                 buttonText="Edit/Delete"

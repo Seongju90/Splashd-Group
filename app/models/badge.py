@@ -28,6 +28,17 @@ class Badge(db.Model):
             'icon': self.icon,
             'description': self.description
         }
+    def all_info(self):
+        return {
+            'id': self.id,
+            'beer_id': self.beer_id,
+            'brewery_id': self.brewery_id,
+            'icon': self.icon,
+            'description': self.description,
+            'brewery': self.badge_brewery.to_dict(),
+            'users': [u.to_dict() for u in self.badge_users],
+            'beer': self.badge_beer.to_dict(),
+        }
 
     def create_badge_info(self):
         return {

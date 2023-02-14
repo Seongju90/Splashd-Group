@@ -27,7 +27,7 @@ class Brewery(db.Model):
             'brewery_logo': self.brewery_logo
         }
 
-    def all_info_dict(self):
+    def all_info(self):
         return {
             'id': self.id,
             'name': self.name,
