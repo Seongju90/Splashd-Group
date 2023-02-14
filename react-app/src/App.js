@@ -10,13 +10,14 @@ import ReviewOneIndex from "./components/ReviewOneIndex"
 import OneBeer from "./components/BeerOneIndex";
 import ManyBeers from "./components/BeerManyIndex";
 import OneBrewery from "./components/BreweryOneIndex";
+import MyBreweries from "./components/BreweryMyIndex";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(authenticate())
-    // .then(() => setIsLoaded(true));
+    .then(() => setIsLoaded(true));
   }, []);
   // [dispatch]);
   const beer = useSelector((state) => state.onebeer)
@@ -24,9 +25,8 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {/* {isLoaded && ( */}
-      {
-      (
+      {isLoaded && (
+      
       <Switch>
         <Route exact path="/reviews/:reviewId">
           <ReviewOneIndex />
@@ -39,8 +39,9 @@ function App() {
         </Route>
         <Route path='/brewery/:id'>
           <OneBrewery></OneBrewery>
-
-
+        </Route>
+        <Route path='/users/:id'>
+          <MyBreweries></MyBreweries>
         </Route>
         <Route path="/">
           <ManyBeers />
