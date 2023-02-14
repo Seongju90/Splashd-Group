@@ -31,9 +31,9 @@ def user_badges(id):
     """
         Query for a user's badges
     """
-    user = User.query.get(id).to_dict()
+    user = User.query.get(id).all_info()
 
-    return {'badges': user['user_badges']}
+    return {'badges': user['badges']}
 
     # Another way to query many-many table injecting raw sql
 

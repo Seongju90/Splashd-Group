@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkCreateBadge } from "../../store/badge";
+import { useParams } from "react-router-dom";
 
 // todo: edit form for new badges
 export default function BadgeFormModal() {
     const dispatch = useDispatch();
-
     const [icon, setIcon] = useState("");
     const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([])
     const { closeModal } = useModal();
-
+    const beer = useSelector(state => state.beer?.onebeer)
+    // const { id } = useParams()
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -19,7 +20,7 @@ export default function BadgeFormModal() {
             {
                 'icon': icon,
                 'description': description
-            }, 1
+            }, beer?.id
         ));
 
         if (data) {
