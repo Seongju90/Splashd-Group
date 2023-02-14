@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkEditReview, thunkDeleteReview } from "../../store/review";
+import { thunkOneBeer } from "../../store/beer"
 
 
 // later when things are set up, pass beerId as a prop to this modl
@@ -13,28 +14,30 @@ export default function EditReviewModal({rev}) {
     const [rating, setRating] = useState(rev.rating);
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
+    const beer = useSelector(state => state.beer.onebeer)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-    
+
         const data = await dispatch(thunkEditReview(
             {
                 "image": imageUrl,
                 "review_text": review,
                 "rating": rating
             },rev
-          
+
         ))
 
 
         if (data) {
             setErrors(data.errors);
         } else {
+        dispatch(thunkOneBeer(beer.id))
         closeModal();
     }
         }
-    
+
     const handleDelete = async (e) => {
         e.preventDefault();
 
@@ -46,6 +49,7 @@ export default function EditReviewModal({rev}) {
         if (data) {
             setErrors(data.errors);
         } else {
+
             closeModal();
         }
     }
