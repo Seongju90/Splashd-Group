@@ -25,7 +25,7 @@ export default function OneBeer(props) {
         history.push(`/brewery/${beer.brewery_id}`)
     }
         //dispatch happens before history.push
-    //     //so, we may not need this 
+    //     //so, we may not need this
     // console.log(myimgs)
 
     return (
@@ -62,8 +62,8 @@ export default function OneBeer(props) {
                onClick={handleClick }
                    >Check Out The Brewery</button>
             </div>
-            
-            
+
+
                 <OpenModalButton
                     buttonText="Create a Badge"
                     // onItemClick={closeMenu}
