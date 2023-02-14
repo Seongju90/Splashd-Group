@@ -45,3 +45,16 @@ def user_badges(id):
     #     if (r[0] == id):
     #         badge = Badge.query.get(r[1])
     #         list.append(badge.to_dict())
+
+
+@user_routes.route('/<int:id>/brewery')
+@login_required
+def user_breweries(id):
+    """
+    Route to query all users' breweries
+    """
+    user = User.query.get(id).all_info()
+    return {"Breweries":user['breweries']}
+
+
+
