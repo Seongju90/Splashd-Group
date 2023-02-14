@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { thunkAllBadge } from '../../../store/badge';
+import { thunkOneBrewery } from '../../../store/brewery';
 // import OpenModalButton from "../OpenModalButton";
 // import BeerFormModal from '../BeerFormModal';
 // import EditBeerModal from '../EditBeerModal';
@@ -22,7 +23,7 @@ function Tester() {
 
     useEffect(
         async () => {
-            await dispatch(thunkAllBadge(1))
+            await dispatch(thunkOneBrewery(1))
         }, []
     )
     const badges = useSelector((state) => state.badges)

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Brewery, db, Beer
-from app.forms import BreweryForm, BeerForm
+from app.models import Brewery, db, Beer, Badge
+from app.forms import BreweryForm, BeerForm, BadgeForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
 brewery_routes = Blueprint('brewery', __name__)
@@ -21,7 +21,17 @@ def brewery(id):
     Query for all brewerys and returns them in a list of brewery dictionaries
     """
     brewery = Brewery.query.get(id)
-    return  brewery.to_dict()
+    brewery = brewery.to_dict()
+
+
+    badges = Badge.query.filter(Badge.brewery_id == id).all()
+    # dont try to change, doesn't like one liner
+    bl = []
+    for badge in badges:
+        b = badge.to_dict()
+        bl.append(b)
+    brewery["badges"] = bl
+    return brewery
 
 # update beer route
 @brewery_routes.route('/<int:id>/beers/<int:beerId>/', methods=['PUT'])
@@ -99,3 +109,22 @@ def addbrewery():
         return  newbrewery.to_dict()
     # print(form.errors, '&#&#&#&#&#&#&#&#&#&#&&#&#&#&#&#&#&&#')
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@brewery_routes.route('<int:id>/badges', method = ["POST"])
+@login_required
+def get_brewery_badges(id):
+    brewery = Brewery.query.get(id)
+    if(current_user.id == brewery.owner_id):
+        form = BadgeForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            beer = Beer.query.filter(Beer.name == form.data["beer"])
+            new_badge = Badge(
+                beer_id = beer.id,
+                brewery_id = id,
+                icon = form.data["icon"],
+                description = form.data["description"]
+            )
+            db.session.add(new_badge)
+            db.session.commit()
+    return new_badge.to_dict()
