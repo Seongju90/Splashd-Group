@@ -1,59 +1,54 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { thunkEditReview } from "../../store/review";
+import { thunkEditReview, thunkDeleteReview } from "../../store/review";
+
 
 // later when things are set up, pass beerId as a prop to this modl
-export default function EditReviewModal() {
+export default function EditReviewModal({rev}) {
     const dispatch = useDispatch()
 
-    const [imageUrl, setImageUrl] = useState("");
-    const [review, setReview] = useState("");
-    const [rating, setRating] = useState(0);
+    const [imageUrl, setImageUrl] = useState(rev.image);
+    const [review, setReview] = useState(rev.review_text);
+    const [rating, setRating] = useState(rev.rating);
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const error = [];
-
+    
         const data = await dispatch(thunkEditReview(
             {
                 "image": imageUrl,
                 "review_text": review,
                 "rating": rating
-            },260
-            //hardcoded beerId=1, reviewId=3
-            // we will add the beerId here to send to our thunk
+            },rev
+          
         ))
 
-        // front-end validations
-        if (!review) error.push("Review is required")
-        if (!rating) error.push("Rating input is required")
-        if (rating === 0 || rating > 5) error.push("Rating can only be from 1 to 5")
 
-        // Url validations
-        const splitUrl = imageUrl.split(".")
-        const validImageTypes = ["png", "jpeg", "jpg"]
-        const validUrl = splitUrl.some(urlString => validImageTypes.includes(urlString))
-
-        if (validUrl.length <= 10 || validUrl > 255) errors.push("Length of valid url must be between 10 and 255 characters")
-
-        if (!validUrl) {
-            error.push("Images must end with png, jpeg, or jpg format")
-        }
-
-        setErrors(error)
-        if (error.length) return;
-
-        // if (data) {
-        //     setErrors(data.errors);
-        // } else {
+        if (data) {
+            setErrors(data.errors);
+        } else {
         closeModal();
     }
-        // }
+        }
+    
+    const handleDelete = async (e) => {
+        e.preventDefault();
 
+
+        const data = await dispatch(thunkDeleteReview(
+             rev))
+
+
+        if (data) {
+            setErrors(data.errors);
+        } else {
+            closeModal();
+        }
+    }
     return (
         <>
             <h1>Edit</h1>
@@ -87,7 +82,14 @@ export default function EditReviewModal() {
                         onChange={(e) => setRating(e.target.value)}
                     />
                 </label>
-                <button type="submit">Submit a Review</button>
+                <>
+                <button type="submit">Edit a Review</button>
+                </>
+                <>
+                <button type="button"
+                onClick={handleDelete}
+                >Delete A Review</button>
+                </>
             </form>
         </>
     )
@@ -95,3 +97,23 @@ export default function EditReviewModal() {
 
 
 // export default EditFormModal
+
+
+  // // front-end validations
+        // if (!review) error.push("Review is required")
+        // if (!rating) error.push("Rating input is required")
+        // if (rating === 0 || rating > 5) error.push("Rating can only be from 1 to 5")
+
+        // Url validations
+        // const splitUrl = imageUrl.split(".")
+        // const validImageTypes = ["png", "jpeg", "jpg"]
+        // const validUrl = splitUrl.some(urlString => validImageTypes.includes(urlString))
+
+        // if (validUrl.length <= 10 || validUrl > 255) errors.push("Length of valid url must be between 10 and 255 characters")
+
+        // if (!validUrl) {
+        //     error.push("Images must end with png, jpeg, or jpg format")
+        // }
+
+        // setErrors(error)
+        // if (error.length) return;

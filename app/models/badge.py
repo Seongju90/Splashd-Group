@@ -15,7 +15,8 @@ class Badge(db.Model):
     # todo:add cascade delete
     badge_beer = db.relationship("Beer", back_populates="beer_badge")
     badge_brewery = db.relationship("Brewery", back_populates="brewery_badge")
-    badge_user = db.relationship("User", secondary=userbadges, back_populates="user_badge")
+    # badge_user = db.relationship("User", secondary=userbadges, back_populates="user_badge")
+    badge_users = db.relationship("User", secondary=userbadges, back_populates="user_badges")
 
 
 

@@ -1,3 +1,5 @@
+import { actionOneReview } from "./review";
+
 const ALL_BREWERIES = "brewery/ALL_BREWERIES";
 const REMOVE_BREWERY = "brewery/REMOVE_BREWERY";
 const ONE_BREWERY = "brewery/ONE_BREWERY"
@@ -38,8 +40,10 @@ export const thunkOneBrewery = (id) => async (dispatch) => {
 	if (response.ok) {
 		const data = await response.json();
 		// console.log(data, '!!just came from backend')
+		// console.log('%$%!$#%!$#%!$#%!$#%!$#%!$#%', data)
 		dispatch(oneBrewery(data));
-		return response
+		
+		return null
 	}
 	else if (response.status < 500) {
 		const data = await response.json();

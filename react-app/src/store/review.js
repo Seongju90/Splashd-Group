@@ -1,3 +1,5 @@
+import { thunkOneBeer} from "./beer";
+
 /* ---------- TYPE VARIABLES ---------- */
 
 const ONE_REVIEW = "review/ONE_REVIEW"
@@ -7,7 +9,7 @@ const DELETE_REVIEW = "review/DELETE_REVIEW"
 
 /* ---------- ACTION CREATORS ---------- */
 
-const actionOneReview = (review) => {
+export const actionOneReview = (review) => {
     return {
         type: ONE_REVIEW,
         review
@@ -29,6 +31,7 @@ const actionEditReview = (review) => {
 }
 
 const actionDeleteReview = (id) => {
+    console.log(id)
     return {
         type: DELETE_REVIEW,
         id
@@ -53,10 +56,11 @@ export const thunkOneReview = (id) => async(dispatch) => {
 		const data = await response.json();
 		if (data.errors) return data;
 	}
-	else return { errors: "An error occurred. Please try again." }
+	else return { errors: ["An error occurred. Please try again."] }
 }
 
 export const thunkCreateReview = (form, id) => async(dispatch) => {
+    console.log('asdasdasdwwadw', id)
     const response = await fetch(`/api/beer/${id}/review`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
@@ -67,6 +71,7 @@ export const thunkCreateReview = (form, id) => async(dispatch) => {
 
     if(response.ok) {
         const data = await response.json()
+        await dispatch(thunkOneBeer(data.beer_id))
         dispatch(actionCreateReview(data))
         return null
     }
@@ -74,11 +79,11 @@ export const thunkCreateReview = (form, id) => async(dispatch) => {
 		const data = await response.json();
 		if (data.errors) return data;
 	}
-	else return { errors: "An error occurred. Please try again." }
+	else return { errors: ["An error occurred. Please try again."] }
 }
 
-export const thunkEditReview = (form, reviewId) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${reviewId}`, {
+export const thunkEditReview = (form, rev) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${rev.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)
@@ -95,23 +100,26 @@ export const thunkEditReview = (form, reviewId) => async (dispatch) => {
         const data = await response.json();
         if (data.errors) return data;
     }
-    else return { errors: "An error occurred. Please try again." }
+    else return { errors: ["An error occurred. Please try again."] }
 }
 
-export const thunkDeleteReview = (id) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${id}`, {
+export const thunkDeleteReview = (rev) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${rev.id}`, {
         method: "DELETE"
     })
     console.log("in my thunk checking")
     if (response.ok) {
-		dispatch(actionDeleteReview(id));
+        // const data = await response.json();
+        await dispatch(thunkOneBeer(rev.beer_id))
+		dispatch(actionDeleteReview(rev.id));
+
 		return null
 	}
 	else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) return data;
 	}
-	else return { errors: "An error occurred. Please try again." }
+	else return { errors: ["An error occurred. Please try again."] }
 }
 /* ---------- REVIEWS REDUCER ---------- */
 
@@ -123,6 +131,7 @@ const reviewsReducer = (state = initialState, action) => {
             let review = action.review
             // console.log('reducer for one review, review)
             newState.onereview = review
+            newState[review.id] = review
             return newState
         case CREATE_REVIEW:
             let add = action.review

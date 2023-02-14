@@ -106,9 +106,11 @@ def create_review(id):
         Create a review for a beer
     """
     form = ReviewForm()
+    print(form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        print('@@@&!&!&!&!&!&!&!!&!&!&!!&!&!!&!&!&!',request.data)
 
         newReview = Review(
             beer_id=id,

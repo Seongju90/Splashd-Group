@@ -110,12 +110,14 @@ def delete_review(id):
 
     # if the current_userid is user of the review allow delete
     if (userId == review.user_id):
+        return_obj=jsonify({
+            "message": "Successfully deleted the review",
+            "beer_id": review.beer_id
+        })
         db.session.delete(review)
         db.session.commit()
 
-        return jsonify({
-            "message": "Successfully deleted the review"
-        })
+        return return_obj
     else:
         return jsonify({
             "message": "Forbidden, you are not the owner of the review",
