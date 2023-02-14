@@ -19,24 +19,25 @@ def validation_errors_to_error_messages(validation_errors):
 # get all beers
 @beer_routes.route('/all')
 def get_beers():
-    all_beers = Beer.query.all()
-    all = []
-    for beer in all_beers:
-        beer = beer.to_dict()
-        print("beer", beer)
-        reviews = Review.query.filter(Review.beer_id == beer["id"]).all()
-        beer["num_reviews"] = len(reviews)
-        rating = 0
-        for review in reviews:
-            rating += review.rating
-        if len(reviews):
-            beer["avg"] = rating/beer["num_reviews"]
-        else:
-            beer["avg"] = 0
+    beers = Beer.query.all()
+    # all = []
+    # for beer in all_beers:
+    #     beer = beer.to_dict()
+    #     print("beer", beer)
+    #     reviews = Review.query.filter(Review.beer_id == beer["id"]).all()
+    #     beer["num_reviews"] = len(reviews)
+    #     rating = 0
+    #     for review in reviews:
+    #         rating += review.rating
+    #     if len(reviews):
+    #         beer["avg"] = rating/beer["num_reviews"]
+    #     else:
+    #         beer["avg"] = 0
 
-        all.append(beer)
-    # print(all, "&&&&&&&&&&&&&&&&&&&&&&&&&")
-    return {"beers": all}
+    #     all.append(beer)
+    # # print(all, "&&&&&&&&&&&&&&&&&&&&&&&&&")
+    # return {"beers": all}
+    return {'beers':[b.all_info() for b in beers]}
 
 @beer_routes.route('/<int:id>')
 def get_one_beer(id):

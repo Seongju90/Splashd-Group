@@ -42,7 +42,7 @@ export const thunkOneBrewery = (id) => async (dispatch) => {
 		// console.log(data, '!!just came from backend')
 		// console.log('%$%!$#%!$#%!$#%!$#%!$#%!$#%', data)
 		dispatch(oneBrewery(data));
-		
+
 		return null
 	}
 	else if (response.status < 500) {
@@ -50,7 +50,7 @@ export const thunkOneBrewery = (id) => async (dispatch) => {
 		// console.log(data)
 		if (data.errors) return data;
 	}
-	else return { errors: "An error occurred. Please try again." }
+	else return { errors: ["An error occurred. Please try again."] }
 }
 
 export const thunkAllBrewery = () => async (dispatch) => {
@@ -67,7 +67,7 @@ export const thunkAllBrewery = () => async (dispatch) => {
 		const data = await response.json();
 		if (data.errors) return data;
 	}
-	else return { errors: "An error occurred. Please try again." }
+	else return { errors: ["An error occurred. Please try again."] }
 }
 
 export const thunkCreateBrewery = (form) => async (dispatch) => {
@@ -89,7 +89,7 @@ export const thunkCreateBrewery = (form) => async (dispatch) => {
 		// console.log(data, 'ERROR STUFF')
 		if (data.errors) return data;
 	}
-	else return { errors: "An error occurred. Please try again." }
+	else return { errors: ["An error occurred. Please try again."] }
 }
 
 export async function thunkDeleteBrewery(id) {
@@ -111,7 +111,7 @@ export default function reducer(state = initialState, action) {
 		case ADD_BREWERY:
 			let add = action.brewery
 			// console.log(add, 'this is the reducer')
-			newState[add.id]=add
+			newState[add.id] = add
 			return newState
 		case REMOVE_BREWERY:
 			delete newState[action.id]

@@ -7,7 +7,7 @@ import { thunkOneBrewery } from '../../store/brewery';
 import OpenModalButton from '../OpenModalButton';
 // import BreweryFormModal from '../BreweryFormModal';
 import BeerFormModal from '../BeerFormModal'
-
+import BeerEditModal from '../BeerEditModal'
 
 export default function OneBrewery() {
     const dispatch = useDispatch()
@@ -45,10 +45,16 @@ export default function OneBrewery() {
                         alt='previewimageforcard'
                     />
                 </div>
-                {console.log(brewery?.beers)}
-                {brewery?.beers.map((x) => 
+                {brewery?.beers.map((x) =>
+
                     <h1>
-                       Beer {x.id} is {x.name}
+                        BEER ID: {x.id} NAME: {x.name}
+                        {brewery?.owner?.id === user?.id ? (
+                            <OpenModalButton
+                                buttonText="Edit/Delete"
+                                modalComponent={<BeerEditModal beer={x} />}
+                            />
+                        ) : null}
                     </h1>
                 )}
             </h4>
@@ -56,7 +62,7 @@ export default function OneBrewery() {
             <OpenModalButton
                 buttonText="Make a Beer"
                 //   onItemClick={closeMenu}
-                modalComponent={<BeerFormModal id={brewery?.id}/>}
+                modalComponent={<BeerFormModal id={brewery?.id} />}
             />
         </div>
 
