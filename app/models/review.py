@@ -37,7 +37,7 @@ class Review(db.Model):
             'user_id': self.user_id,
             'image': self.image,
             'review_text': self.review_text,
+            'rating': self.rating,
             'user':  self.review_user.to_dict(),
             'beer': self.review_beer.to_dict(),
         }
-        

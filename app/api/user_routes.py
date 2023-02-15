@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User, userbadges, Badge, db
+from app.models import User, userbadges, Badge, db, Review
 from sqlalchemy import text
 
 user_routes = Blueprint('users', __name__)
@@ -64,6 +64,9 @@ def user_reviews(id):
     """
     Route to query all user's reviews
     """
-    user = User.query.get(id).all_info()
+    # user = User.query.get(id).all_info()
+    # return { "Reviews": user['reviews']}
 
-    return { "Reviews": user['reviews']}
+    reviews = Review.query.filter(Review.user_id == id)
+
+    return { "Reviews": [r.all_info() for r in reviews]}
