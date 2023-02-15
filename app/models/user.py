@@ -56,3 +56,8 @@ class User(db.Model, UserMixin):
             'reviews':[b.to_dict() for b in self.user_review],
             'breweries': [b.all_info() for b in self.user_brewery],
         }
+
+    def badge_info(self):
+        return {
+            'badges': [b.id for b in self.user_badges],
+        }
