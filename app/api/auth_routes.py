@@ -14,7 +14,9 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            # errorMessages.append(f'{field} : {error}')
+            # Comment out {field} so that on our forms it only shows message, not the form field
+            errorMessages.append(f'{error}')
     return errorMessages
 
 #api/auth/

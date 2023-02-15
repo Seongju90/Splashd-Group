@@ -93,7 +93,7 @@ export const thunkEditReview = (form, rev) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json()
         dispatch(actionEditReview(data))
-        console.log('in my thunk!!!!!', response)
+        // console.log('in my thunk!!!!!', response)
         return null
     }
     else if (response.status < 500) {

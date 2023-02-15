@@ -23,16 +23,18 @@ export default function EditBeerModal({beer}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        let ab = Number((+abv).toFixed(2))
+
         const beerdata = {
             'name': name,
-            'abv': +abv,
+            'abv': ab,
             'ibu': +ibu,
             'type': type,
             // 'brewery_id': id,
             'beer_logo': logo,
             'description': description
         }
-        console.log(beerdata)
+        // console.log(beerdata)
         const data = await dispatch(thunkEditBeer(
             // {
             //     'name': name,
@@ -84,6 +86,8 @@ export default function EditBeerModal({beer}) {
                     <input
                         type="text"
                         value={name}
+                        pattern='[a-z,A-Z]+'
+                        title="No special characters or numbers"
                         onChange={(e) => setName(e.target.value)}
                         required
                     />
@@ -91,9 +95,10 @@ export default function EditBeerModal({beer}) {
                 <label>
                     ABV
                     <input
-                        type="text"
+                        type="decimal"
                         value={abv}
-
+                        min='3.0'
+                        max='13.0'
                         onChange={(e) => setAbv(e.target.value)}
                         required
                     />
@@ -101,9 +106,10 @@ export default function EditBeerModal({beer}) {
                 <label>
                     IBU
                     <input
-                        type="text"
+                        type="number"
                         value={ibu}
-
+                        min='5'
+                        max='100'
                         onChange={(e) => setIbu(e.target.value)}
                         required
                     />
@@ -157,11 +163,6 @@ export default function EditBeerModal({beer}) {
                         >
                             amurican
                         </option>
-                        <option
-                            value='ErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErErEr'
-                        >
-                            Error
-                        </option>
                     </select>
                 </label>
                 <label>
@@ -169,6 +170,8 @@ export default function EditBeerModal({beer}) {
                     <input
                         type="textarea"
                         value={description}
+                        minLength='5'
+                        maxLength='2000'
                         onChange={(e) => setDescription(e.target.value)}
                         required
                     />
