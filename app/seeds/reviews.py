@@ -10,7 +10,7 @@ def seed_reviews():
         # getting all the users, so that we can assign them as the reviewer
         all_users = User.query.all()
         # deciding how many reviews the single beer will get
-        review_number = randint(1, 20)
+        review_number = randint(1, 5)
         # to ensure we dont have repeated pictures and ratings in the reviews
         review_image_check = []
         rating_check = []

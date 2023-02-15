@@ -8,6 +8,11 @@ from .models import db
 from .models.user import User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.beer_routes import beer_routes
+from .api.brewery_routes import brewery_routes
+from .api.review_routes import review_routes
+from .api.badge_routes import badge_routes
+
 from .seeds import seed_commands
 from .config import Config
 
@@ -29,6 +34,11 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(brewery_routes, url_prefix='/api/brewery')
+app.register_blueprint(beer_routes, url_prefix='/api/beer')
+app.register_blueprint(review_routes, url_prefix='/api/reviews')
+app.register_blueprint(badge_routes, url_prefix='/api/badges')
+
 db.init_app(app)
 Migrate(app, db)
 

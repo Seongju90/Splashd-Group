@@ -29,7 +29,25 @@ class Beer(db.Model):
             'ibu': self.ibu,
             'brewery_id': self.brewery_id,
             'type': self.type,
-            'description': self.description
+            'description': self.description,
+            'beer_logo': self.beer_logo
+        }
+
+    def all_info(self):
+        # List comprehension is passing in information we need into a new K:V when we call this function
+        # badge_post() is located in brewery.py, using it to attach all information to brewery in the beer query
+        return {
+            'id': self.id,
+            'name': self.name,
+            'abv': self.abv,
+            'ibu': self.ibu,
+            'brewery_id': self.brewery_id,
+            'type': self.type,
+            'description': self.description,
+            'beer_logo': self.beer_logo,
+            'brewery': self.beer_brewery.all_info(),
+            'reviews': [rev.to_dict() for rev in self.beer_review],
+            'badges': [badge.to_dict() for badge in self.beer_badge]
         }
 
 # One to Many Relationship

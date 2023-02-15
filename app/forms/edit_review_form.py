@@ -3,13 +3,13 @@ from wtforms import StringField, IntegerField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired, Length, NumberRange
 
 
-class ReviewForm(FlaskForm):
+class EditReviewForm(FlaskForm):
     image = StringField(
         "Image Link",
-        # validators=[
-        #     Length(min=10, max=255, message='Length of image url must be between 10 and 255 characters')
-        # ]
-        )   
+        validators=[
+            #dexwork doesnt need because a review has a optional image
+            # Length(min=10, max=255, message='Length of image url must be between 10 and 255 characters')
+        ])
     review_text = TextAreaField(
         "Review",
         validators=[
@@ -19,7 +19,6 @@ class ReviewForm(FlaskForm):
     rating = IntegerField(
         "Rating",
         validators=[
-            DataRequired(message='Rating is required'),
             NumberRange(min=0, max=5, message='Rating must be between 0 and 5')
         ])
-    submit = SubmitField("Submit Review")
+    submit = SubmitField("Edit Review")

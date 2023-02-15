@@ -15,7 +15,8 @@ class Badge(db.Model):
     # todo:add cascade delete
     badge_beer = db.relationship("Beer", back_populates="beer_badge")
     badge_brewery = db.relationship("Brewery", back_populates="brewery_badge")
-    badge_user = db.relationship("User", secondary=userbadges, back_populates="user_badge")
+    # badge_user = db.relationship("User", secondary=userbadges, back_populates="user_badge")
+    badge_users = db.relationship("User", secondary=userbadges, back_populates="user_badges")
 
 
 
@@ -24,7 +25,28 @@ class Badge(db.Model):
             'id': self.id,
             'beer_id': self.beer_id,
             'brewery_id': self.brewery_id,
-            'user_id': self.user_id,
             'icon': self.icon,
             'description': self.description
+        }
+    def all_info(self):
+        return {
+            'id': self.id,
+            'beer_id': self.beer_id,
+            'brewery_id': self.brewery_id,
+            'icon': self.icon,
+            'description': self.description,
+            'brewery': self.badge_brewery.to_dict(),
+            'users': [u.to_dict() for u in self.badge_users],
+            'beer': self.badge_beer.to_dict(),
+        }
+
+    def create_badge_info(self):
+        return {
+            'id': self.id,
+            'beer_id': self.beer_id,
+            'brewery_id': self.brewery_id,
+            'icon': self.icon,
+            'description': self.description,
+            # 'beer_id': self.badge_beer,
+            # 'brewery_id': self.badge_brewery
         }

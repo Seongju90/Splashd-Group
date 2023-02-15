@@ -11,20 +11,18 @@ function Navigation({ isLoaded }) {
 
 	return (
 		<div>
-			<ul>
-				<li>
+			{/* hey */}
+			<div>
+				<div>
 					<NavLink exact to="/">Home</NavLink>
-				</li>
-				{isLoaded && (
-					<li>
+				</div>
+				{/* {isLoaded && ( */}
+					<div>
 						<ProfileButton user={sessionUser} />
-					</li>
-				)}
-			</ul>
-			<div 
-			onClick={()=>history.push('/test')}
-			style={{marginTop: '70vw', cursor: 'pointer', border: '1px solid black'}}
-			>Testing Page</div>
+					</div>
+				{/* )} */}
+			</div>
+			
 		</div>
 	);
 }
