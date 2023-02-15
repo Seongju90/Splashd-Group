@@ -54,7 +54,16 @@ def user_breweries(id):
     Route to query all users' breweries
     """
     user = User.query.get(id).all_info()
+
     return {"Breweries":user['breweries']}
 
 
+@user_routes.route('/<int:id>/reviews')
+@login_required
+def user_reviews(id):
+    """
+    Route to query all user's reviews
+    """
+    user = User.query.get(id).all_info()
 
+    return { "Reviews": user['reviews']}

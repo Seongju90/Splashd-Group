@@ -6,6 +6,7 @@ const ONE_REVIEW = "review/ONE_REVIEW"
 const CREATE_REVIEW = "review/CREATE_REVIEW"
 const EDIT_REVIEW = "review/EDIT_REVIEW"
 const DELETE_REVIEW = "review/DELETE_REVIEW"
+const MY_REVIEW = "review/MY_REVIEW"
 
 /* ---------- ACTION CREATORS ---------- */
 
@@ -31,13 +32,19 @@ const actionEditReview = (review) => {
 }
 
 const actionDeleteReview = (id) => {
-    console.log(id)
+
     return {
         type: DELETE_REVIEW,
         id
     }
 }
 
+const actionMyReview = (review) => {
+    return {
+        type: MY_REVIEW,
+        review
+    }
+}
 /* ---------- THUNK ACTION CREATORS ---------- */
 
 export const thunkOneReview = (id) => async(dispatch) => {
@@ -121,6 +128,26 @@ export const thunkDeleteReview = (rev) => async (dispatch) => {
 	}
 	else return { errors: ["An error occurred. Please try again."] }
 }
+
+export const thunkMyReviews = (id) => async(dispatch) => {
+    const response = await fetch(`/api/users/${id}/reviews`, {
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
+
+    if (response.ok) {
+        const review = await response.json()
+        dispatch(actionMyReview(review))
+        return null
+    }
+    else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) return data;
+	}
+	else return { errors: ["An error occurred. Please try again."] }
+}
+
 /* ---------- REVIEWS REDUCER ---------- */
 
 const initialState = {}
@@ -141,6 +168,10 @@ const reviewsReducer = (state = initialState, action) => {
         case EDIT_REVIEW:
             let edit = action.review
             newState[edit.id] = edit
+            return newState
+        case MY_REVIEW:
+            // console.log('reducer actionreview', action.review)
+            newState['myreviews'] = action.review.Reviews
             return newState
         case DELETE_REVIEW:
             console.log("reducer", action)
