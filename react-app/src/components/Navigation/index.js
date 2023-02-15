@@ -3,27 +3,26 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
-import './Navigation.css';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
 	const history = useHistory()
 
 	return (
-		<div>
-			{/* hey */}
-			<div>
+		<div id='navcontainer'>
+			{/* {isLoaded && ( */}
+			<div className='navcont navleft'>
+				<div className='homebutton navcont'
+					onClick={() => window.scroll(0, 0) || history.push('/')}
+				>Splashd</div>
+			</div >
+			<div className='navcont navright'>
+				<ProfileButton className='navcont navright' user={sessionUser} />
 				<div>
-					<NavLink exact to="/">Home</NavLink>
 				</div>
-				{/* {isLoaded && ( */}
-					<div>
-						<ProfileButton user={sessionUser} />
-					</div>
-				{/* )} */}
 			</div>
-			
-		</div>
+
+		</div >
 	);
 }
 

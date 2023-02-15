@@ -1,0 +1,37 @@
+@font-face {
+    font-family: "Logo";
+    src: local("logofont"),
+        url("../assets/logofont.ttf") format("truetype");
+}
+
+.profile-dropdown {
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}
+
+.profile-dropdown {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+.homebutton  {
+    cursor: pointer;
+}
+.navcont {
+    height: 100%;
+    font-size: 3vw;
+    font-family: Logo;
+}
+
+#navcontainer {
+    position: fixed;
+    background-color: red;
+    border: 1px solid red;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    height: 5vw;
+}

@@ -25,7 +25,7 @@ function App() {
   const beer = useSelector((state) => state.onebeer)
   console.log(beer)
   return (
-    <>
+    <div id='appjs'>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
 
@@ -59,7 +59,7 @@ function App() {
         </Route>
       </Switch>
       )}
-    </>
+    </div>
   );
 }
 
