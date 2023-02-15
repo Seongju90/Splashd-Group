@@ -5,7 +5,7 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import BreweryFormModal from "../BreweryFormModal";
+// import BreweryFormModal from "../BreweryFormModal";
 import { thunkMyBadges, thunkAllBadges } from "../../store/badge";
 import { thunkMyBrewery } from "../../store/brewery";
 import { thunkMyReviews } from "../../store/review";
@@ -83,11 +83,11 @@ function ProfileButton({ user }) {
           <>
             <div>{user.username}</div>
             <div>{user.name}</div>
-            <OpenModalButton
+            {/* <OpenModalButton
               buttonText="Make a Brewery"
               onItemClick={closeMenu}
               modalComponent={<BreweryFormModal id={user.id} />}
-            />
+            /> */}
             <div>
               <div
 
