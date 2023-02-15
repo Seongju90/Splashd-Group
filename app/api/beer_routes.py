@@ -55,9 +55,12 @@ def get_one_beer(id):
         review["user"] = user.to_dict()
         all.append(review)
     beer["reviews"] = all
-    beer["avg"] = rating/beer["num_reviews"]
     beer["brewery"] = brewery
     # print(beer, "&&&&&&&&&&&&&&&&&&&&&&&&&")
+    if beer["num_reviews"] != 0:
+        beer["avg"] = rating/beer["num_reviews"]
+    else:
+        beer["avg"] = 0
     return beer
 
 @beer_routes.route('/<int:id>/', methods = ['DELETE'])
@@ -123,5 +126,24 @@ def create_review(id):
 
         db.session.add(newReview)
         db.session.commit()
-        return newReview.to_dict()
+
+
+        # check badges
+        user = User.query.get(current_user.id)
+        # when more badges exist for each beer we can have a list of beer badges
+        earned_badges = Badge.query.filter(Badge.beer_id == id).all()
+
+        newReview = newReview.to_dict()
+        newReview['badges_earned'] = []
+
+        for badge in earned_badges:
+            print(badge, "checking if you earned any badges for this beer")
+            if not badge.id in user.badge_info()["badges"]:
+                print("badge earned!!!!!!!!!!!!!!!!!!!!!!")
+                user.user_badges.append(badge)
+                newReview['badges_earned'].append(badge.id)
+
+        db.session.commit()
+
+        return newReview
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

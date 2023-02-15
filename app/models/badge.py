@@ -50,3 +50,9 @@ class Badge(db.Model):
             # 'beer_id': self.badge_beer,
             # 'brewery_id': self.badge_brewery
         }
+
+    def badge_info(self):
+        return{
+            'beer_id': self.beer_id,
+            'id': self.id
+        }
