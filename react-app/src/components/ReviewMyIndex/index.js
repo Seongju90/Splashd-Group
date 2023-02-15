@@ -26,7 +26,18 @@ export default function MyReviews() {
     }
 
     return (
-        <div>
+        <div className="review-main-container">
+            <div className="review-left-container">
+                <div className="review-profile-icon">
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+                <div className="review-user-info">
+
+                </div>
+            </div>
+            <div className="review-right-container-img">
+
+            </div>
         My Reviews
         {myReviews?.length ? myReviews.map(review =>
             <div>Review Id: {review.id} Beer Id: {review.beer_id}
