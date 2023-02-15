@@ -7,7 +7,7 @@ import { thunkOneBrewery } from '../../store/brewery';
 export default function BreweryCard({ brewery, user }) {
     const history = useHistory()
     const dispatch = useDispatch()
-    const { id, name, owner_id, city_state, brewery_type, 
+    const { id, name, owner_id, city_state, brewery_type,
         brewery_logo, beers, owner, badges} = brewery
 
     const handleClickBeer = (beerIDnum) => {
@@ -26,7 +26,7 @@ export default function BreweryCard({ brewery, user }) {
     return  (
 
         <div>
-            <div
+            <div 
                 onClick={handleClickBrewery}
             >
                 <img key={`beerlogo${id}`}
@@ -38,16 +38,16 @@ export default function BreweryCard({ brewery, user }) {
 
             <div >
                 <div>Name: {name}</div>
-               
+
                 <div>City/State:{city_state}</div>
                 <div>Brewery Type: {brewery_type}</div>
-                
+
 
                 {beers.map((x) =>
                 <>
                     <h1>
                         BEER ID: {x.id} NAME: {x.name}
-                       
+
                     </h1>
                         <div
                             onClick={() => handleClickBeer(x.id)}
