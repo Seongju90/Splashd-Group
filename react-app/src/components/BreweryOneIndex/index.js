@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 // import { useHistory, NavLink, Redirect } from 'react-router-dom';
-// import { thunkOneBeer } from '../../store/beer';
+import { thunkOneBeer } from '../../store/beer';
 import { thunkOneBrewery } from '../../store/brewery';
 import OpenModalButton from '../OpenModalButton';
 // import BreweryFormModal from '../BreweryFormModal';
 import BeerFormModal from '../BeerFormModal'
 import BeerEditModal from '../BeerEditModal'
+import BeerCard from '../BeerCard';
+
 
 export default function OneBrewery() {
     const dispatch = useDispatch()
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
     const brewery = useSelector(state => state.brewery.onebrewery)
+    const history = useHistory()
 
     // console.log(beer, props.beer)
     useEffect(() => {
@@ -22,9 +25,10 @@ export default function OneBrewery() {
         //so, we may not need this
     }, []);
     // console.log(myimgs)
-    // const handleBeerClick = () => {
-
-    // }
+    const handleBeerClick = (beerId) => {
+        dispatch(thunkOneBeer(beerId))
+        history.push(`/beer/${beerId}`)
+    }
 
     return (
         <div>
@@ -47,15 +51,15 @@ export default function OneBrewery() {
                 </div>
                 {brewery?.beers.map((x) =>
 
-                    <h1>
-                        BEER ID: {x.id} NAME: {x.name}
+                    <div>
+                        <BeerCard beer={x} />
                         {brewery?.owner?.id === user?.id ? (
                             <OpenModalButton
                                 buttonText="Edit/Delete"
                                 modalComponent={<BeerEditModal beer={x} />}
                             />
                         ) : null}
-                    </h1>
+                    </div>
                 )}
             </h4>
             {brewery?.owner_id === user?.id ? (
