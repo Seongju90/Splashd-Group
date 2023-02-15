@@ -55,9 +55,12 @@ def get_one_beer(id):
         review["user"] = user.to_dict()
         all.append(review)
     beer["reviews"] = all
-    beer["avg"] = rating/beer["num_reviews"]
     beer["brewery"] = brewery
     # print(beer, "&&&&&&&&&&&&&&&&&&&&&&&&&")
+    if beer["num_reviews"] != 0:
+        beer["avg"] = rating/beer["num_reviews"]
+    else:
+        beer["avg"] = 0
     return beer
 
 @beer_routes.route('/<int:id>/', methods = ['DELETE'])
