@@ -19,7 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
 # get all beers
 @beer_routes.route('/all')
 def get_beers():
-    beers = Beer.query.all()
+    beers = Beer.query.limit(20).all()
     # all = []
     # for beer in all_beers:
     #     beer = beer.to_dict()
