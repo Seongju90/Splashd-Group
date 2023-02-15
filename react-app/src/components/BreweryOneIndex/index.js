@@ -29,7 +29,7 @@ export default function OneBrewery() {
     return (
         <div>
             <h1>
-                beer name is {brewery?.name}
+                Brewery name is {brewery?.name}
             </h1>
             <h2>
                 Current user is   {user?.name}
