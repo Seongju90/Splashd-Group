@@ -8,6 +8,10 @@ import SignupFormModal from "../SignupFormModal";
 import BreweryFormModal from "../BreweryFormModal";
 import { thunkMyBadges, thunkAllBadges } from "../../store/badge";
 import { thunkMyBrewery } from "../../store/brewery";
+import { thunkMyReviews } from "../../store/review";
+import { login } from "../../store/session";
+import profile from '../../assets/profile.png'
+
 
 function ProfileButton({ user }) {
   const history = useHistory()
@@ -43,43 +47,64 @@ function ProfileButton({ user }) {
   const handleClick = async () => {
     dispatch(thunkMyBadges(user?.id))
     await dispatch(thunkAllBadges())
+    setShowMenu(false)
     history.push("/user/badges")
-    console.log('%%%%!%!%!%!%!%!%%!%!%!%!!%!%!%!%!%')
+    // console.log('%%%%!%!%!%!%!%!%%!%!%!%!!%!%!%!%!%')
   }
+
   const handleBrew = () => {
     dispatch(thunkMyBrewery(user?.id))
+    setShowMenu(false)
     history.push(`/users/${user.id}/brewery`)
   }
+
+  const handleReview = () => {
+    dispatch(thunkMyReviews(user?.id))
+    setShowMenu(false)
+    history.push(`/users/${user.id}/reviews`)
+  }
+
+  const demoUser = async (e) => {
+    await dispatch(login('demo@gmail.com', 'password'));
+    setShowMenu(false)
+  }
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
+    <div className="profilebutton dropdown">
+      <div onClick={openMenu}
+      >
+        <img src={profile} style={{ border: '1px solid black', cursor: 'pointer',height: '3vw', width: '3vw' }} />
+      </div>
       <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
             <div>{user.username}</div>
-            <div>{user.email}</div>
+            <div>{user.name}</div>
             <OpenModalButton
               buttonText="Make a Brewery"
               onItemClick={closeMenu}
-              modalComponent={<BreweryFormModal />}
+              modalComponent={<BreweryFormModal id={user.id} />}
             />
             <div>
-            <button
-            type='button'
-            onClick={handleClick}>My Badges</button>
+              <div
+
+                onClick={handleClick}>My Badges</div>
             </div>
             <div>
-              <button
-                type='button'
-                onClick={handleBrew}>My Breweries</button>
+              <div
+
+                onClick={handleBrew}>My Breweries</div>
             </div>
             <div>
-              <button onClick={handleLogout}>Log Out</button>
+              <div
+
+                onClick={handleReview}>My Reviews</div>
+            </div>
+            <div>
+              <div onClick={handleLogout}>Log Out</div>
             </div>
           </>
         ) : (
@@ -89,16 +114,18 @@ function ProfileButton({ user }) {
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
-
             <OpenModalButton
               buttonText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
+            <div onClick={demoUser}>
+              Demo User
+            </div>
           </>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

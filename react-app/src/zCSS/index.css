@@ -1,0 +1,11 @@
+/* TODO Add site wide styles */
+body {
+    margin: 0px;
+}
+#app-js {
+    width: 100vw
+}
+
+#all-content {
+    padding-top:5vw
+}

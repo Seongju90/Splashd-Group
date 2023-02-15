@@ -8,7 +8,9 @@ import configureStore from "./store";
 import * as sessionActions from "./store/session";
 import App from "./App";
 
-import "./index.css";
+import "./zCSS/index.css";
+import "./zCSS/nav.css";
+import "./zCSS/modal.css"
 
 const store = configureStore();
 

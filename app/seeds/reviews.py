@@ -65,29 +65,29 @@ def seed_reviews():
             # rating and review section goes here before creation
             reviews = [
                 "The beer was a to bitter for me, but otherwise that was great.3",
-                "Most amazing drink I've had in a while, highly recommended for beer lovers.5"
-                "My friends loved it, but I was not a big fan of it, sorry!1"
-                "Drink was awesome, but the music was too loud it ruined the mood.4"
-                "Great drinks, great food, great friends, what more can I ask for?5"
-                "Drinks were more catered to beer fanatics, not light-weight people like me, very disappointed.1"
-                "For the amount of time I had to wait, the drinks were just so-so, I've had better elsewhere.2"
-                "My beer was flat, it was supposed to be crafted, refund please.1"
-                "Drink was great, would come again, but overpriced.4"
-                "The best drink I've had compared to all the other breweries, keep up the good work!5"
-                "I don't think I wille ever come back to drink from here ever again, worst experience in my life.1"
-                "Friends, family, strangers this place is heaven for beer fanatics.5"
-                "When you thought beer can't get any better, this beer has proven me wrong.5"
-                "Place was packed and loud, drinks were so-so, I will give it another try on a slow day.3"
-                "If I can give you a penny for every drink I had here, you would be a billionare.5"
-                "I feel like the drinks can be better, but at the moment its not up to par.2"
-                "Beer was great, but the bartender was so rude.2"
-                "I will never come back here again, after that horrible service, no matter how great the drinks are!1"
-                "I will love to bring my friends back here again for my birthday because we are a group of beer lovers.5"
-                "I wish they served a variety of beers for casual drinks also, otherwise it was great.4"
-                "Will you ever make a second location near me? I would love to come everyday for the drinks, but its too FAR!5"
-                "The best possible drink with the best possible food, I love life.5"
-                "Please tell me that this drink is a joke, because it taste horrible.1"
-                "Took my parents here for their 70th birthday because they were beer lovers, didn't regret it at all!5"
+                "Most amazing drink I've had in a while, highly recommended for beer lovers.5",
+                "My friends loved it, but I was not a big fan of it, sorry!1",
+                "Drink was awesome, but the music was too loud it ruined the mood.4",
+                "Great drinks, great food, great friends, what more can I ask for?5",
+                "Drinks were more catered to beer fanatics, not light-weight people like me, very disappointed.1",
+                "For the amount of time I had to wait, the drinks were just so-so, I've had better elsewhere.2",
+                "My beer was flat, it was supposed to be crafted, refund please.1",
+                "Drink was great, would come again, but overpriced.4",
+                "The best drink I've had compared to all the other breweries, keep up the good work!5",
+                "I don't think I wille ever come back to drink from here ever again, worst experience in my life.1",
+                "Friends, family, strangers this place is heaven for beer fanatics.5",
+                "When you thought beer can't get any better, this beer has proven me wrong.5",
+                "Place was packed and loud, drinks were so-so, I will give it another try on a slow day.3",
+                "If I can give you a penny for every drink I had here, you would be a billionare.5",
+                "I feel like the drinks can be better, but at the moment its not up to par.2",
+                "Beer was great, but the bartender was so rude.2",
+                "I will never come back here again, after that horrible service, no matter how great the drinks are!1",
+                "I will love to bring my friends back here again for my birthday because we are a group of beer lovers.5",
+                "I wish they served a variety of beers for casual drinks also, otherwise it was great.4",
+                "Will you ever make a second location near me? I would love to come everyday for the drinks, but its too FAR!5",
+                "The best possible drink with the best possible food, I love life.5",
+                "Please tell me that this drink is a joke, because it taste horrible.1",
+                "Took my parents here for their 70th birthday because they were beer lovers, didn't regret it at all!5",
                 "Beer tastes great, would love to take some home with me.4"
             ]
             review_id = randint(0, len(reviews)-1)

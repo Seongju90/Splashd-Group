@@ -23,8 +23,8 @@ def seed_users():
         i+=1
 
     demoUser = User(
-            first_name= "Demo",
-            last_name= "User",
+            first_name= "John",
+            last_name= "Doe",
             email="demo@gmail.com",
             password= 'password',
             age=33,

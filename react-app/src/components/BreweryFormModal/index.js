@@ -1,24 +1,28 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { thunkCreateBrewery } from "../../store/brewery";
+import { thunkCreateBrewery, thunkMyBrewery } from "../../store/brewery";
 
 
-export default function BreweryFormModal() {
+export default function BreweryFormModal({id}) {
     const dispatch = useDispatch();
     const [name, setName] = useState("");
-    const [breweryType, setBreweryType] = useState("");
+    const [breweryType, setBreweryType] = useState("Regional Brewery");
     const [breweryLogo, setBreweryLogo] = useState("");
-    const [cityState, setCityState] = useState("");
+    const [city, setCity] = useState("");
+    const [states, setStates] = useState("")
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('name', name,
-            'brewery_type', breweryType,
-            'brewery_logo', breweryLogo,
-            'city_state', cityState)
+        // console.log('name', name,
+        //     'brewery_type', breweryType,
+        //     'brewery_logo', breweryLogo,
+        //     'city_state', cityState)
+
+        const cityState = city + ", " + states
+
         const data = await dispatch(thunkCreateBrewery(
             {
                 'name': name,
@@ -30,6 +34,7 @@ export default function BreweryFormModal() {
         if (data) {
             setErrors(data.errors);
         } else {
+            await dispatch(thunkMyBrewery(id))
             closeModal();
         }
     };
@@ -48,23 +53,38 @@ export default function BreweryFormModal() {
                     <input
                         type="text"
                         value={name}
+                        minLength='2'
+                        maxLength='255'
                         onChange={(e) => setName(e.target.value)}
                         required
                     />
                 </label>
                 <label>
-                    Location (city and state)
+                    City
                     <input
                         type="text"
-                        value={cityState}
-                        onChange={(e) => setCityState(e.target.value)}
+                        pattern='[a-z,A-Z,\s]+'
+                        title="City must only be in alphabetical letters"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    State
+                    <input
+                        type="text"
+                        value={states}
+                        maxLength='2'
+                        pattern='^[A-Z]{2}$'
+                        title="State must be 2 capital letter"
+                        onChange={(e) => setStates(e.target.value)}
                         required
                     />
                 </label>
                 <label>
                     Type
                     <select
-
                         onChange={(e) => setBreweryType(e.target.value)}
                         required
                     >
@@ -81,11 +101,6 @@ export default function BreweryFormModal() {
                             value="International Brewery"
                         >
                             Int
-                        </option>
-                        <option
-                            value='Regional Brewery'
-                        >
-                            Regional
                         </option>
                         <option
                             value='Error Please'
