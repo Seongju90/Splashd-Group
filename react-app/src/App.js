@@ -27,6 +27,7 @@ function App() {
   return (
     <div id='app-js'>
       <Navigation isLoaded={isLoaded} />
+      {/* all-content will shift entire content down with top padding to stop nav bar overlap */}
       <div id='all-content' >
       {isLoaded && (
 
