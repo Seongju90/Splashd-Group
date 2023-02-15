@@ -89,26 +89,26 @@ beers_logo = [
     'https://assets.untappd.com/site/beer_logos/beer-4130044_ddd9e_sm.jpeg',
     'https://assets.untappd.com/site/beer_logos/beer-1897220_cda6e_sm.jpeg',
     'https://assets.untappd.com/site/beer_logos/beer-4667158_1ae25_sm.jpeg',
-    'https://assets.untappd.com/site/beer_logos/beer-7747_34841_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-5519_45b43_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-128341_9b8e3_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-1458464_241ef_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-860861_3dca8_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-334024_7f8da_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-176609_73e02_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-494653_05eb8_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-austinBeerworksPearlSnap.jpg'
-    'https://assets.untappd.com/site/beer_logos/beer-1712766_b340c_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-183964_8b455_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-17961_54090_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-36416_f2928_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-1113317_194ef_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-2679539_918ac_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-1712765_ef61f_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-3155602_ebc8a_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-1204180_9f3c5_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-2490071_55d1a_sm.jpeg'
-    'https://assets.untappd.com/site/beer_logos/beer-1622046_e1777_sm.jpeg'
+    'https://assets.untappd.com/site/beer_logos/beer-7747_34841_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-5519_45b43_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-128341_9b8e3_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-1458464_241ef_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-860861_3dca8_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-334024_7f8da_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-176609_73e02_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-494653_05eb8_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-austinBeerworksPearlSnap.jpg',
+    'https://assets.untappd.com/site/beer_logos/beer-1712766_b340c_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-183964_8b455_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-17961_54090_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-36416_f2928_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-1113317_194ef_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-2679539_918ac_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-1712765_ef61f_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-3155602_ebc8a_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-1204180_9f3c5_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-2490071_55d1a_sm.jpeg',
+    'https://assets.untappd.com/site/beer_logos/beer-1622046_e1777_sm.jpeg',
 ]
 
 # test = ['hello', 'world', 'bye', 'planet']
