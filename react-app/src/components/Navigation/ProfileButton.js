@@ -10,7 +10,7 @@ import { thunkMyBadges, thunkAllBadges } from "../../store/badge";
 import { thunkMyBrewery } from "../../store/brewery";
 import { thunkMyReviews } from "../../store/review";
 import { login } from "../../store/session";
-
+import profile from '../../assets/profile.png'
 
 
 function ProfileButton({ user }) {
@@ -73,37 +73,38 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
+    <div className="profilebutton dropdown">
+      <div onClick={openMenu}
+      >
+        <img src={profile} style={{ border: '1px solid black', cursor: 'pointer',height: '3vw', width: '3vw' }} />
+      </div>
       <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
             <div>{user.username}</div>
-            <div>{user.email}</div>
+            <div>{user.name}</div>
             <OpenModalButton
               buttonText="Make a Brewery"
               onItemClick={closeMenu}
-              modalComponent={<BreweryFormModal id={user.id}/>}
+              modalComponent={<BreweryFormModal id={user.id} />}
             />
             <div>
-            <button
-            type='button'
-            onClick={handleClick}>My Badges</button>
+              <div
+
+                onClick={handleClick}>My Badges</div>
             </div>
             <div>
-              <button
-                type='button'
-                onClick={handleBrew}>My Breweries</button>
+              <div
+
+                onClick={handleBrew}>My Breweries</div>
             </div>
             <div>
-              <button
-                type='button'
-                onClick={handleReview}>My Reviews</button>
+              <div
+
+                onClick={handleReview}>My Reviews</div>
             </div>
             <div>
-              <button onClick={handleLogout}>Log Out</button>
+              <div onClick={handleLogout}>Log Out</div>
             </div>
           </>
         ) : (
@@ -118,13 +119,13 @@ function ProfileButton({ user }) {
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
-            <button onClick={demoUser}>
+            <div onClick={demoUser}>
               Demo User
-            </button>
+            </div>
           </>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
