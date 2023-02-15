@@ -45,7 +45,7 @@ beers_type = [
 ]
 
 beers_description = [
-    "This beer is the real McCoy. Barrel aged and crammed with coffee, none other will stand in its way. Sought out for being delicious, it is notoriously difficult to track down. If you can find one, shoot to kill, because it is definitely wanted... dead or alive.",
+    "This beer is the real McCoy. Barrel aged and crammed with coffee, none other will stand in its way. Sought out for being delicious, it is notoriously difficult to track down. If you can find one, shoot to wanted... dead or alive.",
     "Intense aromatics of espresso and maple syrup lead into bourbon drenched maple candy and chocolate brownies on the palate. The culmination of everything one would want on a chilly morning.",
     "The color is derived from the use of caramel and crystal malt additions, which are roasted to provide amber beers with the color, body and flavor many beer fans have come to appreciate.",
     "Beer showcases a medium-high to high malt character with medium to low caramel character derived from the use of roasted crystal malts.",
@@ -59,9 +59,9 @@ beers_description = [
     "Made with at least 50 percent wheat malt, this full-bodied beer features bready and candy flavors, and finishes with a great deal of malty sweetness.",
     " These beers may be oak-aged and sometimes have small amounts of darker malts added.",
     "Characterized by floral, fruity, citrus-like, piney, resinous American hops, the American pale ale is a medium-bodied beer with low to medium caramel, and carries with it a toasted maltiness.",
-    "This is one of the most food-friendly styles to enjoy, since the pale ale works wonderfully with lighter fare such as salads and chicken, but can still stand up to a hearty bowl of chili; a variety of different cheeses, including cheddar; seafood, like steamed clams or fish, and even desserts.",
-    "The ales affinity to food can be attributed to the simplicity of its ingredients, which include toasty pale malt, a clean fermenting ale beer yeast, and the counterbalance of American hops to help tease out the flavor or cleanse the palate, preparing you for another bite.",
-    "Because of its alcoholic strength, it may include very low to low complex alcohol flavors and/or lager fruitiness such as berries, grapes and plums (but not banana; ale-like fruitiness from warm-temperature fermentation is not appropriate). This style has the malt flavors of a brown porter and the roast of a schwarzbier, but is bigger in alcohol and body.",
+    "This is one of the most food-friendly styles to enjoy, since the pale ale works wonderfully with lighter fare such as salads and chicken, but can still stand up to a hearty bowl of chili; a variety of different cheeses, and even desserts.",
+    "The ales affinity to food can be attributed to the simplicity of its ingredients, which include toasty pale malt, a clean fermenting ale beer yeast, and the counterbalance of American hops to help tease out preparing you for another bite.",
+    "Because of its alcoholic strength, it may include very low to low complex alcohol flavors and/or lager fruitiness such as berries, grapes and plums (but not banana; ale-like fruitiness from warm-temperature fermentation is not appropriate)",
     "The ale is typically easy-drinking, with a low but pleasing hop bitterness."
     "This is a light- to medium-bodied ale, with a low malt aroma that has a spiced and sometimes fruity-ester character. Sugar is sometimes added to lighten the perceived body.",
     "This style is medium in sweetness and not as bitter as Belgian-style tripels or golden strong ales. It is usually brilliantly clear. The overall impression is balance between light sweetness, spice and low to medium fruity ester flavors.",
