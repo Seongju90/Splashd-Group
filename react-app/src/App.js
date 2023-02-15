@@ -12,6 +12,7 @@ import ManyBeers from "./components/BeerManyIndex";
 import OneBrewery from "./components/BreweryOneIndex";
 import MyBadges from "./components/BadgeMyIndex";
 import MyBreweries from "./components/BreweryMyIndex";
+import MyReviews from "./components/ReviewMyIndex";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,8 +20,8 @@ function App() {
   useEffect(() => {
     dispatch(authenticate())
     .then(() => setIsLoaded(true));
-  }, []);
-  // [dispatch]);
+  }, [dispatch]);
+
   const beer = useSelector((state) => state.onebeer)
   console.log(beer)
   return (
@@ -47,7 +48,10 @@ function App() {
         <Route path='/users/:id/brewery'>
           <MyBreweries/>
         </Route>
-        <Route path="/">
+        <Route path='/users/:id/reviews'>
+          <MyReviews/>
+        </Route>
+        <Route exact path="/">
           <ManyBeers />
         </Route>
         <Route>

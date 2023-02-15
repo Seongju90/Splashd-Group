@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkCreateBadge } from "../../store/badge";
-import { useParams } from "react-router-dom";
+
 
 // todo: edit form for new badges
 export default function BadgeFormModal() {

@@ -8,6 +8,10 @@ import SignupFormModal from "../SignupFormModal";
 import BreweryFormModal from "../BreweryFormModal";
 import { thunkMyBadges, thunkAllBadges } from "../../store/badge";
 import { thunkMyBrewery } from "../../store/brewery";
+import { thunkMyReviews } from "../../store/review";
+import { login } from "../../store/session";
+
+
 
 function ProfileButton({ user }) {
   const history = useHistory()
@@ -43,13 +47,28 @@ function ProfileButton({ user }) {
   const handleClick = async () => {
     dispatch(thunkMyBadges(user?.id))
     await dispatch(thunkAllBadges())
+    setShowMenu(false)
     history.push("/user/badges")
-    console.log('%%%%!%!%!%!%!%!%%!%!%!%!!%!%!%!%!%')
+    // console.log('%%%%!%!%!%!%!%!%%!%!%!%!!%!%!%!%!%')
   }
+
   const handleBrew = () => {
     dispatch(thunkMyBrewery(user?.id))
+    setShowMenu(false)
     history.push(`/users/${user.id}/brewery`)
   }
+
+  const handleReview = () => {
+    dispatch(thunkMyReviews(user?.id))
+    setShowMenu(false)
+    history.push(`/users/${user.id}/reviews`)
+  }
+
+  const demoUser = async (e) => {
+    await dispatch(login('demo@gmail.com', 'password'));
+    setShowMenu(false)
+  }
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
@@ -66,7 +85,7 @@ function ProfileButton({ user }) {
             <OpenModalButton
               buttonText="Make a Brewery"
               onItemClick={closeMenu}
-              modalComponent={<BreweryFormModal />}
+              modalComponent={<BreweryFormModal id={user.id}/>}
             />
             <div>
             <button
@@ -79,6 +98,11 @@ function ProfileButton({ user }) {
                 onClick={handleBrew}>My Breweries</button>
             </div>
             <div>
+              <button
+                type='button'
+                onClick={handleReview}>My Reviews</button>
+            </div>
+            <div>
               <button onClick={handleLogout}>Log Out</button>
             </div>
           </>
@@ -89,12 +113,14 @@ function ProfileButton({ user }) {
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
-
             <OpenModalButton
               buttonText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
+            <button onClick={demoUser}>
+              Demo User
+            </button>
           </>
         )}
       </div>
