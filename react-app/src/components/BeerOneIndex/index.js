@@ -58,9 +58,11 @@ export default function OneBeer(props) {
                 )}
             </div>
             <div>
-            <button
+            <div
+            className='div-button push-button'
                onClick={handleClick }
-                   >Check Out The Brewery</button>
+                   >Check Out The Brewery
+            </div>
             </div>
 
                 {beer?.brewery.owner_id === user?.id ? (
