@@ -2,6 +2,10 @@
 body {
     margin: 0px;
 }
-#appjs {
+#app-js {
     width: 100vw
+}
+
+#all-content {
+    padding-top:5vw
 }
