@@ -3,9 +3,19 @@
     src: local("logofont"),
         url("../assets/logofont.ttf") format("truetype");
 }
+.nameandemail:hover {
+cursor: default;
+
+}
+#therest> div:hover{
+    color: rgb(203, 203, 203);
+    cursor: pointer;
+}
+
 
 .profile-dropdown {
     position: absolute;
+    
 }
 
 .hidden {
@@ -15,7 +25,6 @@
 .profile-dropdown {
     background-color: black;
     color: white;
-    cursor: pointer;
 }
 .homebutton  {
     cursor: pointer;
@@ -25,7 +34,9 @@
     font-size: 3vw;
     font-family: Logo;
 }
-
+#usernamedropdow {
+    border-bottom: 1px solid red;
+}
 #navcontainer {
     position: fixed;
     background-color: red;
