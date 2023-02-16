@@ -68,7 +68,7 @@ export default function BeerFormModal({ id }) {
                     type="text"
                     value={name}
                     pattern='[a-z,A-Z,\s]+'
-                    // 
+                    //
                     title="No special characters or numbers"
                     onChange={(e) => setName(e.target.value)}
                     required

@@ -25,7 +25,7 @@ function ReviewFormModal({ id }) {
             {
                 "image": url,
                 "review_text": review,
-                "rating": rating
+                "rating": Number(rating)
             }, id
         ))
 
