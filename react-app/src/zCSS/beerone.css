@@ -119,9 +119,9 @@
     align-items:center;
 
 }
-.modal-button{
+/* .modal-button{
     visibility: hidden;
-}
+} */
 
 .checkin:hover{
     cursor: pointer;
@@ -141,9 +141,13 @@
     border-right: 0.5px rgba(214, 205, 205, 0.5) solid;
 }
 
-
+#brewLink {
+    color: blue;
+    text-decoration: underline;   
+}
 #brewLink:hover{
     cursor: pointer;
+    color: rgb(2, 2, 182);
 }
 
 .check{
