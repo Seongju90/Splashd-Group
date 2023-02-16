@@ -61,8 +61,9 @@ export default function OneBeer(props) {
             <div className="bottom">
                 <div className='description'>{beer?.description}</div>
                 <div title="checkin this beer" className='checkin'>
-                    <img className="check" src={checkicon}/>
+                    {/* <img className="check" src={checkicon}/> */}
                         <OpenModalButton
+                            buttonText={'Check-In this beer!'}
                             modalComponent={<ReviewFormModal id={beer?.id} />}
                         />
                 </div>
