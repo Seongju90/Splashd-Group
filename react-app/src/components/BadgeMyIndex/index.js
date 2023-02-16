@@ -19,7 +19,7 @@ export default function MyBadges() {
     const check = []
 
     return (
-        <div>
+        <div className='badge-container'>
             <>
 
                 {mybadges?.length ? mybadges.map(badge =>
