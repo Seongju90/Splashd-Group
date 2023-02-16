@@ -56,10 +56,15 @@ export default function EditReviewModal({rev}) {
     return (
         <div className="modal-whole">
 			<div className="modal-header">
+				<div className="modal-title">Edit Your Review</div>
+                <div className="error-cont">
+                    {errors.map((error) => (
+                        <div classname='error-message'>{error}</div>
+                    ))}
+                </div>
                 <div className="modal-exit"
                     onClick={() => closeModal()}
                 >X</div>
-				<div className="modal-title">Edit Your Review</div>
 			</div>
 			<form className="modal-form" 
             onSubmit={handleSubmit}>

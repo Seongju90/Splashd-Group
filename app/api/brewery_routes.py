@@ -11,7 +11,7 @@ brewery_routes = Blueprint('brewery', __name__)
 # update brewery route
 @brewery_routes.route('/<int:id>', methods=['PUT'])
 @login_required
-def editBeer(id):
+def I_believe_brew_can_change(id):
     # print('asdkjasdjkasda')
     form = BreweryForm()
     form['csrf_token'].data = request.cookies['csrf_token']

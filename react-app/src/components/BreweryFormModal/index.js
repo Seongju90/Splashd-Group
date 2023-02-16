@@ -4,7 +4,7 @@ import { useModal } from "../../context/Modal";
 import { thunkCreateBrewery, thunkMyBrewery } from "../../store/brewery";
 
 
-export default function BreweryFormModal({id}) {
+export default function BreweryFormModal({ id }) {
     const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [breweryType, setBreweryType] = useState("Regional Brewery");
@@ -16,13 +16,7 @@ export default function BreweryFormModal({id}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log('name', name,
-        //     'brewery_type', breweryType,
-        //     'brewery_logo', breweryLogo,
-        //     'city_state', cityState)
-
         const cityState = city + ", " + states
-
         const data = await dispatch(thunkCreateBrewery(
             {
                 'name': name,
@@ -41,21 +35,25 @@ export default function BreweryFormModal({id}) {
 
     return (
         <div className="modal-whole">
-			<div className="modal-header">
+            <div className="modal-header">
+                <div className="modal-title">
+                    Make Your Brewery!
+                </div>
+                <div className="error-cont">
+                    {errors.map((error) => (
+                        <div classname='error-message'>{error}</div>
+                    ))}
+                </div>
                 <div className="modal-exit"
                     onClick={() => closeModal()}
-                >X</div>
-				<div className="modal-title">Make Your Brewery!</div>
-			</div>
-			<form className="modal-form" 
-            onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
+                >
+                    X
+                </div>
+            </div>
+            <form className="modal-form"
+                onSubmit={handleSubmit}>
                 <label>
-                    name
+                    Name
                     <input
                         type="text"
                         value={name}
@@ -107,11 +105,6 @@ export default function BreweryFormModal({id}) {
                             value="International Brewery"
                         >
                             Int
-                        </option>
-                        <option
-                            value='Error Please'
-                        >
-                            Error
                         </option>
                     </select>
                 </label>

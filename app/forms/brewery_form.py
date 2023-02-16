@@ -3,13 +3,13 @@ from wtforms import StringField, IntegerField, SelectField, SubmitField
 from wtforms.validators import DataRequired, Length, NumberRange
 
 #if it works use this, but if not, put validations on front end
-def validate_city_state(form, field):
-    state = field.data[-2:]
-    comma = field.data[-4]
-    if (state.isupper() == False or state.isalpha() == False):
-        raise ValidationError('City, State Format Must Be: City, NY')
-    if (comma != ','):
-        raise ValidationError('City, State Format Must Be: City, NY')
+# def validate_city_state(form, field):
+#     state = field.data[-2:]
+#     comma = field.data[-4]
+#     if (state.isupper() == False or state.isalpha() == False):
+#         raise ValidationError('City, State Format Must Be: City, NY')
+#     if (comma != ','):
+#         raise ValidationError('City, State Format Must Be: City, NY')
 
 
 class BreweryForm(FlaskForm):
@@ -17,13 +17,13 @@ class BreweryForm(FlaskForm):
         "Brewery Name",
         validators = [
             DataRequired(message='Brewery Name is required'),
-            Length(min=5, max=255, message='Brewery Name must be between 5 and 255 characters')
+            Length(min=5, max=255, message='Name must be 5 to 255 characters')
         ])
     city_state = StringField(
         "City/State", 
         validators=[
             DataRequired(message='City and/or State required'), 
-            Length(min=2, max=255, message='City and State information must be between 255 characters'),
+            Length(min=2, max=255, message='City is too long'),
             # validate_city_state
         ])
     brewery_type = SelectField(

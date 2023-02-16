@@ -27,27 +27,7 @@ function ReviewFormModal({ id }) {
                 "review_text": review,
                 "rating": rating
             }, id
-            // we will add the beerId here to send to our thunk
         ))
-
-        // front-end validations
-        // if (!review) error.push("Review is required")
-        // if (!rating) error.push("Rating input is required")
-        // if (rating === 0 || rating > 5) error.push("Rating can only be from 1 to 5")
-
-        // Url validations
-        // const splitUrl = imageUrl.split(".")
-        // const validImageTypes = ["png", "jpeg", "jpg"]
-        // const validUrl = splitUrl.some(urlString => validImageTypes.includes(urlString))
-
-        // if (validUrl.length <= 10 || validUrl > 255) errors.push("Length of valid url must be between 10 and 255 characters")
-
-        // if (!validUrl) {
-        //     error.push("Images must end with png, jpeg, or jpg format")
-        // }
-
-        // setErrors(error)
-        // if (error.length) return;
 
         if (data) {
             setErrors(data.errors);
@@ -60,9 +40,9 @@ function ReviewFormModal({ id }) {
         <div className="modal-whole">
             <div className="modal-header">
                 <div className="modal-title">Check-In</div>
-                <div>
-                    {errors.map((error, idx) => (
-                        <>{error}</>
+                <div className="error-cont">
+                    {errors.map((error) => (
+                        <div classname='error-message'>{error}</div>
                     ))}
                 </div>
                 <div className="modal-exit"
@@ -94,7 +74,7 @@ function ReviewFormModal({ id }) {
                 </div>
 
                 <div>
-                   
+
                     <input
                         type="range"
                         value={rating}
@@ -106,7 +86,7 @@ function ReviewFormModal({ id }) {
 
                         onChange={(e) => setRating(e.target.value)}
                     />
-                     Rating:{rating}
+                    Rating:{rating}
                 </div>
 
                 <button type="submit">Submit a Review</button>

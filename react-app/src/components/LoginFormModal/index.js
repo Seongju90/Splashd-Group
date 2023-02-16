@@ -22,19 +22,23 @@ function LoginFormModal() {
 
   return (
     <div className="modal-whole">
-			<div className="modal-header">
+      <div className="modal-header">
+        <div className="modal-title">
+          Login
+        </div>
+        <div className="error-cont">
+          {errors.map((error) => (
+            <div classname='error-message'>{error}</div>
+          ))}
+        </div>
         <div className="modal-exit"
           onClick={() => closeModal()}
-        >X</div>
-				<div className="modal-title">Login</div>
-			</div>
-			<form className="modal-form" 
-            onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
+        >
+          X
+        </div>
+      </div>
+      <form className="modal-form"
+        onSubmit={handleSubmit}>
         <label>
           Email
           <input

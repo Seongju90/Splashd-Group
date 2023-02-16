@@ -14,8 +14,11 @@ class EditReviewForm(FlaskForm):
         "Review",
         validators=[
             DataRequired(message='Review is required'),
-            Length(min=10, max=2000, message='Review length must be between 10 and 2000 letters')
-        ])
+             Length(min= 5, message= 'Review is too short'),
+            Length(max=2000, message='Review cant exceed 2000 characters')
+            ]),
+    
+       
     rating = IntegerField(
         "Rating",
         validators=[
