@@ -7,5 +7,6 @@ body {
 }
 
 #all-content {
-    padding-top:5vw
+    padding-top:5vw;
+    background-color: whitesmoke;
 }

@@ -13,6 +13,7 @@ export default function MyReviews() {
     let userId = user?.id
 
     let myReviews = useSelector(state =>  state.reviews?.myreviews)
+    const beer_list = useSelector(state => state.beer )
 
     useEffect(() => {
         dispatch(thunkMyReviews(userId))
@@ -22,7 +23,7 @@ export default function MyReviews() {
         <div className="my-reviews-main-container">
             {myReviews?.length ? myReviews.map(review =>
             // change location prop to truthy value to get rid of beer info on ReviewCard
-                <ReviewCard username={user?.username} review={review} location={0}/>
+                <ReviewCard beer={review.beer} username={user?.username} review={review} location={0}/>
             ) : null}
         </div>
     )
