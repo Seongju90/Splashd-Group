@@ -3,6 +3,7 @@ import { thunkOneBeer } from '../../store/beer';
 import { useDispatch } from 'react-redux';
 import { BeerCard } from '../BeerCard'
 import { thunkOneBrewery } from '../../store/brewery';
+import '../../zCSS/brewerycard.css'
 
 export default function BreweryCard({ brewery, user }) {
     const history = useHistory()
@@ -24,19 +25,21 @@ export default function BreweryCard({ brewery, user }) {
     }
     // console.log(beer)
     return  (
-
         <div>
-            <div 
+
+
+            <div>
+                <div 
                 onClick={handleClickBrewery}
-            >
+                >
                 <img key={`beerlogo${id}`}
                     src={`${brewery_logo}`}
                     alt='previewimageforcard'
-                />
+                    />
 
-            </div>
+                </div>
 
-            <div >
+                <div >
                 <div>Name: {name}</div>
 
                 <div>City/State:{city_state}</div>
@@ -51,7 +54,7 @@ export default function BreweryCard({ brewery, user }) {
                     </h1>
                         <div
                             onClick={() => handleClickBeer(x.id)}
-                        >
+                            >
                             {/* <img key={`beerlogo${x.id}`}
                                 src={`${x.beer_logo}`}
                                 alt='previewimageforcard'
@@ -63,8 +66,9 @@ export default function BreweryCard({ brewery, user }) {
                 )}
 
 
-            </div>
-        </div >
+                </div>
+            </div >
+        </div>
 
     )
 
