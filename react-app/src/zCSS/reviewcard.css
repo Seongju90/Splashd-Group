@@ -17,6 +17,7 @@
    border-radius: 4px;
 }
 
+
 .review-left-container {
     /* display: grid;
     grid-template-rows: repeat(3, 1fr); */
@@ -140,4 +141,8 @@
 .review-navigate-button:hover span:after {
     opacity: 1;
     right: 0;
+}
+
+.button:hover{
+    cursor: pointer;
 }

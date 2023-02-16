@@ -67,7 +67,7 @@ export const thunkOneReview = (id) => async(dispatch) => {
 }
 
 export const thunkCreateReview = (form, id) => async(dispatch) => {
-    console.log('asdasdasdwwadw', id)
+    // console.log('asdasdasdwwadw', id)
     const response = await fetch(`/api/beer/${id}/review`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
@@ -174,7 +174,7 @@ const reviewsReducer = (state = initialState, action) => {
             newState['myreviews'] = action.review.Reviews
             return newState
         case DELETE_REVIEW:
-            console.log("reducer", action)
+            // console.log("reducer", action)
             delete newState[action.id]
             return newState
         default:

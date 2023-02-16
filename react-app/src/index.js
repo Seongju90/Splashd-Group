@@ -11,6 +11,8 @@ import App from "./App";
 import "./zCSS/index.css";
 import "./zCSS/nav.css";
 import "./zCSS/modal.css"
+import "./zCSS/brewerycard.css"
+import "./zCSS/mybadge.css"
 
 const store = configureStore();
 
