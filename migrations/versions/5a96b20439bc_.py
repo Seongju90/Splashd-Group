@@ -8,9 +8,9 @@ Create Date: 2023-02-10 16:19:09.259062
 from alembic import op
 import sqlalchemy as sa
 import os
+from datetime import datetime
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
-
 # revision identifiers, used by Alembic.
 revision = 'ffdc0a98111c'
 down_revision = None
@@ -28,6 +28,8 @@ def upgrade():
     sa.Column('first_name', sa.String(length=100), nullable=False),
     sa.Column('last_name', sa.String(length=100), nullable=False),
     sa.Column('age', sa.Integer(), nullable=False),
+    sa.Column('profile_pic',sa.String(length=255), nullable=True),
+    sa.Column('created', sa.DateTime(), default=datetime.now()),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
@@ -42,6 +44,9 @@ def upgrade():
     sa.Column('city_state', sa.String(length=255), nullable=False),
     sa.Column('brewery_type', sa.String(length=255), nullable=False),
     sa.Column('brewery_logo', sa.String(length=255), nullable=False),
+    sa.Column('description', sa.Text(), nullable=False),
+    sa.Column('created', sa.DateTime(), default=datetime.now()),
+
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('brewery_logo')
@@ -59,6 +64,8 @@ def upgrade():
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('beer_logo', sa.String(length=255), nullable=False),
     sa.ForeignKeyConstraint(['brewery_id'], ['breweries.id'], ),
+    sa.Column('created', sa.DateTime(), default=datetime.now()),
+
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
@@ -72,6 +79,8 @@ def upgrade():
     sa.Column('description', sa.Text(), nullable=False),
     sa.ForeignKeyConstraint(['beer_id'], ['beers.id'], ),
     sa.ForeignKeyConstraint(['brewery_id'], ['breweries.id'], ),
+    sa.Column('created', sa.DateTime(), default=datetime.now()),
+
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
@@ -84,6 +93,8 @@ def upgrade():
     sa.Column('image', sa.String(length=255), nullable=True),
     sa.Column('review_text', sa.Text(), nullable=False),
     sa.Column('rating', sa.Integer(), nullable=False),
+    sa.Column('created', sa.DateTime(), default=datetime.now()),
+
     sa.ForeignKeyConstraint(['beer_id'], ['beers.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

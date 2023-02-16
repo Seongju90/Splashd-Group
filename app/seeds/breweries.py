@@ -100,9 +100,33 @@ def seed_breweries():
         "Home-brewery",
         "International Brewery"
     ]
+    description = [
+    "A significant portion of Europe's oldest alcoholic beverage companies were first the in-house brand of a small pub, as they began to offer specialized beverages.",
+    "The brewer sells to a wholesaler who sells to a retailer who sells to the consumer.",
+    "A brewpub is a hybrid between a restaurant and a brewery.",
+    "A taproom brewery is similar to a brewpub in that it sells 25% or more of its beer on-site.",
+    "The most basic identifier to know when it comes to breweries is whether or not they are independent.",
+    " There have been a few changes to the benchmark of what defines small breweries vs. large breweries, which altered the definition of what it means to be independent",
+    "As of 2019, more than 4,000 craft brewers are using the seal to differentiate themselves and highlight their quality.",
+    "This group represents more than 85% of the volume of craft beer produced in the United States.",
+    "Breweries of this scale produce far smaller amounts of beer as compared to their large-scale corporate counterparts. ",
+    "The most pervasive one is likely that craft beers are all powerfully distinct and possibly overwhelming in flavor.",
+    "Many people believe you can always distinguish a craft beer from one produced by a macrobrewery, with the latter having a weaker and more bland flavor.",
+    "You may have noticed that mass-produced beers are often the same shade of watery yellow.",
+    "The specific gravity of wort (unfermented beer) before fermentation. A measure of the total amount of solids that are dissolved in the wort",
+    "The specific gravity of a beer as measured when fermentation is complete (when all desired fermentable sugars",
+    "A measurement of the alcohol content in terms of the percentage volume of alcohol",
+    "Our Portland brewery consists of a 15 barrel brew house, six 30 barrel fermenters, two 15 barrel fermenters",
+    "Our Kittery brewery is used to brew experimental and small batch beer on our pilot system",
+    "Outside of Maine we have regular distribution in New Hampshire through Vacationland Distributors.",
+    "The varying aspects of the brewing process and brewer's personal touches and intent add the final notes that make each craft beer unique.",
+    "At Tavern we have broken out 7 major flavor profiles of craft beer.",
+    " Over the past 25 years, we've carried this same spirit in the way we brew our beer - shaking up classic styles",
+    "We opened our doors in 1996 when bold art and music defined Seattle.",
+    "Come chase down the rabbit hole with us."
 
+]
     allusers = User.query.all()
-
     # looping
     for b in brewery_name:
         new_addition = Brewery(
@@ -115,6 +139,8 @@ def seed_breweries():
             # type is randomly selected
             brewery_type=brewery_type[randint(0, len(brewery_type)-1)],
             # logo is the second half of the loop variable
+            description=description[randint(0, len(description)-1)],
+
             brewery_logo=b[1]
         )
         # need to add and commit in the loop
