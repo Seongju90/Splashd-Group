@@ -27,8 +27,10 @@
 .review-right-container-img {
     display: flex;
     justify-content: center;
-    width: auto;
-    height: auto;
+    max-width: 1048px;
+    min-width: 320px;
+    /* width: auto;
+    height: auto; */
 }
 
 .review-images {
