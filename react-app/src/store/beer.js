@@ -62,7 +62,7 @@ export const thunkOneBeer = (id) => async (dispatch) => {
 		// console.log(data, '!!just came from backend')
 		dispatch(oneBeer(data));
 		data.reviews.forEach(async (x) => {
-			console.log(x)
+			// console.log(x)
 			await dispatch(actionOneReview(x))
 		})
 		return null
