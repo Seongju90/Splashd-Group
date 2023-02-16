@@ -100,11 +100,11 @@ export default function OneBeer(props) {
                 />
                 ) : null
                 }
-                {/* <OpenModalButton
+                <OpenModalButton
                 buttonText="Check In This Beer"
                 // onItemClick={closeMenu}
                 modalComponent={<ReviewFormModal id={beer?.id} />}
-            /> */}
+            />
         </div>
 
     )
