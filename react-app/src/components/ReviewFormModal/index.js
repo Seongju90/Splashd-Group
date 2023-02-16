@@ -25,7 +25,7 @@ function ReviewFormModal({ id }) {
             {
                 "image": url,
                 "review_text": review,
-                "rating": rating
+                "rating": Number(rating)
             }, id
             // we will add the beerId here to send to our thunk
         ))
@@ -98,9 +98,9 @@ function ReviewFormModal({ id }) {
                     <input
                         type="range"
                         value={rating}
-                        min={0}
-                        max={5}
-                        step={.25}
+                        min='0'
+                        max='5'
+                        step='.25'
 
 
 
