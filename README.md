@@ -1,7 +1,7 @@
 # Project
 <div style="display: flex; flex-direction: row; align-items:center; justify-content: start" >
-    <img src="react-app/src/assets/remove2.png"/>
-    <img src="react-app/src/assets/icanfindthis-removebg-preview.png"/>
+    <img src="react-app/src/assets/remove2-removebg-preview.png"/>
+    <img src="react-app/src/assets/icanfindthis-removebg-preview-removebg-preview.png"/>
 </div>
 <br>
 
