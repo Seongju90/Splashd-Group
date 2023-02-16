@@ -26,39 +26,45 @@ export default function BreweryCard({ brewery, user }) {
     // console.log(beer)
     return  (
         <div>
+            <div className="brewery-main-container">
+                <div className="brewery-logo-container">
 
 
             <div>
-                <div 
-                onClick={handleClickBrewery}
-                >
-                <img key={`beerlogo${id}`}
-                    src={`${brewery_logo}`}
-                    alt='previewimageforcard'
-                    />
+                    <div 
+                    onClick={handleClickBrewery}
+                    >
+                    <img key={`beerlogo${id}`}
+                        src={`${brewery_logo}`}
+                        alt='previewimageforcard'
+                        />
 
-                </div>
+                    </div>{/*refers to containing handleClick and beerlogo id and info*/}
+                    </div>
 
-                <div >
-                <div>Name: {name}</div>
+                    <div >{/* */}
+                    <div className="brewery-info-container">{/**starts Brewery info */}
 
-                <div>City/State:{city_state}</div>
-                <div>Brewery Type: {brewery_type}</div>
+                    <div>Name: {name}</div>
+
+                    <div>City/State:{city_state}</div>
+                    <div>Brewery Type: {brewery_type}</div>
+                        </div>{/**Closes Brewery Info*/}
 
 
                 {beers.map((x) =>
-                <>
-                    <h1>
-                        BEER ID: {x.id} NAME: {x.name}
+                    <>
+                        <h1>
+                            BEER ID: {x.id} NAME: {x.name}
 
-                    </h1>
+                        </h1>
                         <div
-                            onClick={() => handleClickBeer(x.id)}
-                            >
-                            {/* <img key={`beerlogo${x.id}`}
-                                src={`${x.beer_logo}`}
-                                alt='previewimageforcard'
-                            /> */}
+                                onClick={() => handleClickBeer(x.id)}
+                                >
+                                {/* <img key={`beerlogo${x.id}`}
+                                    src={`${x.beer_logo}`}
+                                    alt='previewimageforcard'
+                                /> */}
 
                         </div>
 
@@ -66,8 +72,9 @@ export default function BreweryCard({ brewery, user }) {
                 )}
 
 
-                </div>
-            </div >
+                </div>{/*closes off the beers mapped and name city/state and brewery type info*/}
+                </div >
+            </div>
         </div>
 
     )
