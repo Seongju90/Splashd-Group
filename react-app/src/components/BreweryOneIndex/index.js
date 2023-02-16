@@ -31,24 +31,29 @@ export default function OneBrewery() {
     }
 
     return (
-        <div>
-            <h1>
-                Brewery name is {brewery?.name}
-            </h1>
-            <h2>
-                Current user is   {user?.name}
-            </h2>
-            <h4>
-                --brewery_type:{brewery?.brewery_type}--
-                --city_state:{brewery?.city_state}--
-                -- owner_id : {brewery?.owner_id}
-                --brewery_logo:
-                <div>
-                    <img key={`brewerylogo${id}`}
-                        src={`${brewery?.brewery_logo}`}
-                        alt='previewimageforcard'
-                    />
+        <div className='beer-feed'>
+            <div className='onebeer-header'>
+                <img src={brewery?.brewery_logo} alt={null} />
+                <div className='brewery-info'>
+                    <h1>{brewery?.name}</h1>
+                    <h4>{brewery?.type}</h4>
+                    <h5>{brewery?.city_state}</h5>
                 </div>
+
+            </div>
+
+            {brewery?.owner_id === user?.id ? (
+                <OpenModalButton
+                    buttonText="Make a Beer"
+                    //   onItemClick={closeMenu}
+                    modalComponent={<BeerFormModal id={brewery?.id} />}
+                />
+            ) : null
+            }
+
+
+            <div>
+
                 {brewery?.beers.map((x) =>
 
                     <div>
@@ -61,15 +66,9 @@ export default function OneBrewery() {
                         ) : null}
                     </div>
                 )}
-            </h4>
-            {brewery?.owner_id === user?.id ? (
-            <OpenModalButton
-                buttonText="Make a Beer"
-                //   onItemClick={closeMenu}
-                modalComponent={<BeerFormModal id={brewery?.id} />}
-            />
-            ) : null
-                }
+
+            </div>
+
         </div>
 
     )

@@ -10,7 +10,7 @@ export default function MyBadges() {
     const user = useSelector(state => state.session?.user)
     const badges = useSelector(state => state.badges);
     const history = useHistory()
-    const {mybadges, ...allbadges} = badges
+    const { mybadges, ...allbadges } = badges
     useEffect(() => {
         dispatch(thunkMyBadges(user?.id));
     }, [dispatch]);
@@ -19,14 +19,20 @@ export default function MyBadges() {
 
     return (
         <div>
-            {mybadges.length ? mybadges.map(badge =>
-               <h1>
-                Badge Id: {badge.id}
-               </h1>
+            {mybadges?.length ? mybadges.map(badge =>
+                <div className='mybadge-badge'>
+                    <div className='badge-icon'>
+                        <img className='badge-icon' src={badge.icon} />
+                    </div>
+                    <div className='badge-description'>
+                        {badge.description}
+                        
+                    </div>
+                </div>
             ) :
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', alignSelf: 'center', width: '100vw' }}>
                     <h1 style={{ paddingTop: '5vw', fontFamily: 'Bold' }}>Sorry! Out Of Luck!</h1>
-                    <h3 style={{ paddingTop: '8vw' }}>Try searching for something less specific!</h3>
+                    <h3 style={{ paddingTop: '8vw' }}>Try having a drink and Checking In some Beers!</h3>
                 </div>
 
             }

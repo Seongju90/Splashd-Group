@@ -69,42 +69,38 @@ function ProfileButton({ user }) {
     setShowMenu(false)
   }
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  const ulClassName = "profile-dropdown " + (showMenu ? "" : "hidden");
   const closeMenu = () => setShowMenu(false);
 
   return (
     <div className="profilebutton dropdown">
       <div onClick={openMenu}
       >
-        <img src={profile} style={{ border: '1px solid black', cursor: 'pointer',height: '3vw', width: '3vw' }} />
+        <img src={profile} style={{ border: '1px solid black', cursor: 'pointer', height: '3vw', width: '3vw' }} />
       </div>
       <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <div>{user.username}</div>
-            <div>{user.name}</div>
+            <div className="nameandemail">{user.name}</div>
+            <div id='usernamedropdow' className="nameandemail">{user.email}</div>
             {/* <OpenModalButton
               buttonText="Make a Brewery"
               onItemClick={closeMenu}
               modalComponent={<BreweryFormModal id={user.id} />}
             /> */}
-            <div>
-              <div
-
-                onClick={handleClick}>My Badges</div>
-            </div>
-            <div>
-              <div
-
-                onClick={handleBrew}>My Breweries</div>
-            </div>
-            <div>
-              <div
-
-                onClick={handleReview}>My Reviews</div>
-            </div>
-            <div>
-              <div onClick={handleLogout}>Log Out</div>
+            <div id='therest'>
+              <div onClick={handleClick}>
+                My Badges
+              </div>
+              <div onClick={handleBrew}>
+                My Breweries
+              </div>
+              <div onClick={handleReview}>
+                My Reviews
+              </div>
+              <div onClick={handleLogout}>
+                Log Out
+              </div>
             </div>
           </>
         ) : (

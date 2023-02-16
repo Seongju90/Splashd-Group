@@ -27,7 +27,7 @@ export default function OneBeer(props) {
         dispatch(thunkOneBrewery(beer.brewery_id))
         history.push(`/brewery/${beer.brewery_id}`)
     }
-        //dispatch happens before history.push
+    //dispatch happens before history.push
     //     //so, we may not need this
     // console.log(myimgs)
 
@@ -42,17 +42,39 @@ export default function OneBeer(props) {
                 </div>
             </div>
             <div className='beer-info'>
-                    <div className='beerdata'>{beer?.abv} abv</div>
-                    <div className='beerdata'>{beer?.ibu} IBU</div>
-                    <div className='beerdata'>Average rating: {avg}</div>
-                    <div className='beerdata'>{beer?.num_reviews} Ratings</div>
+                <div className='beerdata'>{beer?.abv} abv</div>
+                <div className='beerdata'>{beer?.ibu} IBU</div>
+                <div className='beerdata'>Average rating: {avg}</div>
+                <div className='beerdata'>{beer?.num_reviews} Ratings</div>
 
             </div>
-            <p>--desc: {beer?.description}--</p>
+            <div> {beer?.description}</div>
+            <div>
+                <div
+                    className='div-button push-button'
+                    onClick={handleClick}
+                >Check Out The Brewery
+                </div>
+            </div>
+
+            {beer?.brewery.owner_id === user?.id ? (
+                <OpenModalButton
+                    buttonText="Create a Badge"
+
+                    // onItemClick={closeMenu}
+                    modalComponent={<BadgeFormModal id={beer?.id} />}
+                />
+            ) : null
+            }
+            <OpenModalButton
+                buttonText="Check In This Beer"
+                // onItemClick={closeMenu}
+                modalComponent={<ReviewFormModal id={beer?.id} />}
+            />
             <div>
                 {beer?.reviews.map((x) =>
                     <div location className='card-container'>
-                        <ReviewCard review={x} beer={beer} username={user.username} location={"beerpage"}/>
+                        <ReviewCard review={x} beer={beer} username={user.username} location={"beerpage"} />
                         {/* {x?.user_id === user?.id ? (
                             <OpenModalButton
                                 buttonText="Edit/Delete"
@@ -64,28 +86,9 @@ export default function OneBeer(props) {
                     </div>
                 )}
             </div>
-            <div>
-            <div
-            className='div-button push-button'
-               onClick={handleClick }
-                   >Check Out The Brewery
-            </div>
-            </div>
+           
 
-                {beer?.brewery.owner_id === user?.id ? (
-                <OpenModalButton
-                    buttonText="Create a Badge"
 
-                    // onItemClick={closeMenu}
-                    modalComponent={<BadgeFormModal id={beer?.id} />}
-                />
-                ) : null
-                }
-                <OpenModalButton
-                buttonText="Check In This Beer"
-                // onItemClick={closeMenu}
-                modalComponent={<ReviewFormModal id={beer?.id} />}
-            />
         </div>
 
     )

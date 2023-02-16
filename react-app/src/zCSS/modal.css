@@ -1,3 +1,10 @@
+.div-button {
+  border: 1px black solid;
+  padding: .5vw;
+  cursor: pointer;
+  background-color: green;
+  color: white;
+}
 .modal-exit {
   cursor: pointer;
 }

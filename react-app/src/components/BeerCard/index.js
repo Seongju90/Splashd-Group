@@ -19,7 +19,9 @@ export default function BeerCard({ beer, user }) {
             <div
             onClick={handleClick }
                 >
-                <img key={`beerlogo${id}`}
+                <img 
+                className='beer-icon'
+                key={`beerlogo${id}`}
                     src={`${beer_logo}`}
                     alt='previewimageforcard'
                 />
