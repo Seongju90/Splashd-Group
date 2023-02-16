@@ -70,11 +70,7 @@ export default function OneBeer(props) {
             <div>
                 {beer?.reviews.map((x) =>
                     <div location className='card-container'>
-<<<<<<< HEAD
-                        <ReviewCard review={x} beer={beer} username={user?.username} location={"beerpage"} />
-=======
                         <ReviewCard review={x} beer={beer} username={x.user?.username} location={x}/>
->>>>>>> dev
                         {/* {x?.user_id === user?.id ? (
                             <OpenModalButton
                                 buttonText="Edit/Delete"
@@ -86,9 +82,6 @@ export default function OneBeer(props) {
                     </div>
                 )}
             </div>
-<<<<<<< HEAD
-
-=======
             {/* <div>
             <div
             className='div-button push-button'
@@ -96,7 +89,6 @@ export default function OneBeer(props) {
                    >Check Out The Brewery
             </div>
             </div> */}
->>>>>>> dev
 
             {beer?.brewery.owner_id === user?.id ? (
                 <OpenModalButton
