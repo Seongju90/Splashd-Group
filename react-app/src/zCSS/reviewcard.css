@@ -14,11 +14,14 @@
    width: 100%;
    margin: 1em;
    border: 0.5px solid grey;
+   border-radius: 4px;
 }
 
 .review-left-container {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
+    /* display: grid;
+    grid-template-rows: repeat(3, 1fr); */
+    display: flex;
+    flex-direction: column;
 }
 
 .review-right-container-img {
@@ -54,19 +57,21 @@
     display: flex;
     border: 0.5px solid lightgrey;
     padding: 0.5em;
-    margin: 0.5em;
+    height: 100%;
 }
 
 .review-beer-container {
     border: 0.5px solid lightgrey;
     padding: 0.5em;
     margin: 0.5em;
+    height: 100%;
 }
 
 .review-text-container {
     border: 0.5px solid lightgrey;
     padding: 0.5em;
     margin: 0.5em;
+    height: 100%;
 }
 
 .review-sub-beer-container {
@@ -89,7 +94,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: 1em;
 }
 
 .review-navigate-text {
@@ -97,5 +101,41 @@
 }
 
 .review-navigate-button {
-    margin: 0.5em;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #ffc000;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    width: 80%;
+    padding: 0.5em;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.review-navigate-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+.review-navigate-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.review-navigate-button:hover span {
+    padding-right: 25px;
+}
+
+.review-navigate-button:hover span:after {
+    opacity: 1;
+    right: 0;
 }

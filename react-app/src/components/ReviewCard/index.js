@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import OpenModalButton from '../OpenModalButton'
 import EditReviewModal from '../ReviewEditModal'
 
-export default function ReviewCard({username, review, beer}) {
+export default function ReviewCard({username, review, beer, location}) {
     const history = useHistory()
     const dispatch = useDispatch()
     if(!beer){
@@ -36,9 +36,9 @@ export default function ReviewCard({username, review, beer}) {
                         <img className="review-user-icon" src={profile}/>
                     </div>
                     <div className="review-user-info">
-                        Username: {username}
+                        {username}
                     </div>
-                    <div className="review-navigate-beer-container">
+                    { location ? null : <div className="review-navigate-beer-container">
                         <div className="review-navigate-text">
                         </div>
                         <OpenModalButton
@@ -49,7 +49,7 @@ export default function ReviewCard({username, review, beer}) {
                         />
                     </div>
                 </div>
-                <div className="review-beer-container">
+                { location ? null :<div className="review-beer-container">
                     <div className="review-sub-beer-container">
                         <img className="review-beer-logo" src={beerLogo}/>
                         <div className="review-beer-name">{beerName}</div>
@@ -57,7 +57,7 @@ export default function ReviewCard({username, review, beer}) {
                     <div className="review-rating-container">
                         Rating: {beerRating}
                     </div>
-                </div>
+                </div>}
                 <div className="review-text-container">
                     Review: {reviewText}
                 </div>

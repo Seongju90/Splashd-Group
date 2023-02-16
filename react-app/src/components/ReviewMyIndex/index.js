@@ -22,7 +22,8 @@ export default function MyReviews() {
     return (
         <div className="my-reviews-main-container">
             {myReviews?.length ? myReviews.map(review =>
-                <ReviewCard beer={review.beer} username={user?.username} review={review}/>
+            // change location prop to truthy value to get rid of beer info on ReviewCard
+                <ReviewCard beer={review.beer} username={user?.username} review={review} location={0}/>
             ) : null}
         </div>
     )
