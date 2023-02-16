@@ -23,6 +23,7 @@ export default function BreweryCard({ brewery, user }) {
 
         history.push(`/brewery/${id}`)
     }
+
     // console.log(beer)
     return (
         <div>
@@ -44,34 +45,35 @@ export default function BreweryCard({ brewery, user }) {
                     </div>{/*refers to containing handleClick and beerlogo id and info*/}
 
 
-                    
-                        <div className="brewery-info-container">{/**starts Brewery info */}
 
-                            <div>Name: {name}</div>
+                    <div className="brewery-info-container">{/**starts Brewery info */}
 
-                            <div>City/State:{city_state}</div>
-                            <div>Brewery Type: {brewery_type}</div>
-                        </div>{/**Closes Brewery Info*/}
+                        <div>Name: {name}</div>
+
+                        <div>City/State:{city_state}</div>
+                        <div>Brewery Type: {brewery_type}</div>
+                        <div> Average Rating coming Soon!</div>
+                    </div>{/**Closes Brewery Info*/}
+                    <div>
+                        <h1>
+                            {name}'s beers
+                        </h1>
                         <div>
-                            <h1>
-                                {name}'s beers
-                            </h1>
-                            <div>
-                                {beers.map((x) =>
-                                    <div className='beer-box'>
-                                        <BeerCard beer={x} user={user} />
-                                        <div id='edit-button'
-                                            onClick={() => handleClickBeer(x.id)}
-                                        >
-                                            Edit Your Beer or Create adge at Page
-                                        </div>
-
-
+                            {beers.map((x) =>
+                                <div className='beer-box'>
+                                    <BeerCard beer={x} user={user} />
+                                    <div id='edit-button'
+                                        onClick={() => handleClickBeer(x.id)}
+                                    >
+                                        Edit Your Beer or Create Badge at Page
                                     </div>
-                                )}
 
-                            </div>
-                        
+
+                                </div>
+                            )}
+
+                        </div>
+
 
                     </div>{/*closes off the beers mapped and name city/state and brewery type info*/}
                 </div >
