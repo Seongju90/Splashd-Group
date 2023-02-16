@@ -65,7 +65,9 @@ function ReviewFormModal({ id }) {
                         <>{error}</>
                     ))}
                 </div>
-                <div className="modal-exit">X</div>
+                <div className="modal-exit"
+                    onClick={() => closeModal()}
+                >X</div>
             </div>
 
 

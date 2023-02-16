@@ -23,7 +23,9 @@ function LoginFormModal() {
   return (
     <div className="modal-whole">
 			<div className="modal-header">
-				<div className="modal-exit">X</div>
+        <div className="modal-exit"
+          onClick={() => closeModal()}
+        >X</div>
 				<div className="modal-title">Login</div>
 			</div>
 			<form className="modal-form" 
