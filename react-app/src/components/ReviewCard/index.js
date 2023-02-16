@@ -40,16 +40,14 @@ export default function ReviewCard({username, review, beer, location}) {
                     </div>
                     { location ? null : <div className="review-navigate-beer-container">
                         <div className="review-navigate-text">
+                            Navigate to edit/delete review!
                         </div>
-                        {/* <OpenModalButton
-                                buttonText="Edit/Delete"
-                                // onItemClick={closeMenu}
-                                modalComponent={<EditReviewModal
-                                    rev={review} />}
-                        /> */}
-                        
-                    </div>
-                    }
+                        <button
+                            className="review-navigate-button"
+                            onClick={() => navigateToBeer(beerId)}
+                        ><span>Edit/Delete</span>
+                        </button>
+                    </div>}
                 </div>
                 { location ? null :<div className="review-beer-container">
                     <div className="review-sub-beer-container">
