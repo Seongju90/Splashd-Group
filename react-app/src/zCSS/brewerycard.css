@@ -1,0 +1,34 @@
+.my-breweries-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.brewery-main-container {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1048px;
+    min-width: 320px;
+    width: 100%;
+    margin: 1em;
+    border: 0.5px solid grey;
+}
+
+.brewery-logo-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.brewery-info-container {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.brewery-logo-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+

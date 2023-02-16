@@ -40,9 +40,13 @@ export default function BreweryFormModal({id}) {
     };
 
     return (
-        <>
-            <h1>Create</h1>
-            <form onSubmit={handleSubmit}>
+        <div className="modal-whole">
+			<div className="modal-header">
+				<div className="modal-exit">X</div>
+				<div className="modal-title">Make Your Brewery!</div>
+			</div>
+			<form className="modal-form" 
+            onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
@@ -121,6 +125,6 @@ export default function BreweryFormModal({id}) {
                 <button type="submit">Create</button>
 
             </form>
-        </>
+        </div>
     )
 }
