@@ -6,7 +6,7 @@ import { thunkOneBeer } from "../../store/beer"
 
 
 // later when things are set up, pass beerId as a prop to this modl
-export default function EditReviewModal({rev}) {
+export default function EditReviewModal({ rev }) {
     const dispatch = useDispatch()
 
     const [imageUrl, setImageUrl] = useState(rev.image);
@@ -25,7 +25,7 @@ export default function EditReviewModal({rev}) {
                 "image": imageUrl,
                 "review_text": review,
                 "rating": rating
-            },rev
+            }, rev
 
         ))
 
@@ -33,17 +33,17 @@ export default function EditReviewModal({rev}) {
         if (data) {
             setErrors(data.errors);
         } else {
-        dispatch(thunkOneBeer(beer.id))
-        closeModal();
-    }
+            dispatch(thunkOneBeer(beer.id))
+            closeModal();
         }
+    }
 
     const handleDelete = async (e) => {
         e.preventDefault();
 
 
         const data = await dispatch(thunkDeleteReview(
-             rev))
+            rev))
 
 
         if (data) {
@@ -55,8 +55,8 @@ export default function EditReviewModal({rev}) {
     }
     return (
         <div className="modal-whole">
-			<div className="modal-header">
-				<div className="modal-title">Edit Your Review</div>
+            <div className="modal-header">
+                <div className="modal-title">Edit Your Review</div>
                 <div className="error-cont">
                     {errors.map((error) => (
                         <div classname='error-message'>{error}</div>
@@ -65,9 +65,9 @@ export default function EditReviewModal({rev}) {
                 <div className="modal-exit"
                     onClick={() => closeModal()}
                 >X</div>
-			</div>
-			<form className="modal-form" 
-            onSubmit={handleSubmit}>
+            </div>
+            <form className="modal-form"
+                onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
@@ -89,21 +89,28 @@ export default function EditReviewModal({rev}) {
                         onChange={(e) => setReview(e.target.value)}
                     />
                 </label>
-                <label>
-                    Rating
+                <div>
+
                     <input
-                        type="number"
+                        type="range"
                         value={rating}
+                        min='0'
+                        max='5'
+                        step='.25'
+
+
+
                         onChange={(e) => setRating(e.target.value)}
                     />
-                </label>
+                    Rating:{rating}
+                </div>
                 <>
-                <button type="submit">Edit a Review</button>
+                    <button type="submit">Edit a Review</button>
                 </>
                 <>
-                <button type="button"
-                onClick={handleDelete}
-                >Delete A Review</button>
+                    <button type="button"
+                        onClick={handleDelete}
+                    >Delete A Review</button>
                 </>
             </form>
         </div>
