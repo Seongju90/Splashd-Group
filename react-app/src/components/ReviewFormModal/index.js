@@ -94,17 +94,19 @@ function ReviewFormModal({ id }) {
                 </div>
 
                 <div>
-                    Rating
+                   
                     <input
-                        type="number"
+                        type="range"
                         value={rating}
                         min='0'
                         max='5'
+                        step='.25'
 
 
 
                         onChange={(e) => setRating(e.target.value)}
                     />
+                     Rating:{rating}
                 </div>
 
                 <button type="submit">Submit a Review</button>
