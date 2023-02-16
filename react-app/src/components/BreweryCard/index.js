@@ -42,14 +42,14 @@ export default function BreweryCard({ brewery, user }) {
                     </div>{/*refers to containing handleClick and beerlogo id and info*/}
                     </div>
 
-                    <div >{/* */}
+                    <div >{/* ANNOTATIONEXAMPLE*/}
                     <div className="brewery-info-container">{/**starts Brewery info */}
+                        
+                        <div>Name: {name}</div>
+                        <div>City/State:{city_state}</div>
+                        <div>Brewery Type: {brewery_type}</div>
 
-                    <div>Name: {name}</div>
-
-                    <div>City/State:{city_state}</div>
-                    <div>Brewery Type: {brewery_type}</div>
-                        </div>{/**Closes Brewery Info*/}
+                    </div>{/**Closes Brewery Info*/}
 
 
                 {beers.map((x) =>
