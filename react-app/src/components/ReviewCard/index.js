@@ -48,6 +48,7 @@ export default function ReviewCard({username, review, beer, location}) {
                                     rev={review} />}
                         />
                     </div>
+                    }
                 </div>
                 { location ? null :<div className="review-beer-container">
                     <div className="review-sub-beer-container">
