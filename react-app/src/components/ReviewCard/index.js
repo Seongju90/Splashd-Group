@@ -41,12 +41,13 @@ export default function ReviewCard({username, review, beer, location}) {
                     { location ? null : <div className="review-navigate-beer-container">
                         <div className="review-navigate-text">
                         </div>
-                        <OpenModalButton
+                        {/* <OpenModalButton
                                 buttonText="Edit/Delete"
                                 // onItemClick={closeMenu}
                                 modalComponent={<EditReviewModal
                                     rev={review} />}
-                        />
+                        /> */}
+                        
                     </div>
                     }
                 </div>
