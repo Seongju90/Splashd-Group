@@ -119,9 +119,9 @@
     align-items:center;
 
 }
-.modal-button{
+/* .modal-button{
     visibility: hidden;
-}
+} */
 
 .checkin:hover{
     cursor: pointer;
