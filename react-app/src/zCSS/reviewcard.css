@@ -27,14 +27,16 @@
 .review-right-container-img {
     display: flex;
     justify-content: center;
-    width: auto;
-    height: auto;
+    max-width: 1048px;
+    min-width: 320px;
+    /* width: auto;
+    height: auto; */
 }
 
 .review-images {
     object-fit: cover;
     width: 100%;
-    height: auto;
+    height: 500px;
 }
 
 .review-user-info {
