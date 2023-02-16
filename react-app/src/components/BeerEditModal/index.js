@@ -90,7 +90,7 @@ export default function EditBeerModal({ beer }) {
                     <input
                         type="text"
                         value={name}
-                        pattern='[a-z,A-Z]+'
+                        pattern='[a-z,A-Z,\s]+'
                         title="No special characters or numbers"
                         onChange={(e) => setName(e.target.value)}
                         required

@@ -1,16 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SelectField, SubmitField
+from wtforms import StringField, IntegerField, SelectField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Length, NumberRange
-
-#if it works use this, but if not, put validations on front end
-# def validate_city_state(form, field):
-#     state = field.data[-2:]
-#     comma = field.data[-4]
-#     if (state.isupper() == False or state.isalpha() == False):
-#         raise ValidationError('City, State Format Must Be: City, NY')
-#     if (comma != ','):
-#         raise ValidationError('City, State Format Must Be: City, NY')
-
 
 class BreweryForm(FlaskForm):
     name = StringField(
@@ -26,6 +16,13 @@ class BreweryForm(FlaskForm):
             Length(min=2, max=255, message='City is too long'),
             # validate_city_state
         ])
+    description = TextAreaField(
+        "Description",
+        validators=[
+            DataRequired(message = 'Please add a Description'),
+            Length(min= 5, message= 'Description is too short'),
+            Length(max=2000, message='Description cant exceed 2000 characters')
+            ]),
     brewery_type = SelectField(
         "Brewery", 
         choices=[
@@ -38,8 +35,6 @@ class BreweryForm(FlaskForm):
             DataRequired(message='Brewery Type is required')
             ])
 
-#if philip's custom validator for url image link works, insert that validator
-#here as well
     brewery_logo = StringField(
         "Brewery Logo", 
         validators = [

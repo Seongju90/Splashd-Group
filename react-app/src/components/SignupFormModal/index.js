@@ -9,6 +9,8 @@ function SignupFormModal() {
 	const [username, setUsername] = useState("");
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
+	const [propic, setPropic] = useState(null);
+
 	const [age, setAge] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
@@ -18,7 +20,7 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, email, firstName, lastName, age, password));
+			const data = await dispatch(signUp(username, email, firstName, lastName, age, password, propic));
 			if (data) {
 				setErrors(data);
 			} else {
@@ -78,7 +80,7 @@ function SignupFormModal() {
 						type="text"
 						value={firstName}
 						onChange={(e) => setFirstName(e.target.value)}
-						// required
+						required
 					/>
 				</label>
 				<label>
@@ -87,7 +89,7 @@ function SignupFormModal() {
 						type="text"
 						value={lastName}
 						onChange={(e) => setLastName(e.target.value)}
-						// required
+						required
 					/>
 				</label>
 				<label>
@@ -98,8 +100,19 @@ function SignupFormModal() {
 						onChange={(e) => setAge(e.target.value)}
 						min="0"
 						required
+						
 					/>
 				</label>
+				<div>
+					Profile Picture
+				</div>
+				<input
+                    type="url"
+                    value={propic}
+                    onChange={(e) => setPropic(e.target.value)}
+                    required
+					placeholder="optional"
+                />
 				<label>
 					Password
 					<input

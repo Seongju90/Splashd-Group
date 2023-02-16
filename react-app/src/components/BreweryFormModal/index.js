@@ -11,6 +11,7 @@ export default function BreweryFormModal({ id }) {
     const [breweryLogo, setBreweryLogo] = useState("");
     const [city, setCity] = useState("");
     const [states, setStates] = useState("")
+    const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
 
@@ -22,7 +23,8 @@ export default function BreweryFormModal({ id }) {
                 'name': name,
                 'brewery_type': breweryType,
                 'brewery_logo': breweryLogo,
-                'city_state': cityState
+                'city_state': cityState,
+                'description': description
             }
         ));
         if (data) {
@@ -108,6 +110,17 @@ export default function BreweryFormModal({ id }) {
                         </option>
                     </select>
                 </label>
+                <div>
+                    Description
+                </div>
+                <input
+                    type="textarea"
+                    value={description}
+                    minLength='5'
+                    maxLength='2000'
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                />
                 <label>
                     Logo
                     <input

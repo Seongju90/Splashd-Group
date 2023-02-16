@@ -34,3 +34,4 @@ class SignUpForm(FlaskForm):
     last_name = StringField('last name', validators=[DataRequired('Last Name Required')])
     age = IntegerField('age', validators=[DataRequired('Whats yo Age?'), age_check])
     password = StringField('password', validators=[DataRequired('Please make a password')])
+    profile_pic = StringField('profile_pic')

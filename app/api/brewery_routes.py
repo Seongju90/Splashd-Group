@@ -136,6 +136,7 @@ def addbrewery():
             owner_id=current_user.id,
             city_state=form.data['city_state'],
             brewery_type=form.data['brewery_type'],
+            description=form.data['description'],
             brewery_logo=form.data['brewery_logo']
         )
         # print(newbrewery, '*^*^*^*^*^*^*^*^*^*^**^*^*^*^*^*')
