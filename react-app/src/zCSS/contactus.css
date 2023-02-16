@@ -1,0 +1,12 @@
+.buddy-info-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+
+}
+
+.buddy-info-top-container {
+    display: flex;
+
+}
