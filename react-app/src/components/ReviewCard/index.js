@@ -4,7 +4,7 @@ import { thunkOneBeer } from '../../store/beer'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
-export default function ReviewCard({username, review, }) {
+export default function ReviewCard({username, review, location}) {
     const history = useHistory()
     const dispatch = useDispatch()
 
@@ -32,21 +32,20 @@ export default function ReviewCard({username, review, }) {
                         <img className="review-user-icon" src={profile}/>
                     </div>
                     <div className="review-user-info">
-                        Username: {username}
+                        {username}
                     </div>
-                    <div className="review-navigate-beer-container">
+                    { location ? null : <div className="review-navigate-beer-container">
                         <div className="review-navigate-text">
                             Navigate to edit/delete review!
                         </div>
                         <button
                             className="review-navigate-button"
                             onClick={() => navigateToBeer(beerId)}
-                        >
-                            Edit/Delete
+                        ><span>Edit/Delete</span>
                         </button>
-                    </div>
+                    </div>}
                 </div>
-                <div className="review-beer-container">
+                { location ? null :<div className="review-beer-container">
                     <div className="review-sub-beer-container">
                         <img className="review-beer-logo" src={beerLogo}/>
                         <div className="review-beer-name">{beerName}</div>
@@ -54,7 +53,7 @@ export default function ReviewCard({username, review, }) {
                     <div className="review-rating-container">
                         Rating: {beerRating}
                     </div>
-                </div>
+                </div>}
                 <div className="review-text-container">
                     Review: {reviewText}
                 </div>
