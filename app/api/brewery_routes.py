@@ -6,6 +6,51 @@ from app.api.auth_routes import validation_errors_to_error_messages
 
 brewery_routes = Blueprint('brewery', __name__)
 
+
+
+# update brewery route
+@brewery_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def editBeer(id):
+    # print('asdkjasdjkasda')
+    form = BreweryForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    # print(form.data, 'bbb!^!^!^!^!^!^^!^!^!^^!^!^!^!^^!^!^!^!^!^')
+    # print(current_user, current_user.id, '@^@^@^@^@^^@^@^@^@^@^^@^@^^@^@^@^^@@')
+    if form.validate_on_submit():
+        brew = Beer.query.get(id)
+        brew.name=form.data['name']
+        brew.abv=form.data['abv']
+        brew.ibu=form.data['ibu']
+        brew.type=form.data['type']
+        brew.description=form.data['description']
+        brew.brewery_logo=form.data['brewery_logo']
+
+        db.session.commit()
+        return  brew.to_dict()
+    # print(form.errors, 'bbb&#&#&#&#&#&#&#&#&#&#&&#&#&#&#&#&#&&#')
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+#delete brewery route
+@brewery_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def bye_bye_brew(id):
+    brew = Brewery.query.get(id)
+    if (brew) and (brew.owner_id == current_user.id):
+        info = brew.delete_brewery()
+        [db.session.delete(b)for b in info['beers']]
+        for badge in info['badges']:
+            badge.beer_id = None
+            badge.brewery_id = None
+        db.session.commit()
+        return {
+            'message': 'Successfully Deleted'
+        }
+    else:
+        return {'errors': ['Something went wrong']}, 401
+
+
 @brewery_routes.route('/all')
 def brewerys():
     """
@@ -101,24 +146,6 @@ def addbrewery():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-# @brewery_routes.route('<int:id>/', method = ["POST"])
-# @login_required
-# def get_brewery_badges(id):
-#     brewery = Brewery.query.get(id)
-#     if(current_user.id == brewery.owner_id):
-#         form = BadgeForm()
-#         form['csrf_token'].data = request.cookies['csrf_token']
-#         if form.validate_on_submit():
-#             beer = Beer.query.filter(Beer.name == form.data["beer"])
-#             new_badge = Badge(
-#                 beer_id = beer.id,
-#                 brewery_id = id,
-#                 icon = form.data["icon"],
-#                 description = form.data["description"]
-#             )
-#             db.session.add(new_badge)
-#             db.session.commit()
-#     return new_badge.to_dict()
 
 @brewery_routes.route('/<int:id>/badge', methods = ["POST"])
 # @login_required
