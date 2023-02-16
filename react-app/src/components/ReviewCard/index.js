@@ -8,10 +8,10 @@ import OpenModalButton from '../OpenModalButton'
 import ReviewEditModal from '../ReviewEditModal'
 
 
-export default function ReviewCard({username, review, beer, location}) {
+export default function ReviewCard({ username, review, beer, location }) {
     const history = useHistory()
     const dispatch = useDispatch()
-    if(!beer){
+    if (!beer) {
         let beer = review.beer
     }
     const user = useSelector(state => state.session?.user)
@@ -43,15 +43,16 @@ export default function ReviewCard({username, review, beer, location}) {
 
     const navigateToBeer = (beerId) => {
         dispatch(thunkOneBeer(beerId))
-        history.push(`/beer/${beerId}`)
+            .then(async () => await history.push(`/beer/${beerId}`))
+            .then(() => window.location.replace(`/beer/${beerId}#reviewid${review.id}`))
     }
 
     return (
-        <div className={divclass}>
+        <div id={`reviewid${review?.id}`} className={divclass}>
             <div className="review-left-container">
                 <div className="review-user-container">
                     <div className="review-profile-icon">
-                        <img className="review-user-icon" src={profile}/>
+                        <img className="review-user-icon" src={profile} />
                     </div>
                     <div className="review-user-info">
                         {username}
@@ -68,9 +69,9 @@ export default function ReviewCard({username, review, beer, location}) {
                     )
                     : button2}
                 </div>
-                { location ? null :<div className="review-beer-container">
+                {location ? null : <div className="review-beer-container">
                     <div className="review-sub-beer-container">
-                        <img className="review-beer-logo" src={beerLogo}/>
+                        <img className="review-beer-logo" src={beerLogo} />
                         <div className="review-beer-name">{beerName}</div>
                     </div>
                     <div className="review-rating-container">
@@ -82,7 +83,7 @@ export default function ReviewCard({username, review, beer, location}) {
                 </div>
             </div>
             <div className="review-right-container-img">
-                <img className="review-images" src={reviewImage}/>
+                <img className="review-images" src={reviewImage} />
             </div>
         </div>
     )

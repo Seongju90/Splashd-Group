@@ -28,7 +28,7 @@ export default function OneBeer(props) {
         dispatch(thunkOneBrewery(beer.brewery_id))
         history.push(`/brewery/${beer.brewery_id}`)
     }
-        //dispatch happens before history.push
+    //dispatch happens before history.push
     //     //so, we may not need this
     // console.log(myimgs)
 
@@ -92,7 +92,7 @@ export default function OneBeer(props) {
             </div>
             </div> */}
 
-                {beer?.brewery.owner_id === user?.id ? (
+            {beer?.brewery.owner_id === user?.id ? (
                 <OpenModalButton
                     buttonText="Create a Badge"
 
