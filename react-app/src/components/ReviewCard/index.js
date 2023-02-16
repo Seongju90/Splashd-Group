@@ -79,7 +79,8 @@ export default function ReviewCard({ username, review, beer, location }) {
                     </div>
                 </div>}
                 <div className="review-text-container">
-                    Review: {reviewText}
+                    <div>Review: {reviewText}</div>
+                    {location? (<div>Rating: {review.rating}</div>) : null}
                 </div>
             </div>
             <div className="review-right-container-img">

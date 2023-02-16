@@ -94,13 +94,13 @@ function ReviewFormModal({ id }) {
                 </div>
 
                 <div>
-                   
+
                     <input
                         type="range"
                         value={rating}
-                        min='0'
-                        max='5'
-                        step='.25'
+                        min={0}
+                        max={5}
+                        step={.25}
 
 
 
