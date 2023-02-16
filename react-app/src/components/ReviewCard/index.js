@@ -3,14 +3,18 @@ import '../../zCSS/reviewcard.css'
 import { thunkOneBeer } from '../../store/beer'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import OpenModalButton from '../OpenModalButton'
+import EditReviewModal from '../ReviewEditModal'
 
-export default function ReviewCard({username, review, }) {
+export default function ReviewCard({username, review, beer}) {
     const history = useHistory()
     const dispatch = useDispatch()
-
-    let beerId = review.beer.id
-    let beerLogo = review.beer.beer_logo
-    let beerName = review.beer.name
+    if(!beer){
+        let beer = review.beer
+    }
+    let beerId = beer.id
+    let beerLogo = beer.beer_logo
+    let beerName = beer.name
     let reviewText = review.review_text
     let reviewImage = review.image
     let beerRating = review.rating
@@ -36,14 +40,13 @@ export default function ReviewCard({username, review, }) {
                     </div>
                     <div className="review-navigate-beer-container">
                         <div className="review-navigate-text">
-                            Navigate to edit/delete review!
                         </div>
-                        <button
-                            className="review-navigate-button"
-                            onClick={() => navigateToBeer(beerId)}
-                        >
-                            Edit/Delete
-                        </button>
+                        <OpenModalButton
+                                buttonText="Edit/Delete"
+                                // onItemClick={closeMenu}
+                                modalComponent={<EditReviewModal
+                                    rev={review} />}
+                        />
                     </div>
                 </div>
                 <div className="review-beer-container">

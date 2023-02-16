@@ -13,6 +13,7 @@ export default function MyReviews() {
     let userId = user?.id
 
     let myReviews = useSelector(state =>  state.reviews?.myreviews)
+    const beer_list = useSelector(state => state.beer )
 
     useEffect(() => {
         dispatch(thunkMyReviews(userId))
@@ -21,7 +22,7 @@ export default function MyReviews() {
     return (
         <div className="my-reviews-main-container">
             {myReviews?.length ? myReviews.map(review =>
-                <ReviewCard username={user?.username} review={review}/>
+                <ReviewCard beer={review.beer} username={user?.username} review={review}/>
             ) : null}
         </div>
     )
