@@ -8,7 +8,7 @@ export default function BeerCard({ beer, user }) {
     const { beer_logo, id, description,
         type, abv, ibu, num_reviews, avg, name } = beer
 
-    const handleClick =()=> {
+    const handleClick = ()=> {
         dispatch(thunkOneBeer(id))
         history.push(`/beer/${id}`)
     }
