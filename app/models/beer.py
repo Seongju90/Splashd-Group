@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-
+from datetime import datetime
 
 class Beer(db.Model):
     __tablename__ = 'beers'
@@ -15,6 +15,7 @@ class Beer(db.Model):
     type = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text, nullable=False)
     beer_logo = db.Column(db.String(255), nullable=False)
+    created = db.Column(db.DateTime, default=datetime.utcnow)
 
     # todo:add cascade delete
     beer_brewery = db.relationship("Brewery", back_populates="brewery_beer")
