@@ -26,13 +26,13 @@ export default function ReviewCard({ username, review, beer, location }) {
     else{ divclass = "review-main-container"}
 
     let button2 = (<div className="review-navigate-beer-container">
-                        <div className="review-navigate-text">
+                        {/* <div className="review-navigate-text">
                             Navigate to edit/delete review!
-                        </div>
+                        </div> */}
                         <button
                             className="review-navigate-button"
                             onClick={() => navigateToBeer(beerId)}
-                        ><span>Edit/Delete</span>
+                        ><span>Navigate to Edit/Delete</span>
                         </button>
                     </div>)
     if(location) {button2 = null}
