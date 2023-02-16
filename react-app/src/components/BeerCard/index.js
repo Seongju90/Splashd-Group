@@ -8,7 +8,7 @@ export default function BeerCard({ beer, user }) {
     const { beer_logo, id, description,
         type, abv, ibu, num_reviews, avg, name } = beer
 
-    const handleClick =()=> {
+    const handleClick = ()=> {
         dispatch(thunkOneBeer(id))
         history.push(`/beer/${id}`)
     }
@@ -19,7 +19,9 @@ export default function BeerCard({ beer, user }) {
             <div
             onClick={handleClick }
                 >
-                <img key={`beerlogo${id}`}
+                <img 
+                className='beer-icon'
+                key={`beerlogo${id}`}
                     src={`${beer_logo}`}
                     alt='previewimageforcard'
                 />

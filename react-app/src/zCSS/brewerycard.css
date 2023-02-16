@@ -1,0 +1,87 @@
+
+@font-face {
+    font-family: "Logo";
+    src: local("logofont"),
+        url("../assets/logofont.ttf") format("truetype");
+}
+.beer-box {
+    border: 1px solid black;
+    margin-bottom: .75vw;
+}
+#edit-button {
+    background-color: rgb(116, 154, 2);
+    color: white;
+    width: fit-content;
+    padding: .51vw;
+    cursor: pointer;
+}
+.brewery-card-click:hover{
+    border: 3px solid black;
+}
+.brewery-card-click {
+    cursor: pointer;
+    height: 10vw;
+    width: 10vw;
+    box-sizing: border-box;
+    object-fit: fill;
+    border: 1px solid black;
+}
+.below-header {
+    width: fit-content;
+}
+
+.my-page-header{
+    font-size: 5vw;
+    font-family: Logo;
+}
+
+#my-brewery-page {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.my-breweries-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center; 
+    
+}
+
+.brewery-main-container {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1048px;
+    min-width: 320px;
+    width: 100%;
+    margin: 1em;
+    border: 0.5px solid grey;
+}
+
+.brewery-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .52vw;
+}
+.brewery-logo-container>* {
+    margin: 1vw;
+}
+
+.brewery-info-container {
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+    font-family: Logo;
+    
+}
+
+.brewery-logo-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+

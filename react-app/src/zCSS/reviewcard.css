@@ -1,0 +1,144 @@
+.my-reviews-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    height: 20%;
+}
+
+.review-main-container {
+   display:grid;
+   grid-template-columns: repeat(2, 1fr);
+   max-width: 1048px;
+   min-width: 320px;
+   width: 100%;
+   margin: 1em;
+   border: 0.5px solid grey;
+   border-radius: 4px;
+}
+
+
+.review-left-container {
+    /* display: grid;
+    grid-template-rows: repeat(3, 1fr); */
+    display: flex;
+    flex-direction: column;
+}
+
+.review-right-container-img {
+    display: flex;
+    justify-content: center;
+    max-width: 1048px;
+    min-width: 320px;
+    /* width: auto;
+    height: auto; */
+}
+
+.review-images {
+    object-fit: cover;
+    width: 100%;
+    height: 500px;
+}
+
+.review-user-info {
+    display: flex;
+    align-items: center;
+    margin-left: 1em;
+}
+
+.review-profile-icon {
+    display: flex;
+    align-items: Center;
+}
+
+.review-user-icon {
+    width: 100px;
+    height: 100px;
+}
+
+.review-user-container {
+    display: flex;
+    border: 0.5px solid lightgrey;
+    padding: 0.5em;
+    height: 100%;
+}
+
+.review-beer-container {
+    border: 0.5px solid lightgrey;
+    padding: 0.5em;
+    margin: 0.5em;
+    height: 100%;
+}
+
+.review-text-container {
+    border: 0.5px solid lightgrey;
+    padding: 0.5em;
+    margin: 0.5em;
+    height: 100%;
+}
+
+.review-sub-beer-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: start;
+    align-items: center;
+}
+
+.review-beer-name {
+    margin-left: 1em;
+}
+
+.review-rating-container {
+    margin-top: 1em;
+}
+
+.review-navigate-beer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-navigate-text {
+    margin: 0.5em;
+}
+
+.review-navigate-button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #ffc000;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    width: 80%;
+    padding: 0.5em;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.review-navigate-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+.review-navigate-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.review-navigate-button:hover span {
+    padding-right: 25px;
+}
+
+.review-navigate-button:hover span:after {
+    opacity: 1;
+    right: 0;
+}

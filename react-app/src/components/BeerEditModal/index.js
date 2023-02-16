@@ -73,9 +73,13 @@ export default function EditBeerModal({beer}) {
     };
 
     return (
-        <>
-            <h1>Edit</h1>
-            <form onSubmit={handleSubmit}>
+        <div className="modal-whole">
+        <div className="modal-header">
+            <div className="modal-exit">X</div>
+            <div className="modal-title">Change Your Beer!</div>
+        </div>
+        <form className="modal-form" 
+        onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
@@ -194,6 +198,6 @@ export default function EditBeerModal({beer}) {
                 >Delete Beer</button>
                 </>
             </form>
-        </>
+        </div>
     )
 }

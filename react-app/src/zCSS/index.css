@@ -7,5 +7,10 @@ body {
 }
 
 #all-content {
-    padding-top:5vw
+    padding-top:5vw;
+    background-color: whitesmoke;
+}
+
+#usernamedropdown{
+    border-bottom: 1px solid rgb(102, 64, 64);
 }

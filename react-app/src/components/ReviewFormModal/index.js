@@ -4,7 +4,7 @@ import { useModal } from "../../context/Modal";
 import { thunkCreateReview } from "../../store/review";
 
 // later when things are set up, pass beerId as a prop to this modl
-function ReviewFormModal({id}) {
+function ReviewFormModal({ id }) {
     const dispatch = useDispatch()
 
     const [imageUrl, setImageUrl] = useState(null);
@@ -14,12 +14,12 @@ function ReviewFormModal({id}) {
     const { closeModal } = useModal();
 
     // console.log(id)
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const error = [];
-        let url 
-        imageUrl? url=imageUrl:url=null
+        let url
+        imageUrl ? url = imageUrl : url = null
 
         const data = await dispatch(thunkCreateReview(
             {
@@ -57,46 +57,57 @@ function ReviewFormModal({id}) {
     }
 
     return (
-        <>
-            <h1>Create</h1>
-            <form onSubmit={handleSubmit}>
-                <ul>
+        <div className="modal-whole">
+            <div className="modal-header">
+                <div className="modal-title">Check-In</div>
+                <div>
                     {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
+                        <>{error}</>
                     ))}
-                </ul>
-                <label>
+                </div>
+                <div className="modal-exit">X</div>
+            </div>
+
+
+            <form className="modal-form"
+                onSubmit={handleSubmit}>
+
+                <div>
+
                     Image Url
                     <input
                         type="url"
                         value={imageUrl}
                         onChange={(e) => setImageUrl(e.target.value)}
                     />
-                </label>
-                <label>
+
+                </div>
+                <div>
                     Review
                     <input
                         type="text"
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
                     />
-                </label>
-                <label>
+                </div>
+
+                <div>
                     Rating
                     <input
                         type="number"
                         value={rating}
                         min='0'
                         max='5'
-                       
+
 
 
                         onChange={(e) => setRating(e.target.value)}
                     />
-                </label>
+                </div>
+
                 <button type="submit">Submit a Review</button>
             </form>
-        </>
+        </div>
     )
 }
 
