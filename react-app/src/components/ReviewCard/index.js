@@ -22,8 +22,20 @@ export default function ReviewCard({ username, review, beer, location }) {
     let reviewImage = review.image
     let beerRating = review.rating
     let divclass
-    if (location) { divclass = "beer-reviews" }
-    else { divclass = "review-main-container" }
+    if (location){ divclass = "beer-reviews"}
+    else{ divclass = "review-main-container"}
+
+    let button2 = (<div className="review-navigate-beer-container">
+                        {/* <div className="review-navigate-text">
+                            Navigate to edit/delete review!
+                        </div> */}
+                        <button
+                            className="review-navigate-button"
+                            onClick={() => navigateToBeer(beerId)}
+                        ><span>Navigate to Edit/Delete</span>
+                        </button>
+                    </div>)
+    if(location) {button2 = null}
 
     if (!reviewImage) {
         reviewImage = 'https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found-300x169.jpg'
@@ -44,26 +56,18 @@ export default function ReviewCard({ username, review, beer, location }) {
                     </div>
                     <div className="review-user-info">
                         {username}
-                    </div>
-                    {location &&
-                        (review?.user.id === user?.id) ? (
+                    </div >
+                    { location && (user?.id === review?.user_id)?
+                     (<div className='button'>
                         <OpenModalButton
                             buttonText="Edit/Delete"
                             // onItemClick={closeMenu}
                             modalComponent={<ReviewEditModal
                                 rev={review} />}
                         />
+                    </div>
                     )
-                        : !location ? <div className="review-navigate-beer-container">
-                            <div className="review-navigate-text">
-                                Navigate to edit/delete review!
-                            </div>
-                            <button
-                                className="review-navigate-button"
-                                onClick={() => navigateToBeer(beerId)}
-                            ><span>Edit/Delete</span>
-                            </button>
-                        </div> : null}
+                    : button2}
                 </div>
                 {location ? null : <div className="review-beer-container">
                     <div className="review-sub-beer-container">

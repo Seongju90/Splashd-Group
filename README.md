@@ -1,7 +1,7 @@
 # Project
 <div style="display: flex; flex-direction: row; align-items:center; justify-content: start" >
-    <span style="font-size: 100px; color: #ffc000; margin-right: 150px">Splashd</span>
-    <img src="react-app/src/assets/icon.png"/>
+    <img src="react-app/src/assets/remove2-removebg-preview.png"/>
+    <img src="react-app/src/assets/icanfindthis-removebg-preview-removebg-preview.png"/>
 </div>
 <br>
 

@@ -24,7 +24,10 @@ export default function MyReviews() {
             {myReviews?.length ? myReviews.map(review =>
             // change location prop to truthy value to get rid of beer info on ReviewCard
                 <ReviewCard beer={review.beer} username={user?.username} review={review} location={0}/>
-            ) : null}
+            ) : <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', alignSelf: 'center', width: '100vw' }}>
+            <h1 style={{ paddingTop: '5vw', fontFamily: 'Bold' }}>Sorry! Out Of Luck!</h1>
+            <h3 style={{ paddingTop: '8vw' }}>You need to checkin a Beer!</h3>
+        </div>}
         </div>
     )
 }

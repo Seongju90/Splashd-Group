@@ -42,7 +42,9 @@ export default function BeerFormModal({ id }) {
         <div className="modal-whole">
             <div className="modal-header">
                 <div className="modal-title">Create A Beer</div>
-                <div className="modal-exit">X</div>
+                <div className="modal-exit"
+                    onClick={() => closeModal()}
+                >X</div>
             </div>
             <form className="modal-form"
                 onSubmit={handleSubmit}>
@@ -58,7 +60,8 @@ export default function BeerFormModal({ id }) {
                 <input
                     type="text"
                     value={name}
-                    pattern='[a-z,A-Z]+'
+                    pattern='[a-z,A-Z,\s]+'
+                    // 
                     title="No special characters or numbers"
                     onChange={(e) => setName(e.target.value)}
                     required
