@@ -63,8 +63,6 @@ export default function OneBeer(props) {
                 <div title="checkin this beer" className='checkin'>
                     <img className="check" src={checkicon}/>
                         <OpenModalButton
-                            // buttonText="Check In This Beer"
-                            // onItemClick={closeMenu}
                             modalComponent={<ReviewFormModal id={beer?.id} />}
                         />
                 </div>
