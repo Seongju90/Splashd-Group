@@ -2,9 +2,11 @@ import profile from '../../assets/profile.png'
 import '../../zCSS/reviewcard.css'
 import { thunkOneBeer } from '../../store/beer'
 import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+
 import OpenModalButton from '../OpenModalButton'
-import EditReviewModal from '../ReviewEditModal'
+import ReviewEditModal from '../ReviewEditModal'
+
 
 export default function ReviewCard({username, review, beer, location}) {
     const history = useHistory()
@@ -12,12 +14,16 @@ export default function ReviewCard({username, review, beer, location}) {
     if(!beer){
         let beer = review.beer
     }
+    const user = useSelector(state => state.session?.user)
     let beerId = beer.id
     let beerLogo = beer.beer_logo
     let beerName = beer.name
     let reviewText = review.review_text
     let reviewImage = review.image
     let beerRating = review.rating
+    let divclass
+    if (location){ divclass = "beer-reviews"}
+    else{ divclass = "review-main-container"}
 
     if (!reviewImage) {
         reviewImage = 'https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found-300x169.jpg'
@@ -29,7 +35,7 @@ export default function ReviewCard({username, review, beer, location}) {
     }
 
     return (
-        <div className="review-main-container">
+        <div className={divclass}>
             <div className="review-left-container">
                 <div className="review-user-container">
                     <div className="review-profile-icon">
@@ -38,7 +44,16 @@ export default function ReviewCard({username, review, beer, location}) {
                     <div className="review-user-info">
                         {username}
                     </div>
-                    { location ? null : <div className="review-navigate-beer-container">
+                    { location &&
+                    (review?.user.id === user?.id) ? (
+                        <OpenModalButton
+                            buttonText="Edit/Delete"
+                            // onItemClick={closeMenu}
+                            modalComponent={<ReviewEditModal
+                                rev={review} />}
+                        />
+                    )
+                    : <div className="review-navigate-beer-container">
                         <div className="review-navigate-text">
                             Navigate to edit/delete review!
                         </div>
