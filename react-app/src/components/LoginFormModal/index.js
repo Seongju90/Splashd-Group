@@ -16,14 +16,18 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal()
     }
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="modal-whole">
+			<div className="modal-header">
+				<div className="modal-exit">X</div>
+				<div className="modal-title">Login</div>
+			</div>
+			<form className="modal-form" 
+            onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
@@ -49,7 +53,7 @@ function LoginFormModal() {
         </label>
         <button type="submit">Log In</button>
       </form>
-    </>
+    </div>
   );
 }
 

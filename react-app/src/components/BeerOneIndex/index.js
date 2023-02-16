@@ -8,6 +8,8 @@ import OpenModalButton from '../OpenModalButton';
 import { thunkOneBrewery } from '../../store/brewery';
 import BadgeFormModal from '../BadgeFormModal';
 import ReviewEditModal from '../ReviewEditModal'
+import ReviewCard from '../ReviewCard';
+import '../../zCSS/beerone.css'
 
 export default function OneBeer(props) {
     const dispatch = useDispatch()
@@ -29,7 +31,7 @@ export default function OneBeer(props) {
     // console.log(myimgs)
 
     return (
-        <div>
+        <div className='beer-feed'>
             <h1>
             BEER PAGE FOR ---{beer?.name}
             </h1>
@@ -45,7 +47,7 @@ export default function OneBeer(props) {
             <div>
                 {beer?.reviews.map((x) =>
                     <h1>
-                        REVIEW ID: {x.id} RATING: {x.rating} REVIEW: {x.review_text}
+                        <ReviewCard review={x} beer={beer} username={user.username} />
                         {x?.user_id === user?.id ? (
                             <OpenModalButton
                                 buttonText="Edit/Delete"

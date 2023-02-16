@@ -3,14 +3,18 @@ import '../../zCSS/reviewcard.css'
 import { thunkOneBeer } from '../../store/beer'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import OpenModalButton from '../OpenModalButton'
+import EditReviewModal from '../ReviewEditModal'
 
-export default function ReviewCard({username, review, location}) {
+export default function ReviewCard({username, review, beer, location}) {
     const history = useHistory()
     const dispatch = useDispatch()
-
-    let beerId = review.beer.id
-    let beerLogo = review.beer.beer_logo
-    let beerName = review.beer.name
+    if(!beer){
+        let beer = review.beer
+    }
+    let beerId = beer.id
+    let beerLogo = beer.beer_logo
+    let beerName = beer.name
     let reviewText = review.review_text
     let reviewImage = review.image
     let beerRating = review.rating

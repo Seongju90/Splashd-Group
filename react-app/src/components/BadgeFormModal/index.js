@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkCreateBadge } from "../../store/badge";
 
@@ -31,9 +31,14 @@ export default function BadgeFormModal() {
     };
 
     return (
-        <>
-            <h1>Create a Badge</h1>
-            <form onSubmit={handleSubmit}>
+        <div className="modal-whole">
+            <div className="modal-header">
+                <div className="modal-exit">X</div>
+                <div className="modal-title">Make A Badge!</div>
+            </div>
+            <form className="modal-form"
+                onSubmit={handleSubmit}>
+
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
@@ -59,6 +64,6 @@ export default function BadgeFormModal() {
                 </label>
                 <button type="submit">Create</button>
             </form>
-        </>
+        </div>
     )
 }
