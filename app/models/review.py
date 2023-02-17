@@ -13,7 +13,7 @@ class Review(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     image = db.Column(db.String(255))
     review_text = db.Column(db.Text, nullable=False)
-    rating = db.Column(db.Integer, nullable=False)
+    rating = db.Column(db.Float, nullable=False)
     created = db.Column(db.DateTime, default=datetime.utcnow)
 
     # todo:add cascade delete

@@ -67,7 +67,7 @@ export const thunkOneReview = (id) => async(dispatch) => {
 }
 
 export const thunkCreateReview = (form, id) => async(dispatch) => {
-    // console.log('asdasdasdwwadw', id)
+    console.log('asdasdasdwwadw', form)
     const response = await fetch(`/api/beer/${id}/review`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },

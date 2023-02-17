@@ -2,15 +2,23 @@
 body {
     margin: 0px;
 }
+
 #app-js {
     width: 100vw
 }
 
 #all-content {
-    padding-top:5vw;
+    padding-top: 5vw;
     background-color: whitesmoke;
 }
 
-#usernamedropdown{
+#usernamedropdown {
     border-bottom: 1px solid rgb(102, 64, 64);
+}
+
+.rating-review {
+    width: 15vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
