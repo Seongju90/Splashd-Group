@@ -10,7 +10,7 @@ export default function BeerCard({ beer, user }) {
         type, abv, ibu, num_reviews, avg, name } = beer
 
     // console.log(beer.brewery.name)
-    const breweryName = beer.brewery.name
+    const breweryName = beer?.brewery?.name
 
     const handleClick = () => {
         dispatch(thunkOneBeer(id))
