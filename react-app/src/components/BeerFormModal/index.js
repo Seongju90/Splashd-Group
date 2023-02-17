@@ -51,7 +51,10 @@ export default function BeerFormModal({ id }) {
 						<div classname='error-message'>{error}</div>
 					))}
 				</div>
+<<<<<<< HEAD
                 
+=======
+>>>>>>> philip
 
                 <div className="modal-exit"
                     onClick={() => closeModal()}
@@ -62,13 +65,7 @@ export default function BeerFormModal({ id }) {
             </div>
             <form className="modal-form"
                 onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
                 <div>
-
                     Name
                 </div>
                 <input
@@ -155,7 +152,6 @@ export default function BeerFormModal({ id }) {
                         amurican
                     </option>
                 </select>
-
                 <div>
                     Description
                 </div>
@@ -167,7 +163,6 @@ export default function BeerFormModal({ id }) {
                     onChange={(e) => setDescription(e.target.value)}
                     required
                 />
-
                 <div>
                     Logo
                 </div>
@@ -177,9 +172,9 @@ export default function BeerFormModal({ id }) {
                     onChange={(e) => setLogo(e.target.value)}
                     required
                 />
-
-                <button type="submit">Create</button>
-
+                <div>
+                    <button type="submit">Create</button>
+                </div>
             </form>
         </div>
     )

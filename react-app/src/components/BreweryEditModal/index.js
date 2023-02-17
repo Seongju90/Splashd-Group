@@ -54,8 +54,9 @@ export default function BreweryEditModal({ brew, id }) {
             </div>
             <form className="modal-form"
                 onSubmit={handleSubmit}>
-                <label>
+                <div>
                     Name
+                </div>
                     <input
                         type="text"
                         value={name}
@@ -64,9 +65,9 @@ export default function BreweryEditModal({ brew, id }) {
                         onChange={(e) => setName(e.target.value)}
                         required
                     />
-                </label>
-                <label>
+                <div>
                     City
+                </div>
                     <input
                         type="text"
                         pattern='[a-z,A-Z,\s]+'
@@ -75,9 +76,9 @@ export default function BreweryEditModal({ brew, id }) {
                         onChange={(e) => setCity(e.target.value)}
                         required
                     />
-                </label>
-                <label>
+                <div>
                     State
+                </div>
                     <input
                         type="text"
                         value={states}
@@ -87,9 +88,9 @@ export default function BreweryEditModal({ brew, id }) {
                         onChange={(e) => setStates(e.target.value)}
                         required
                     />
-                </label>
-                <label>
+                <div>
                     Type
+                </div>
                     <select
                         onChange={(e) => setBreweryType(e.target.value)}
                         required
@@ -109,7 +110,6 @@ export default function BreweryEditModal({ brew, id }) {
                             Int
                         </option>
                     </select>
-                </label>
                 <div>
                     Description
                 </div>
@@ -121,17 +121,18 @@ export default function BreweryEditModal({ brew, id }) {
                     onChange={(e) => setDescription(e.target.value)}
                     required
                 />
-                <label>
+                <div>
                     Logo
+                </div>
                     <input
                         type="url"
                         value={breweryLogo}
                         onChange={(e) => setBreweryLogo(e.target.value)}
                         required
                     />
-                </label>
-                <button type="submit">Edit</button>
-
+                <div>
+                    <button type="submit">Edit</button>
+                </div>
             </form>
         </div>
     )

@@ -7,15 +7,24 @@
 cursor: default;
 
 }
+
+#namedropdown {
+    padding-top: 5px;
+}
+
+#usernamedropdown {
+    padding-top: 5px;
+    border-top: 0.5px solid black;
+}
+
 #therest> div:hover{
-    color: rgb(203, 203, 203);
+    color: black;
     cursor: pointer;
 }
 
-
-.profile-dropdown {
-    position: absolute;
-    z-index: 20;
+#therest> div {
+    padding-top: 5px;
+    border-top: 0.5px solid black;
 }
 
 .hidden {
@@ -23,8 +32,11 @@ cursor: default;
 }
 
 .profile-dropdown {
-    background-color: black;
+    position: absolute;
+    background-color: lightgrey;
     color: white;
+    border-radius: 5px;
+    padding-left: 2px;
 }
 
 .homebutton  {
@@ -33,7 +45,7 @@ cursor: default;
 .navcont {
     color: white;
     height: 100%;
-    font-size: 3vw;
+    font-size: 2vw;
     font-family: Logo;
 }
 

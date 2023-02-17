@@ -55,45 +55,45 @@ function SignupFormModal() {
 			</div>
 			<form className="modal-form"
 				onSubmit={handleSubmit}>
-
 				<div>
 					Email
+				</div>
 					<input
 						type="text"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
-				</div>
 				<div>
 					Username
+				</div>
 					<input
 						type="text"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 						required
 					/>
-				</div>
 				<div>
 					First Name
+				</div>
 					<input
 						type="text"
 						value={firstName}
 						onChange={(e) => setFirstName(e.target.value)}
 						required
 					/>
-				</div>
 				<div>
 					Last Name
+				</div>
 					<input
 						type="text"
 						value={lastName}
 						onChange={(e) => setLastName(e.target.value)}
 						required
 					/>
-				</div>
 				<div>
 					Age
+				</div>
 					<input
 						type="number"
 						value={age}
@@ -101,8 +101,7 @@ function SignupFormModal() {
 						min="0"
 						required
 
-					/>
-				</div>
+						/>
 				<div>
 					Profile Picture
 				</div>
@@ -114,23 +113,25 @@ function SignupFormModal() {
                 />
 				<div>
 					Password
+				</div>
 					<input
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						required
 					/>
-				</div>
 				<div>
 					Confirm Password
+				</div>
 					<input
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
 					/>
+				<div>
+					<button type="submit">Sign Up</button>
 				</div>
-				<button type="submit">Sign Up</button>
 			</form>
 		</div >
 	);
