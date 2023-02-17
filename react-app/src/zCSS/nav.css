@@ -30,19 +30,31 @@ cursor: default;
     cursor: pointer;
 }
 .navcont {
+    color: white;
     height: 100%;
     font-size: 3vw;
     font-family: Logo;
 }
-#usernamedropdow {
+
+/* #usernamedropdow { */
     /* border-bottom: 1px solid red; */
-}
+/* } */
+
 #navcontainer {
     position: fixed;
-    background-color: red;
-    border: 1px solid red;
+    background-color: #ffc000;
+    /* border: 1px solid red; */
     width: 100%;
     display: flex;
     justify-content: space-around;
     height: 5vw;
+    z-index: 2;
+}
+
+.navleft {
+    margin-top: 15px;
+}
+
+.navright {
+    margin-top: 15px;
 }

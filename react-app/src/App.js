@@ -13,7 +13,7 @@ import OneBrewery from "./components/BreweryOneIndex";
 import MyBadges from "./components/BadgeMyIndex";
 import MyBreweries from "./components/BreweryMyIndex";
 import MyReviews from "./components/ReviewMyIndex";
-
+import SplashPage from "./components/SplashdLanding";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -36,7 +36,8 @@ function App() {
           <ReviewOneIndex />
         </Route>
         <Route path='/test'>
-            <Tester />
+            {/* <Tester /> */}
+            <SplashPage/>
           </Route>
         <Route path='/beer/:id'>
           <OneBeer beer={beer}/>
