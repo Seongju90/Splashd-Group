@@ -3,6 +3,7 @@
     flex-direction:column;
     background-color: black;
     height: 1200px;
+    width: 100vw;
 }
 
 .home-background-image {
@@ -20,6 +21,7 @@
     justify-content: space-around;
     margin-top: 5em;
     z-index: 2;
+    align-items: flex-end;
 }
 
 .text-log-subcontainer {
@@ -34,6 +36,8 @@
 }
 
 .phone-img {
+    position: relative;
+    top: 140px;
     z-index: 2;
 }
 

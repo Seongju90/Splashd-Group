@@ -10,7 +10,7 @@ function SplashPage() {
     const history = useHistory()
 
     const navigateToAllBeers = () => {
-        history.push(`/`)
+        history.push(`/beers`)
     }
 
     return (

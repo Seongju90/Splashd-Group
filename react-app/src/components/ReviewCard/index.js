@@ -74,9 +74,9 @@ export default function ReviewCard({ username, review, beer, location }) {
                     <div className="review-sub-beer-container">
                         <img className="review-beer-logo" src={beerLogo} />
                         <div className="review-beer-name">{beerName}</div>
-                    </div>
-                    <div className="review-rating-container">
-                        Rating: {beerRating}
+                        <div className="review-rating-container">
+                            Rating: {beerRating}
+                        </div>
                     </div>
                 </div>}
                 <div className="review-text-container">
