@@ -36,12 +36,17 @@ export default function BadgeFormModal() {
             closeModal();
         }
     };
-    const options = [b1,b2,b3]
+    const options = [b1, b2, b3]
     return (
         <div className="modal-whole">
             <div className="modal-header">
-                <div className="modal-exit">X</div>
                 <div className="modal-title">Make A Badge!</div>
+                <div className="error-cont">
+                    {errors.map((error) => (
+                        <div classname='error-message'>{error}</div>
+                    ))}
+                </div>
+                <div className="modal-exit">X</div>
             </div>
 
             <form className="modal-form"
