@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState , useSelector} from "react";
+import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { thunkCreateBrewery, thunkMyBrewery } from "../../store/brewery";
+import { thunkEditBrewery, thunkMyBrewery } from "../../store/brewery";
 
 
-export default function BreweryFormModal({ id }) {
+export default function BreweryEditModal({ brew, id }) {
     const dispatch = useDispatch();
-    const [name, setName] = useState("");
-    const [breweryType, setBreweryType] = useState("Regional Brewery");
-    const [breweryLogo, setBreweryLogo] = useState("");
-    const [city, setCity] = useState("");
-    const [states, setStates] = useState("")
-    const [description, setDescription] = useState("");
+    const [name, setName] = useState(brew?.name);
+    const [breweryType, setBreweryType] = useState(brew?.brewery_type);
+    const [breweryLogo, setBreweryLogo] = useState(brew?.brewery_logo);
+    const [city, setCity] = useState(brew?.city_state.split(',')[0]);
+    const [states, setStates] = useState(brew?.city_state.slice(-2))
+    const [description, setDescription] = useState(brew?.description);
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const cityState = city + ", " + states
-        const data = await dispatch(thunkCreateBrewery(
+        const data = await dispatch(thunkEditBrewery(
             {
                 'name': name,
                 'brewery_type': breweryType,
                 'brewery_logo': breweryLogo,
                 'city_state': cityState,
                 'description': description
-            }
+            }, brew?.id
         ));
         if (data) {
             setErrors(data.errors);
         } else {
-             dispatch(thunkMyBrewery(id))
+            await dispatch(thunkMyBrewery(id))
             closeModal();
         }
     };
@@ -39,7 +39,7 @@ export default function BreweryFormModal({ id }) {
         <div className="modal-whole">
             <div className="modal-header">
                 <div className="modal-title">
-                    Make Your Brewery!
+                    Edit Brewery
                 </div>
                 <div className="error-cont">
                     {errors.map((error) => (
@@ -130,7 +130,7 @@ export default function BreweryFormModal({ id }) {
                         required
                     />
                 </label>
-                <button type="submit">Create</button>
+                <button type="submit">Edit</button>
 
             </form>
         </div>

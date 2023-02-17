@@ -76,11 +76,11 @@ def edit_review(id):
     if form.validate_on_submit():
 
         review.image = form.data['image']
-        review.review_text = form.data['review_text']
+        review.review_text = request.json['review_text']
         review.rating = form.data['rating']
 
         db.session.commit()
-        return review.to_dict()
+        return {'rev':review.to_dict(), 'id':current_user.id}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

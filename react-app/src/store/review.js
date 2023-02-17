@@ -1,4 +1,4 @@
-import { thunkOneBeer} from "./beer";
+import { thunkOneBeer } from "./beer";
 
 /* ---------- TYPE VARIABLES ---------- */
 
@@ -47,12 +47,12 @@ const actionMyReview = (review) => {
 }
 /* ---------- THUNK ACTION CREATORS ---------- */
 
-export const thunkOneReview = (id) => async(dispatch) => {
+export const thunkOneReview = (id) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${id}`, {
-		headers: {
-			"Content-Type": "application/json",
-		},
-	});
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
 
     if (response.ok) {
         const review = await response.json()
@@ -60,33 +60,35 @@ export const thunkOneReview = (id) => async(dispatch) => {
         return null
     }
     else if (response.status < 500) {
-		const data = await response.json();
-		if (data.errors) return data;
-	}
-	else return { errors: ["An error occurred. Please try again."] }
+        const data = await response.json();
+        if (data.errors) return data;
+    }
+    else return { errors: ["An error occurred. Please try again."] }
 }
 
-export const thunkCreateReview = (form, id) => async(dispatch) => {
-    // console.log('asdasdasdwwadw', id)
+export const thunkCreateReview = (form, id) => async (dispatch) => {
+    console.log('asdasdasdwwadw', id)
     const response = await fetch(`/api/beer/${id}/review`, {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify(form)
-	})
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form)
+    })
 
-    // console.log('in my thunk!!!!!', response)
+    console.log('in my thunk!!!!!', response)
 
-    if(response.ok) {
+    if (response.ok) {
         const data = await response.json()
         await dispatch(thunkOneBeer(data.beer_id))
-        dispatch(actionCreateReview(data))
+        console.log(data)
+        // await dispatch(thunkMyReviews(data.id))
+        dispatch(actionCreateReview(data.rev))
         return null
     }
     else if (response.status < 500) {
-		const data = await response.json();
-		if (data.errors) return data;
-	}
-	else return { errors: ["An error occurred. Please try again."] }
+        const data = await response.json();
+        if (data.errors) return data;
+    }
+    else return { errors: ["An error occurred. Please try again."] }
 }
 
 export const thunkEditReview = (form, rev) => async (dispatch) => {
@@ -99,6 +101,8 @@ export const thunkEditReview = (form, rev) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json()
+        await dispatch(thunkMyReviews(data.id))
+
         dispatch(actionEditReview(data))
         // console.log('in my thunk!!!!!', response)
         return null
@@ -118,23 +122,23 @@ export const thunkDeleteReview = (rev) => async (dispatch) => {
     if (response.ok) {
         // const data = await response.json();
         await dispatch(thunkOneBeer(rev.beer_id))
-		dispatch(actionDeleteReview(rev.id));
+        dispatch(actionDeleteReview(rev.id));
 
-		return null
-	}
-	else if (response.status < 500) {
-		const data = await response.json();
-		if (data.errors) return data;
-	}
-	else return { errors: ["An error occurred. Please try again."] }
+        return null
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) return data;
+    }
+    else return { errors: ["An error occurred. Please try again."] }
 }
 
-export const thunkMyReviews = (id) => async(dispatch) => {
+export const thunkMyReviews = (id) => async (dispatch) => {
     const response = await fetch(`/api/users/${id}/reviews`, {
-		headers: {
-			"Content-Type": "application/json",
-		},
-	});
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
 
     if (response.ok) {
         const review = await response.json()
@@ -142,35 +146,33 @@ export const thunkMyReviews = (id) => async(dispatch) => {
         return null
     }
     else if (response.status < 500) {
-		const data = await response.json();
-		if (data.errors) return data;
-	}
-	else return { errors: ["An error occurred. Please try again."] }
+        const data = await response.json();
+        if (data.errors) return data;
+    }
+    else return { errors: ["An error occurred. Please try again."] }
 }
 
 /* ---------- REVIEWS REDUCER ---------- */
 
 const initialState = {}
 const reviewsReducer = (state = initialState, action) => {
-    let newState = {...state}
+    let newState = { ...state }
     switch (action.type) {
         case ONE_REVIEW:
             let review = action.review
-            // console.log('reducer for one review, review)
             newState.onereview = review
             newState[review.id] = review
             return newState
         case CREATE_REVIEW:
             let add = action.review
-            // console.log('reducer for create review', add)
             newState[add.id] = add
             return newState
         case EDIT_REVIEW:
             let edit = action.review
             newState[edit.id] = edit
+            newState.myreviews[edit.id] = edit
             return newState
         case MY_REVIEW:
-            // console.log('reducer actionreview', action.review)
             newState['myreviews'] = action.review.Reviews
             return newState
         case DELETE_REVIEW:
