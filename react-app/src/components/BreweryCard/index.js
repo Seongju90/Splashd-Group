@@ -2,8 +2,13 @@ import { useHistory } from 'react-router-dom';
 import { thunkOneBeer } from '../../store/beer';
 import { useDispatch } from 'react-redux';
 import BeerCard from '../BeerCard'
-import { thunkOneBrewery } from '../../store/brewery';
+import { thunkOneBrewery, thunkEditBrewery } from '../../store/brewery';
 import '../../zCSS/brewerycard.css'
+import BreweryEditModal from '../BreweryEditModal';
+import OpenModalButton from '../OpenModalButton';
+import BeerEditModal from '../BeerEditModal'
+import BeerFormModal from '../BeerFormModal'
+import BadgeFormModal from '../BadgeFormModal';
 
 export default function BreweryCard({ brewery, user }) {
     const history = useHistory()
@@ -21,7 +26,7 @@ export default function BreweryCard({ brewery, user }) {
         dispatch(thunkOneBrewery(id))
 
 
-        history.push(`/brewery/${id}`)
+        history.push(`users/${user?.id}/brewery`)
     }
 
     // console.log(beer)
@@ -31,18 +36,27 @@ export default function BreweryCard({ brewery, user }) {
                 <div className="brewery-logo-container">
 
 
+                    <div>
 
-                    <div className='brewery-card-click'
-                        onClick={handleClickBrewery}
-                    >
-                        <img
-                            className='brewery-card-click'
-                            key={`beerlogo${id}`}
-                            src={`${brewery_logo}`}
-                            alt='previewimageforcard'
-                        />
+                        <div className='brewery-card-click'
+                            onClick={handleClickBrewery}
+                        >
+                            <img
+                                className='brewery-card-click'
+                                key={`beerlogo${id}`}
+                                src={`${brewery_logo}`}
+                                alt='previewimageforcard'
+                            />
+                        </div>
+                        <div id='edit-button'>
 
-                    </div>{/*refers to containing handleClick and beerlogo id and info*/}
+
+                            <OpenModalButton
+                                buttonText="Edit/Delete"
+                                modalComponent={<BreweryEditModal brew={brewery} />}
+                            />
+                        </div>{/*refers to containing handleClick and beerlogo id and info*/}
+                    </div>
 
 
 
@@ -58,17 +72,23 @@ export default function BreweryCard({ brewery, user }) {
                         <h1>
                             {name}'s beers
                         </h1>
+                        <OpenModalButton
+                            buttonText="Make a Beer"
+                            //   onItemClick={closeMenu}
+                            modalComponent={<BeerFormModal id={brewery?.id} />} />
                         <div>
                             {beers.map((x) =>
                                 <div className='beer-box'>
                                     <BeerCard beer={x} user={user} />
-                                    <div id='edit-button'
-                                        onClick={() => handleClickBeer(x.id)}
-                                    >
-                                        Edit Your Beer or Create Badge at Page
-                                    </div>
 
-
+                                    <OpenModalButton
+                                        buttonText="Edit/Delete"
+                                        modalComponent={<BeerEditModal beer={x} />}
+                                    />
+                                    <OpenModalButton
+                                        buttonText="Create a Badge"
+                                        modalComponent={<BadgeFormModal id={x?.id} />}
+                                    />
                                 </div>
                             )}
 
@@ -78,7 +98,7 @@ export default function BreweryCard({ brewery, user }) {
                     </div>{/*closes off the beers mapped and name city/state and brewery type info*/}
                 </div >
             </div>
-        </div>
+        </div >
 
     )
 

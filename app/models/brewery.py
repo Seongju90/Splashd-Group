@@ -35,6 +35,7 @@ class Brewery(db.Model):
             'name': self.name,
             'owner_id': self.owner_id,
             'city_state': self.city_state,
+            'description': self.description,
             'brewery_type': self.brewery_type,
             'brewery_logo': self.brewery_logo,
             'beers': [b.to_dict() for b in self.brewery_beer],
