@@ -15,7 +15,7 @@ cursor: default;
 
 .profile-dropdown {
     position: absolute;
-
+    z-index: 20;
 }
 
 .hidden {
@@ -26,6 +26,7 @@ cursor: default;
     background-color: black;
     color: white;
 }
+
 .homebutton  {
     cursor: pointer;
 }
