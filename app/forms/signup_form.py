@@ -10,6 +10,10 @@ def user_exists(form, field):
     user = User.query.filter(User.email == email).first()
     if user:
         raise ValidationError('Email address is already in use.')
+    if '@' not in email:
+        raise ValidationError('Please provide a valid email')
+    if '.' not in email:
+        raise ValidationError('Please provide a valid email')
 
 
 def username_exists(form, field):
@@ -29,7 +33,8 @@ def age_check(form, field):
 class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
-    email = StringField('email', validators=[DataRequired('An email is required'), user_exists])
+    # email = StringField('email', validators=[DataRequired('An email is required'), user_exists])
+    email = StringField('email', validators=[DataRequired('An email is required'), user_exists, Email('Please provide a valid email')])
     first_name = StringField('first name', validators=[DataRequired('First Name Required')])
     last_name = StringField('last name', validators=[DataRequired('Last Name Required')])
     age = IntegerField('age', validators=[DataRequired('Whats yo Age?'), age_check])

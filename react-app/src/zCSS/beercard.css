@@ -1,0 +1,51 @@
+.beer-detail-name {
+    font-weight: bold;
+    color: #8a4500;
+};
+
+.beer-detail-brewery {
+    color: #8a4500;
+};
+
+.beer-detail-type {
+    color: #545151;
+};
+
+.beer-detail-abv {
+    color: #545151;
+};
+
+.beer-detail-ibu {
+    color: #545151;
+};
+
+.beer-detail-avgRating {
+    color: #545151;
+};
+
+.beer-detail-checkin {
+    color: #545151;
+};
+
+.beer-details-information{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2em;
+    justify-content: space-around;
+}
+
+.beer-card-main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.beer-logo-info-container1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.beer-info-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

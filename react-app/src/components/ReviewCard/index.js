@@ -15,13 +15,14 @@ export default function ReviewCard({ username, review, beer, location }) {
         let beer = review.beer
     }
     const user = useSelector(state => state.session?.user)
-    let beerId = beer.id
-    let beerLogo = beer.beer_logo
-    let beerName = beer.name
-    let reviewText = review.review_text
-    let reviewImage = review.image
-    let beerRating = review.rating
+    let beerId = beer?.id
+    let beerLogo = beer?.beer_logo
+    let beerName = beer?.name
+    let reviewText = review?.review_text
+    let reviewImage = review?.image
+    let beerRating = review?.rating
     let divclass
+
     if (location){ divclass = "beer-reviews"}
     else{ divclass = "review-main-container"}
 
@@ -69,7 +70,7 @@ export default function ReviewCard({ username, review, beer, location }) {
                     )
                     : button2}
                 </div>
-                {!location ? null : <div className="review-beer-container">
+                {location ? null : <div className="review-beer-container">
                     <div className="review-sub-beer-container">
                         <img className="review-beer-logo" src={beerLogo} />
                         <div className="review-beer-name">{beerName}</div>
