@@ -1,4 +1,4 @@
-import { thunkOneBrewery } from "./brewery";
+import { thunkMyBrewery, } from "./brewery";
 import { actionOneReview } from "./review";
 
 const ALL_BEERS = "beer/ALL_BEERS";
@@ -79,23 +79,19 @@ export const thunkOneBeer = (id) => async (dispatch) => {
 
 
 export const thunkCreateBeer = (form, id) => async (dispatch) => {
-	// console.log(form)
 	const response = await fetch(`/api/brewery/${id}/beers`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(form)
 	})
-	// console.log(response, 'this is respond from backend')
 	if (response.ok) {
 		const data = await response.json();
-		// console.log(data, '!!just came from backend')
-		await dispatch(thunkOneBrewery(data.brewery_id))
-		dispatch(addBeer(data));
+		await dispatch(thunkMyBrewery(data.id))
+		dispatch(addBeer(data.beer));
 		return null
 	}
 	else if (response.status < 500) {
 		const data = await response.json();
-		// console.log(data, 'ERROR STUFF')
 		if (data.errors) return data;
 	}
 	else return { errors: ["An error occurred. Please try again."] }
