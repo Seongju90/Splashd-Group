@@ -68,50 +68,41 @@ export default function EditReviewModal({ rev }) {
             </div>
             <form className="modal-form"
                 onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
-                <label>
+                <div>
                     Image Url
                     <input
                         type="url"
                         value={imageUrl}
                         onChange={(e) => setImageUrl(e.target.value)}
                     />
-                </label>
-                <label>
+                </div>
+                <div>
                     Review
                     <input
                         type="text"
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
                     />
-                </label>
-                <div>
-
-                    <input
-                        type="range"
-                        value={rating}
-                        min='0'
-                        max='5'
-                        step='.25'
-
-
-
-                        onChange={(e) => setRating(e.target.value)}
+                </div>
+                <input
+                    type="range"
+                    value={rating}
+                    min='0'
+                    max='5'
+                    step='.25'
+                    onChange={(e) => setRating(e.target.value)}
                     />
+                <div>
                     Rating:{rating}
                 </div>
-                <>
+                <div>
                     <button type="submit">Edit a Review</button>
-                </>
-                <>
+                </div>
+                <div>
                     <button type="button"
                         onClick={handleDelete}
                     >Delete A Review</button>
-                </>
+                </div>
             </form>
         </div>
     )

@@ -46,18 +46,10 @@ export default function BadgeFormModal() {
                         <div classname='error-message'>{error}</div>
                     ))}
                 </div>
-                <div className="modal-exit">X</div>
+                <div className="modal-exit" onClick={() => closeModal()}>X</div>
             </div>
-
             <form className="modal-form"
                 onSubmit={handleSubmit}>
-
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
-
                 <div>
                     Icon
                 </div>
@@ -67,16 +59,18 @@ export default function BadgeFormModal() {
                     onChange={(e) => setIcon(e.target.value)}
                     required
                 />
-                <label>
+                <div>
                     Description
+                </div>
                     <input
                         type="text"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         required
                     />
-                </label>
-                <button type="submit">Create</button>
+                <div>
+                    <button type="submit">Create</button>
+                </div>
             </form>
         </div>
     )
