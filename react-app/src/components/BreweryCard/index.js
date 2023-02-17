@@ -22,12 +22,12 @@ export default function BreweryCard({ brewery, user }) {
 
         history.push(`/beer/${beerIDnum}`)
     }
-    const handleClickBrewery = () => {
-        dispatch(thunkOneBrewery(id))
+    // const handleClickBrewery = () => {
+    //     dispatch(thunkOneBrewery(id))
 
 
-        history.push(`users/${user?.id}/brewery`)
-    }
+    //     history.push(`users/${user?.id}/brewery`)
+    // }
 
     // console.log(beer)
     return (
@@ -38,11 +38,11 @@ export default function BreweryCard({ brewery, user }) {
 
                     <div>
 
-                        <div className='brewery-card-click'
-                            onClick={handleClickBrewery}
+                        <div className='brewery-card-logo'
+                        // onClick={handleClickBrewery}
                         >
                             <img
-                                className='brewery-card-click'
+                                className='brewery-card-logo'
                                 key={`beerlogo${id}`}
                                 src={`${brewery_logo}`}
                                 alt='previewimageforcard'
@@ -66,6 +66,8 @@ export default function BreweryCard({ brewery, user }) {
 
                         <div>City/State:{city_state}</div>
                         <div>Brewery Type: {brewery_type}</div>
+
+                        <div className="brewery-info-description"></div>
 
                     </div>{/**Closes Brewery Info*/}
                     <div>

@@ -17,12 +17,12 @@
     cursor: pointer;
 }
 
-.brewery-card-click:hover {
+/* .brewery-card-click:hover {
     border: 3px solid black;
-}
+} */
 
-.brewery-card-click {
-    cursor: pointer;
+.brewery-card-logo {
+    cursor: auto;
     height: 10vw;
     width: 10vw;
     box-sizing: border-box;
@@ -113,3 +113,5 @@
     background-color: #125b0b;
 
 }
+
+.brewery-info-description {}
