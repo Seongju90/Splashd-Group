@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { thunkOneBeer } from '../../store/beer';
 import { useDispatch } from 'react-redux';
-
+import "../../zCSS/beercard.css"
 
 export default function BeerCard({ beer, user }) {
     const history = useHistory()
@@ -65,7 +65,7 @@ export default function BeerCard({ beer, user }) {
                     </div>
                 </div>
             </div>
-            <div className="beer-info-container">
+            <div className="beer-info-container" style={{border: "2px solid whitesmoke"}}>
                 <div className="beer-detail-abv" style={{color: "#545151"}}>
                     {abv}% ABV
                 </div>

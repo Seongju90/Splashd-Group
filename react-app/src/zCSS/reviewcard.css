@@ -11,7 +11,7 @@
    grid-template-columns: repeat(2, 1fr);
    max-width: 1048px;
    min-width: 320px;
-   width: 100%;
+   width: 54%;
    margin: 1em;
    border: 0.5px solid grey;
    border-radius: 4px;
@@ -37,7 +37,7 @@
 .review-images {
     object-fit: cover;
     width: 100%;
-    height: 500px;
+    height: 350px;
 }
 
 .review-user-info {
@@ -59,15 +59,16 @@
 .review-user-container {
     display: flex;
     border: 0.5px solid lightgrey;
-    padding: 0.5em;
+    margin: 0.5em;
     height: 100%;
+    align-items: center;
 }
 
 .review-beer-container {
     border: 0.5px solid lightgrey;
     padding: 0.5em;
     margin: 0.5em;
-    height: 100%;
+    height: 65%;
 }
 
 .review-text-container {
@@ -148,4 +149,14 @@
 
 .button:hover{
     cursor: pointer;
+}
+
+.button {
+    border: 1px burlywood;
+    padding: .5vw;
+    cursor: pointer;
+    color: rgb(116, 154, 2);
+    background-color: green;
+    width: fit-content;
+    height: 30%;
 }

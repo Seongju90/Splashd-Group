@@ -66,7 +66,7 @@ export default function BreweryCard({ brewery, user }) {
 
                         <div>City/State:{city_state}</div>
                         <div>Brewery Type: {brewery_type}</div>
-                        <div> Average Rating coming Soon!</div>
+
                     </div>{/**Closes Brewery Info*/}
                     <div>
                         <h1>
@@ -81,14 +81,21 @@ export default function BreweryCard({ brewery, user }) {
                                 <div className='beer-box'>
                                     <BeerCard beer={x} user={user} />
 
-                                    <OpenModalButton
-                                        buttonText="Edit/Delete"
-                                        modalComponent={<BeerEditModal beer={x} />}
-                                    />
-                                    <OpenModalButton
-                                        buttonText="Create a Badge"
-                                        modalComponent={<BadgeFormModal id={x?.id} />}
-                                    />
+
+                                    <div className="edit-delete-beer-on-brewery-button">
+                                        <OpenModalButton
+                                            buttonText="Edit/Delete"
+                                            modalComponent={<BeerEditModal beer={x} />}
+                                        />
+                                    </div>
+
+                                    <div id="create-badge-on-brewery-button">
+                                        <OpenModalButton
+                                            buttonText="Create a Badge"
+                                            modalComponent={<BadgeFormModal id={x?.id} />}
+                                        />
+                                    </div>
+
                                 </div>
                             )}
 
