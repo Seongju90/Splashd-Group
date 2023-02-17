@@ -53,46 +53,39 @@ function ReviewFormModal({ id }) {
 
             <form className="modal-form"
                 onSubmit={handleSubmit}>
-
                 <div>
-
                     Image Url
+                </div>
                     <input
                         type="url"
                         value={imageUrl}
                         onChange={(e) => setImageUrl(e.target.value)}
                     />
 
-                </div>
                 <div>
                     Review
+                </div>
                     <input
                         type="text"
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
                     />
-                </div>
-
                 <div className="rating-review">
-                    <div>
-                        <input
-                            className="rating-review"
-                            type="range"
-                            value={rating}
-                            min={0}
-                            max={5}
-                            step={.25}
-
-
-                            // onMouseUp={(e) => setRating(e.target.value)}
-                            onChange={(e) => setRating(e.target.value)}
-                        />
-                    </div>
+                    <input
+                        className="rating-review"
+                        type="range"
+                        value={rating}
+                        min={0}
+                        max={5}
+                        step={.25}
+                        // onMouseUp={(e) => setRating(e.target.value)}
+                        onChange={(e) => setRating(e.target.value)}
+                    />
                     <div>Rating: {rating}</div>
-
                 </div>
-
-                <button type="submit">Submit a Review</button>
+                <div>
+                    <button type="submit">Submit a Review</button>
+                </div>
             </form>
         </div>
     )

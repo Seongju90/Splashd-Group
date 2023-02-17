@@ -75,13 +75,9 @@ export default function EditBeerModal({ beer }) {
             </div>
             <form className="modal-form"
                 onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
-                <label>
+                <div>
                     name
+                </div>
                     <input
                         type="text"
                         value={name}
@@ -90,9 +86,9 @@ export default function EditBeerModal({ beer }) {
                         onChange={(e) => setName(e.target.value)}
                         required
                     />
-                </label>
-                <label>
+                <div>
                     ABV
+                </div>
                     <input
                         type="decimal"
                         value={abv}
@@ -101,9 +97,9 @@ export default function EditBeerModal({ beer }) {
                         onChange={(e) => setAbv(e.target.value)}
                         required
                     />
-                </label>
-                <label>
+                <div>
                     IBU
+                </div>
                     <input
                         type="number"
                         value={ibu}
@@ -111,10 +107,10 @@ export default function EditBeerModal({ beer }) {
                         max='100'
                         onChange={(e) => setIbu(e.target.value)}
                         required
-                    />
-                </label>
-                <label>
+                        />
+                <div>
                     Type
+                </div>
                     <select
                         onChange={(e) => setType(e.target.value)}
                         required
@@ -163,9 +159,9 @@ export default function EditBeerModal({ beer }) {
                             amurican
                         </option>
                     </select>
-                </label>
-                <label>
+                <div>
                     description
+                </div>
                     <input
                         type="textarea"
                         value={description}
@@ -174,24 +170,21 @@ export default function EditBeerModal({ beer }) {
                         onChange={(e) => setDescription(e.target.value)}
                         required
                     />
-                </label>
-                <label>
+                <div>
                     Logo
+                </div>
                     <input
                         type="url"
                         value={logo}
                         onChange={(e) => setLogo(e.target.value)}
                         required
                     />
-                </label>
-                <>
+                <div>
                     <button type="submit">Edit a Beer</button>
-                </>
-                <>
-                    <button type="button"
-                        onClick={handleDelete}
-                    >Delete Beer</button>
-                </>
+                </div>
+                <div>
+                    <button type="button"onClick={handleDelete}>Delete Beer</button>
+                </div>
             </form>
         </div>
     )
