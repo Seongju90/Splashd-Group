@@ -76,12 +76,12 @@ function ProfileButton({ user }) {
     <div className="profilebutton dropdown">
       <div onClick={openMenu}
       >
-        <img src={profile} style={{ border: '1px solid black', cursor: 'pointer', height: '3vw', width: '3vw' }} />
+        <img src={profile} style={{cursor: 'pointer', height: '3vw', width: '3vw' }} />
       </div>
       <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <div className="nameandemail">{user.name}</div>
+            <div id="namedropdown" className="nameandemail">{user.name}</div>
             <div id='usernamedropdow' className="nameandemail">{user.email}</div>
             {/* <OpenModalButton
               buttonText="Make a Brewery"
