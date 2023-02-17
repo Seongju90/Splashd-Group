@@ -9,16 +9,16 @@ class ReviewForm(FlaskForm):
         # validators=[
         #     Length(min=10, max=255, message='Length of image url must be between 10 and 255 characters')
         # ]
-        )   
+        )
     review_text = TextAreaField(
         "Review",
         validators=[
             DataRequired(message='Review is required'),
-             Length(min= 5, message= 'Review is too short'),
+            Length(min= 5, message= 'Review is too short'),
             Length(max=2000, message='Review cant exceed 2000 characters')
             ]),
-    
-        
+
+
     rating = IntegerField(
         "Rating",
         validators=[
