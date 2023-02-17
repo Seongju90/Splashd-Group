@@ -25,11 +25,13 @@ def age_check(form, field):
     if age < 21:
         raise ValidationError('Must be 21 or older.')
 
+
 class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
-    email = StringField('email', validators=[DataRequired(), user_exists])
-    first_name = StringField('first name', validators=[DataRequired()])
-    last_name = StringField('last name', validators=[DataRequired()])
-    age = IntegerField('age', validators=[DataRequired(), age_check])
-    password = StringField('password', validators=[DataRequired()])
+    email = StringField('email', validators=[DataRequired('An email is required'), user_exists])
+    first_name = StringField('first name', validators=[DataRequired('First Name Required')])
+    last_name = StringField('last name', validators=[DataRequired('Last Name Required')])
+    age = IntegerField('age', validators=[DataRequired('Whats yo Age?'), age_check])
+    password = StringField('password', validators=[DataRequired('Please make a password')])
+    profile_pic = StringField('profile_pic')

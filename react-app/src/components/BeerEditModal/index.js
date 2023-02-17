@@ -6,7 +6,7 @@ import { thunkOneBrewery } from "../../store/brewery";
 import { useHistory } from "react-router-dom";
 
 
-export default function EditBeerModal({beer}) {
+export default function EditBeerModal({ beer }) {
     const dispatch = useDispatch();
     // const [beer, setBeer] = useState(useSelector((state) => state.beer.onebeer))
     const [name, setName] = useState(beer.name);
@@ -30,21 +30,10 @@ export default function EditBeerModal({beer}) {
             'abv': ab,
             'ibu': +ibu,
             'type': type,
-            // 'brewery_id': id,
             'beer_logo': logo,
             'description': description
         }
-        // console.log(beerdata)
         const data = await dispatch(thunkEditBeer(
-            // {
-            //     'name': name,
-            //     'abv': +abv,
-            //     'ibu': +ibu,
-            //     'type': type,
-            //     // 'brewery_id': id,
-            //     'beer_logo': logo,
-            //     'description': description
-            // },
             beerdata,
             beer.brewery_id, beer.id
         ));
@@ -74,14 +63,23 @@ export default function EditBeerModal({beer}) {
 
     return (
         <div className="modal-whole">
-        <div className="modal-header">
+            <div className="modal-header">
+                <div className="modal-title">
+                    Change Your Beer!
+                </div>
+                <div className="error-cont">
+                    {errors.map((error) => (
+                        <div classname='error-message'>{error}</div>
+                    ))}
+                </div>
                 <div className="modal-exit"
                     onClick={() => closeModal()}
-                >X</div>
-            <div className="modal-title">Change Your Beer!</div>
-        </div>
-        <form className="modal-form" 
-        onSubmit={handleSubmit}>
+                >
+                    X
+                </div>
+            </div>
+            <form className="modal-form"
+                onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
@@ -92,7 +90,7 @@ export default function EditBeerModal({beer}) {
                     <input
                         type="text"
                         value={name}
-                        pattern='[a-z,A-Z]+'
+                        pattern='[a-z,A-Z,\s]+'
                         title="No special characters or numbers"
                         onChange={(e) => setName(e.target.value)}
                         required
@@ -192,12 +190,12 @@ export default function EditBeerModal({beer}) {
                     />
                 </label>
                 <>
-                <button type="submit">Edit a Beer</button>
+                    <button type="submit">Edit a Beer</button>
                 </>
                 <>
-                <button type="button"
-                onClick={handleDelete}
-                >Delete Beer</button>
+                    <button type="button"
+                        onClick={handleDelete}
+                    >Delete Beer</button>
                 </>
             </form>
         </div>

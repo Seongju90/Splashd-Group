@@ -3,7 +3,7 @@ import { actionOneReview } from "./review";
 
 /* ---------- TYPE VARIABLES ---------- */
 const ALL_BREWERIES = "brewery/ALL_BREWERIES";
-// const REMOVE_BREWERY = "brewery/REMOVE_BREWERY";
+const DELETE_BREWERY = "brewery/DELETE_BREWERY";
 const ONE_BREWERY = "brewery/ONE_BREWERY"
 const ADD_BREWERY = "brewery/ADD_BREWERY"
 const MY_BREWERY = "brewery/MY_BREWERY"
@@ -23,10 +23,10 @@ const oneBrewery = (brewery) => {
 		brewery,
 	}
 };
-// const removeBrewery = (id) => ({
-// 	type: REMOVE_BREWERY,
-// 	id
-// });
+const deleteBrewery = (id) => ({
+	type: DELETE_BREWERY,
+	id
+});
 const addBrewery = (brewery) => {
 	// console.log(brewery, 'tthis is the action')
 	return {
@@ -42,6 +42,51 @@ const myBrewery = (brewery) => {
 }
 
 /* ---------- THUNK ACTION CREATORS ---------- */
+export const thunkEditBrewery = (form, id) => async (dispatch) => {
+	console.log(form)
+	const response = await fetch(`/api/brewery/${id}`, {
+		method: "PUT",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(form)
+	})
+	// console.log(response, 'this is respond from backend')
+	if (response.ok) {
+		const data = await response.json();
+		// console.log(data, '!!just came from backend')
+		dispatch(addBrewery(data));
+		return null
+	}
+	else if (response.status < 500) {
+		const data = await response.json();
+		// console.log(data, 'ERROR STUFF')
+		if (data.errors) return data;
+	}
+	else return { errors: ["An error occurred. Please try again."] }
+}
+
+
+export const thunkDeleteBrewery = (id) => async (dispatch) => {
+	const response = await fetch(`/api/brewery/${id}`, {
+		method: 'DELETE',
+		headers: { "Content-Type": "application/json" },
+	})
+	// console.log(response, 'this is respond from backend')
+	if (response.ok) {
+		const data = await response.json();
+		// console.log(data, '!!just came from backend')
+		// console.log('%$%!$#%!$#%!$#%!$#%!$#%!$#%', data)
+		dispatch(deleteBrewery(id));
+
+		return null
+	}
+	else if (response.status < 500) {
+		const data = await response.json();
+		// console.log(data)
+		if (data.errors) return data;
+	}
+	else return { errors: ["An error occurred. Please try again."] }
+}
+
 
 export const thunkOneBrewery = (id) => async (dispatch) => {
 	const response = await fetch(`/api/brewery/${id}`, {
@@ -143,9 +188,10 @@ export default function reducer(state = initialState, action) {
 			// console.log(add, 'this is the reducer')
 			newState[add.id] = add
 			return newState
-		// case REMOVE_BREWERY:
-		// 	delete newState[action.id]
-		// 	return newState
+		case DELETE_BREWERY:
+			delete newState[action.id]
+			newState.mybreweries = newState.mybreweries.filter(x => x.id !== action.id)
+			return newState
 		case MY_BREWERY:
 			let my = action.brewery.Breweries
 			newState['mybreweries'] = my
@@ -154,7 +200,7 @@ export default function reducer(state = initialState, action) {
 		default:
 			return state;
 	}
-	
+
 }
 
 
