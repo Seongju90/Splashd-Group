@@ -20,12 +20,12 @@ function ReviewFormModal({ id }) {
         const error = [];
         let url
         imageUrl ? url = imageUrl : url = null
-
+        console.log(url,review,+rating)
         const data = await dispatch(thunkCreateReview(
             {
                 "image": url,
                 "review_text": review,
-                "rating": Number(rating)
+                "rating": +rating
             }, id
         ))
 
@@ -73,20 +73,23 @@ function ReviewFormModal({ id }) {
                     />
                 </div>
 
-                <div>
+                <div className="rating-review">
+                    <div>
+                        <input
+                            className="rating-review"
+                            type="range"
+                            value={rating}
+                            min={0}
+                            max={5}
+                            step={.25}
 
-                    <input
-                        type="range"
-                        value={rating}
-                        min='0'
-                        max='5'
-                        step='.25'
 
+                            // onMouseUp={(e) => setRating(e.target.value)}
+                            onChange={(e) => setRating(e.target.value)}
+                        />
+                    </div>
+                    <div>Rating: {rating}</div>
 
-
-                        onChange={(e) => setRating(e.target.value)}
-                    />
-                    Rating:{rating}
                 </div>
 
                 <button type="submit">Submit a Review</button>

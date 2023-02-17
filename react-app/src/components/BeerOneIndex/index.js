@@ -16,8 +16,8 @@ export default function OneBeer(props) {
     const dispatch = useDispatch()
     const { id } = useParams()
     const history = useHistory()
-    const user = useSelector(state => state.session.user)
-    const beer = useSelector(state => state.beer.onebeer)
+    const user = useSelector(state => state.session?.user)
+    const beer = useSelector(state => state.beer?.onebeer)
     const avg = Math.round(beer?.avg * 100) / 100;
 
 
@@ -34,13 +34,13 @@ export default function OneBeer(props) {
 
     const userChecks = beer?.reviews.filter(rev =>
         {
-           return rev.user_id == user.id
+           return rev?.user_id == user?.id
         })
         const revList = beer?.reviews;
         let revSet = new Set()
 
         for(let i = 0; i < revList?.length ;i++){
-            revSet.add(revList[i].user_id)
+            revSet.add(revList[i]?.user_id)
         }
     //dispatch happens before history.push
     //     //so, we may not need this
