@@ -11,7 +11,7 @@
    grid-template-columns: repeat(2, 1fr);
    max-width: 1048px;
    min-width: 320px;
-   width: 100%;
+   width: 54%;
    margin: 1em;
    border: 0.5px solid grey;
    border-radius: 4px;
@@ -37,7 +37,7 @@
 .review-images {
     object-fit: cover;
     width: 100%;
-    height: 500px;
+    height: 350px;
 }
 
 .review-user-info {
@@ -67,7 +67,7 @@
     border: 0.5px solid lightgrey;
     padding: 0.5em;
     margin: 0.5em;
-    height: 100%;
+    height: 65%;
 }
 
 .review-text-container {

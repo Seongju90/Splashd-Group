@@ -23,7 +23,7 @@ function App() {
   }, [dispatch]);
 
   const beer = useSelector((state) => state.onebeer)
-  console.log(beer)
+  // console.log(beer)
   return (
     <div id='app-js'>
       <Navigation isLoaded={isLoaded} />
@@ -35,10 +35,6 @@ function App() {
         <Route exact path="/reviews/:reviewId">
           <ReviewOneIndex />
         </Route>
-        <Route path='/test'>
-            {/* <Tester /> */}
-            <SplashPage/>
-          </Route>
         <Route path='/beer/:id'>
           <OneBeer beer={beer}/>
         </Route>
@@ -55,6 +51,9 @@ function App() {
           <MyReviews/>
         </Route>
         <Route exact path="/">
+          <SplashPage/>
+        </Route>
+        <Route exact path='/beers'>
           <ManyBeers />
         </Route>
         <Route>
