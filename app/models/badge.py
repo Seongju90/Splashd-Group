@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .userbadge import userbadges
+from datetime import datetime
 
 class Badge(db.Model):
     __tablename__ = 'badges'
@@ -11,6 +12,7 @@ class Badge(db.Model):
     brewery_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("breweries.id")))
     icon = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
+    created = db.Column(db.DateTime, default=datetime.utcnow)
 
     # todo:add cascade delete
     badge_beer = db.relationship("Beer", back_populates="beer_badge")

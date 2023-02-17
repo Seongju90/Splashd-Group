@@ -12,29 +12,30 @@ class BeerForm (FlaskForm):
         "ABV",
         validators=[
             DataRequired(message= 'ABV Content is Required'),
-            NumberRange(min=3.0, max=13.0, message='ABV is usually between 3.0 to 13.0')
+            NumberRange(min=3.0, max=17.0, message='ABV is between 3.0 to 17.0')
             ])
     ibu = IntegerField(
         "IBU",
         validators=[
             DataRequired(message= 'IBU'),
-            NumberRange(min=5, max=100, message='IBU is typically between 5 to 100')
+            NumberRange(min=5, max=100, message='IBU is between 5 to 100')
             ])
     type = StringField(
         "Type",
         validators=[
             DataRequired(message='Type of Beer is Required'),
-            Length(min= 0, max= 50, message= 'Beer Type Cannot Exceed 50 Characters')
+            Length(min= 0, max= 50, message= "Type can't go over 50 characters")
             ])
     description = TextAreaField(
         "Description",
         validators=[
             DataRequired(message = 'Please add a Description'),
-            Length(min= 5, max= 2000, message= 'Description must be between 5 to 2000 characters')])
+            Length(min= 5, message= 'Description is too short'),
+            Length(max=2000, message='Description cant exceed 2000 characters')]),
     beer_logo =  StringField(
         "Beer Logo", 
         validators = [
             DataRequired(message='Beer Logo is required'), 
-            Length(min=5, max=255, message='Address must be between 5 and 255 characters')
+            Length(min=5, max=255, message='Address is between 5 and 255 characters')
             ])
     submit = SubmitField()

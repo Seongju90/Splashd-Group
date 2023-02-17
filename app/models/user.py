@@ -2,7 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .userbadge import userbadges
-
+from datetime import datetime 
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -17,6 +17,8 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(100), nullable=False)
     last_name = db.Column(db.String(100), nullable=False)
     age = db.Column(db.Integer, nullable=False)
+    profile_pic = db.Column(db.String(255), nullable=True)
+    created = db.Column(db.DateTime, default=datetime.utcnow)
 
     # todo:add cascade delete
     user_brewery = db.relationship("Brewery", back_populates="brewery_user")

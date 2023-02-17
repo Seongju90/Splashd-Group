@@ -15,7 +15,7 @@ cursor: default;
 
 .profile-dropdown {
     position: absolute;
-    
+
 }
 
 .hidden {
@@ -35,7 +35,7 @@ cursor: default;
     font-family: Logo;
 }
 #usernamedropdow {
-    border-bottom: 1px solid red;
+    /* border-bottom: 1px solid red; */
 }
 #navcontainer {
     position: fixed;

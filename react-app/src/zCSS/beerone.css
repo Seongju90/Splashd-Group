@@ -12,7 +12,7 @@
    max-width: 1048px;
    min-width: 320px;
    width: 100%;
-   margin: 1em;
+   margin-top: 0.5em;
    border: 0.5px solid grey;
    border-radius: 4px;
 
@@ -119,9 +119,6 @@
     align-items:center;
 
 }
-/* .modal-button{
-    visibility: hidden;
-} */
 
 .checkin:hover{
     cursor: pointer;
@@ -143,7 +140,7 @@
 
 #brewLink {
     color: blue;
-    text-decoration: underline;   
+    text-decoration: underline;
 }
 #brewLink:hover{
     cursor: pointer;

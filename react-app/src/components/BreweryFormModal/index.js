@@ -4,31 +4,27 @@ import { useModal } from "../../context/Modal";
 import { thunkCreateBrewery, thunkMyBrewery } from "../../store/brewery";
 
 
-export default function BreweryFormModal({id}) {
+export default function BreweryFormModal({ id }) {
     const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [breweryType, setBreweryType] = useState("Regional Brewery");
     const [breweryLogo, setBreweryLogo] = useState("");
     const [city, setCity] = useState("");
     const [states, setStates] = useState("")
+    const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log('name', name,
-        //     'brewery_type', breweryType,
-        //     'brewery_logo', breweryLogo,
-        //     'city_state', cityState)
-
         const cityState = city + ", " + states
-
         const data = await dispatch(thunkCreateBrewery(
             {
                 'name': name,
                 'brewery_type': breweryType,
                 'brewery_logo': breweryLogo,
-                'city_state': cityState
+                'city_state': cityState,
+                'description': description
             }
         ));
         if (data) {
@@ -41,21 +37,25 @@ export default function BreweryFormModal({id}) {
 
     return (
         <div className="modal-whole">
-			<div className="modal-header">
+            <div className="modal-header">
+                <div className="modal-title">
+                    Make Your Brewery!
+                </div>
+                <div className="error-cont">
+                    {errors.map((error) => (
+                        <div classname='error-message'>{error}</div>
+                    ))}
+                </div>
                 <div className="modal-exit"
                     onClick={() => closeModal()}
-                >X</div>
-				<div className="modal-title">Make Your Brewery!</div>
-			</div>
-			<form className="modal-form" 
-            onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
+                >
+                    X
+                </div>
+            </div>
+            <form className="modal-form"
+                onSubmit={handleSubmit}>
                 <label>
-                    name
+                    Name
                     <input
                         type="text"
                         value={name}
@@ -108,13 +108,19 @@ export default function BreweryFormModal({id}) {
                         >
                             Int
                         </option>
-                        <option
-                            value='Error Please'
-                        >
-                            Error
-                        </option>
                     </select>
                 </label>
+                <div>
+                    Description
+                </div>
+                <input
+                    type="textarea"
+                    value={description}
+                    minLength='5'
+                    maxLength='2000'
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                />
                 <label>
                     Logo
                     <input

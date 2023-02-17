@@ -19,8 +19,11 @@ export default function OneBeer(props) {
     const user = useSelector(state => state.session.user)
     const beer = useSelector(state => state.beer.onebeer)
     const avg = Math.round(beer?.avg * 100) / 100;
-    console.log(avg)
-    console.log(beer, props.beer)
+
+
+
+
+
     useEffect(() => {
         dispatch(thunkOneBeer(id))
     }, [id]);
@@ -28,10 +31,21 @@ export default function OneBeer(props) {
         dispatch(thunkOneBrewery(beer.brewery_id))
         history.push(`/brewery/${beer.brewery_id}`)
     }
+
+    const userChecks = beer?.reviews.filter(rev =>
+        {
+           return rev.user_id == user.id
+        })
+        const revList = beer?.reviews;
+        let revSet = new Set()
+
+        for(let i = 0; i < revList?.length ;i++){
+            revSet.add(revList[i].user_id)
+        }
     //dispatch happens before history.push
     //     //so, we may not need this
     // console.log(myimgs)
-
+console.log(revSet.size)
     return (
         <div className='beer-feed'>
             <div className='onebeer-header'>
@@ -43,12 +57,12 @@ export default function OneBeer(props) {
                 </div>
                 <div className='review-stats'>
                     <div className="g g1 g2" >
-                        <div>Total</div>
+                        <div>Total Check-ins:</div>
                         <div>{beer?.num_reviews}</div>
                     </div>
-                    <div className="g g1" >Unique</div>
-                    <div className="g g2" >Badges earned</div>
-                    <div className="g">User</div>
+                    <div className="g g1" >Unique: {revSet?.size}</div>
+                    <div className="g g2" >Badges Available: </div>
+                    <div className="g">User Checkins: {userChecks?.length}</div>
                 </div>
             </div>
             <div className='beer-info'>
@@ -100,11 +114,11 @@ export default function OneBeer(props) {
                 />
                 ) : null
                 }
-                {/* <OpenModalButton
+                <OpenModalButton
                 buttonText="Check In This Beer"
                 // onItemClick={closeMenu}
                 modalComponent={<ReviewFormModal id={beer?.id} />}
-            /> */}
+            />
         </div>
 
     )

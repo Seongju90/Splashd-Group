@@ -1,23 +1,42 @@
+.modal-title {
+  font-size: 2vw;
+}
+.error-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1vw;
+  color: rgb(255, 74, 74)
+}
+.error-message{
+  font-size: .5vw;
+  color: rgb(255, 74, 74)
+}
+
 .div-button {
   border: 1px black solid;
   padding: .5vw;
   cursor: pointer;
-  background-color: green;
   color: white;
+  background-color: black;
 }
+
 .modal-exit {
   cursor: pointer;
 }
+
 .modal-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  min-width: 20vw;
+  min-width: 30vw;
+  min-height: 3vw;
   padding-right: 5vw;
   padding: .51vw;
   padding-bottom: none;
   align-items: flex-start;
-  border-bottom: 1px solid ;
+  border-bottom: 1px solid;
   background-color: black;
   color: white;
 }
@@ -35,7 +54,7 @@
   align-items: center;
   justify-content: space-between;
   font-family: Logo;
-  min-width: 20vw;
+  min-width: 30vw;
 }
 
 #modal {

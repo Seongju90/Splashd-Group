@@ -30,11 +30,21 @@ export default function BeerCard({ beer, user }) {
             </div>
 
             <div >
-                <div>Name: {name}</div>
-                <div>Desc: {description}</div>
-                <div>Average Rating:{num_reviews ? avg : 'No Reviews!'}</div>
-                <div>Number of Checkins: {num_reviews ? num_reviews : 'Zerroo'}</div>
-                <div>ABV:{abv}</div>
+                <div>
+                    Name: {name}
+                </div>
+                <div>
+                    Desc: {description}
+                </div>
+                <div>
+                    Average Rating:{num_reviews ? avg : 'No Reviews!'}
+                </div>
+                <div>
+                    Number of Checkins: {num_reviews ? num_reviews : 'Zerroo'}
+                    </div>
+                <div>
+                    ABV:{abv}
+                    </div>
             </div>
         </div >
 

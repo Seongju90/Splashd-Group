@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkCreateBadge } from "../../store/badge";
-
-
+import b1 from '../../assets/badgeicons/a1.png'
+import b2 from '../../assets/badgeicons/a2.png'
+import b3 from '../../assets/badgeicons/a3.png'
+import b4 from '../../assets/badgeicons/a4.png'
+import b5 from '../../assets/badgeicons/a5.png'
+import b6 from '../../assets/badgeicons/a6.png'
+import b7 from '../../assets/badgeicons/a7.png'
+import b8 from '../../assets/badgeicons/a8.png'
+import b9 from '../../assets/badgeicons/a9.png'
 // todo: edit form for new badges
 export default function BadgeFormModal() {
     const dispatch = useDispatch();
@@ -29,13 +36,19 @@ export default function BadgeFormModal() {
             closeModal();
         }
     };
-
+    const options = [b1, b2, b3]
     return (
         <div className="modal-whole">
             <div className="modal-header">
-                <div className="modal-exit">X</div>
                 <div className="modal-title">Make A Badge!</div>
+                <div className="error-cont">
+                    {errors.map((error) => (
+                        <div classname='error-message'>{error}</div>
+                    ))}
+                </div>
+                <div className="modal-exit">X</div>
             </div>
+
             <form className="modal-form"
                 onSubmit={handleSubmit}>
 
@@ -46,12 +59,14 @@ export default function BadgeFormModal() {
                 </ul>
                 <label>
                     Icon
-                    <input
-                        type="url"
+                    <select
+                        // type="select"
                         value={icon}
                         onChange={(e) => setIcon(e.target.value)}
                         required
-                    />
+                        options={options}
+                    >
+                    </select>
                 </label>
                 <label>
                     Description
