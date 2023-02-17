@@ -53,84 +53,97 @@ function SignupFormModal() {
 					X
 				</div>
 			</div>
-			<form className="modal-form"
+			<form id='modal-form' className="modal-form"
 				onSubmit={handleSubmit}>
 				<div>
 					Email
 				</div>
-					<input
-						type="text"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
+				<input
+					type="text"
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+					required
+					placeholder='jane@app.io'
+
+				/>
 				<div>
 					Username
 				</div>
-					<input
-						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						required
-					/>
+				<input
+				            placeholder="SweetJane33"
+
+					type="text"
+					value={username}
+					onChange={(e) => setUsername(e.target.value)}
+					required
+				/>
 				<div>
 					First Name
 				</div>
-					<input
-						type="text"
-						value={firstName}
-						onChange={(e) => setFirstName(e.target.value)}
-						required
-					/>
+				<input
+					type="text"
+					value={firstName}
+					onChange={(e) => setFirstName(e.target.value)}
+					required
+					placeholder="Jane"
+				/>
 				<div>
 					Last Name
 				</div>
-					<input
-						type="text"
-						value={lastName}
-						onChange={(e) => setLastName(e.target.value)}
-						required
-					/>
+				<input
+					type="text"
+					value={lastName}
+					onChange={(e) => setLastName(e.target.value)}
+					required          
+				 placeholder="Smith"
+
+				/>
 				<div>
 					Age
 				</div>
-					<input
-						type="number"
-						value={age}
-						onChange={(e) => setAge(e.target.value)}
-						min="0"
-						required
+				<input
+					type="number"
+					value={age}
+					onChange={(e) => setAge(e.target.value)}
+					min="0"
+					placeholder="22"
 
-						/>
+					required
+
+				/>
 				<div>
 					Profile Picture
 				</div>
 				<input
-                    type="url"
-                    value={propic}
-                    onChange={(e) => setPropic(e.target.value)}
+					type="url"
+					value={propic}
+					onChange={(e) => setPropic(e.target.value)}
 					placeholder="optional"
-                />
+				/>
 				<div>
 					Password
 				</div>
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
+				<input
+					type="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+					required
+					placeholder='AgO0dPasWorD'
+
+				/>
 				<div>
 					Confirm Password
 				</div>
-					<input
-						type="password"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
-					/>
+				<input
+					type="password"
+					value={confirmPassword}
+					onChange={(e) => setConfirmPassword(e.target.value)}
+					required
+					placeholder="must match"
+
+				/>
 				<div>
-					<button type="submit">Sign Up</button>
+					<button type="submit" id="modal-submit">Sign Up</button>
 				</div>
 			</form>
 		</div >
