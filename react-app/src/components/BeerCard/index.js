@@ -34,7 +34,7 @@ export default function BeerCard({ beer, user }) {
             .then(() => history.push(`/beer/${id}`))
             .then(() => window.scroll(0, 0))
     }
-    console.log(beer)
+    
     return beer && (
 
         <div className="beer-card-main-container">
