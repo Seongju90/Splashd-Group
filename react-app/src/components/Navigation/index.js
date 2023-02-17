@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
+import ContactUsModal from '../ContactUsModal';
+import OpenModalButton from '../OpenModalButton';
 
 
 function Navigation() {
@@ -17,6 +19,14 @@ function Navigation() {
 					onClick={() => window.scroll(0, 0) || history.push('/')}
 				>Splashd</div>
 			</div >
+			<div className='contact-us'>
+				<OpenModalButton
+					buttonText="Contact Us"
+					// onItemClick={closeMenu}
+					modalComponent={<ContactUsModal />}
+				/>
+
+			</div>
 			<div className='navcont navright'>
 				<div>
 				{location.pathname === '/' ? null : <ProfileButton className='navcont navright' user={sessionUser}/>}

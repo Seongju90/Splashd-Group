@@ -1,13 +1,14 @@
-
 @font-face {
     font-family: "Logo";
     src: local("logofont"),
         url("../assets/logofont.ttf") format("truetype");
 }
+
 .beer-box {
     border: 1px solid black;
     margin-bottom: .75vw;
 }
+
 #edit-button {
     background-color: rgb(116, 154, 2);
     color: white;
@@ -15,9 +16,11 @@
     padding: .51vw;
     cursor: pointer;
 }
-.brewery-card-click:hover{
+
+.brewery-card-click:hover {
     border: 3px solid black;
 }
+
 .brewery-card-click {
     cursor: pointer;
     height: 10vw;
@@ -26,11 +29,12 @@
     object-fit: fill;
     border: 1px solid black;
 }
+
 .below-header {
     width: fit-content;
 }
 
-.my-page-header{
+.my-page-header {
     font-size: 5vw;
     font-family: Logo;
 }
@@ -47,12 +51,12 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    align-items: center; 
-    
+    align-items: center;
+
 }
 
 .brewery-main-container {
-    display:grid;
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     max-width: 1048px;
     min-width: 320px;
@@ -67,6 +71,7 @@
     align-items: center;
     padding: .52vw;
 }
+
 .brewery-logo-container>* {
     margin: 1vw;
 }
@@ -76,7 +81,7 @@
     justify-content: space-between;
     width: 60vw;
     font-family: Logo;
-    
+
 }
 
 .brewery-logo-image {
@@ -85,3 +90,26 @@
     height: 100%;
 }
 
+.edit-delete-beer-on-brewery-button {
+    border: 1px burlywood;
+    padding: .5vw;
+    cursor: pointer;
+    color: rgb(116, 154, 2);
+    background-color: aquamarine;
+    width: 20%;
+}
+
+#create-badge-on-brewery-button {
+    border: 1px burlywood;
+    padding: .5vw;
+    cursor: pointer;
+    color: rgb(116, 154, 2);
+    /* background-color: red; */
+    background-color: #1b8811;
+    width: fit-content;
+}
+
+#create-badge-on-brewery-button:hover {
+    background-color: #125b0b;
+
+}
