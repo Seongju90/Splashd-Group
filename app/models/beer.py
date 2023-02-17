@@ -55,6 +55,11 @@ class Beer(db.Model):
         n = 0
         for r in self.beer_review:
             n += r.rating
+        avg = self.beer_review
+        if len(avg):
+            avg = n/len(avg)
+        else:
+            avg = 0
         return {
         'id': self.id,
         'name': self.name,
@@ -65,7 +70,7 @@ class Beer(db.Model):
         'description': self.description,
         'beer_logo': self.beer_logo,
         'num_reviews': len(self.beer_review),
-         'avg': n/len(self.beer_review),
+         'avg': avg,
         }
 # One to Many Relationship
 

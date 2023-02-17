@@ -3,6 +3,8 @@ import { thunkOneBeer } from '../../store/beer';
 import { useDispatch } from 'react-redux';
 import BeerCard from '../BeerCard'
 import { thunkOneBrewery, thunkEditBrewery } from '../../store/brewery';
+import { thunkDeleteBadge } from '../../store/badge';
+import { thunkMyBrewery } from '../../store/brewery';
 import '../../zCSS/brewerycard.css'
 import BreweryEditModal from '../BreweryEditModal';
 import OpenModalButton from '../OpenModalButton';
@@ -10,12 +12,14 @@ import BeerEditModal from '../BeerEditModal'
 import BeerFormModal from '../BeerFormModal'
 import BadgeFormModal from '../BadgeFormModal';
 
+
 export default function BreweryCard({ brewery, user }) {
     const history = useHistory()
     const dispatch = useDispatch()
     const { id, name, owner_id, city_state, brewery_type,
         brewery_logo, beers, owner, badges } = brewery
 
+    const brewId = id
     const handleClickBeer = (beerIDnum) => {
         dispatch(thunkOneBeer(beerIDnum))
 
@@ -29,7 +33,13 @@ export default function BreweryCard({ brewery, user }) {
         history.push(`users/${user?.id}/brewery`)
     }
 
-    // console.log(beer)
+    const deleteBadgeClick = (id) => {
+        dispatch(thunkDeleteBadge(id))
+        dispatch(thunkMyBrewery(user?.id))
+        window.alert("badge has been deleted!")
+    }
+
+    
     return (
         <div>
             <div className="brewery-main-container">
@@ -57,7 +67,13 @@ export default function BreweryCard({ brewery, user }) {
                             />
                         </div>{/*refers to containing handleClick and beerlogo id and info*/}
                     </div>
-
+                    Badges:
+                    {badges.map(x => (
+                        <div style={{width: '3vw', height: '3vw'}}>
+                            <img src={x.icon} style={{width: '3vw', height: '3vw'}}/>
+                            <div onClick={() => deleteBadgeClick(x.id)}>Delete</div>
+                        </div>
+                    ))}
 
 
                     <div className="brewery-info-container">{/**starts Brewery info */}
@@ -95,6 +111,7 @@ export default function BreweryCard({ brewery, user }) {
                                             modalComponent={<BadgeFormModal id={x?.id} />}
                                         />
                                     </div>
+
 
                                 </div>
                             )}

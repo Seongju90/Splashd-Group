@@ -56,7 +56,7 @@ def user_breweries(id):
     # user = User.query.get(id).all_info()
     breweries = Brewery.query.filter(Brewery.owner_id == current_user.id).all()
     breweries = [b.beer_card() for b in breweries]
-    print("!!!!!!!!!!!!!!!!!!!!!!", breweries)
+    
     # for brew in breweries:
 
     #     ret_brew = [b.beer_card() for b in brew["beers"]]
