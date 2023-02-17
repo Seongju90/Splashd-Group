@@ -24,7 +24,7 @@ export default function EditReviewModal({ rev }) {
             {
                 "image": imageUrl,
                 "review_text": review,
-                "rating": rating
+                "rating": Math.floor(rating)
             }, rev
 
         ))
