@@ -42,6 +42,19 @@ class Brewery(db.Model):
             'owner': self.brewery_user.to_dict(),
             'badges': [b.to_dict() for b in self.brewery_badge],
         }
+    def beer_card(self):
+         return {
+            'id': self.id,
+            'name': self.name,
+            'owner_id': self.owner_id,
+            'city_state': self.city_state,
+            'description': self.description,
+            'brewery_type': self.brewery_type,
+            'brewery_logo': self.brewery_logo,
+            'beers': [b.beer_card() for b in self.brewery_beer],
+            # 'owner': self.brewery_user.to_dict(),
+            'badges': [b.to_dict() for b in self.brewery_badge],
+        }
 
     def delete_brewery(self):
         return {
