@@ -98,9 +98,11 @@ export const thunkCreateBadge = (form, beerId) => async (dispatch) => {
 }
 
 export const thunkDeleteBadge = (id) => async (dispatch) => {
-    const response = await fetch(`/api/badge/${id}`, {
-        method: 'DELETE'
+    const response = await fetch(`/api/badges/${id}`, {
+        method: 'DELETE',
+        headers: { "Content-Type": "application/json" },
     })
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", response)
     if (response.ok) {
         dispatch(actionDeleteBadge(id));
         return null
@@ -134,7 +136,8 @@ const badgeReducer = (state = initialState, action) => {
             return newState;
         case DELETE:
             delete newState[action.id]
-            delete newState.mybadges[action.id]
+            // delete newState.mybadges[action.id]
+            newState.mybadges = newState.mybadges?.map(x => x.id == action.id ? x=null : x = x)
             return newState
         default:
             return state;

@@ -10,13 +10,12 @@ def get_badges():
     badges = Badge.query.all()
     return {'badges':[b.all_info() for b in badges]}
 
-@badge_routes.route('/<int:id>')
-@login_required
+@badge_routes.route('/<int:id>', methods=['DELETE'])
 def edit_badge(id):
     badge = Badge.query.get(id)
     if badge:
-        db.session.delete()
-        db.commit()
+        db.session.delete(badge)
+        db.session.commit()
         return {'message': 'Successfully Deleted'}
 
     return {'errors': ['No badge found']}, 401
