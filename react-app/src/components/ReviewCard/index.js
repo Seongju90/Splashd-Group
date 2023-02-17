@@ -57,7 +57,7 @@ export default function ReviewCard({ username, review, beer, location }) {
                     <div className="review-user-info">
                         {username}
                     </div >
-                    { location && (user?.id === review?.user_id)?
+                    { !location && (user?.id === review?.user_id)?
                      (<div className='button'>
                         <OpenModalButton
                             buttonText="Edit/Delete"
@@ -69,7 +69,7 @@ export default function ReviewCard({ username, review, beer, location }) {
                     )
                     : button2}
                 </div>
-                {location ? null : <div className="review-beer-container">
+                {!location ? null : <div className="review-beer-container">
                     <div className="review-sub-beer-container">
                         <img className="review-beer-logo" src={beerLogo} />
                         <div className="review-beer-name">{beerName}</div>

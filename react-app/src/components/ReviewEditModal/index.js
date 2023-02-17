@@ -33,7 +33,7 @@ export default function EditReviewModal({ rev }) {
         if (data) {
             setErrors(data.errors);
         } else {
-            dispatch(thunkOneBeer(beer.id))
+            // dispatch(thunkOneBeer(beer.id))
             closeModal();
         }
     }

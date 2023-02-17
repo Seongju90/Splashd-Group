@@ -18,16 +18,16 @@ def I_believe_brew_can_change(id):
     # print(form.data, 'bbb!^!^!^!^!^!^^!^!^!^^!^!^!^!^^!^!^!^!^!^')
     # print(current_user, current_user.id, '@^@^@^@^@^^@^@^@^@^@^^@^@^^@^@^@^^@@')
     if form.validate_on_submit():
-        brew = Beer.query.get(id)
+        brew = Brewery.query.get(id)
         brew.name=form.data['name']
-        brew.abv=form.data['abv']
-        brew.ibu=form.data['ibu']
-        brew.type=form.data['type']
-        brew.description=form.data['description']
+        brew.city_state=form.data['city_state']
+        brew.brewery_type=form.data['brewery_type']
+        # brew.description=form.data['description']
+        brew.description=request.json['description']
         brew.brewery_logo=form.data['brewery_logo']
 
         db.session.commit()
-        return  brew.to_dict()
+        return  brew.all_info()
     # print(form.errors, 'bbb&#&#&#&#&#&#&#&#&#&#&&#&#&#&#&#&#&&#')
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -86,7 +86,8 @@ def editBeer(id, beerId):
         beer.abv=form.data['abv']
         beer.ibu=form.data['ibu']
         beer.type=form.data['type']
-        beer.description=form.data['description']
+        # beer.description=form.data['description']
+        beer.description=request.json['description']
         beer.beer_logo=form.data['beer_logo']
 
         print(beer, 'bbb*^*^*^*^*^*^*^*^*^*^**^*^*^*^*^*')
@@ -102,8 +103,6 @@ def addBeer(id):
     # print('asdkjasdjkasda')
     form = BeerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    # print(form.data, 'bbb!^!^!^!^!^!^^!^!^!^^!^!^!^!^^!^!^!^!^!^')
-    # print(current_user, current_user.id, '@^@^@^@^@^^@^@^@^@^@^^@^@^^@^@^@^^@@')
     if form.validate_on_submit():
 
         newBeer = Beer(
@@ -112,14 +111,12 @@ def addBeer(id):
             ibu=form.data['ibu'],
             brewery_id=id,
             type=form.data['type'],
-            description=form.data['description'],
+            description=request.json['description'],
             beer_logo=form.data['beer_logo']
         )
-        # print(newBeer, 'bbb*^*^*^*^*^*^*^*^*^*^**^*^*^*^*^*')
         db.session.add(newBeer)
         db.session.commit()
-        return  newBeer.to_dict()
-    # print(form.errors, 'bbb&#&#&#&#&#&#&#&#&#&#&&#&#&#&#&#&#&&#')
+        return  {'beer':newBeer.to_dict(), 'id':current_user.id}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @brewery_routes.route('', methods=['POST'])
@@ -136,7 +133,7 @@ def addbrewery():
             owner_id=current_user.id,
             city_state=form.data['city_state'],
             brewery_type=form.data['brewery_type'],
-            description=form.data['description'],
+            description=request.json['description'],
             brewery_logo=form.data['brewery_logo']
         )
         # print(newbrewery, '*^*^*^*^*^*^*^*^*^*^**^*^*^*^*^*')

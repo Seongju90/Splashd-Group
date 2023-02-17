@@ -187,10 +187,13 @@ export default function reducer(state = initialState, action) {
 			let add = action.brewery
 			// console.log(add, 'this is the reducer')
 			newState[add.id] = add
+
+			newState.mybreweries = newState.mybreweries.map(x => x.id == add.id ? x = add : x = x)
+			
 			return newState
 		case DELETE_BREWERY:
 			delete newState[action.id]
-			newState.mybreweries = newState.mybreweries.filter(x => x.id !== action.id)
+			newState.mybreweries = newState.mybreweries.filter(x => x.id !== add.id)
 			return newState
 		case MY_BREWERY:
 			let my = action.brewery.Breweries

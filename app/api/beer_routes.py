@@ -97,7 +97,6 @@ def create_review(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        print('@@@&!&!&!&!&!&!&!!&!&!&!!&!&!!&!&!&!',request.json, '$$', form.data)
 
         newReview = Review(
             beer_id=id,

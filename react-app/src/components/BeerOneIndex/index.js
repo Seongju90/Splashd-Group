@@ -105,20 +105,18 @@ console.log(revSet.size)
             </div>
             </div> */}
 
-            {beer?.brewery.owner_id === user?.id ? (
+            {/* {beer?.brewery.owner_id === user?.id ? (
                 <OpenModalButton
                     buttonText="Create a Badge"
-
-                    // onItemClick={closeMenu}
                     modalComponent={<BadgeFormModal id={beer?.id} />}
                 />
                 ) : null
-                }
-                <OpenModalButton
+                } */}
+                {/* <OpenModalButton
                 buttonText="Check In This Beer"
                 // onItemClick={closeMenu}
                 modalComponent={<ReviewFormModal id={beer?.id} />}
-            />
+            /> */}
         </div>
 
     )
