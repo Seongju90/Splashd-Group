@@ -24,7 +24,7 @@ export default function EditReviewModal({ rev }) {
             {
                 "image": imageUrl,
                 "review_text": review,
-                "rating": rating
+                "rating": Math.floor(rating)
             }, rev
 
         ))
@@ -33,7 +33,7 @@ export default function EditReviewModal({ rev }) {
         if (data) {
             setErrors(data.errors);
         } else {
-            dispatch(thunkOneBeer(beer.id))
+            // dispatch(thunkOneBeer(beer.id))
             closeModal();
         }
     }

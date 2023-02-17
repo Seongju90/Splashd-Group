@@ -42,14 +42,14 @@ export default function OneBrewery() {
 
             </div>
 
-            {brewery?.owner_id === user?.id ? (
+            {/* {brewery?.owner_id === user?.id ? (
                 <OpenModalButton
                     buttonText="Make a Beer"
                     //   onItemClick={closeMenu}
                     modalComponent={<BeerFormModal id={brewery?.id} />}
                 />
             ) : null
-            }
+            } */}
 
 
             <div>

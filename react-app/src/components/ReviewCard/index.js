@@ -15,13 +15,14 @@ export default function ReviewCard({ username, review, beer, location }) {
         let beer = review.beer
     }
     const user = useSelector(state => state.session?.user)
-    let beerId = beer.id
-    let beerLogo = beer.beer_logo
-    let beerName = beer.name
-    let reviewText = review.review_text
-    let reviewImage = review.image
-    let beerRating = review.rating
+    let beerId = beer?.id
+    let beerLogo = beer?.beer_logo
+    let beerName = beer?.name
+    let reviewText = review?.review_text
+    let reviewImage = review?.image
+    let beerRating = review?.rating
     let divclass
+
     if (location){ divclass = "beer-reviews"}
     else{ divclass = "review-main-container"}
 
@@ -57,7 +58,7 @@ export default function ReviewCard({ username, review, beer, location }) {
                     <div className="review-user-info">
                         {username}
                     </div >
-                    { location && (user?.id === review?.user_id)?
+                    { !location && (user?.id === review?.user_id)?
                      (<div className='button'>
                         <OpenModalButton
                             buttonText="Edit/Delete"

@@ -2,11 +2,15 @@ import { useHistory } from 'react-router-dom';
 import { thunkOneBeer } from '../../store/beer';
 import { useDispatch } from 'react-redux';
 
+
 export default function BeerCard({ beer, user }) {
     const history = useHistory()
     const dispatch = useDispatch()
     const { beer_logo, id, description,
         type, abv, ibu, num_reviews, avg, name } = beer
+
+    // console.log(beer.brewery.name)
+    const breweryName = beer?.brewery?.name
 
     const handleClick = () => {
         dispatch(thunkOneBeer(id))
@@ -16,38 +20,48 @@ export default function BeerCard({ beer, user }) {
     // console.log(beer)
     return beer && (
 
-        <div>
-            <div
-                onClick={handleClick}
-            >
+        <div className="beer-card-main-container">
+            <div className="beer-logo-info-container1">
+                {/* <div
+                    onClick={handleClick}
+                > */}
                 <img
                     className='beer-icon'
                     key={`beerlogo${id}`}
                     src={`${beer_logo}`}
                     alt='previewimageforcard'
+                    onClick={handleClick}
                 />
-
+                {/* </div> */}
+                <div className="beer-details-information">
+                    <div className="beer-detail-name">
+                        {name}
+                    </div>
+                    <div className="beer-detail-brewery" style={{color: "#8a4500"}}>
+                        {breweryName}
+                    </div>
+                    <div className="beer-detail-type" style={{color: "#8a4500"}}>
+                        {type}
+                    </div>
+                    <div className="beer-detail-description" style={{color: "#545151"}}>
+                        {description}
+                    </div>
+                </div>
             </div>
-
-            <div >
-                <div>
-                    Name: {name}
+            <div className="beer-info-container">
+                <div className="beer-detail-abv" style={{color: "#545151"}}>
+                    {abv}% ABV
                 </div>
-                <div>
-                    Desc: {description}
+                <div className="beer-detail-ibu" style={{color: "#545151"}}>
+                    {ibu} IBU
                 </div>
-                <div>
+                <div className="beer-detail-avgRating" style={{color: "#545151"}}>
                     Average Rating:{num_reviews ? avg : 'No Reviews!'}
                 </div>
-                <div>
-                    Number of Checkins: {num_reviews ? num_reviews : 'Zerroo'}
-                    </div>
-                <div>
-                    ABV:{abv}
-                    </div>
+                <div className="beer-detail-checkin" style={{color: "#545151"}}>
+                    Number of Check-ins: {num_reviews ? num_reviews : 'Zerroo'}
+                </div>
             </div>
         </div >
-
     )
-
 }

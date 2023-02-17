@@ -92,7 +92,7 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('image', sa.String(length=255), nullable=True),
     sa.Column('review_text', sa.Text(), nullable=False),
-    sa.Column('rating', sa.Integer(), nullable=False),
+    sa.Column('rating', sa.Float(), nullable=False),
     sa.Column('created', sa.DateTime(), default=datetime.now()),
 
     sa.ForeignKeyConstraint(['beer_id'], ['beers.id'], ),

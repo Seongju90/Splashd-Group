@@ -14,6 +14,7 @@ import "./zCSS/modal.css"
 import "./zCSS/brewerycard.css"
 import "./zCSS/mybadge.css"
 import "./zCSS/contactus.css"
+import "./zCSS/beercard.css"
 
 const store = configureStore();
 
