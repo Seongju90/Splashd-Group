@@ -100,7 +100,7 @@ function SignupFormModal() {
 						onChange={(e) => setAge(e.target.value)}
 						min="0"
 						required
-						
+
 					/>
 				</label>
 				<div>
@@ -110,7 +110,6 @@ function SignupFormModal() {
                     type="url"
                     value={propic}
                     onChange={(e) => setPropic(e.target.value)}
-                    required
 					placeholder="optional"
                 />
 				<label>
