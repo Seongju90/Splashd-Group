@@ -51,6 +51,8 @@ class Beer(db.Model):
             'badges': [badge.to_dict() for badge in self.beer_badge]
         }
 
+    
+        
 # One to Many Relationship
 
 # beers > reviews

@@ -170,7 +170,8 @@ const reviewsReducer = (state = initialState, action) => {
         case EDIT_REVIEW:
             let edit = action.review
             newState[edit.id] = edit
-            newState.myreviews[edit.id] = edit
+            // newState.myreviews[edit.id] = edit
+            newState.myreviews = newState.myreviews.map(x => x.id == edit.id ? x = edit : x = x)
             return newState
         case MY_REVIEW:
             newState['myreviews'] = action.review.Reviews
