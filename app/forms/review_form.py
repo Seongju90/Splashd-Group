@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, Length, NumberRange
 class ReviewForm(FlaskForm):
     image = StringField(
         "Image Link"
-        )   
+        )
     review_text = TextAreaField(
         "Review Text",
         validators=[
