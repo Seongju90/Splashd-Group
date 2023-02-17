@@ -3,7 +3,7 @@
 const MY_BADGES = "badge/MY_BADGES"
 const CREATE_BADGE = "badge/CREATE_BADGE"
 const ALL_BADGES = "badge/ALL_BADGES"
-
+const DELETE = 'badge/DELETE'
 /* ---------- ACTION CREATORS ---------- */
 
 const actionUserBadges = (badge) => {
@@ -24,6 +24,12 @@ const actionAllBadges = (badges) => {
     return {
         type: ALL_BADGES,
         badges
+    }
+}
+const actionDeleteBadge = (id) => {
+    return {
+        type: DELETE,
+        id
     }
 }
 
@@ -90,6 +96,24 @@ export const thunkCreateBadge = (form, beerId) => async (dispatch) => {
     }
     else return { errors: ["An error occurred. Please try again."] }
 }
+
+export const thunkDeleteBadge = (id) => async (dispatch) => {
+    const response = await fetch(`/api/badge/${id}`, {
+        method: 'DELETE'
+    })
+    if (response.ok) {
+        dispatch(actionDeleteBadge(id));
+        return null
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        // console.log(data, 'ERROR STUFF')
+        if (data.errors) return data;
+    }
+    else return { errors: ["An error occurred. Please try again."] }
+}
+
+
 /* ---------- BADGE REDUCER ---------- */
 // todo: badge reducer, create get all badges reducer
 const initialState = {}
@@ -105,9 +129,13 @@ const badgeReducer = (state = initialState, action) => {
             return newState
         case ALL_BADGES:
             let all = action.badges
-			console.log(all)
-			for (let b of all) newState[b.id] = b
-			return newState;
+            console.log(all)
+            for (let b of all) newState[b.id] = b
+            return newState;
+        case DELETE:
+            delete newState[action.id]
+            delete newState.mybadges[action.id]
+            return newState
         default:
             return state;
     }

@@ -14,7 +14,7 @@ import b9 from '../../assets/badgeicons/a9.png'
 // todo: edit form for new badges
 export default function BadgeFormModal() {
     const dispatch = useDispatch();
-    const [icon, setIcon] = useState("");
+    const [icon, setIcon] = useState(b1);
     const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([])
     const { closeModal } = useModal();
@@ -57,17 +57,16 @@ export default function BadgeFormModal() {
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
-                <label>
+
+                <div>
                     Icon
-                    <select
-                        // type="select"
-                        value={icon}
-                        onChange={(e) => setIcon(e.target.value)}
-                        required
-                        options={options}
-                    >
-                    </select>
-                </label>
+                </div>
+                <input
+                    type="url"
+                    value={icon}
+                    onChange={(e) => setIcon(e.target.value)}
+                    required
+                />
                 <label>
                     Description
                     <input
