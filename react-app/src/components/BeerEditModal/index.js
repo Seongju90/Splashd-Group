@@ -75,11 +75,7 @@ export default function EditBeerModal({ beer }) {
             </div>
             <form className="modal-form"
                 onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
+               
                 <label>
                     name
                     <input
