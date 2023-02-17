@@ -59,8 +59,9 @@
 .review-user-container {
     display: flex;
     border: 0.5px solid lightgrey;
-    padding: 0.5em;
+    margin: 0.5em;
     height: 100%;
+    align-items: center;
 }
 
 .review-beer-container {
@@ -148,4 +149,14 @@
 
 .button:hover{
     cursor: pointer;
+}
+
+.button {
+    border: 1px burlywood;
+    padding: .5vw;
+    cursor: pointer;
+    color: rgb(116, 154, 2);
+    background-color: green;
+    width: fit-content;
+    height: 30%;
 }
