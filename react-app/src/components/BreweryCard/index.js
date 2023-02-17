@@ -14,14 +14,14 @@ export default function BreweryCard({ brewery, user }) {
     const history = useHistory()
     const dispatch = useDispatch()
     const { id, name, owner_id, city_state, brewery_type,
-        brewery_logo, beers, owner, badges } = brewery
+        brewery_logo, beers, description, owner, badges } = brewery
 
-    const handleClickBeer = (beerIDnum) => {
-        dispatch(thunkOneBeer(beerIDnum))
+    // const handleClickBeer = (beerIDnum) => {
+    //     dispatch(thunkOneBeer(beerIDnum))
 
 
-        history.push(`/beer/${beerIDnum}`)
-    }
+    //     history.push(`/beer/${beerIDnum}`)
+    // }
     // const handleClickBrewery = () => {
     //     dispatch(thunkOneBrewery(id))
 
@@ -33,51 +33,47 @@ export default function BreweryCard({ brewery, user }) {
     return (
         <div>
             <div className="brewery-main-container">
-                <div className="brewery-logo-container">
-
-
-                    <div>
-
-                        <div className='brewery-card-logo'
-                        // onClick={handleClickBrewery}
-                        >
-                            <img
-                                className='brewery-card-logo'
-                                key={`beerlogo${id}`}
-                                src={`${brewery_logo}`}
-                                alt='previewimageforcard'
-                            />
+                <div className="brewery-subcontainer">
+                    <div className='brewery-logo-subcontainer'>
+                        <div className='brewery-logo-info-container'>
+                            <div className='logo-and-edit-button-container'>
+                                <img
+                                    className='brewery-card-logo'
+                                    key={`beerlogo${id}`}
+                                    src={`${brewery_logo}`}
+                                    alt='previewimageforcard'
+                                />
+                                <div id='edit-button'>
+                                    <OpenModalButton
+                                        buttonText="Update Brewery"
+                                        modalComponent={<BreweryEditModal brew={brewery} />}
+                                    />
+                                </div>{/*refers to containing handleClick and beerlogo id and info*/}
+                            </div>
+                            <div className="brewery-name-city-type-container">{/**starts Brewery info */}
+                                <div>Name: {name}</div>
+                                <div>City/State:{city_state}</div>
+                                <div>Brewery Type: {brewery_type}</div>
+                            </div>{/**Closes Brewery Info*/}
                         </div>
-                        <div id='edit-button'>
+                        <div className="brewery-info-description">
+                            <div>
+                                Description:{description}
+                            </div>
 
-
-                            <OpenModalButton
-                                buttonText="Edit/Delete"
-                                modalComponent={<BreweryEditModal brew={brewery} />}
-                            />
-                        </div>{/*refers to containing handleClick and beerlogo id and info*/}
+                        </div>
                     </div>
 
-
-
-                    <div className="brewery-info-container">{/**starts Brewery info */}
-
-                        <div>Name: {name}</div>
-
-                        <div>City/State:{city_state}</div>
-                        <div>Brewery Type: {brewery_type}</div>
-
-                        <div className="brewery-info-description"></div>
-
-                    </div>{/**Closes Brewery Info*/}
                     <div>
-                        <h1>
+                        <h1 style={{ color: "green" }}>
                             {name}'s beers
                         </h1>
-                        <OpenModalButton
-                            buttonText="Make a Beer"
-                            //   onItemClick={closeMenu}
-                            modalComponent={<BeerFormModal id={brewery?.id} />} />
+                        <div className='create-a-beer-button'>
+                            <OpenModalButton
+                                buttonText="Make a Beer"
+                                //   onItemClick={closeMenu}
+                                modalComponent={<BeerFormModal id={brewery?.id} />} />
+                        </div>
                         <div>
                             {beers.map((x) =>
                                 <div className='beer-box'>
