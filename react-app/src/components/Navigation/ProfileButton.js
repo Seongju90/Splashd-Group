@@ -66,7 +66,7 @@ function ProfileButton({ user }) {
 
   const demoUser = async (e) => {
     await dispatch(login('demo@gmail.com', 'password'));
-    setShowMenu(false)
+    // setShowMenu(false)
   }
 
   const ulClassName = "profile-dropdown " + (showMenu ? "" : "hidden");

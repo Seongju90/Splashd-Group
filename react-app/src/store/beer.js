@@ -154,8 +154,8 @@ export default function reducer(state = initialState, action) {
 		case ADD_BEER:
 			let add = action.beer
 			// console.log(add, 'this is the reducer')
-			newState[add.id] = add
-			newState[add.id] ? newState[add.id] = add : newState[add.id] = add
+			// newState[add.id] = add
+			// newState[add.id] ? newState[add.id] = add : newState[add.id] = add
 			// newState.onespot ? newState.onespot[spot.id] = spot : newState.onespot = { [spot.id]: spot }
 			return newState
 		case REMOVE_BEER:
