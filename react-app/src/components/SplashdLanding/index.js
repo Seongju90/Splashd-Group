@@ -33,8 +33,6 @@ function SplashPage() {
                         </button>
                     </div>
                     <img src={PhoneImg} className='phone-img'
-                        width='500px'
-                        height='500px'
                     />
                 </div>
             </div>
