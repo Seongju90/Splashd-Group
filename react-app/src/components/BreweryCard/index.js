@@ -77,6 +77,15 @@ export default function BreweryCard({ brewery, user }) {
                                 <div>City/State:{city_state}</div>
                                 <div>Brewery Type: {brewery_type}</div>
                             </div>{/**Closes Brewery Info*/}
+                            <div className="badges-container">
+                                Badges:
+                                {badges.map(x => (
+                                    <div className="individual-badges" style={{ width: '5vw', height: '5vw' }}>
+                                        <img src={x.icon} style={{ width: '5vw', height: '5vw' }} />
+                                        <div onClick={() => deleteBadgeClick(x.id)}>X</div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                         <div className="brewery-info-description">
                             <div>
@@ -87,8 +96,8 @@ export default function BreweryCard({ brewery, user }) {
                     </div>
 
                     <div>
-                        <h1 style={{ color: "green" }}>
-                            {name}'s beers
+                        <h1 style={{ color: "green", fontFamily: "logo", width: "fit-content" }}>
+                            {name}'s Selection of Beer
                         </h1>
                         <div className='create-a-beer-button'>
                             <OpenModalButton

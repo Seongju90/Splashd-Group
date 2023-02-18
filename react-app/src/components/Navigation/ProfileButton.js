@@ -76,7 +76,7 @@ function ProfileButton({ user }) {
     <div className="profilebutton dropdown">
       <div onClick={openMenu}
       >
-        <img src={profile} style={{cursor: 'pointer', height: '3vw', width: '3vw' }} />
+        <img src={profile} style={{ cursor: 'pointer', height: '3vw', width: '3vw' }} />
       </div>
       <div className={ulClassName} ref={ulRef}>
         {user ? (
