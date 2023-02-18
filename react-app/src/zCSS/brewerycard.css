@@ -150,3 +150,13 @@
     background-color: aquamarine;
     width: 20%;
 }
+
+.individual-badges {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.badges-container {
+    font-family: Logo;
+}

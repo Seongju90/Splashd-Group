@@ -94,7 +94,7 @@ function SignupFormModal() {
 					type="text"
 					value={lastName}
 					onChange={(e) => setLastName(e.target.value)}
-					required          
+					required
 				 placeholder="Smith"
 
 				/>
@@ -127,6 +127,7 @@ function SignupFormModal() {
 					type="password"
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
+					min='6'
 					required
 					placeholder='AgO0dPasWorD'
 
