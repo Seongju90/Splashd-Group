@@ -15,7 +15,7 @@
 
 
 #delete-button {
-  width: fit-content;
+  width: 7vw;
   background-color: rgb(182, 51, 51);
   color: rgb(0, 0, 0);
   padding: .31vw;
@@ -34,13 +34,13 @@
 }
 
 #rating-box{
-  width: 6vw;
+  width: 7vw;
   display: flex;
   justify-content: space-between;
 }
 
 #modal-submit {
-  width: 4vw;
+  width: 7vw;
   font-family: 'Logo';
   padding: .25vw;
   color: white;
