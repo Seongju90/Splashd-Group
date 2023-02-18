@@ -10,10 +10,10 @@ def user_exists(form, field):
     user = User.query.filter(User.email == email).first()
     if user:
         raise ValidationError('Email address is already in use.')
-    if '@' not in email:
-        raise ValidationError('Please provide a valid email')
-    if '.' not in email:
-        raise ValidationError('Please provide a valid email')
+    # if '@' not in email:
+    #     raise ValidationError('Please provide a valid email')
+    # if '.' not in email:
+    #     raise ValidationError('Please provide a valid email')
 
 
 def username_exists(form, field):

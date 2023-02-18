@@ -168,7 +168,7 @@ def get_brewery_badges(id):
                 beer_id = beer['id'],
                 brewery_id = beer['brewery']['id'],
                 icon = form.data["icon"],
-                description = form.data["description"]
+                description = request.json["description"]
             )
             db.session.add(new_badge)
             db.session.commit()

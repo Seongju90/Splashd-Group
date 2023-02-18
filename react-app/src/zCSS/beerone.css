@@ -21,8 +21,6 @@
     display: flex;
     justify-content: center;
     width: 100%;
-
-
 }
 
 .onebeer-header{
@@ -46,9 +44,6 @@
    max-width: 1048px;
    min-width: 320px;
    width: 100%;
-
-
-
 }
 
 .beerdata{

@@ -20,12 +20,11 @@ function Navigation() {
 				>Splashd</div>
 			</div >
 			<div className='contact-us'>
-				<OpenModalButton
+				{location.pathname === '/' ? null : <OpenModalButton
 					buttonText="Contact Us"
 					// onItemClick={closeMenu}
 					modalComponent={<ContactUsModal />}
-				/>
-
+				/>}
 			</div>
 			<div className='navcont navright'>
 				<div>

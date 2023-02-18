@@ -27,10 +27,11 @@ export default function BreweryEditModal({ brew, id }) {
                 'description': description
             }, brew?.id
         ));
+
         if (data) {
             setErrors(data.errors);
         } else {
-            await dispatch(thunkMyBrewery(id))
+            dispatch(thunkMyBrewery(id))
             closeModal();
         }
     };
@@ -59,7 +60,7 @@ export default function BreweryEditModal({ brew, id }) {
                 </div>
                 <input
                     type="text"
-                    
+
                     value={name}
                     minLength='2'
                     maxLength='255'
