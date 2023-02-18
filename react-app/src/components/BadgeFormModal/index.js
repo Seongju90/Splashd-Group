@@ -48,7 +48,7 @@ export default function BadgeFormModal() {
                 </div>
                 <div className="modal-exit" onClick={() => closeModal()}>X</div>
             </div>
-            <form className="modal-form"
+            <form id='modal-form' className="modal-form"
                 onSubmit={handleSubmit}>
                 <div>
                     Icon
@@ -57,19 +57,21 @@ export default function BadgeFormModal() {
                     type="url"
                     value={icon}
                     onChange={(e) => setIcon(e.target.value)}
+                    placeholder='URL'
                     required
                 />
                 <div>
                     Description
                 </div>
-                    <input
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    />
+                <input
+                    type="text"
+                    placeholder='Describe your beer...'
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                />
                 <div>
-                    <button type="submit">Create</button>
+                    <button type="submit" id="modal-submit">Create</button>
                 </div>
             </form>
         </div>

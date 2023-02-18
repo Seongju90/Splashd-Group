@@ -27,6 +27,8 @@ def get_one_beer(id):
     beer = Beer.query.get(id).to_dict()
     reviews = Review.query.filter(Review.beer_id == beer["id"]).from_self().all()
     brewery = Brewery.query.get(beer["brewery_id"]).to_dict()
+    badges_list = Badge.query.filter(Badge.beer_id == id).all()
+    badges = [b.to_dict() for b in badges_list]
     # print(reviews, "11111111111111")
     beer["num_reviews"] = len(reviews)
     all = []
@@ -39,6 +41,7 @@ def get_one_beer(id):
         all.append(review)
     beer["reviews"] = all
     beer["brewery"] = brewery
+    beer["badges"] = badges
     # print(beer, "&&&&&&&&&&&&&&&&&&&&&&&&&")
     if beer["num_reviews"] != 0:
         beer["avg"] = rating/beer["num_reviews"]

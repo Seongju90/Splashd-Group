@@ -24,7 +24,7 @@ function LoginFormPage() {
   return (
     <>
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form id='modal-form' onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
@@ -37,6 +37,7 @@ function LoginFormPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder="jane@app.io"
           />
         </label>
         <label>
@@ -46,9 +47,10 @@ function LoginFormPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder='notPASSWORD'
           />
         </label>
-        <button type="submit">Log In</button>
+        <button type="submit" id="modal-submit">Log In</button>
       </form>
     </>
   );
