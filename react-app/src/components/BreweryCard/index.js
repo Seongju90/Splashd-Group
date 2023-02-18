@@ -60,7 +60,19 @@ export default function BreweryCard({ brewery, user }) {
                                     />
                                 </div>{/*refers to containing handleClick and beerlogo id and info*/}
                             </div>
-                            <div className="brewery-name-city-type-container">{/**starts Brewery info */}
+                    <div style={{display: 'flex', flexDirection:'column'}}>
+                    Badges:
+                    {badges.map(x => (
+                        <div style={{display: 'flex', alignItems: 'center'}}>
+                            <div>
+                                <img src={x.icon} style={{width: '3vw', height: '3vw'}}/>
+                            </div>
+                            <button id="create-badge-on-brewery-button" style={{height:'fit-content', color: 'white', borderRadius: '1vw' }}
+                            onClick={() => deleteBadgeClick(x.id)}>Delete</button>
+                        </div>
+                    ))}
+                    </div>
+                        <div className="brewery-name-city-type-container">{/**starts Brewery info */}
                                 <div>Name: {name}</div>
                                 <div>City/State:{city_state}</div>
                                 <div>Brewery Type: {brewery_type}</div>

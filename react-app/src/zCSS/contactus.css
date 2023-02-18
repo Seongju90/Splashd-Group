@@ -1,11 +1,14 @@
-.contact-us {}
+.contact-us {
+    display: flex;
+    align-items: center;
+}
 
 .buddy-info-container {
     display: flex;
     flex-direction: column;
     width: 100%;
-    align-items: center;
-
+    align-items: flex-start;
+    padding-left: 1vw;
 }
 
 .buddy-info-top-container {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { thunkEditReview, thunkDeleteReview } from "../../store/review";
+import { thunkEditReview, thunkDeleteReview, thunkMyReviews } from "../../store/review";
 import { thunkOneBeer } from "../../store/beer"
 
 
@@ -14,7 +14,8 @@ export default function EditReviewModal({ rev }) {
     const [rating, setRating] = useState(rev.rating);
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
-    const beer = useSelector(state => state.beer.onebeer)
+    // const beer = useSelector(state => state.beer.onebeer)
+    const userId = useSelector(state => state.session?.user?.id)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,7 +34,7 @@ export default function EditReviewModal({ rev }) {
         if (data) {
             setErrors(data.errors);
         } else {
-            // dispatch(thunkOneBeer(beer.id))
+            // dispatch(thunkMyReviews(userId))
             closeModal();
         }
     }
@@ -49,7 +50,7 @@ export default function EditReviewModal({ rev }) {
         if (data) {
             setErrors(data.errors);
         } else {
-
+            dispatch(thunkMyReviews(userId))
             closeModal();
         }
     }
