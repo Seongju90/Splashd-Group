@@ -34,8 +34,7 @@ export default function MyBadges() {
                     </div>
                 ) :
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', alignSelf: 'center', width: '100vw' }}>
-                        <h1 style={{ paddingTop: '5vw', fontFamily: 'Bold' }}>Sorry! Out Of Luck!</h1>
-                        <h3 style={{ paddingTop: '8vw' }}>Try having a drink and Checking In some Beers!</h3>
+                        <h1 style={{ paddingTop: '5vw', fontFamily: 'Bold' }}>No badges yet! Try having a drink and Checking In some Beers!</h1>
                     </div>
 
                 }
