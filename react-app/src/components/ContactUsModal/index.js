@@ -6,39 +6,42 @@ function ContactUsModal() {
 
 
     return (
-        <div className="modal-whole">
-            <div className="modal-header">
-                <div className="modal-exit"
-                    onClick={() => closeModal()
-                    }>X
-                </div>
-                <div className="modal-title">Contact Us!</div>
-            </div>
-            <div className="buddy-info-container">
-                <div className="buddy-into-top-container">
+        <div className='contact-us'>
 
-                    <div className="buddy-info-field">
-                        Alex Travis:
-
-                    </div>
-                    <div className="buddy-info-field">
-                        Bryan Sang Heon Lee:
-
+            <div className="modal-whole">
+                <div className="modal-header">
+                    <div className="modal-title">Contact Us!</div>
+                    <div className="modal-exit"
+                        onClick={() => closeModal()
+                        }>X
                     </div>
                 </div>
-                <div className="buddy-into-bottom-container">
+                <div className="buddy-info-container">
+                    <div className="buddy-into-top-container">
 
-                    <div className="buddy-info-field">
-                        P. Dexter Assaf:
+                        <div className="buddy-info-field-alex">
+                            Alex Travis:
 
+                        </div>
+                        <div className="buddy-info-field-bryan">
+                            Bryan Sang Heon Lee:
+
+                        </div>
                     </div>
-                    <div className="buddy-info-field">
-                        Philip Lee:
+                    <div className="buddy-into-bottom-container">
 
+                        <div className="buddy-info-field-dex">
+                            P. Dexter Assaf:
+
+                        </div>
+                        <div className="buddy-info-field-philip">
+                            Philip Lee:
+
+                        </div>
                     </div>
+
+
                 </div>
-
-
             </div>
         </div>
     )

@@ -14,7 +14,7 @@ import b9 from '../../assets/badgeicons/a9.png'
 // todo: edit form for new badges
 export default function BadgeFormModal() {
     const dispatch = useDispatch();
-    const [icon, setIcon] = useState("");
+    const [icon, setIcon] = useState(b1);
     const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([])
     const { closeModal } = useModal();
@@ -46,38 +46,33 @@ export default function BadgeFormModal() {
                         <div classname='error-message'>{error}</div>
                     ))}
                 </div>
-                <div className="modal-exit">X</div>
+                <div className="modal-exit" onClick={() => closeModal()}>X</div>
             </div>
-
-            <form className="modal-form"
+            <form id='modal-form' className="modal-form"
                 onSubmit={handleSubmit}>
-
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
-                <label>
+                <div>
                     Icon
-                    <select
-                        // type="select"
-                        value={icon}
-                        onChange={(e) => setIcon(e.target.value)}
-                        required
-                        options={options}
-                    >
-                    </select>
-                </label>
-                <label>
+                </div>
+                <input
+                    type="url"
+                    value={icon}
+                    onChange={(e) => setIcon(e.target.value)}
+                    placeholder='URL'
+                    required
+                />
+                <div>
                     Description
-                    <input
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    />
-                </label>
-                <button type="submit">Create</button>
+                </div>
+                <input
+                    type="text"
+                    placeholder='Describe your beer...'
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                />
+                <div>
+                    <button type="submit" id="modal-submit">Create</button>
+                </div>
             </form>
         </div>
     )

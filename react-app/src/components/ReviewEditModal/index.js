@@ -66,52 +66,49 @@ export default function EditReviewModal({ rev }) {
                     onClick={() => closeModal()}
                 >X</div>
             </div>
-            <form className="modal-form"
+            <form id='modal-form' className="modal-form"
                 onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
-                <label>
-                    Image Url
-                    <input
-                        type="url"
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Review
-                    <input
-                        type="text"
-                        value={review}
-                        onChange={(e) => setReview(e.target.value)}
-                    />
-                </label>
                 <div>
-
-                    <input
-                        type="range"
-                        value={rating}
-                        min='0'
-                        max='5'
-                        step='.25'
-
-
-
-                        onChange={(e) => setRating(e.target.value)}
-                    />
-                    Rating:{rating}
+                    Image Url
                 </div>
-                <>
-                    <button type="submit">Edit a Review</button>
-                </>
-                <>
-                    <button type="button"
+                <input
+                                    placeholder='http://image.io'
+
+                    type="url"
+                    value={imageUrl}
+                    onChange={(e) => setImageUrl(e.target.value)}
+                />
+                <div>
+                    Review
+                </div>
+                <input
+                    type="textarea"
+                    value={review}
+
+                    onChange={(e) => setReview(e.target.value)}
+                />
+                <div id='rating-box'>
+                    <div >
+                        Rating:
+                    </div>
+                    {rating}
+                </div>
+                <input
+                    type="range"
+                    value={rating}
+                    min='0'
+                    max='5'
+                    step='1'
+                    onChange={(e) => setRating(e.target.value)}
+                />
+                <div>
+                    <button type="submit" id="modal-submit">Edit</button>
+                </div>
+                <div>
+                    <button type="button" id='delete-button'
                         onClick={handleDelete}
-                    >Delete A Review</button>
-                </>
+                    >Delete</button>
+                </div>
             </form>
         </div>
     )

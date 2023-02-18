@@ -20,7 +20,7 @@ function ReviewFormModal({ id }) {
         const error = [];
         let url
         imageUrl ? url = imageUrl : url = null
-        console.log(url,review,+rating)
+        console.log(url, review, +rating)
         const data = await dispatch(thunkCreateReview(
             {
                 "image": url,
@@ -51,48 +51,46 @@ function ReviewFormModal({ id }) {
             </div>
 
 
-            <form className="modal-form"
+            <form id='modal-form' className="modal-form"
                 onSubmit={handleSubmit}>
-
                 <div>
-
                     Image Url
-                    <input
-                        type="url"
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
-                    />
-
                 </div>
+                <input
+                                    placeholder='http://image.io'
+
+                    type="url"
+                    value={imageUrl}
+                    onChange={(e) => setImageUrl(e.target.value)}
+                />
+
                 <div>
                     Review
-                    <input
-                        type="text"
-                        value={review}
-                        onChange={(e) => setReview(e.target.value)}
-                    />
                 </div>
+                <input
+                                    placeholder='Describe your experience'
 
-                <div className="rating-review">
-                    <div>
-                        <input
-                            className="rating-review"
-                            type="range"
-                            value={rating}
-                            min={0}
-                            max={5}
-                            step={.25}
-
-
-                            // onMouseUp={(e) => setRating(e.target.value)}
-                            onChange={(e) => setRating(e.target.value)}
-                        />
+                    type="text"
+                    value={review}
+                    onChange={(e) => setReview(e.target.value)}
+                />
+                   <div id='rating-box'>
+                    <div >
+                        Rating:
                     </div>
-                    <div>Rating: {rating}</div>
-
+                    {rating}
                 </div>
-
-                <button type="submit">Submit a Review</button>
+                <input
+                    type="range"
+                    value={rating}
+                    min='0'
+                    max='5'
+                    step='1'
+                    onChange={(e) => setRating(e.target.value)}
+                />
+                <div>
+                    <button type="submit" id="modal-submit">Submit</button>
+                </div>
             </form>
         </div>
     )

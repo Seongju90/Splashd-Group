@@ -19,7 +19,7 @@ export default function OneBeer(props) {
     const user = useSelector(state => state.session?.user)
     const beer = useSelector(state => state.beer?.onebeer)
     const avg = Math.round(beer?.avg * 100) / 100;
-
+    const num_badges = beer?.badges.length
 
 
 
@@ -61,7 +61,7 @@ console.log(revSet.size)
                         <div>{beer?.num_reviews}</div>
                     </div>
                     <div className="g g1" >Unique: {revSet?.size}</div>
-                    <div className="g g2" >Badges Available: </div>
+                    <div className="g g2" >Badges Available: {num_badges}</div>
                     <div className="g">User Checkins: {userChecks?.length}</div>
                 </div>
             </div>

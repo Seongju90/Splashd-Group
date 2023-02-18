@@ -1,4 +1,4 @@
-import React, { useState , useSelector} from "react";
+import React, { useState, useSelector } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkEditBrewery, thunkMyBrewery } from "../../store/brewery";
@@ -52,64 +52,65 @@ export default function BreweryEditModal({ brew, id }) {
                     X
                 </div>
             </div>
-            <form className="modal-form"
+            <form id='modal-form' className="modal-form"
                 onSubmit={handleSubmit}>
-                <label>
+                <div>
                     Name
-                    <input
-                        type="text"
-                        value={name}
-                        minLength='2'
-                        maxLength='255'
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
+                </div>
+                <input
+                    type="text"
+                    
+                    value={name}
+                    minLength='2'
+                    maxLength='255'
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
+                <div>
                     City
-                    <input
-                        type="text"
-                        pattern='[a-z,A-Z,\s]+'
-                        title="City must only be in alphabetical letters"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
+                </div>
+                <input
+                    type="text"
+                    pattern='[a-z,A-Z,\s]+'
+                    title="City must only be in alphabetical letters"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    required
+                />
+                <div>
                     State
-                    <input
-                        type="text"
-                        value={states}
-                        maxLength='2'
-                        pattern='^[A-Z]{2}$'
-                        title="State must be 2 capital letter"
-                        onChange={(e) => setStates(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
+                </div>
+                <input
+                    type="text"
+                    value={states}
+                    maxLength='2'
+                    pattern='^[A-Z]{2}$'
+                    title="State must be 2 capital letter"
+                    onChange={(e) => setStates(e.target.value)}
+                    required
+                />
+                <div>
                     Type
-                    <select
-                        onChange={(e) => setBreweryType(e.target.value)}
-                        required
-                    >
-                        <option
-                            value='Regional Brewery'>
-                            Regional
-                        </option>
-                        <option
-                            value='Macro Brewery'>
-                            Macro
-                        </option>
+                </div>
+                <select
+                    onChange={(e) => setBreweryType(e.target.value)}
+                    required
+                >
+                    <option
+                        value='Regional Brewery'>
+                        Regional
+                    </option>
+                    <option
+                        value='Macro Brewery'>
+                        Macro
+                    </option>
 
-                        <option
-                            value="International Brewery"
-                        >
-                            Int
-                        </option>
-                    </select>
-                </label>
+                    <option
+                        value="International Brewery"
+                    >
+                        Int
+                    </option>
+                </select>
                 <div>
                     Description
                 </div>
@@ -121,17 +122,18 @@ export default function BreweryEditModal({ brew, id }) {
                     onChange={(e) => setDescription(e.target.value)}
                     required
                 />
-                <label>
+                <div>
                     Logo
-                    <input
-                        type="url"
-                        value={breweryLogo}
-                        onChange={(e) => setBreweryLogo(e.target.value)}
-                        required
-                    />
-                </label>
-                <button type="submit">Edit</button>
-
+                </div>
+                <input
+                    type="url"
+                    value={breweryLogo}
+                    onChange={(e) => setBreweryLogo(e.target.value)}
+                    required
+                />
+                <div>
+                    <button type="submit" id="modal-submit">Edit</button>
+                </div>
             </form>
         </div>
     )

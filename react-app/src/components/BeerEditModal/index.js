@@ -73,125 +73,120 @@ export default function EditBeerModal({ beer }) {
                     X
                 </div>
             </div>
-            <form className="modal-form"
+            <form id='modal-form' className="modal-form"
                 onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
-                <label>
+                <div>
                     name
-                    <input
-                        type="text"
-                        value={name}
-                        pattern='[a-z,A-Z,\s]+'
-                        title="No special characters or numbers"
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
+                </div>
+                <input
+                    type="text"
+                    // placeholder='Jane Smith'
+                    value={name}
+                    pattern='[a-z,A-Z,\s]+'
+                    title="No special characters or numbers"
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
+                <div>
                     ABV
-                    <input
-                        type="decimal"
-                        value={abv}
-                        min='3.0'
-                        max='13.0'
-                        onChange={(e) => setAbv(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
+                </div>
+                <input
+                    type="decimal"
+                    // placeholder='7.5'
+                    value={abv}
+                    min='3.0'
+                    max='13.0'
+                    onChange={(e) => setAbv(e.target.value)}
+                    required
+                />
+                <div>
                     IBU
-                    <input
-                        type="number"
-                        value={ibu}
-                        min='5'
-                        max='100'
-                        onChange={(e) => setIbu(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
+                </div>
+                <input
+                    type="number"
+                    value={ibu}
+                    min='5'
+                    max='100'
+                    onChange={(e) => setIbu(e.target.value)}
+                    required
+                />
+                <div>
                     Type
-                    <select
-                        onChange={(e) => setType(e.target.value)}
-                        required
-                    >
-                        <option
-                            value='Pilsner'>
-                            Pilsner
-                        </option>
-                        <option
-                            value='Stout'>
-                            Stout
-                        </option>
+                </div>
+                <select
+                    onChange={(e) => setType(e.target.value)}
+                    required
+                >
+                    <option
+                        value='Pilsner'>
+                        Pilsner
+                    </option>
+                    <option
+                        value='Stout'>
+                        Stout
+                    </option>
 
-                        <option
-                            value="Lager"
-                        >
-                            Lager
-                        </option>
-                        <option
-                            value='IPA'
-                        >
-                            IPA
-                        </option>
-                        <option
-                            value='Porter'
-                        >
-                            Porter
-                        </option>
-                        <option
-                            value='Pale Ale'
-                        >
-                            Pale Ale
-                        </option>
-                        <option
-                            value='Belgian'
-                        >
-                            Belgian
-                        </option>
-                        <option
-                            value='Wheat Beer'
-                        >
-                            Wheat Beer
-                        </option> <option
-                            value='amurican'
-                        >
-                            amurican
-                        </option>
-                    </select>
-                </label>
-                <label>
+                    <option
+                        value="Lager"
+                    >
+                        Lager
+                    </option>
+                    <option
+                        value='IPA'
+                    >
+                        IPA
+                    </option>
+                    <option
+                        value='Porter'
+                    >
+                        Porter
+                    </option>
+                    <option
+                        value='Pale Ale'
+                    >
+                        Pale Ale
+                    </option>
+                    <option
+                        value='Belgian'
+                    >
+                        Belgian
+                    </option>
+                    <option
+                        value='Wheat Beer'
+                    >
+                        Wheat Beer
+                    </option> <option
+                        value='amurican'
+                    >
+                        amurican
+                    </option>
+                </select>
+                <div>
                     description
-                    <input
-                        type="textarea"
-                        value={description}
-                        minLength='5'
-                        maxLength='2000'
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
+                </div>
+                <input
+                    type="textarea"
+                    value={description}
+                    minLength='5'
+                    maxLength='2000'
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                />
+                <div>
                     Logo
-                    <input
-                        type="url"
-                        value={logo}
-                        onChange={(e) => setLogo(e.target.value)}
-                        required
-                    />
-                </label>
-                <>
-                    <button type="submit">Edit a Beer</button>
-                </>
-                <>
-                    <button type="button"
-                        onClick={handleDelete}
-                    >Delete Beer</button>
-                </>
+                </div>
+                <input
+                    type="url"
+                    value={logo}
+                    onChange={(e) => setLogo(e.target.value)}
+                    required
+                />
+                <div>
+                    <button type="submit" id="modal-submit">Edit</button>
+                </div>
+                <div>
+                    <button type="button" id='delete-button' onClick={handleDelete}>Delete</button>
+                </div>
             </form>
         </div>
     )

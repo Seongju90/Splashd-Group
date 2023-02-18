@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a1c84029ef320ce460398e32e0460aa5de59a03f9e6abdfff5ce4fe6e9b3eb9f"
+            "sha256": "b996e1ac709c849c642aa2b9efcc5159ea027f75bf684636dc7b758b8aea82fc"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -365,9 +365,7 @@
             "version": "==2.2.2"
         },
         "wtforms": {
-            "extras": [
-                "email"
-            ],
+            "extras": [],
             "hashes": [
                 "sha256:6b351bbb12dd58af57ffef05bc78425d08d1914e0fd68ee14143b7ade023c5bc",
                 "sha256:837f2f0e0ca79481b92884962b914eba4e72b7a2daaf1f939c890ed0124b834b"

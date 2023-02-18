@@ -1,3 +1,5 @@
+.contact-us {}
+
 .buddy-info-container {
     display: flex;
     flex-direction: column;
@@ -8,5 +10,32 @@
 
 .buddy-info-top-container {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
 
+}
+
+.buddy-info-field-alex {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.buddy-info-field-bryan {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+
+.buddy-info-field-dex {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.buddy-info-field-philip {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
 }

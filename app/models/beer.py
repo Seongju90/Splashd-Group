@@ -51,6 +51,27 @@ class Beer(db.Model):
             'badges': [badge.to_dict() for badge in self.beer_badge]
         }
 
+    def beer_card(self):
+        n = 0
+        for r in self.beer_review:
+            n += r.rating
+        avg = self.beer_review
+        if len(avg):
+            avg = n/len(avg)
+        else:
+            avg = 0
+        return {
+        'id': self.id,
+        'name': self.name,
+        'abv': self.abv,
+        'ibu': self.ibu,
+        'brewery_id': self.brewery_id,
+        'type': self.type,
+        'description': self.description,
+        'beer_logo': self.beer_logo,
+        'num_reviews': len(self.beer_review),
+         'avg': avg,
+        }
 # One to Many Relationship
 
 # beers > reviews
