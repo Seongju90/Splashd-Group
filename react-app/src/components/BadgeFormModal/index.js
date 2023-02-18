@@ -11,14 +11,15 @@ import b6 from '../../assets/badgeicons/a6.png'
 import b7 from '../../assets/badgeicons/a7.png'
 import b8 from '../../assets/badgeicons/a8.png'
 import b9 from '../../assets/badgeicons/a9.png'
+import { thunkMyBrewery } from "../../store/brewery";
 // todo: edit form for new badges
-export default function BadgeFormModal() {
+export default function BadgeFormModal({id}) {
     const dispatch = useDispatch();
-    const [icon, setIcon] = useState(b1);
+    const [icon, setIcon] = useState("");
     const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([])
     const { closeModal } = useModal();
-    const beer = useSelector(state => state.beer?.onebeer)
+    const userId = useSelector(state => state.session?.user?.id)
     // const { id } = useParams()
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,12 +28,13 @@ export default function BadgeFormModal() {
             {
                 'icon': icon,
                 'description': description
-            }, beer?.id
+            }, id
         ));
 
         if (data) {
             setErrors(data.errors);
         } else {
+            dispatch(thunkMyBrewery(userId))
             closeModal();
         }
     };

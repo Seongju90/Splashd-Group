@@ -78,10 +78,11 @@ export const thunkCreateReview = (form, id) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json()
+        console.log('this is data', data)
         await dispatch(thunkOneBeer(data.beer_id))
-        console.log(data)
         // await dispatch(thunkMyReviews(data.id))
-        dispatch(actionCreateReview(data.rev))
+        const { badges_earned, ...rest } = data
+        dispatch(actionCreateReview(rest))
         return null
     }
     else if (response.status < 500) {
