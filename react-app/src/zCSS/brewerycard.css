@@ -3,7 +3,9 @@
     src: local("logofont"),
         url("../assets/logofont.ttf") format("truetype");
 }
-
+.brewbuttons> div:hover{
+color: red;
+}
 .beer-box {
     border: 1px solid black;
     margin-bottom: .75vw;
@@ -47,11 +49,11 @@
     align-items: center;
 }
 
-.my-breweries-main-container {
+.brewery-main-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
     align-items: center;
+    padding: 2vw;
 
 }
 
@@ -107,6 +109,9 @@
     background-color: #1b8811;
     width: fit-content;
 }
+.brewtitle {
+    font-size: 3vw;
+}
 .brewbuttons {
     display: flex;
     flex-direction: column;
@@ -143,8 +148,11 @@
     margin-left: 30px;
     font-family: Logo;
     font-size: x-large;
+    align-items: center;
 }
-
+.brewdescription {
+    text-align: center;
+}
 .create-a-beer-button {
     border: 1px burlywood;
     padding: .5vw;

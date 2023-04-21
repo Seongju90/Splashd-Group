@@ -56,7 +56,7 @@ export default function BreweryCard({ brewery, user }) {
                             </div>
 
                             <div className="brewery-name-city-type-container">{/**starts Brewery info */}
-                                <div> {name}</div>
+                                <div className='brewtitle'> {name}</div>
                                 <div>{city_state}</div>
                                 <div> {brewery_type}</div>
                             </div>{/**Closes Brewery Info*/}
@@ -87,7 +87,7 @@ export default function BreweryCard({ brewery, user }) {
                                     </div>
                                 ) : <></>)}
                             </div>
-                            <div>
+                            <div className='brewdescription'>
                                 {description}
                             </div>
 
