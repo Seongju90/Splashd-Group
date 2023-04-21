@@ -18,8 +18,8 @@ font-size: .9751vw;
 
 
 .abouttitle.two {
-    margin: 0px;
-    padding:0px;
+    /* margin: 0px; */
+    /* padding:0px; */
     color: rgb(92, 92, 92);
     
 
@@ -27,11 +27,14 @@ font-size: .9751vw;
 
 
 #headabout {
-    width: 59vw;
+    width: 60vw;
+    /* padding: 0px; */
 }
 
 .contact-us {
     width: 60vw;
+    padding-left: .5vw;
+    padding-right: .5vw;
 }
 
 .aboutinfo {
