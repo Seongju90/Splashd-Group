@@ -12,9 +12,8 @@ cursor: default;
     padding-top: 5px;
 }
 
-#usernamedropdown {
-    padding-top: 5px;
-    border-top: 0.5px solid black;
+#usernamedropdow {
+    font-size: 1.51vw;
 }
 
 #therest> div:hover{
@@ -36,7 +35,7 @@ cursor: default;
     background-color: lightgrey;
     color: white;
     border-radius: 5px;
-    padding-left: 2px;
+    padding: .51vw;
 }
 
 .homebutton  {
@@ -57,7 +56,7 @@ cursor: default;
     position: fixed;
     background-color: #ffc000;
     /* border: 1px solid red; */
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: space-around;
     height: 5vw;
