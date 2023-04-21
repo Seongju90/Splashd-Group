@@ -74,10 +74,12 @@
 }
 
 .brewery-info-container {
-    display: flexbox;
-    justify-content: center;
-    width: 60vw;
-    font-family: Logo;
+    display: flex;
+    flex-direction: row;
+    /* width: 60vw; */
+    /* font-family: Logo; */
+    width: 80vw;
+    justify-content: space-between;
 
 }
 
@@ -105,7 +107,12 @@
     background-color: #1b8811;
     width: fit-content;
 }
-
+.brewbuttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* justify-content:; */
+}
 #create-badge-on-brewery-button:hover {
     background-color: #125b0b;
 
@@ -127,7 +134,7 @@
 .brewery-logo-info-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    justify-content: space-around;
 }
 
 .brewery-name-city-type-container {
