@@ -60,38 +60,31 @@ export default function BreweryCard({ brewery, user }) {
                                     />
                                 </div>{/*refers to containing handleClick and beerlogo id and info*/}
                             </div>
-                    <div style={{display: 'flex', flexDirection:'column'}}>
-                    Badges:
-                    {badges.map(x => (
-                        <div style={{display: 'flex', alignItems: 'center'}}>
-                            <div>
-                                <img src={x.icon} style={{width: '3vw', height: '3vw'}}/>
-                            </div>
-                            <button id="create-badge-on-brewery-button" style={{height:'fit-content', color: 'white', borderRadius: '1vw' }}
-                            onClick={() => deleteBadgeClick(x.id)}>Delete</button>
-                        </div>
-                    ))}
-                    </div>
-                        <div className="brewery-name-city-type-container">{/**starts Brewery info */}
+
+                            <div className="brewery-name-city-type-container">{/**starts Brewery info */}
                                 <div>Name: {name}</div>
                                 <div>City/State:{city_state}</div>
                                 <div>Brewery Type: {brewery_type}</div>
                             </div>{/**Closes Brewery Info*/}
-                            <div className="badges-container">
-                                Badges:
-                                {badges.map(x => (
-                                    <div className="individual-badges" style={{ width: '5vw', height: '5vw' }}>
-                                        <img src={x.icon} style={{ width: '5vw', height: '5vw' }} />
-                                        <div onClick={() => deleteBadgeClick(x.id)}>X</div>
-                                    </div>
-                                ))}
-                            </div>
+
                         </div>
                         <div className="brewery-info-description">
                             <div>
                                 Description:{description}
                             </div>
 
+                        </div>
+                        <div>
+                            Badges:
+                            {badges.map(x => x.beer_id == 0 ? (
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div>
+                                        <img src={x.icon} style={{ width: '3vw', height: '3vw' }} />
+                                    </div>
+                                    <button id="create-badge-on-brewery-button" style={{ height: 'fit-content', color: 'white', borderRadius: '1vw' }}
+                                        onClick={() => deleteBadgeClick(x.id)}>Delete</button>
+                                </div>
+                            ) : <></>)}
                         </div>
                     </div>
 
@@ -109,8 +102,16 @@ export default function BreweryCard({ brewery, user }) {
                             {beers.map((x) =>
                                 <div className='beer-box'>
                                     <BeerCard beer={x} user={user} />
-
-
+                                    Badges:
+                                    {badges.map(y => y.beer_id === x.id ? (
+                                        <div>
+                                            <div>
+                                                <img src={y.icon} style={{ width: '3vw', height: '3vw' }} />
+                                            </div>
+                                            <button id="create-badge-on-brewery-button" style={{ height: 'fit-content', color: 'white', borderRadius: '1vw' }}
+                                                onClick={() => deleteBadgeClick(y.id)}>Delete</button>
+                                        </div>
+                                    ) : <></>)}
                                     <div className="edit-delete-beer-on-brewery-button">
                                         <OpenModalButton
                                             buttonText="Edit/Delete"
