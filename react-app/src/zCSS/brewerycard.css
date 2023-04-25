@@ -3,9 +3,11 @@
     src: local("logofont"),
         url("../assets/logofont.ttf") format("truetype");
 }
-.brewbuttons> div:hover{
-color: red;
+
+.brewbuttons>div:hover {
+    color: red;
 }
+
 .beer-box {
     border: 1px solid black;
     margin-bottom: .75vw;
@@ -109,18 +111,21 @@ color: red;
     background-color: #1b8811;
     width: fit-content;
 }
+
 .brewtitle {
     font-size: 3vw;
 }
+
 .brewbuttons {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    width: fit-content;
     /* justify-content:; */
 }
-#create-badge-on-brewery-button:hover {
-    background-color: #125b0b;
 
+#create-badge-on-brewery-button:hover {
+    color: red;
 }
 
 .brewery-info-description {
@@ -150,9 +155,11 @@ color: red;
     font-size: x-large;
     align-items: center;
 }
+
 .brewdescription {
     text-align: center;
 }
+
 .create-a-beer-button {
     border: 1px burlywood;
     padding: .5vw;

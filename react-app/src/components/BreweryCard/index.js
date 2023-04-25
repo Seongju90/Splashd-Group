@@ -111,32 +111,44 @@ export default function BreweryCard({ brewery, user }) {
                             {beers.map((x) =>
                                 <div className='beer-box'>
                                     <BeerCard beer={x} user={user} />
-                                    <div className="edit-delete-beer-on-brewery-button">
+                                    <div className="brewbuttons" >
                                         <OpenModalButton
                                             buttonText="Edit/Delete"
                                             modalComponent={<BeerEditModal beer={x} />}
                                         />
+                                        
                                     </div>
+
                                     <h3>
                                     Badges:
+                                    
                                     </h3>
-                                    {badges.map(y => y.beer_id === x.id ? (
-                                        <div>
-                                            <div>
-                                                <img src={y.icon} style={{ width: '3vw', height: '3vw' }} />
-                                            </div>
-                                            <button id="create-badge-on-brewery-button" style={{ height: 'fit-content', color: 'white', borderRadius: '1vw' }}
-                                                onClick={() => deleteBadgeClick(y.id)}>Delete</button>
-                                        </div>
-                                    ) : <></>)}
-                                   
+                                    <div  className="brewbuttons">
 
-                                    <div id="create-badge-on-brewery-button">
-                                        <OpenModalButton
+                                    <OpenModalButton
+                                            
                                             buttonText="Create a Badge"
                                             modalComponent={<BadgeFormModal id={x?.id} />}
                                         />
                                     </div>
+                                    {badges.map(y => y.beer_id === x.id ? (
+                                        <div>
+                                            <div>
+                                                <img src={y.icon} style={{ width: '6vw', height: '6vw' }} />
+                                            <button id="create-badge-on-brewery-button" style={{ height: 'fit-content', color: 'white', borderRadius: '1vw' }}
+                                                onClick={() => deleteBadgeClick(y.id)}>Delete</button>
+                                            </div>
+                                        </div>
+                                    ) : <></>)}
+                                   
+
+                                    {/* <div id="create-badge-on-brewery-button">
+                                        <OpenModalButton
+
+                                            buttonText="Create a Badge"
+                                            modalComponent={<BadgeFormModal id={x?.id} />}
+                                        />
+                                    </div> */}
 
 
                                 </div>
