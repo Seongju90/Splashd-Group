@@ -111,7 +111,15 @@ export default function BreweryCard({ brewery, user }) {
                             {beers.map((x) =>
                                 <div className='beer-box'>
                                     <BeerCard beer={x} user={user} />
+                                    <div className="edit-delete-beer-on-brewery-button">
+                                        <OpenModalButton
+                                            buttonText="Edit/Delete"
+                                            modalComponent={<BeerEditModal beer={x} />}
+                                        />
+                                    </div>
+                                    <h3>
                                     Badges:
+                                    </h3>
                                     {badges.map(y => y.beer_id === x.id ? (
                                         <div>
                                             <div>
@@ -121,12 +129,7 @@ export default function BreweryCard({ brewery, user }) {
                                                 onClick={() => deleteBadgeClick(y.id)}>Delete</button>
                                         </div>
                                     ) : <></>)}
-                                    <div className="edit-delete-beer-on-brewery-button">
-                                        <OpenModalButton
-                                            buttonText="Edit/Delete"
-                                            modalComponent={<BeerEditModal beer={x} />}
-                                        />
-                                    </div>
+                                   
 
                                     <div id="create-badge-on-brewery-button">
                                         <OpenModalButton
