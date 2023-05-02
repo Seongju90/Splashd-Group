@@ -1,0 +1,65 @@
+.currentbox{
+    color: rgb(184, 0, 0);
+}
+
+.abouttitle.one{
+    margin-bottom: 1vw;
+    font-size: 2.3vw;
+    color: rgb(0, 0, 0);
+}
+
+.abouttitle.two div>img {
+    height: 3vw;
+}
+
+.abouttitle.two>div {
+font-size: .9751vw;
+}
+
+
+.abouttitle.two {
+    /* margin: 0px; */
+    /* padding:0px; */
+    color: rgb(92, 92, 92);
+    
+
+}
+
+
+#headabout {
+    width: 60vw;
+    /* padding: 0px; */
+}
+
+
+.aboutinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 30vw;
+    align-items: center;
+    text-align: center;
+}
+
+.gitcon {
+    margin-left: 1vw;
+}
+.personcard {
+        margin-left: 1vw;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+
+
+}
+
+
+
+
+
+.abouttitle {
+    font-size: 2vw;
+}

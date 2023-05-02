@@ -31,6 +31,17 @@
 ### Host
 ![Render](https://img.shields.io/badge/render-%4351e8.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 
+
+# The Splash Page!
+<img width="1454" alt="Screenshot 2023-04-18 at 10 48 15 PM" src="https://user-images.githubusercontent.com/107891735/234065031-dd4ac191-ae00-44ed-96c8-63dfd6ff32c8.png">
+
+# Once you enter the site, you should probably log in!
+<img width="927" alt="Screenshot 2023-04-18 at 10 48 42 PM" src="https://user-images.githubusercontent.com/107891735/234065337-93d2ba85-5108-4ca1-86e2-8422ac9adc83.png">
+
+# Earn Badges by checking in beers!
+<img width="1128" alt="Screenshot 2023-04-18 at 10 48 59 PM" src="https://user-images.githubusercontent.com/107891735/234065540-71df1e6b-0cab-4446-a97b-2846d05245e1.png">
+
+
 # Getting Started
 1. Clone the repo:
 ```

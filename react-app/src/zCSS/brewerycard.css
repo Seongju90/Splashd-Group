@@ -4,6 +4,10 @@
         url("../assets/logofont.ttf") format("truetype");
 }
 
+.brewbuttons>div:hover {
+    color: red;
+}
+
 .beer-box {
     border: 1px solid black;
     margin-bottom: .75vw;
@@ -47,20 +51,16 @@
     align-items: center;
 }
 
-.my-breweries-main-container {
+.brewery-main-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
     align-items: center;
+    padding: 2vw;
 
 }
 
 .brewery-main-container {
     display: flex;
-    /* grid-template-columns: repeat(2, 1fr); */
-    max-width: 1048px;
-    min-width: 320px;
-    width: 70%;
     margin: 1em;
     border: 0.5px solid grey;
 }
@@ -78,10 +78,12 @@
 }
 
 .brewery-info-container {
-    display: flexbox;
-    justify-content: center;
-    width: 60vw;
-    font-family: Logo;
+    display: flex;
+    flex-direction: row;
+    /* width: 60vw; */
+    /* font-family: Logo; */
+    width: 80vw;
+    justify-content: space-between;
 
 }
 
@@ -110,9 +112,20 @@
     width: fit-content;
 }
 
-#create-badge-on-brewery-button:hover {
-    background-color: #125b0b;
+.brewtitle {
+    font-size: 3vw;
+}
 
+.brewbuttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: fit-content;
+    /* justify-content:; */
+}
+
+#create-badge-on-brewery-button:hover {
+    color: red;
 }
 
 .brewery-info-description {
@@ -131,7 +144,7 @@
 .brewery-logo-info-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    justify-content: space-around;
 }
 
 .brewery-name-city-type-container {
@@ -140,6 +153,11 @@
     margin-left: 30px;
     font-family: Logo;
     font-size: x-large;
+    align-items: center;
+}
+
+.brewdescription {
+    text-align: center;
 }
 
 .create-a-beer-button {

@@ -82,7 +82,7 @@ function ProfileButton({ user }) {
         {user ? (
           <>
             <div id="namedropdown" className="nameandemail">{user.name}</div>
-            <div id='usernamedropdow' className="nameandemail">{user.email}</div>
+            <div id='usernamedropdow' className="nameandemail">{user.username}</div>
             {/* <OpenModalButton
               buttonText="Make a Brewery"
               onItemClick={closeMenu}
