@@ -32,7 +32,7 @@
    max-width: 1048px;
    min-width: 320px;
    width: 100%;
-
+   padding-bottom: 5px;
 
    box-shadow: 0px 0px 1px gray;
 
@@ -44,6 +44,7 @@
    max-width: 1048px;
    min-width: 320px;
    width: 100%;
+   color: #595959;
 }
 
 .beerdata{
@@ -77,14 +78,33 @@
     border-left: 0.5px rgba(214, 205, 205, 0.5) solid;
 }
 
+.stat-container{
+    width:35%;
+    min-height: 100%;
+    margin-left: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
 .review-stats{
-    width:25%;
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;
-    margin-left: 30%;
-    padding:20px;
+    font-family: Helvetica, sans-serif;
+    color: #595959;
 }
+
+.stat-title{
+    text-align: center;
+    margin-bottom: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #595959;
+}
+
 .bottom{
     display: flex;
     justify-content: space-between;
@@ -94,8 +114,6 @@
     height: 100px;
     border: 0.5px rgba(214, 205, 205, 0.5) solid;
     border-radius: 4px;
-
-
 }
 
 .description{
@@ -127,6 +145,7 @@
 
 .g1{
     border-bottom: 0.5px rgba(214, 205, 205, 0.5) solid;
+    border-top: 0.5px rgba(214, 205, 205, 0.5) solid;
 }
 
 .g2{
@@ -144,4 +163,8 @@
 
 .check{
    padding-left: 30px;
+}
+
+.review-stats > div {
+    padding:5px;
 }

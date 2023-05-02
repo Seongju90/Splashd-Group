@@ -32,20 +32,19 @@ export default function OneBeer(props) {
         history.push(`/brewery/${beer.brewery_id}`)
     }
 
-    const userChecks = beer?.reviews.filter(rev =>
-        {
-           return rev?.user_id == user?.id
-        })
-        const revList = beer?.reviews;
-        let revSet = new Set()
+    const userChecks = beer?.reviews.filter(rev => {
+        return rev?.user_id == user?.id
+    })
+    const revList = beer?.reviews;
+    let revSet = new Set()
 
-        for(let i = 0; i < revList?.length ;i++){
-            revSet.add(revList[i]?.user_id)
-        }
+    for (let i = 0; i < revList?.length; i++) {
+        revSet.add(revList[i]?.user_id)
+    }
     //dispatch happens before history.push
     //     //so, we may not need this
     // console.log(myimgs)
-console.log(revSet.size)
+    console.log(revSet.size)
     return (
         <div className='beer-feed'>
             <div className='onebeer-header'>
@@ -55,37 +54,39 @@ console.log(revSet.size)
                     <h2 id="brewLink" onClick={handleClick}>{beer?.brewery.name}</h2>
                     <h4>{beer?.type}</h4>
                 </div>
-                <div className='review-stats'>
-                    <div className="g g1 g2" >
-                        <div>Total Check-ins:</div>
-                        <div>{beer?.num_reviews}</div>
+                <div className='stat-container'>
+                    <div className='stat-title'>Check-In Stats:</div>
+                    <div className='review-stats'>
+                        <div className="g g1 g2" >
+                            <div>Total: {beer?.num_reviews}</div>
+                        </div>
+                        <div className="g g1" >Unique: {revSet?.size}</div>
+                        <div className="g g2" >Badges: {num_badges}</div>
+                        <div className="g">You: {userChecks?.length}</div>
                     </div>
-                    <div className="g g1" >Unique: {revSet?.size}</div>
-                    <div className="g g2" >Badges Available: {num_badges}</div>
-                    <div className="g">User Checkins: {userChecks?.length}</div>
                 </div>
             </div>
             <div className='beer-info'>
-                    <div className='beerdata left'>{beer?.abv} abv</div>
-                    <div className='beerdata mid'>{beer?.ibu} IBU</div>
-                    <div className='beerdata mid'>Average rating: {avg}</div>
-                    <div className='beerdata right'>{beer?.num_reviews} Ratings</div>
+                <div className='beerdata left'>{beer?.abv} abv</div>
+                <div className='beerdata mid'>{beer?.ibu} IBU</div>
+                <div className='beerdata mid'>Average rating: {avg}</div>
+                <div className='beerdata right'>{beer?.num_reviews} Ratings</div>
 
             </div>
             <div className="bottom">
                 <div className='description'>{beer?.description}</div>
                 <div title="checkin this beer" className='checkin'>
                     {/* <img className="check" src={checkicon}/> */}
-                        <OpenModalButton
-                            buttonText={'Check-In this beer!'}
-                            modalComponent={<ReviewFormModal id={beer?.id} />}
-                        />
+                    <OpenModalButton
+                        buttonText={'Check-In this beer!'}
+                        modalComponent={<ReviewFormModal id={beer?.id} />}
+                    />
                 </div>
             </div>
             <div>
                 {beer?.reviews.map((x) =>
                     <div location className='card-container'>
-                        <ReviewCard review={x} beer={beer} username={x.user?.username} location={x}/>
+                        <ReviewCard review={x} beer={beer} username={x.user?.username} location={x} />
                         {/* {x?.user_id === user?.id ? (
                             <OpenModalButton
                                 buttonText="Edit/Delete"
@@ -112,7 +113,7 @@ console.log(revSet.size)
                 />
                 ) : null
                 } */}
-                {/* <OpenModalButton
+            {/* <OpenModalButton
                 buttonText="Check In This Beer"
                 // onItemClick={closeMenu}
                 modalComponent={<ReviewFormModal id={beer?.id} />}
