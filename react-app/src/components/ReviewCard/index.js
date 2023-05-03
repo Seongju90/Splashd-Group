@@ -4,7 +4,7 @@ import { thunkOneBeer } from '../../store/beer'
 import { thunkOneBrewery } from '../../store/brewery'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-
+import beerStar from '../../assets/beer-star.png'
 import OpenModalButton from '../OpenModalButton'
 import ReviewEditModal from '../ReviewEditModal'
 
@@ -41,6 +41,38 @@ export default function ReviewCard({ username, review, beer, location }) {
 
     if (!reviewImage) {
         reviewImage = 'https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found-300x169.jpg'
+    }
+
+    const displayStars = (num) => {
+        let result
+        if(num == 1) result = <div><img src={beerStar}></img></div>
+        if(num == 2) result =
+        (<div>
+            <img src={beerStar}></img>
+            <img src={beerStar}></img>
+        </div>)
+        if(num == 3) result =
+        (<div>
+            <img src={beerStar}></img>
+            <img src={beerStar}></img>
+            <img src={beerStar}></img>
+        </div>)
+        if(num == 4) result =
+        (<div>
+            <img src={beerStar}></img>
+            <img src={beerStar}></img>
+            <img src={beerStar}></img>
+            <img src={beerStar}></img>
+        </div>)
+        if(num == 5) result =
+        (<div>
+            <img src={beerStar}></img>
+            <img src={beerStar}></img>
+            <img src={beerStar}></img>
+            <img src={beerStar}></img>
+            <img src={beerStar}></img>
+        </div>)
+        return result
     }
 
     const navigateToBeer = (beerId) => {
@@ -124,13 +156,13 @@ export default function ReviewCard({ username, review, beer, location }) {
                         <img className="review-beer-logo" src={beerLogo} />
                         <div className="review-beer-name">{beerName}</div>
                         <div className="review-rating-container">
-                            Rating: {beerRating}
+                            Rating: {displayStars(beerRating)}
                         </div>
                     </div>
                 </div>}
                 <div className="review-text-container">
                     <div>{reviewText}</div>
-                    {location ? (<div>Rating: {review.rating}</div>) : null}
+                    {location ? (<div>{displayStars(beerRating)}</div>) : null}
                 </div>
             </div>
             <div className="review-right-container-img">
