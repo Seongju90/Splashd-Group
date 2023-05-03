@@ -75,17 +75,19 @@ export default function OneBeer(props) {
             </div>
             <div className="bottom">
                 <div className='description'>{beer?.description}</div>
-                <div title="checkin this beer" className='checkin'>
+                <div title="Check-In" className='cc'>
                     {/* <img className="check" src={checkicon}/> */}
                     <OpenModalButton
-                        buttonText={'Check-In this beer!'}
+                        buttonText={''}
+                        location={'check-in'}
                         modalComponent={<ReviewFormModal id={beer?.id} />}
                     />
                 </div>
             </div>
             <div>
+                <h2 id="checkin-title">Check-Ins</h2>
                 {beer?.reviews.map((x) =>
-                    <div location className='card-container'>
+                    <div location className='review-container'>
                         <ReviewCard review={x} beer={beer} username={x.user?.username} location={x} />
                         {/* {x?.user_id === user?.id ? (
                             <OpenModalButton
