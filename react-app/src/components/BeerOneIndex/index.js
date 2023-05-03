@@ -47,41 +47,44 @@ export default function OneBeer(props) {
     console.log(revSet.size)
     return (
         <div className='beer-feed'>
-            <div className='onebeer-header'>
-                <img className='beer-logo' src={beer?.beer_logo} alt={null} />
-                <div className='brewery-info'>
-                    <h1>{beer?.name}</h1>
-                    <h2 id="brewLink" onClick={handleClick}>{beer?.brewery.name}</h2>
-                    <h4>{beer?.type}</h4>
-                </div>
-                <div className='stat-container'>
-                    <div className='stat-title'>Check-In Stats:</div>
-                    <div className='review-stats'>
-                        <div className="g g1 g2" >
-                            <div>Total: {beer?.num_reviews}</div>
+            <div id="beer-top">
+                <div className='onebeer-header'>
+                    <img className='beer-logo' src={beer?.beer_logo} alt={null} />
+                    <div className='brewery-info'>
+                        <h1>{beer?.name}</h1>
+                        <h2 id="brewLink" onClick={handleClick}>{beer?.brewery.name}</h2>
+                        <h4>{beer?.type}</h4>
+                    </div>
+                    <div className='stat-container'>
+                        <div className='stat-title'>Check-In Stats:</div>
+                        <div className='review-stats'>
+                            <div className="g g1 g2" >
+                                <div>Total: {beer?.num_reviews}</div>
+                            </div>
+                            <div className="g g1" >Unique: {revSet?.size}</div>
+                            <div className="g g2" >Badges: {num_badges}</div>
+                            <div className="g">You: {userChecks?.length}</div>
                         </div>
-                        <div className="g g1" >Unique: {revSet?.size}</div>
-                        <div className="g g2" >Badges: {num_badges}</div>
-                        <div className="g">You: {userChecks?.length}</div>
                     </div>
                 </div>
-            </div>
-            <div className='beer-info'>
-                <div className='beerdata left'>{beer?.abv} abv</div>
-                <div className='beerdata mid'>{beer?.ibu} IBU</div>
-                <div className='beerdata mid'>Average rating: {avg}</div>
-                <div className='beerdata right'>{beer?.num_reviews} Ratings</div>
 
-            </div>
-            <div className="bottom">
-                <div className='description'>{beer?.description}</div>
-                <div title="Check-In" className='cc'>
-                    {/* <img className="check" src={checkicon}/> */}
-                    <OpenModalButton
-                        buttonText={''}
-                        location={'check-in'}
-                        modalComponent={<ReviewFormModal id={beer?.id} />}
-                    />
+                <div className='beer-info'>
+                    <div className='beerdata left'>{beer?.abv} abv</div>
+                    <div className='beerdata mid'>{beer?.ibu} IBU</div>
+                    <div className='beerdata mid'>Average rating: {avg}</div>
+                    <div className='beerdata right'>{beer?.num_reviews} Ratings</div>
+
+                </div>
+                <div className="bottom">
+                    <div className='description'>{beer?.description}</div>
+                    <div title="Check-In" className='cc'>
+                        {/* <img className="check" src={checkicon}/> */}
+                        <OpenModalButton
+                            buttonText={''}
+                            location={'check-in'}
+                            modalComponent={<ReviewFormModal id={beer?.id} />}
+                        />
+                    </div>
                 </div>
             </div>
             <div>
