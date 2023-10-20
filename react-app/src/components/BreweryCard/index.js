@@ -70,14 +70,13 @@ export default function BreweryCard({ brewery, user }) {
                         </div>
                         <div>
                             <div className="brewery-info-description">
-
                                 Badges:
                                 {badges.map(x => (
                                     <div className="individual-badges" style={{ width: '5vw', height: '5vw' }}>
                                         <img src={x.icon} style={{ width: '5vw', height: '5vw' }} />
                                         <div onClick={() => deleteBadgeClick(x.id)}>X</div>
                                     </div>
-                                ) : <></>)}
+                                ))}
                             </div>
                             <div className='brewdescription'>
                                 {description}
