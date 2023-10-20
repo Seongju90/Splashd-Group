@@ -1,7 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { thunkAllBadge } from '../../../store/badge';
 import { thunkOneBrewery } from '../../../store/brewery';
 import BadgeFormModal from '../../BadgeFormModal';
 // import OpenModalButton from "../OpenModalButton";
@@ -28,32 +26,7 @@ function Tester() {
         }, []
     )
     const badges = useSelector((state) => state.badges)
-    console.log(badges)
 
-
-    // const tester = async () => {
-    //     let sight = await dispatch(thunkAllBeer()).catch((e)=>console.log(e, 'was caught'))
-    //     console.log(sight, 'was returned')
-    //     // console.log('Hey')
-    //     return sight
-    // }
-
-    // const remove = () => {
-    //     const goodbye = dispatch(thunkRemoveBeer(3)).catch((e)=>console.log(e, 'was caught'))
-    //     console.log("goodbye")
-    //     // console.log('Hey')
-    //     return goodbye
-    // }
-
-    // const deleteReview = async (e) => {
-    //     e.preventDefault()
-    //     await dispatch(thunkDeleteReview(6)).then(res => {
-    //         const { message } = res
-    //         alert(message)
-    //     })
-
-    //     console.log('deleted! front the front-end')
-    // }
 
     return (
         <>

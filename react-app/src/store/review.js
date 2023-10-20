@@ -67,18 +67,18 @@ export const thunkOneReview = (id) => async (dispatch) => {
 }
 
 export const thunkCreateReview = (form, id) => async (dispatch) => {
-    console.log('asdasdasdwwadw', id)
+
     const response = await fetch(`/api/beer/${id}/review`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)
     })
 
-    console.log('in my thunk!!!!!', response)
+
 
     if (response.ok) {
         const data = await response.json()
-        console.log('this is data', data)
+
         await dispatch(thunkOneBeer(data.beer_id))
         // await dispatch(thunkMyReviews(data.id))
         const { badges_earned, ...rest } = data
@@ -105,7 +105,7 @@ export const thunkEditReview = (form, rev) => async (dispatch) => {
         await dispatch(thunkMyReviews(data.id))
 
         dispatch(actionEditReview(data))
-        // console.log('in my thunk!!!!!', response)
+
         return null
     }
     else if (response.status < 500) {
@@ -119,7 +119,7 @@ export const thunkDeleteReview = (rev) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${rev.id}`, {
         method: "DELETE"
     })
-    console.log("in my thunk checking")
+
     if (response.ok) {
         // const data = await response.json();
         // await dispatch(thunkMyReviews(rev.user_id))
@@ -172,13 +172,13 @@ const reviewsReducer = (state = initialState, action) => {
             let edit = action.review
             newState[edit.id] = edit
             // newState.myreviews[edit.id] = edit
-            newState.myreviews = newState.myreviews.map(x => x.id == edit.id ? x = edit : x = x)
+            newState.myreviews = newState.myreviews.map(x => x.id === edit.id ? x = edit : x = x)
             return newState
         case MY_REVIEW:
             newState['myreviews'] = action.review.Reviews
             return newState
         case DELETE_REVIEW:
-            // console.log("reducer", action)
+
             delete newState[action.id]
             delete newState.myreviews[action.id]
             return newState

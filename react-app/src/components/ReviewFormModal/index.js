@@ -13,14 +13,14 @@ function ReviewFormModal({ id }) {
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
 
-    // console.log(id)
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const error = [];
+
         let url
         imageUrl ? url = imageUrl : url = null
-        console.log(url, review, +rating)
+
         const data = await dispatch(thunkCreateReview(
             {
                 "image": url,

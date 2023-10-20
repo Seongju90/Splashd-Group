@@ -5,7 +5,6 @@ import { Route, Switch } from "react-router-dom";
 // import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import Tester from "./components/garbageMaybe/Testing"
 import ReviewOneIndex from "./components/ReviewOneIndex"
 import OneBeer from "./components/BeerOneIndex";
 import ManyBeers from "./components/BeerManyIndex";
@@ -23,7 +22,7 @@ function App() {
   }, [dispatch]);
 
   const beer = useSelector((state) => state.onebeer)
-  // console.log(beer)
+
   return (
     <div id='app-js'>
       <Navigation isLoaded={isLoaded} />

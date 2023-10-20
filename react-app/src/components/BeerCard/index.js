@@ -9,7 +9,7 @@ export default function BeerCard({ beer, user }) {
     const { beer_logo, id, description,
         type, abv, ibu, name, num_reviews, avg} = beer
 
-    // console.log(beer.brewery.name)
+
     const breweryName = beer?.brewery?.name
     let num
     if (!num_reviews){
@@ -34,7 +34,7 @@ export default function BeerCard({ beer, user }) {
             .then(() => history.push(`/beer/${id}`))
             .then(() => window.scroll(0, 0))
     }
-    
+
     return beer && (
 
         <div className="beer-card-main-container">

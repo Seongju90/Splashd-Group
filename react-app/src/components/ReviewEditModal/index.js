@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkEditReview, thunkDeleteReview, thunkMyReviews } from "../../store/review";
-import { thunkOneBeer } from "../../store/beer"
+
 
 
 // later when things are set up, pass beerId as a prop to this modl

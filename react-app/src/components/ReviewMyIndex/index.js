@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { thunkMyReviews } from '../../store/review';
-import { thunkOneBeer } from '../../store/beer';
 import ReviewCard from '../ReviewCard';
 import '../../zCSS/reviewcard.css'
 
@@ -13,11 +11,11 @@ export default function MyReviews() {
     let userId = user?.id
 
     let myReviews = useSelector(state =>  state.reviews?.myreviews)
-    const beer_list = useSelector(state => state.beer )
+    // const beer_list = useSelector(state => state.beer )
 
     useEffect(() => {
         dispatch(thunkMyReviews(userId))
-    }, [dispatch])
+    }, [dispatch, userId])
 
     return (
         <div className="my-reviews-main-container">

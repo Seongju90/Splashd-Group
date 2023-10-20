@@ -49,7 +49,7 @@ function ProfileButton({ user }) {
     await dispatch(thunkAllBadges())
     setShowMenu(false)
     history.push("/user/badges")
-    // console.log('%%%%!%!%!%!%!%!%%!%!%!%!!%!%!%!%!%')
+
   }
 
   const handleBrew = () => {
@@ -76,7 +76,7 @@ function ProfileButton({ user }) {
     <div className="profilebutton dropdown">
       <div onClick={openMenu}
       >
-        <img src={profile} style={{ cursor: 'pointer', height: '3vw', width: '3vw' }} />
+        <img src={profile} alt="profile-button" style={{ cursor: 'pointer', height: '3vw', width: '3vw' }} />
       </div>
       <div className={ulClassName} ref={ulRef}>
         {user ? (
@@ -109,13 +109,15 @@ function ProfileButton({ user }) {
               buttonText="Log In"
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
+              className="login-signup-dropdown"
             />
             <OpenModalButton
               buttonText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
+              className="login-signup-dropdown"
             />
-            <div onClick={demoUser}>
+            <div className="login-signup-dropdown" onClick={demoUser}>
               Demo User
             </div>
           </>

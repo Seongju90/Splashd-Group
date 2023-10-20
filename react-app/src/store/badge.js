@@ -76,22 +76,22 @@ export const thunkAllBadges = () => async (dispatch) => {
 }
 
 export const thunkCreateBadge = (form, beerId) => async (dispatch) => {
-    // console.log(form)
+
     const response = await fetch(`/api/brewery/${beerId}/badge`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)
     })
-    // console.log(response, 'this is respond from backend')
+
     if (response.ok) {
         const data = await response.json();
-        // console.log(data, '!!just came from backend')
+
         dispatch(actionCreateBadge(data));
         return null
     }
     else if (response.status < 500) {
         const data = await response.json();
-        // console.log(data, 'ERROR STUFF')
+
         if (data.errors) return data;
     }
     else return { errors: ["An error occurred. Please try again."] }
@@ -102,14 +102,14 @@ export const thunkDeleteBadge = (id) => async (dispatch) => {
         method: 'DELETE',
         headers: { "Content-Type": "application/json" },
     })
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", response)
+
     if (response.ok) {
         dispatch(actionDeleteBadge(id));
         return null
     }
     else if (response.status < 500) {
         const data = await response.json();
-        // console.log(data, 'ERROR STUFF')
+
         if (data.errors) return data;
     }
     else return { errors: ["An error occurred. Please try again."] }
@@ -123,7 +123,7 @@ const badgeReducer = (state = initialState, action) => {
     let newState = { ...state }
     switch (action.type) {
         case MY_BADGES:
-            console.log('hi reducer', action)
+
             newState.mybadges = action.badge
             return newState
         case CREATE_BADGE:
@@ -131,13 +131,13 @@ const badgeReducer = (state = initialState, action) => {
             return newState
         case ALL_BADGES:
             let all = action.badges
-            console.log(all)
+
             for (let b of all) newState[b.id] = b
             return newState;
         case DELETE:
             delete newState[action.id]
             // delete newState.mybadges[action.id]
-            newState.mybadges = newState.mybadges?.map(x => x.id == action.id ? x=null : x = x)
+            newState.mybadges = newState.mybadges?.map(x => x.id === action.id ? x=null : x = x)
             return newState
         default:
             return state;

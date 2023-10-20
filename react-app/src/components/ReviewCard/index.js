@@ -13,7 +13,7 @@ export default function ReviewCard({ username, review, beer, location }) {
     const history = useHistory()
     const dispatch = useDispatch()
     if (!beer) {
-        let beer = review.beer
+        beer = review.beer
     }
     const user = useSelector(state => state.session?.user)
     let beerId = beer?.id
@@ -134,7 +134,7 @@ export default function ReviewCard({ username, review, beer, location }) {
             <div className="review-left-container">
                 <div className="review-user-container">
                     <div className="review-profile-icon">
-                        <img className="review-user-icon" src={profile} />
+                        <img className="review-user-icon" alt="1R" src={profile} />
                     </div>
                     <div className="review-info">
                         {username} is drinking a<span className='link' onClick={() => {navigateToBeer(beer.id)}}>{beer?.name}</span> by <span className='link' onClick={() => {navigateToBrew(beer.brewery.id)}}>{beer.brewery.name}</span>
@@ -153,7 +153,7 @@ export default function ReviewCard({ username, review, beer, location }) {
                 </div>
                 {location ? null : <div className="review-beer-container">
                     <div className="review-sub-beer-container">
-                        <img className="review-beer-logo" src={beerLogo} />
+                        <img className="review-beer-logo" alt="2R" src={beerLogo} />
                         <div className="review-beer-name">{beerName}</div>
                         <div className="review-rating-container">
                             Rating: {displayStars(beerRating)}
@@ -166,7 +166,7 @@ export default function ReviewCard({ username, review, beer, location }) {
                 </div>
             </div>
             <div className="review-right-container-img">
-                <img className="review-images" src={reviewImage} />
+                <img className="review-images" alt="3R" src={reviewImage} />
             </div>
         </div>
     )

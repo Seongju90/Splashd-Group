@@ -14,7 +14,7 @@ export default function BeerFormModal({ id }) {
     const [logo, setLogo] = useState("");
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
-    // console.log(id)
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 

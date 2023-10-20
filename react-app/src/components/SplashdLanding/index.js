@@ -16,10 +16,10 @@ function SplashPage() {
     return (
         <>
             <div className="splash-page-container">
-                <img src={SplashImg} className='home-background-image'/>
+                <img src={SplashImg} alt="S1" className='home-background-image'/>
                 <div className='logo-phone-img-container'>
                     <div className="text-log-subcontainer">
-                        <img src={Logo} className='logo-img'
+                        <img src={Logo} alt="S2" className='logo-img'
                             width='150px'
                             height='150px'
                         />
@@ -32,7 +32,9 @@ function SplashPage() {
                         ><span>See our collection of beers!</span>
                         </button>
                     </div>
-                    <img src={PhoneImg} className='phone-img'
+                    <img src={PhoneImg} alt="S3" className='phone-img'
+                        width='500px'
+                        height='500px'
                     />
                 </div>
             </div>

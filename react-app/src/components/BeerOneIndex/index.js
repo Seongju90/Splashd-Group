@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 // import { useHistory, NavLink, Redirect } from 'react-router-dom';
@@ -6,11 +6,11 @@ import { thunkOneBeer } from '../../store/beer';
 import ReviewFormModal from '../ReviewFormModal';
 import OpenModalButton from '../OpenModalButton';
 import { thunkOneBrewery } from '../../store/brewery';
-import BadgeFormModal from '../BadgeFormModal';
-import ReviewEditModal from '../ReviewEditModal'
+// import BadgeFormModal from '../BadgeFormModal';
+// import ReviewEditModal from '../ReviewEditModal'
 import ReviewCard from '../ReviewCard';
 import '../../zCSS/beerone.css'
-import checkicon from '../../assets/checkicon.png'
+// import checkicon from '../../assets/checkicon.png'
 
 export default function OneBeer(props) {
     const dispatch = useDispatch()
@@ -26,45 +26,38 @@ export default function OneBeer(props) {
 
     useEffect(() => {
         dispatch(thunkOneBeer(id))
-    }, [id]);
+    }, [dispatch, id]);
     const handleClick = () => {
         dispatch(thunkOneBrewery(beer.brewery_id))
         history.push(`/brewery/${beer.brewery_id}`)
     }
 
-    const userChecks = beer?.reviews.filter(rev => {
-        return rev?.user_id == user?.id
-    })
-    const revList = beer?.reviews;
-    let revSet = new Set()
+    const userChecks = beer?.reviews.filter(rev =>
+        {
+           return rev?.user_id === user?.id
+        })
+        const revList = beer?.reviews;
+        let revSet = new Set()
 
     for (let i = 0; i < revList?.length; i++) {
         revSet.add(revList[i]?.user_id)
     }
     //dispatch happens before history.push
     //     //so, we may not need this
-    // console.log(myimgs)
-    console.log(revSet.size)
+
     return (
         <div className='beer-feed'>
-            <div id="beer-top">
-                <div className='onebeer-header'>
-                    <img className='beer-logo' src={beer?.beer_logo} alt={null} />
-                    <div className='brewery-info'>
-                        <h1>{beer?.name}</h1>
-                        <h2 id="brewLink" onClick={handleClick}>{beer?.brewery.name}</h2>
-                        <h4>{beer?.type}</h4>
-                    </div>
-                    <div className='stat-container'>
-                        <div className='stat-title'>Check-In Stats:</div>
-                        <div className='review-stats'>
-                            <div className="g g1 g2" >
-                                <div>Total: {beer?.num_reviews}</div>
-                            </div>
-                            <div className="g g1" >Unique: {revSet?.size}</div>
-                            <div className="g g2" >Badges: {num_badges}</div>
-                            <div className="g">You: {userChecks?.length}</div>
-                        </div>
+            <div className='onebeer-header'>
+                <img className='beer-logo' src={beer?.beer_logo} alt="beer-logo" />
+                <div className='brewery-info'>
+                    <h1>{beer?.name}</h1>
+                    <h2 id="brewLink" onClick={handleClick}>{beer?.brewery.name}</h2>
+                    <h4>{beer?.type}</h4>
+                </div>
+                <div className='review-stats'>
+                    <div className="g g1 g2" >
+                        <div>Total Check-ins:</div>
+                        <div>{beer?.num_reviews}</div>
                     </div>
                 </div>
 

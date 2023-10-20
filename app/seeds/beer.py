@@ -73,7 +73,6 @@ beers_logo = [
     'https://assets.untappd.com/site/beer_logos/beer-1094326_82463_sm.jpeg',
     'https://assets.untappd.com/site/beer_logos/beer-457032_3e3a6_sm.jpeg',
     'https://untappd.com/b/tree-house-brewing-company-eureka-w-nelson/1209870',
-    'https://untappd.com/b/hill-farmstead-brewery-walden/201745',
     'https://assets.untappd.com/site/beer_logos/beer-1157584_fd186_sm.jpeg',
     'https://assets.untappd.com/site/assets/images/temp/badge-beer-default.png',
     'https://assets.untappd.com/site/beer_logos/beer-3147575_247c5_sm.jpeg',
