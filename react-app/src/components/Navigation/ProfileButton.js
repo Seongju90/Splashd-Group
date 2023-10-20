@@ -66,7 +66,7 @@ function ProfileButton({ user }) {
 
   const demoUser = async (e) => {
     await dispatch(login('demo@gmail.com', 'password'));
-    setShowMenu(false)
+    // setShowMenu(false)
   }
 
   const ulClassName = "profile-dropdown " + (showMenu ? "" : "hidden");
@@ -82,7 +82,7 @@ function ProfileButton({ user }) {
         {user ? (
           <>
             <div id="namedropdown" className="nameandemail">{user.name}</div>
-            <div id='usernamedropdow' className="nameandemail">{user.email}</div>
+            <div id='usernamedropdow' className="nameandemail">{user.username}</div>
             {/* <OpenModalButton
               buttonText="Make a Brewery"
               onItemClick={closeMenu}

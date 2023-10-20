@@ -39,9 +39,9 @@ export default function OneBeer(props) {
         const revList = beer?.reviews;
         let revSet = new Set()
 
-        for(let i = 0; i < revList?.length ;i++){
-            revSet.add(revList[i]?.user_id)
-        }
+    for (let i = 0; i < revList?.length; i++) {
+        revSet.add(revList[i]?.user_id)
+    }
     //dispatch happens before history.push
     //     //so, we may not need this
 
@@ -59,32 +59,32 @@ export default function OneBeer(props) {
                         <div>Total Check-ins:</div>
                         <div>{beer?.num_reviews}</div>
                     </div>
-                    <div className="g g1" >Unique: {revSet?.size}</div>
-                    <div className="g g2" >Badges Available: {num_badges}</div>
-                    <div className="g">User Checkins: {userChecks?.length}</div>
                 </div>
-            </div>
-            <div className='beer-info'>
+
+                <div className='beer-info'>
                     <div className='beerdata left'>{beer?.abv} abv</div>
                     <div className='beerdata mid'>{beer?.ibu} IBU</div>
                     <div className='beerdata mid'>Average rating: {avg}</div>
                     <div className='beerdata right'>{beer?.num_reviews} Ratings</div>
 
-            </div>
-            <div className="bottom">
-                <div className='description'>{beer?.description}</div>
-                <div title="checkin this beer" className='checkin'>
-                    {/* <img className="check" src={checkicon}/> */}
+                </div>
+                <div className="bottom">
+                    <div className='description'>{beer?.description}</div>
+                    <div title="Check-In" className='cc'>
+                        {/* <img className="check" src={checkicon}/> */}
                         <OpenModalButton
-                            buttonText={'Check-In this beer!'}
+                            buttonText={''}
+                            location={'check-in'}
                             modalComponent={<ReviewFormModal id={beer?.id} />}
                         />
+                    </div>
                 </div>
             </div>
             <div>
+                <h2 id="checkin-title">Check-Ins</h2>
                 {beer?.reviews.map((x) =>
-                    <div location className='card-container'>
-                        <ReviewCard review={x} beer={beer} username={x.user?.username} location={x}/>
+                    <div location className='review-container'>
+                        <ReviewCard review={x} beer={beer} username={x.user?.username} location={x} />
                         {/* {x?.user_id === user?.id ? (
                             <OpenModalButton
                                 buttonText="Edit/Delete"
@@ -111,7 +111,7 @@ export default function OneBeer(props) {
                 />
                 ) : null
                 } */}
-                {/* <OpenModalButton
+            {/* <OpenModalButton
                 buttonText="Check In This Beer"
                 // onItemClick={closeMenu}
                 modalComponent={<ReviewFormModal id={beer?.id} />}

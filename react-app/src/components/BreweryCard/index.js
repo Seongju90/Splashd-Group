@@ -48,44 +48,43 @@ export default function BreweryCard({ brewery, user }) {
                                     src={`${brewery_logo}`}
                                     alt='previewimageforcard'
                                 />
-                                <div id='edit-button'>
-                                    <OpenModalButton
-                                        buttonText="Update Brewery"
-                                        modalComponent={<BreweryEditModal brew={brewery} />}
-                                    />
-                                </div>{/*refers to containing handleClick and beerlogo id and info*/}
                             </div>
-                    <div style={{display: 'flex', flexDirection:'column'}}>
-                    Badges:
-                    {badges.map(x => (
-                        <div style={{display: 'flex', alignItems: 'center'}}>
-                            <div>
-                                <img src={x.icon} alt="1x" style={{width: '3vw', height: '3vw'}}/>
-                            </div>
-                            <button id="create-badge-on-brewery-button" style={{height:'fit-content', color: 'white', borderRadius: '1vw' }}
-                            onClick={() => deleteBadgeClick(x.id)}>Delete</button>
-                        </div>
-                    ))}
-                    </div>
-                        <div className="brewery-name-city-type-container">{/**starts Brewery info */}
-                                <div>Name: {name}</div>
-                                <div>City/State:{city_state}</div>
-                                <div>Brewery Type: {brewery_type}</div>
+
+                            <div className="brewery-name-city-type-container">{/**starts Brewery info */}
+                                <div className='brewtitle'> {name}</div>
+                                <div>{city_state}</div>
+                                <div> {brewery_type}</div>
                             </div>{/**Closes Brewery Info*/}
-                            <div className="badges-container">
+                            <div className='brewbuttons'>
+
+                                <OpenModalButton
+                                    buttonText="Update Brewery"
+                                    modalComponent={<BreweryEditModal brew={brewery} />}
+                                />
+                                <OpenModalButton
+                                    buttonText="Make a Beer"
+                                    //   onItemClick={closeMenu}
+                                    modalComponent={<BeerFormModal id={brewery?.id} />} />
+
+                            </div>
+                        </div>
+                        <div>
+                            <div className="brewery-info-description">
+
                                 Badges:
                                 {badges.map(x => (
                                     <div className="individual-badges" style={{ width: '5vw', height: '5vw' }}>
-                                        <img src={x.icon} alt="2x" style={{ width: '5vw', height: '5vw' }} />
+                                        <img src={x.icon} style={{ width: '5vw', height: '5vw' }} />
                                         <div onClick={() => deleteBadgeClick(x.id)}>X</div>
                                     </div>
-                                ))}
+                                ) : <></>)}
                             </div>
+                            <div className='brewdescription'>
+                                {description}
+                            </div>
+
                         </div>
-                        <div className="brewery-info-description">
-                            <div>
-                                Description:{description}
-                            </div>
+                        <div>
 
                         </div>
                     </div>
@@ -94,31 +93,54 @@ export default function BreweryCard({ brewery, user }) {
                         <h1 style={{ color: "green", fontFamily: "logo", width: "fit-content" }}>
                             {name}'s Selection of Beer
                         </h1>
-                        <div className='create-a-beer-button'>
+                        {/* <div className='create-a-beer-button'>
                             <OpenModalButton
                                 buttonText="Make a Beer"
                                 //   onItemClick={closeMenu}
                                 modalComponent={<BeerFormModal id={brewery?.id} />} />
-                        </div>
+                        </div> */}
                         <div>
                             {beers.map((x) =>
                                 <div className='beer-box'>
                                     <BeerCard beer={x} user={user} />
-
-
-                                    <div className="edit-delete-beer-on-brewery-button">
+                                    <div className="brewbuttons" >
                                         <OpenModalButton
                                             buttonText="Edit/Delete"
                                             modalComponent={<BeerEditModal beer={x} />}
                                         />
+
                                     </div>
 
-                                    <div id="create-badge-on-brewery-button">
-                                        <OpenModalButton
+                                    <h3>
+                                    Badges:
+
+                                    </h3>
+                                    <div  className="brewbuttons">
+
+                                    <OpenModalButton
+
                                             buttonText="Create a Badge"
                                             modalComponent={<BadgeFormModal id={x?.id} />}
                                         />
                                     </div>
+                                    {badges.map(y => y.beer_id === x.id ? (
+                                        <div>
+                                            <div>
+                                                <img src={y.icon} style={{ width: '6vw', height: '6vw' }} />
+                                            <button id="create-badge-on-brewery-button" style={{ height: 'fit-content', color: 'white', borderRadius: '1vw' }}
+                                                onClick={() => deleteBadgeClick(y.id)}>Delete</button>
+                                            </div>
+                                        </div>
+                                    ) : <></>)}
+
+
+                                    {/* <div id="create-badge-on-brewery-button">
+                                        <OpenModalButton
+
+                                            buttonText="Create a Badge"
+                                            modalComponent={<BadgeFormModal id={x?.id} />}
+                                        />
+                                    </div> */}
 
 
                                 </div>

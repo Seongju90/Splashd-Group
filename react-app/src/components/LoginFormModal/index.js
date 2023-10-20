@@ -19,6 +19,7 @@ function LoginFormModal() {
       setErrors(data);
     } else {
       history.push('/beers')
+      window.alert("login successful")
       closeModal()
     }
   };

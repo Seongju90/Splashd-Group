@@ -19,7 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
 # get all beers
 @beer_routes.route('/all')
 def get_beers():
-    beers = Beer.query.limit(20).all()
+    beers = Beer.query.all()
     return {'beers':[b.all_info() for b in beers]}
 
 @beer_routes.route('/<int:id>')
@@ -83,7 +83,7 @@ def addBeer():
         print(newBeer, '*^*^*^*^*^*^*^*^*^*^**^*^*^*^*^*')
         db.session.add(newBeer)
         db.session.commit()
-        return  newBeer.to_dict()
+        return  newBeer.beer_card()
     print(form.errors, '&#&#&#&#&#&#&#&#&#&#&&#&#&#&#&#&#&&#')
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

@@ -15,6 +15,7 @@
    margin: 1em;
    border: 0.5px solid grey;
    border-radius: 4px;
+
 }
 
 
@@ -23,6 +24,8 @@
     grid-template-rows: repeat(3, 1fr); */
     display: flex;
     flex-direction: column;
+    font-family: Helvetica, sans-serif;
+    font-size: 17px;
 }
 
 .review-right-container-img {
@@ -38,6 +41,9 @@
     object-fit: cover;
     width: 100%;
     height: 350px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-radius: 5px;
 }
 
 .review-user-info {
@@ -58,10 +64,11 @@
 
 .review-user-container {
     display: flex;
-    border: 0.5px solid lightgrey;
+    /* border: 0.5px solid lightgrey; */
     margin: 0.5em;
     height: 100%;
     align-items: center;
+    border-radius: 5px;
 }
 
 .review-beer-container {
@@ -79,6 +86,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    border-radius: 5px;
 }
 
 .review-sub-beer-container {
@@ -156,7 +164,25 @@
     padding: .5vw;
     cursor: pointer;
     color: rgb(116, 154, 2);
-    background-color: green;
     width: fit-content;
     height: 30%;
 }
+
+.link{
+    color: #8a4500;
+    display: inline;
+}
+
+.link:hover{
+    cursor: pointer;
+    color: #c17121;
+}
+
+.link::before{
+    content: " ";
+}
+
+.review-info{
+    margin-left: 1em;
+}
+

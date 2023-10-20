@@ -7,18 +7,24 @@ import githubIcon from "../../assets/github-com.svg"
 function ContactUsModal() {
     const { closeModal } = useModal();
 
-
+    //IF ANY OF YOU SEE THIS!!!!!!!!!!!!!!
+    //I had to update a ton of css and various other things, this is just the contact us page.
+    // If you contribute again, feel free to shift your name and link divs up to current contributors
+    // Unfortunately, since we can't see, to find cohesion, I am gonna take this across what i consider the finish line
+    //it would be a ton faster with help!!!!
+    // Alex: used yours as an example cause i figure youll see this
+    //just comment in the "personcard"
     return (
         <div className='contact-us'>
             <div className="modal-whole">
-                <div className="modal-header">
+                <div className="modal-header" id='headabout'>
                     <div className="modal-title">Contact Us!</div>
                     <div className="modal-exit"
                         onClick={() => closeModal()
                         }>X
                     </div>
                 </div>
-                <div className="buddy-info-container">
+                <div className="aboutinfo">
                     <div className="buddy-into-top-container">
                         Current Contributors:
                         <div className="buddy-info-field-philip">
@@ -54,6 +60,7 @@ function ContactUsModal() {
                             <a href='https://github.com/brylee8295'>Bryan Sang Heon Lee</a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
