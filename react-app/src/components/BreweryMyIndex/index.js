@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { thunkMyBrewery } from '../../store/brewery';
 import BreweryCard from '../BreweryCard';
@@ -9,9 +8,8 @@ import OpenModalButton from '../OpenModalButton';
 
 export default function MyBreweries() {
     const dispatch = useDispatch()
-    const history = useHistory()
     let user = useSelector(state => state.session?.user)
-    // console.log('%@!%^#^@#$%^!@$#^%!@$^%#$@!%^#$^@!', myBreweries)
+
     let userId = user?.id
     // let userId = 10
     let mybreweries = useSelector(state => state.brewery?.mybreweries)
@@ -21,7 +19,7 @@ export default function MyBreweries() {
     // }, [dispatch])
     useEffect(() => {
         dispatch(thunkMyBrewery(userId))
-    }, [dispatch])
+    }, [dispatch, userId])
 
     return (
         <div id='my-brewery-page'>
@@ -43,7 +41,7 @@ export default function MyBreweries() {
                 {mybreweries?.length ? mybreweries.map(brewery =>
                     <div>
                         <BreweryCard brewery={brewery} user={user} />
-                        
+
                     </div>
                 ) :
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', alignSelf: 'center', width: '100vw' }}>

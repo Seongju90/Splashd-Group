@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkCreateBadge } from "../../store/badge";
-import b1 from '../../assets/badgeicons/a1.png'
-import b2 from '../../assets/badgeicons/a2.png'
-import b3 from '../../assets/badgeicons/a3.png'
-import b4 from '../../assets/badgeicons/a4.png'
-import b5 from '../../assets/badgeicons/a5.png'
-import b6 from '../../assets/badgeicons/a6.png'
-import b7 from '../../assets/badgeicons/a7.png'
-import b8 from '../../assets/badgeicons/a8.png'
-import b9 from '../../assets/badgeicons/a9.png'
+// import b1 from '../../assets/badgeicons/a1.png'
+// import b2 from '../../assets/badgeicons/a2.png'
+// import b3 from '../../assets/badgeicons/a3.png'
+// import b4 from '../../assets/badgeicons/a4.png'
+// import b5 from '../../assets/badgeicons/a5.png'
+// import b6 from '../../assets/badgeicons/a6.png'
+// import b7 from '../../assets/badgeicons/a7.png'
+// import b8 from '../../assets/badgeicons/a8.png'
+// import b9 from '../../assets/badgeicons/a9.png'
 import { thunkMyBrewery } from "../../store/brewery";
 // todo: edit form for new badges
 export default function BadgeFormModal({id}) {
@@ -38,7 +38,7 @@ export default function BadgeFormModal({id}) {
             closeModal();
         }
     };
-    const options = [b1, b2, b3]
+    // const options = [b1, b2, b3]
     return (
         <div className="modal-whole">
             <div className="modal-header">

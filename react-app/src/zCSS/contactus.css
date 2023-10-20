@@ -42,3 +42,11 @@
     flex-direction: row;
     align-items: end;
 }
+
+.github-icon {
+    margin-left: 10px;
+}
+
+.buddy-into-bottom-container {
+    margin-top: 20px;
+}

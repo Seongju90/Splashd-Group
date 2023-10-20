@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import ProfileButton from './ProfileButton';

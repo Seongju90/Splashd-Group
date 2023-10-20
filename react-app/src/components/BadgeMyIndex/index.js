@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 // import { thunkAllBeer } from '../../store/beer';
 import { thunkMyBadges, thunkAllBadges } from '../../store/badge';
@@ -9,14 +8,12 @@ export default function MyBadges() {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session?.user)
     const badges = useSelector(state => state.badges);
-    const history = useHistory()
+    // const history = useHistory()
     const { mybadges, ...allbadges } = badges
     useEffect(() => {
         dispatch(thunkMyBadges(user?.id));
         dispatch(thunkAllBadges())
-    }, [dispatch]);
-    console.log("mybadges", mybadges)
-    const check = []
+    }, [dispatch, user?.id]);
 
     return (
         <div className='badge-container'>
@@ -25,7 +22,7 @@ export default function MyBadges() {
                 {mybadges?.length ? mybadges.map(badge =>
                     <div className='mybadge-badge'>
                         <div className='badge-icon'>
-                            <img className='badge-icon' src={badge.icon} />
+                            <img className='badge-icon' alt="badgeicon" src={badge.icon} />
                         </div>
                         <div className='badge-description'>
                             {badge.description}
@@ -46,7 +43,7 @@ export default function MyBadges() {
                         //    { !check.includes(badge.id) ?
                         <div className='mybadge-badge'>
                             <div className='badge-icon'>
-                                <img className='badge-icon' src={defIcon} />
+                                <img className='badge-icon' alt="badgeicon2" src={defIcon} />
                             </div>
                             <div className='badge-description'>
                                 {badge.description}

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkEditBeer, thunkRemoveBeer } from "../../store/beer";
-import { thunkMyBrewery, thunkOneBrewery } from "../../store/brewery";
-import { useHistory } from "react-router-dom";
+import { thunkMyBrewery } from "../../store/brewery";
+// import { useHistory } from "react-router-dom";
 
 
 export default function EditBeerModal({ beer }) {
@@ -17,8 +17,8 @@ export default function EditBeerModal({ beer }) {
     const [logo, setLogo] = useState(beer.beer_logo);
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
-    const history = useHistory()
-    const brewery = useSelector(state => state.brewery.onebrewery)
+    // const history = useHistory()
+    // const brewery = useSelector(state => state.brewery.onebrewery)
     const user = useSelector(state => state.session.user)
 
     const handleSubmit = async (e) => {

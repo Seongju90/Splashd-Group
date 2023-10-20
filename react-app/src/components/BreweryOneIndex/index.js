@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 // import { useHistory, NavLink, Redirect } from 'react-router-dom';
-import { thunkOneBeer } from '../../store/beer';
+// import { thunkOneBeer } from '../../store/beer';
 import { thunkOneBrewery } from '../../store/brewery';
 import OpenModalButton from '../OpenModalButton';
 // import BreweryFormModal from '../BreweryFormModal';
-import BeerFormModal from '../BeerFormModal'
+// import BeerFormModal from '../BeerFormModal'
 import BeerEditModal from '../BeerEditModal'
 import BeerCard from '../BeerCard';
 import '../../zCSS/breweryone.css'
@@ -16,7 +16,6 @@ export default function OneBrewery() {
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
     const brewery = useSelector(state => state.brewery.onebrewery)
-    const history = useHistory()
     const beers = brewery?.beers
     let num_ratings = 0
     let avg = 0
@@ -26,22 +25,21 @@ export default function OneBrewery() {
     })
     avg = Math.floor((avg / beers?.length) * 100) / 100
 
-    // console.log(beer, props.beer)
     useEffect(() => {
         dispatch(thunkOneBrewery(id))
         //dispatch happens before history.push
         //so, we may not need this
-    }, []);
-    // console.log(myimgs)
-    const handleBeerClick = (beerId) => {
-        dispatch(thunkOneBeer(beerId))
-        history.push(`/beer/${beerId}`)
-    }
+    }, [dispatch, id]);
+
+    // const handleBeerClick = (beerId) => {
+    //     dispatch(thunkOneBeer(beerId))
+    //     history.push(`/beer/${beerId}`)
+    // }
 
     return (
         <div className='beer-feed'>
             <div className='brewery-header'>
-                <img className='brew-logo' src={brewery?.brewery_logo} alt={null} />
+                <img className='brew-logo' src={brewery?.brewery_logo} alt="3x" />
                 <div className='brewery-info'>
                     <h1>{brewery?.name}</h1>
                     <h4>{brewery?.brewery_type}</h4>

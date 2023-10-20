@@ -36,7 +36,12 @@ cursor: default;
     background-color: lightgrey;
     color: white;
     border-radius: 5px;
-    padding-left: 2px;
+    padding: 10px;
+}
+
+.login-signup-dropdown:hover {
+    color: black;
+    cursor: pointer;
 }
 
 .homebutton  {
@@ -45,7 +50,7 @@ cursor: default;
 .navcont {
     color: white;
     height: 100%;
-    font-size: 2vw;
+    font-size: 20px;
     font-family: Logo;
 }
 

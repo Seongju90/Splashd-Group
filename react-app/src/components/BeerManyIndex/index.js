@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { thunkAllBeer } from '../../store/beer';
 import BeerCard from '../BeerCard';
@@ -9,7 +9,7 @@ export default function ManyBeers() {
     const dispatch = useDispatch()
     let user = useSelector(state => state.session?.user)
     let allinfo = useSelector(state => state.beer);
-    let history = useHistory()
+    // let history = useHistory()
     const {onebeer, ...allbeers} = allinfo
     useEffect(() => {
         dispatch(thunkAllBeer());

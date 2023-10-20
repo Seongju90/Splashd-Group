@@ -1,8 +1,5 @@
-import { useHistory } from 'react-router-dom';
-import { thunkOneBeer } from '../../store/beer';
 import { useDispatch } from 'react-redux';
 import BeerCard from '../BeerCard'
-import { thunkOneBrewery, thunkEditBrewery } from '../../store/brewery';
 import { thunkDeleteBadge } from '../../store/badge';
 import { thunkMyBrewery } from '../../store/brewery';
 import '../../zCSS/brewerycard.css'
@@ -14,12 +11,10 @@ import BadgeFormModal from '../BadgeFormModal';
 
 
 export default function BreweryCard({ brewery, user }) {
-    const history = useHistory()
     const dispatch = useDispatch()
-    const { id, name, owner_id, city_state, brewery_type,
-        brewery_logo, beers, description, owner, badges } = brewery
+    const { id, name, city_state, brewery_type,
+        brewery_logo, beers, description, badges } = brewery
 
-    const brewId = id
     // const handleClickBeer = (beerIDnum) => {
     //     dispatch(thunkOneBeer(beerIDnum))
 
@@ -65,7 +60,7 @@ export default function BreweryCard({ brewery, user }) {
                     {badges.map(x => (
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             <div>
-                                <img src={x.icon} style={{width: '3vw', height: '3vw'}}/>
+                                <img src={x.icon} alt="1x" style={{width: '3vw', height: '3vw'}}/>
                             </div>
                             <button id="create-badge-on-brewery-button" style={{height:'fit-content', color: 'white', borderRadius: '1vw' }}
                             onClick={() => deleteBadgeClick(x.id)}>Delete</button>
@@ -81,7 +76,7 @@ export default function BreweryCard({ brewery, user }) {
                                 Badges:
                                 {badges.map(x => (
                                     <div className="individual-badges" style={{ width: '5vw', height: '5vw' }}>
-                                        <img src={x.icon} style={{ width: '5vw', height: '5vw' }} />
+                                        <img src={x.icon} alt="2x" style={{ width: '5vw', height: '5vw' }} />
                                         <div onClick={() => deleteBadgeClick(x.id)}>X</div>
                                     </div>
                                 ))}
