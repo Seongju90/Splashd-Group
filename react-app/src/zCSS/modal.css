@@ -114,8 +114,7 @@
   justify-content: space-between;
   min-width: 30vw;
   min-height: 3vw;
-  padding-right: 5vw;
-  padding: .51vw;
+  padding: 10px;
   padding-bottom: none;
   align-items: flex-start;
   border-bottom: 1px solid;
