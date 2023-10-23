@@ -4,6 +4,8 @@ import { useModal } from "../../context/Modal";
 import linkedInIcon from "../../assets/linkedin-svgrepo-com.svg"
 import githubIcon from "../../assets/github-com.svg"
 
+import "../../zCSS/contactus.css"
+
 function ContactUsModal() {
     const { closeModal } = useModal();
 

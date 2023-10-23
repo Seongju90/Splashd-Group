@@ -21,7 +21,7 @@ font-size: .9751vw;
     /* margin: 0px; */
     /* padding:0px; */
     color: rgb(92, 92, 92);
-    
+
 
 }
 
@@ -39,21 +39,18 @@ font-size: .9751vw;
     height: 30vw;
     align-items: center;
     text-align: center;
+    padding: 10px;
 }
 
 .gitcon {
     margin-left: 1vw;
 }
 .personcard {
-        margin-left: 1vw;
-
+    margin-left: 1vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-
-
 }
 
 
